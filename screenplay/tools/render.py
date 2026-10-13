@@ -11,7 +11,8 @@
 6 строк на дюйм, 10 знаков на дюйм. Имя персонажа с 3.7", ремарка с 3.1",
 реплика с 2.5" шириной 3.5", переход выровнен по правому краю 7.5".
 
-Использование: render.py metro2033.fountain metro2033.pdf
+Использование: render.py metro2033.fountain metro2033.pdf [--scenes]
+С флагом --scenes дополнительно печатает «страница<TAB>заголовок сцены».
 Выводит число страниц и число сцен.
 """
 import re
@@ -241,6 +242,11 @@ def main():
         title, elements = parse(f.read())
     pages = paginate(elements)
     draw(title, pages, dst)
+    if "--scenes" in sys.argv:
+        for n, page in enumerate(pages, start=1):
+            for kind, text in page:
+                if kind == "heading" and not text.startswith(" "):
+                    print(f"{n}\t{text}")
     scenes = sum(1 for k, _ in elements if k == "heading")
     words = sum(len(t.split()) for _, t in elements)
     print(f"pages={len(pages)} scenes={scenes} words={words}")
