@@ -243,10 +243,16 @@ def main():
     pages = paginate(elements)
     draw(title, pages, dst)
     if "--scenes" in sys.argv:
+        rows, prev = [], None
         for n, page in enumerate(pages, start=1):
             for kind, text in page:
-                if kind == "heading" and not text.startswith(" "):
-                    print(f"{n}\t{text}")
+                if kind == "heading" and prev == "heading":
+                    rows[-1][1] += " " + text  # перенос длинного заголовка
+                elif kind == "heading":
+                    rows.append([n, text])
+                prev = kind
+        for n, text in rows:
+            print(f"{n}\t{text}")
     scenes = sum(1 for k, _ in elements if k == "heading")
     words = sum(len(t.split()) for _, t in elements)
     print(f"pages={len(pages)} scenes={scenes} words={words}")
