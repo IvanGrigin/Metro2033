@@ -8,4 +8,7 @@
 - `screenplay/step-outline.md` — список сцен с номерами страниц и главами книги.
 - `screenplay/notes.md` — сверка с книгой, результаты проверок, синопсис.
 - `screenplay/tools/render.py` — сборка PDF: `python3 screenplay/tools/render.py screenplay/metro2033.fountain screenplay/metro2033.pdf`.
+- `screenplay/tools/scene_env.py` — лист требований к окружению по сценам: `python3 screenplay/tools/scene_env.py screenplay/metro2033.fountain --scenes 1-23 --out …`.
+- `screenplay/env-review/` — отчёты критика окружения и паспорта мест.
+- `.claude/skills/env-critic/` — правила независимого критика окружения (модели станций, рендеры сцен).
 - `.claude/skills/` — скиллы сценариста ([jtydhr88/screenwriting-skills](https://github.com/jtydhr88/screenwriting-skills), MIT).
