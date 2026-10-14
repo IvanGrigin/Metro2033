@@ -122,20 +122,39 @@ def base_place(place):
     return first
 
 
+def is_flashback(tod):
+    return any(w in tod for w in ("НАЗАД", "ВОСПОМИНАНИЕ"))
+
+
 def render(scenes, wanted, src):
     out = []
     out.append("# Требования к окружению по сценам\n")
     out.append(f"Собрано `tools/scene_env.py` из `{src}`. Номер сцены — порядковый номер заголовка.\n")
     out.append("Это **что сцена требует**, а не что сделано. Критик сверяет каждый пункт с рендером.\n")
+    # ПРОДОЛЖЕНИЕ / НЕПРЕРЫВНО — время предыдущей сцены (в том числе флэшбек).
+    # ПОЗЖЕ — время последней сцены в том же месте: «ПОЗЖЕ» после вставки-флэшбека
+    # возвращает в настоящее, а не продолжает флэшбек.
     last_time = "не указано"
+    by_place = {}
+    seen_present = set()
     for sc in scenes:
         place, tod = split_heading(sc["heading"])
-        if tod.startswith(("ПРОДОЛЖЕНИЕ", "НЕПРЕРЫВНО", "ПОЗЖЕ")):
+        key = base_place(place)
+        if tod.startswith(("ПРОДОЛЖЕНИЕ", "НЕПРЕРЫВНО")):
             eff = f"{tod} → как в предыдущей сцене: {last_time}"
+            real = last_time
+        elif tod.startswith("ПОЗЖЕ"):
+            real = by_place.get(key, last_time)
+            eff = f"{tod} → как в прошлой сцене этого места: {real}"
         else:
-            eff = tod
-            last_time = tod
-        sc["place"], sc["tod"] = place, eff
+            real = eff = tod
+            if is_flashback(last_time) and not is_flashback(tod) and key not in seen_present:
+                eff += " — **проверить: идёт сразу после флэшбека, а пометки времени нет**"
+        last_time = real
+        by_place[key] = real
+        if not is_flashback(real):
+            seen_present.add(key)
+        sc["place"], sc["tod"], sc["real"] = place, eff, real
     for sc in scenes:
         if sc["n"] not in wanted:
             continue
@@ -165,8 +184,18 @@ def render(scenes, wanted, src):
     for sc in scenes:
         if sc["n"] in wanted:
             groups.setdefault(base_place(sc["place"]), []).append(sc)
+    # «СЕВЕРНЫЙ ТУННЕЛЬ» и «СЕВЕРНЫЙ ТУННЕЛЬ ВДНХ» — одно место: короткое имя
+    # (от двух слов) сливается с длинным, если все его слова есть в длинном.
+    for short in list(groups):
+        words = set(short.split())
+        if len(words) < 2:
+            continue
+        for longer in groups:
+            if longer != short and words < set(longer.split()):
+                groups[longer] = sorted(groups[longer] + groups.pop(short), key=lambda x: x["n"])
+                break
     for name, scs in groups.items():
-        tods = sorted({s["tod"].split(" → ")[-1].replace("как в предыдущей сцене: ", "") for s in scs})
+        tods = sorted({s["real"] for s in scs})
         ns = ", ".join(str(s["n"]) for s in scs)
         note = ""
         has_day = any("ДЕНЬ" in t or "УТРО" in t for t in tods)
