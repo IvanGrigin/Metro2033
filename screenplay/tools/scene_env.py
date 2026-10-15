@@ -122,6 +122,17 @@ def base_place(place):
     return first
 
 
+# Места, у которых в заголовке нет станции, но модель — часть станции.
+# Дополнять, когда критик находит такие связи.
+PARENT = {
+    "ПАЛАТКА СУХОГО": "ВДНХ",
+    "ЧАЙНАЯ ФАБРИКА": "ВДНХ",
+    "СЕВЕРНЫЙ КОРДОН ВДНХ": "ВДНХ",
+    "СЕВЕРНЫЙ ТУННЕЛЬ ВДНХ": "ВДНХ",
+    "ВЕСТИБЮЛЬ БОТАНИЧЕСКОГО САДА": "БОТАНИЧЕСКИЙ САД",
+}
+
+
 def is_flashback(tod):
     return any(w in tod for w in ("НАЗАД", "ВОСПОМИНАНИЕ"))
 
@@ -178,8 +189,8 @@ def render(scenes, wanted, src):
             out.append("\nПроверяемых деталей в ремарках нет — окружение по паспорту места.")
     # Сквозная сводка
     out.append("\n## Сквозная сводка по местам\n")
-    out.append("| Место | Сцены | Время суток | Что проверить |")
-    out.append("|---|---|---|---|")
+    out.append("| Место | Входит в | Сцены | Время суток | Что проверить |")
+    out.append("|---|---|---|---|---|")
     groups = OrderedDict()
     for sc in scenes:
         if sc["n"] in wanted:
@@ -204,7 +215,7 @@ def render(scenes, wanted, src):
             note = "одна модель на все сцены: геометрия и реквизит совпадают"
         if has_day and has_night:
             note += "; **день и ночь — свет должен различаться**"
-        out.append(f"| {name} | {ns} | {'; '.join(tods)} | {note.strip('; ')} |")
+        out.append(f"| {name} | {PARENT.get(name, '—')} | {ns} | {'; '.join(tods)} | {note.strip('; ')} |")
     return "\n".join(out) + "\n"
 
 
