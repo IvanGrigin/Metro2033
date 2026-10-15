@@ -160,7 +160,10 @@ def render(scenes, wanted, src):
         else:
             real = eff = tod
             if is_flashback(last_time) and not is_flashback(tod) and key not in seen_present:
-                eff += " — **проверить: идёт сразу после флэшбека, а пометки времени нет**"
+                # Скорее всего, флэшбек продолжается: помечаем и передаём пометку
+                # следующим «ПРОДОЛЖЕНИЕ», чтобы она не терялась.
+                real = f"{tod} (вероятно, флэшбек: {last_time})"
+                eff = real + " — **проверить: идёт сразу после флэшбека, а пометки времени нет**"
         last_time = real
         by_place[key] = real
         if not is_flashback(real):
