@@ -29,6 +29,9 @@ TIME_OF_DAY = re.compile(
     r"ПРОДОЛЖЕНИЕ|НЕПРЕРЫВНО|СОН|ВИДЕНИЕ|ВСПЫШКА|РАНЬШЕ)»?"
 )
 CLOCK = re.compile(r"\b([01]?\d|2[0-3]):[0-5]\d\b")
+CLOCK_WORDS = re.compile(
+    r"(?i)\b(половина|полвторого|без (четверти|пяти|десяти|двадцати)|четверть)\s+\w+|"
+    r"\b\w+\s+час(а|ов)?\s+(ночи|утра|дня|вечера)\b|\bв\s+(девять|десять|восемь|семь|шесть|полночь|полдень)\b")
 
 # Группа → корни слов. Порядок групп = порядок вывода.
 CUES = OrderedDict([
@@ -49,7 +52,7 @@ CUES = OrderedDict([
 
 
 def parse_scenes_strict(text):
-    """Сцены с ремарками; блоки реплик (от @ИМЯ до пустой строки) пропускаются."""
+    """Сцены с ремарками; реплики (от @ИМЯ до пустой строки) идут отдельно — в них ищется только время."""
     lines = text.splitlines()
     scenes = []
     cur = None
@@ -62,7 +65,7 @@ def parse_scenes_strict(text):
         m = HEADING.match(line)
         if m:
             cur = {"n": len(scenes) + 1, "line": lineno, "kind": m.group(1),
-                   "heading": m.group(2), "action": []}
+                   "heading": m.group(2), "action": [], "dialogue": []}
             scenes.append(cur)
             in_dialogue = False
             continue
@@ -70,6 +73,9 @@ def parse_scenes_strict(text):
             continue
         if line.startswith("@"):
             in_dialogue = True
+            continue
+        if in_dialogue and not line.startswith("("):
+            cur["dialogue"].append(line)
             continue
         if in_dialogue or line.startswith(("#", "=", ">", "[[", "~")):
             continue
@@ -122,6 +128,42 @@ def base_place(place):
     return first
 
 
+# Основа слова → название станции (заголовки пишут станцию в разных падежах).
+STATIONS = [
+    ("ВДНХ", "ВДНХ"), ("АЛЕКСЕЕВСК", "АЛЕКСЕЕВСКАЯ"), ("РИЖСК", "РИЖСКАЯ"),
+    ("ПРОСПЕКТ", "ПРОСПЕКТ МИРА"), ("СУХАРЕВСК", "СУХАРЕВСКАЯ"),
+    ("ТУРГЕНЕВСК", "ТУРГЕНЕВСКАЯ"), ("КИТАЙ-ГОРОД", "КИТАЙ-ГОРОД"),
+    ("КУЗНЕЦК", "КУЗНЕЦКИЙ МОСТ"), ("ПУШКИНСК", "ПУШКИНСКАЯ"), ("ТВЕРСК", "ТВЕРСКАЯ"),
+    ("ЧЕХОВСК", "ЧЕХОВСКАЯ"), ("ПАВЕЛЕЦК", "ПАВЕЛЕЦКАЯ"), ("САВЕЛОВСК", "САВЕЛОВСКАЯ"),
+    ("ТИМИРЯЗЕВСК", "ТИМИРЯЗЕВСКАЯ"), ("БОТАНИЧЕСК", "БОТАНИЧЕСКИЙ САД"),
+    ("ДМИТРОВСК", "ДМИТРОВСКАЯ"), ("ТРЕТЬЯКОВСК", "ТРЕТЬЯКОВСКАЯ"), ("ТАГАНСК", "ТАГАНСКАЯ"),
+]
+
+
+def stations_in(text):
+    found = []
+    for stem, name in STATIONS:
+        i = text.find(stem)
+        if i >= 0:
+            found.append((i, name))
+    return [n for _, n in sorted(found)]
+
+
+def place_key(place, last_tunnel):
+    """Ключ места для сводки. Перегоны не сливаются со станциями:
+    «ПЕРЕГОН АЛЕКСЕЕВСКАЯ — РИЖСКАЯ» → «ПЕРЕГОН АЛЕКСЕЕВСКАЯ — РИЖСКАЯ»,
+    «ТУННЕЛЬ К ПРОСПЕКТУ МИРА» и «ПЕРЕГОН — ДАЛЬШЕ» — продолжение последнего
+    перегона, если он ведёт к той же станции (или станция не названа)."""
+    if not re.match(r"^(ТУННЕЛЬ|ПЕРЕГОН)\b", place):
+        return base_place(place)
+    st = stations_in(place)
+    if len(st) >= 2:
+        return f"ПЕРЕГОН {st[0]} — {st[1]}"
+    if last_tunnel and (not st or st[0] in last_tunnel):
+        return last_tunnel
+    return place.split(" — ")[0]
+
+
 # Места, у которых в заголовке нет станции, но модель — часть станции.
 # Дополнять, когда критик находит такие связи.
 PARENT = {
@@ -137,6 +179,12 @@ def is_flashback(tod):
     return any(w in tod for w in ("НАЗАД", "ВОСПОМИНАНИЕ"))
 
 
+def is_insert(tod):
+    """Короткая вставка посреди сцены: после неё «ПРОДОЛЖЕНИЕ» возвращает
+    время, которое было до вставки, а не время самой вставки."""
+    return any(w in tod for w in ("ВСПЫШКА", "ВИДЕНИЕ", "СОН", "ВОСПОМИНАНИЕ"))
+
+
 def render(scenes, wanted, src):
     out = []
     out.append("# Требования к окружению по сценам\n")
@@ -146,29 +194,43 @@ def render(scenes, wanted, src):
     # ПОЗЖЕ — время последней сцены в том же месте: «ПОЗЖЕ» после вставки-флэшбека
     # возвращает в настоящее, а не продолжает флэшбек.
     last_time = "не указано"
+    before_insert = "не указано"
+    prev_place = None
+    last_tunnel = None
     by_place = {}
     seen_present = set()
     for sc in scenes:
         place, tod = split_heading(sc["heading"])
-        key = base_place(place)
+        key = place_key(place, last_tunnel)
+        if key.startswith(("ПЕРЕГОН", "ТУННЕЛЬ")):
+            last_tunnel = key
         if tod.startswith(("ПРОДОЛЖЕНИЕ", "НЕПРЕРЫВНО")):
-            eff = f"{tod} → как в предыдущей сцене: {last_time}"
-            real = last_time
+            if is_insert(last_time) and key != prev_place:
+                real = by_place.get(key, before_insert)
+                eff = f"{tod} → как до вставки: {real}"
+            else:
+                real = last_time
+                eff = f"{tod} → как в предыдущей сцене: {real}"
         elif tod.startswith("ПОЗЖЕ"):
             real = by_place.get(key, last_time)
             eff = f"{tod} → как в прошлой сцене этого места: {real}"
         else:
             real = eff = tod
-            if is_flashback(last_time) and not is_flashback(tod) and key not in seen_present:
+            if is_flashback(last_time) and not is_flashback(tod) and not is_insert(tod) \
+                    and key not in seen_present:
                 # Скорее всего, флэшбек продолжается: помечаем и передаём пометку
                 # следующим «ПРОДОЛЖЕНИЕ», чтобы она не терялась.
                 real = f"{tod} (вероятно, флэшбек: {last_time})"
                 eff = real + " — **проверить: идёт сразу после флэшбека, а пометки времени нет**"
+        if not is_insert(real):
+            before_insert = real
         last_time = real
-        by_place[key] = real
-        if not is_flashback(real):
+        prev_place = key
+        if not is_insert(real):
+            by_place[key] = real
+        if not is_flashback(real) and not is_insert(real):
             seen_present.add(key)
-        sc["place"], sc["tod"], sc["real"] = place, eff, real
+        sc["place"], sc["tod"], sc["real"], sc["key"] = place, eff, real, key
     for sc in scenes:
         if sc["n"] not in wanted:
             continue
@@ -179,6 +241,10 @@ def render(scenes, wanted, src):
         clocks = sorted({m.group(0) for _, l in sc["action"] for m in CLOCK.finditer(l)})
         if clocks:
             out.append(f"- **Точное время в кадре: {', '.join(clocks)}** — часы на модели должны показывать именно это")
+        spoken = [m.group(0) for _, l in sc["action"] for m in CLOCK_WORDS.finditer(l)]
+        spoken += [m.group(0) for l in sc["dialogue"] for m in CLOCK_WORDS.finditer(l)]
+        if spoken:
+            out.append(f"- **Время названо словами: {'; '.join(dict.fromkeys(spoken))}** — перевести в часы и сверить с часами в кадре")
         items = []
         for lineno, line in sc["action"]:
             for s in sentences(line):
@@ -197,7 +263,7 @@ def render(scenes, wanted, src):
     groups = OrderedDict()
     for sc in scenes:
         if sc["n"] in wanted:
-            groups.setdefault(base_place(sc["place"]), []).append(sc)
+            groups.setdefault(sc["key"], []).append(sc)
     # «СЕВЕРНЫЙ ТУННЕЛЬ» и «СЕВЕРНЫЙ ТУННЕЛЬ ВДНХ» — одно место: короткое имя
     # (от двух слов) сливается с длинным, если все его слова есть в длинном.
     for short in list(groups):
@@ -205,6 +271,8 @@ def render(scenes, wanted, src):
         if len(words) < 2:
             continue
         for longer in groups:
+            if longer.startswith("ПЕРЕГОН") or short.startswith("ПЕРЕГОН"):
+                continue  # перегон не сливается со станцией, которую он соединяет
             if longer != short and words < set(longer.split()):
                 groups[longer] = sorted(groups[longer] + groups.pop(short), key=lambda x: x["n"])
                 break
