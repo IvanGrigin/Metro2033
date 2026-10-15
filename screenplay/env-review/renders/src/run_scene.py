@@ -32,6 +32,8 @@ if "clock_digits" in bpy.data.objects:  # a station clock is in this location: t
 for o in list(bpy.context.scene.objects):
     if o.type == "LIGHT":
         o.data.energy *= spec.get("light_scale", 1.0)
+        if "light_color" in spec and "fire" not in o.name:  # e.g. the "almost brown" VDNKh night instead of its red
+            o.data.color = spec["light_color"]
 
 # timeline: shot starts from storyboard durations
 t, starts = 0.0, {}
@@ -133,6 +135,9 @@ for e in sorted(spec["events"], key=lambda e: frame_of(e["at"], e.get("dt", 0)))
         li.data.keyframe_insert("energy", frame=f - 1)
         li.data.energy = e["energy"]
         li.data.keyframe_insert("energy", frame=f)
+        bulb = bpy.data.objects.get(f'{e["light"]}_bulb')  # a visible lamp body goes dark with its light
+        if bulb:
+            kit.key_visible(bulb, f, e["energy"] > 0)
 
 
 def point(ref, frame):

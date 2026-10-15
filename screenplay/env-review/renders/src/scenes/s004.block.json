@@ -8,11 +8,13 @@
    "rifle": true
   },
   "Pyotr": {
-   "height": 1.7
+   "height": 1.7,
+   "rifle": true
   },
   "Andrei": {
    "height": 1.76,
-   "beret": true
+   "beret": true,
+   "rifle": true
   },
   "Kirill": {
    "height": 1.74

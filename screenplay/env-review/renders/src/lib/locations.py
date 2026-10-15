@@ -86,9 +86,9 @@ def running_tunnel(length=90.0, x=0.0, y=0.0, lining="iron"):
     bpy.ops.object.transform_apply(rotation=True)
     _array_y(ring, int(length), 1.0)
     box((2 * abs(wall_x(0, 1)), length, 1.0), (0, 0, -0.5), conc, name="trackbed")
-    s = box((2.6, 0.25, 0.14), (0, -length / 2, 0.07), wood, name="sleepers")
+    s = box((2.7, 0.25, 0.14), (0, -length / 2, 0.07), wood, name="sleepers")
     _array_y(s, int(length / 0.55), 0.55)
-    for rx in (-0.76, 0.76):  # not `x`: that is the tunnel offset applied below
+    for rx in (-0.795, 0.795):  # gauge 1520 mm between inner faces; not `x`: that is the tunnel offset applied below
         box((0.07, length, 0.15), (rx, 0, 0.215), rust, name="rail")
     box((0.08, length, 0.10), (1.55, 0, 0.40), rust, name="third_rail")
     box((0.30, length, 0.02), (1.55, 0, 0.55), wood, name="third_rail_cover")
@@ -124,7 +124,10 @@ def striped_post(text, x, y):
     black = mat("black_paint", (0.02, 0.02, 0.02), flat=(0.02, 0.02, 0.02), rough=0.7)
     for k in range(8):
         cyl(0.06, 0.18, (x, y, 0.09 + k * 0.18), paint if k % 2 else black, verts=12, name=f"post_{text}")
-    box((0.35, 0.02, 0.22), (x, y - 0.07, 1.55), paint, name=f"post_{text}_plate")
+    # the white plate faces the station; a faint glow stands for the far firelight it catches, so the post can be
+    # made out at the edge of the dark (script: «за кругом света, в темноте»)
+    plate_paint = mat("post_plate_paint", (0.75, 0.75, 0.72), flat=(1, 1, 1), rough=0.7, emit=(1.0, 0.7, 0.45), strength=0.15)
+    box((0.35, 0.02, 0.22), (x, y - 0.07, 1.55), plate_paint, name=f"post_{text}_plate")
     bpy.ops.object.text_add(location=(x, y - 0.085, 1.55), rotation=(math.pi / 2, 0, 0))
     t = bpy.context.object
     t.data.body, t.data.size = text, 0.16
@@ -170,7 +173,7 @@ def tunnel_250():
     """VDNKh north tunnel at the 250 m mark: scenes 1, 4, 6, 15. Fire at (-1.3, 0). Single-track tube (the turnback
     dead ends north of VDNKh are single-track deep tunnels); toward Botanichesky Sad the 1978 tunnels are lined with
     reinforced-concrete blocks, not cast-iron rings (russos.livejournal.com/1302721, see WORLD.md)."""
-    running_tunnel(length=130.0, lining="concrete")
+    running_tunnel(length=220.0, lining="concrete")  # long enough that its end is lost in the dark and haze behind «300»
     wall_number("250", -1.2)
     striped_post("300", -1.9, 48.8)  # 50 m on, beyond the firelight, in the dark (script line 18)
     campfire((-1.3, 0.0, 0.0))
@@ -256,7 +259,8 @@ def wall_clock(text, at, facing=180.0):
 
 # ---------------------------------------------------------------- station archetypes
 
-PLAT_H = 1.1  # platform top above the trackbed
+PLAT_H = 1.1  # platform top above the station floor datum z = 0
+TRACK_Z = -0.29  # station trackbed level: rail head (0.29 above the trackbed) ends 1.1 m below the platform edge
 # Real dimensions and world facts with sources: storyboard/3d/WORLD.md.
 KINDS = {
     # VDNKh: pylon three-vault deep station, central hall 9.5 m, platform 162 m, 18 pylons a side (9 m pitch:
@@ -282,13 +286,15 @@ def station(kind="pylon", length=162.0, light=(1.0, 0.25, 0.15), energy=180, lam
     wood = mat("old_wood", (0.13, 0.08, 0.05), flat=(0.45, 0.30, 0.15))
     rust = mat("rail_rust", (0.22, 0.12, 0.07), flat=(0.70, 0.72, 0.78), rough=0.5, metal=0.8)
     dark = mat("dark_inside", (0.01, 0.01, 0.01), flat=(0.1, 0.1, 0.1))
-    box((2 * ph, length, PLAT_H), (0, 0, PLAT_H / 2), floor, name="platform")
-    box((2 * wx + 1, length, 0.5), (0, 0, -0.25), mat("concrete", (0.20, 0.18, 0.16), flat=(0.33, 0.32, 0.30)), name="trackbed")
+    box((2 * ph, length, PLAT_H - TRACK_Z), (0, 0, (PLAT_H + TRACK_Z) / 2), floor, name="platform")
+    for sx in (-1, 1):  # skirts under the side walls down to the lowered trackbed
+        box((1.2, length, -TRACK_Z), (sx * (wx - 0.2), 0, TRACK_Z / 2), marble, name="wall_skirt")
+    box((2 * wx + 1, length, 0.5), (0, 0, TRACK_Z - 0.25), mat("concrete", (0.20, 0.18, 0.16), flat=(0.33, 0.32, 0.30)), name="trackbed")
     for tx in (-tx_, tx_):
-        sl = box((2.6, 0.25, 0.14), (tx, -length / 2, 0.07), wood, name="sleepers")
+        sl = box((2.7, 0.25, 0.14), (tx, -length / 2, TRACK_Z + 0.07), wood, name="sleepers")
         _array_y(sl, int(length / 0.55), 0.55)
-        for dx in (-0.76, 0.76):
-            box((0.07, length, 0.15), (tx + dx, 0, 0.215), rust, name="rail")
+        for dx in (-0.795, 0.795):
+            box((0.07, length, 0.15), (tx + dx, 0, TRACK_Z + 0.215), rust, name="rail")
     if kind == "pylon":
         yellow = mat("track_tile", (0.55, 0.45, 0.18), flat=(0.92, 0.82, 0.45))
         black = mat("black_tile", (0.03, 0.03, 0.03), flat=(0.10, 0.10, 0.10))
@@ -372,6 +378,9 @@ def station(kind="pylon", length=162.0, light=(1.0, 0.25, 0.15), energy=180, lam
                 box((h0 - x, 0.4, low), ((x + h0) / 2, wy, low / 2), marble, name="end_wall")
             x = h1
         box((2 * wx + 1, 0.4, 9.0 - low), (0, wy, low + (9.0 - low) / 2), marble, name="end_wall_lintel")
+        for h0, h1 in [(-wx - 0.5, -tx_ - 2.6), (-tx_ + 2.6, tx_ - 2.6), (tx_ + 2.6, wx + 0.5)]:  # below z = 0 beside the portals
+            if h1 > h0:
+                box((h1 - h0, 0.4, -TRACK_Z), ((h0 + h1) / 2, wy, TRACK_Z / 2), marble, name="end_wall")
         for tx in (-tx_, tx_):
             box((5.2, 0.4, low - 4.3), (tx, wy, 4.3 + (low - 4.3) / 2), marble, name="end_wall")  # over the tunnel
             _tunnel_stub(tx, ey + (15.2 if ey > 0 else -15.2))
@@ -382,6 +391,9 @@ def _tunnel_stub(x, y, length=30.0):
     """Short running tunnel behind a station portal, open toward the station, black far end."""
     before = set(bpy.context.scene.objects)
     running_tunnel(length=length, x=x, y=y)
+    for o in set(bpy.context.scene.objects) - before:  # same track level as the station
+        if o.parent is None:
+            o.location.z += TRACK_Z
     for o in set(bpy.context.scene.objects) - before:
         if o.name.startswith("tunnel_shell"):  # remove both caps of the shell cylinder
             bm = bmesh.new()
@@ -474,7 +486,7 @@ def vdnkh():
     * Main Street = the open central hall (x in -4.75..4.75); laundry strung between pylons; crates, benches.
     * Dwellings: a family tent in every arched passage between pylons, at its hall end (passage centres y = -73.5 + 9 k, x = ±5.7)
       and wooden 'apartments' along the side naves in front of each pylon (x = ±7.4) — about 70 homes for ~200 people.
-    * Guest tent: in the east arch at y = 43.5 (x = 6.9), flap facing west onto Main Street ("edge of the platform,
+    * Guest tent: at the east platform edge in front of the pylon at y = 36..42 (centre (7.25, 39.0)), flap facing south onto the edge walkway ("edge of the platform,
       away from Main Street").
     * North end (y = 81): sealed blast gate of the escalator passage in the central hall; the tea factory is the dead
       end in front of it (y = 62..76); station clock over the east (right) track tunnel mouth.
@@ -487,20 +499,24 @@ def vdnkh():
         y = -81 + 6.0  # first passage after the first pylon
         while y + 3.0 <= 81 - 6.0 + 0.01:
             yc = y + 1.5
-            if not (sx > 0 and abs(yc - 43.5) < 0.1) and yc < 60:  # leave the guest arch and the factory end
+            free = k % 3 == 1  # every third arch stays open: the way from Main Street to the platform edge and trains
+            if not free and yc < 60:  # leave the factory end
                 # tent at the hall end of its arch, flap 0.35 m out on Main Street: the two rows of the script read along the hall
                 t = army_tent(f"arch_tent_{k}", (sx * 5.7, yc), facing=270 if sx > 0 else 90, size=(2.4, 2.6),
                               h=rng.uniform(1.8, 2.1), open_flap=rng.random() < 0.4)
                 t.location.z = PLAT_H
-            if yc - 4.5 > -78 and yc - 4.5 < 58:  # wooden 'apartment' in the side nave in front of the pylon
-                box((1.5, 4.2, rng.uniform(1.9, 2.3)), (sx * 7.45, yc - 4.5, PLAT_H + 1.05), shack, name=f"apartment_{k}")
+            if yc - 4.5 > -78 and yc - 4.5 < 58 and not (sx > 0 and abs(yc - 4.5 - 39.0) < 0.1):  # apartment in the side nave in front of the pylon (not at the guest tent)
+                # against the pylon's outer face (x 6.25..7.25): a 1 m walkway stays along the platform edge
+                box((1.0, 4.2, rng.uniform(1.9, 2.3)), (sx * 6.75, yc - 4.5, PLAT_H + 1.05), shack, name=f"apartment_{k}")
             k += 1
             y += 9.0
-    g = army_tent("guest_tent", (6.9, 43.5), facing=270, size=(2.6, 2.6), h=2.0, rgb=(0.22, 0.20, 0.15), flat=(0.55, 0.50, 0.38), open_flap=True)
+    # guest tent: at the platform edge, off Main Street (script), in the east side nave in front of the pylon at y 36..42;
+    # long side along the track, flap to the south onto the edge walkway
+    g = army_tent("guest_tent", (7.25, 39.0), facing=180, size=(1.9, 2.8), h=2.0, rgb=(0.22, 0.20, 0.15), flat=(0.55, 0.50, 0.38), open_flap=True)
     g.location.z = PLAT_H
-    for i in range(10):  # laundry on wires between pylons, across the arches of the west side
-        y0 = -75 + i * 9 * 1.0
-        laundry_line((-4.85, y0 + 0.2), (-4.85, y0 + 2.8), PLAT_H + 2.1, rng)
+    for i in range(10):  # laundry on wires along the faces of the west pylons, between the arches (clear of the tents)
+        yc = -73.5 + i * 9
+        laundry_line((-4.55, yc + 1.8), (-4.55, yc + 7.2), PLAT_H + 1.95, rng)  # within reach
     scatter_crates(rng, ((-3.5, 3.5), (-70, 55)), 18, z=PLAT_H)
     box((5.0, 0.5, 4.0), (0, 80.2, PLAT_H + 2.0), mat("blast_door", (0.12, 0.12, 0.11), flat=(0.40, 0.42, 0.40), rough=0.5, metal=0.7),
         name="escalator_gate")  # sealed passage to the north vestibule
@@ -513,11 +529,11 @@ def vdnkh():
         box((3.05, 0.05, 2.4), (sx * 3.25, 61.8, PLAT_H + 1.2), tarp, name="tea_partition")
     caps = mat("mushroom_caps", (0.75, 0.72, 0.62), flat=(0.95, 0.92, 0.80), rough=0.8)
     wire = mat("cable", (0.03, 0.03, 0.03), flat=(0.12, 0.12, 0.12), rough=0.5)
-    for row in range(5):
-        y = 63 + row * 2.2
+    for row in range(8):  # thousands in the script; ~500 caps read as a dense drying field at this scale
+        y = 62.6 + row * 1.6
         cyl(0.006, 8.0, (0, y, PLAT_H + 2.1), wire, rot=(0, math.pi / 2, 0), verts=4, name="tea_wire")
-        for i in range(40):
-            sphere(0.035, (-3.9 + i * 0.2, y, PLAT_H + 2.05 - rng.random() * 0.04), caps, name="cap", scale=(1, 1, 0.5))
+        for i in range(60):
+            sphere(0.035, (-3.9 + i * 0.13, y, PLAT_H + 2.05 - rng.random() * 0.04), caps, name="cap", scale=(1, 1, 0.5))
     door = mat("door_table", (0.18, 0.15, 0.11), flat=(0.60, 0.52, 0.40))
     for tx in (-2.2, 2.2):
         box((1.0, 6.0, 0.06), (tx, 69, PLAT_H + 0.8), door, name="door_table")
@@ -530,6 +546,7 @@ def vdnkh():
     # smoke of the drying fires hanging under the vault ("дымки костров"): a thin grey volume, lit pass only
     smoke = box((9.0, 14.0, 4.5), (0, 69.0, PLAT_H + 2.6), _smoke_mat(), name="tea_smoke")
     smoke["lit_only"] = True
+    smoke.hide_viewport = True  # out of scene.ray_cast (camera occlusion tests); render visibility is set per pass
 
 
 def _smoke_mat():
@@ -571,6 +588,8 @@ def botanical():
         box((2.6, 0.12, 3.4), (x, 83.6, PLAT_H + 1.7), rust, name=f"sliding_door_{side}")
     box((5.5, 0.5, 4.3), (0, 85.6, PLAT_H + 6.6), mat("blast_door", (0.12, 0.12, 0.11), flat=(0.40, 0.42, 0.40), rough=0.5, metal=0.7), name="blast_door")  # raised: open
     box((0.08, 0.08, 0.9), (3.2, 83.4, PLAT_H + 0.9), rust, rot=(math.radians(25), 0, 0), name="lever")  # beside the doors, wrapped in wire
+    box((5.6, 2.6, 0.3), (0, 85.9, PLAT_H - 0.15), mat("granite_floor", (0.20, 0.14, 0.12), flat=(0.55, 0.42, 0.38), rough=0.5),
+        name="escalator_landing")  # floor from the doors to the first step (the shaft bottom lies below it)
     steps = mat("rotten_steps", (0.08, 0.06, 0.05), flat=(0.35, 0.28, 0.20))
     gear = mat("esc_gear", (0.06, 0.05, 0.04), flat=(0.22, 0.20, 0.18), rough=0.5, metal=0.8)
     for i in range(40):  # escalator beyond the blast door: 30 degrees up toward the vestibule; gaps show the gears
@@ -643,6 +662,8 @@ def sukhoi_tent():
     bpy.ops.object.light_add(type="POINT", location=(0, 0.6, 1.6))
     li = bpy.context.object
     li.name, li.data.energy, li.data.color, li.data.shadow_soft_size = "tent_lamp", 120, (1.0, 0.75, 0.45), 0.1
+    glow = mat("tent_lamp_glow", (1, 0.8, 0.5), flat=(1, 0.9, 0.6), emit=(1, 0.75, 0.45), strength=8)
+    box((0.12, 0.12, 0.16), (0, 0.6, 1.72), glow, name="tent_lamp_bulb").visible_shadow = False  # the lamp itself, under the ridge
     bpy.context.scene.world.node_tree.nodes["Background"].inputs[0].default_value = (0.02, 0.008, 0.006, 1)  # red station glow through canvas
 
 
@@ -680,7 +701,7 @@ LOCATIONS = {"tunnel_250": tunnel_250, "north_cordon": north_cordon, "peregon_sa
 # Camera bounds per location ((x0, x1), (y0, y1), (z0, z1)): auto cameras are pulled in so they never sit
 # inside a wall. Default views are used for wide/dark shots that have no character to frame.
 BOUNDS = {
-    "tunnel_250": ((-1.9, 1.9), (-60, 60), (0.3, 2.9)), "north_cordon": ((-1.9, 1.9), (-44, 44), (0.3, 2.9)),
+    "tunnel_250": ((-1.9, 1.9), (-100, 100), (0.3, 2.9)), "north_cordon": ((-1.9, 1.9), (-44, 44), (0.3, 2.9)),
     "peregon_savelovskaya": ((-1.9, 1.9), (-38, 98), (0.3, 2.9)), "timiryazevskaya": ((-7.8, 7.8), (-80, 80), (0.4, 8.5)),
     "vdnkh": ((-11.2, 11.2), (-80, 80), (0.4, 7.8)), "botanical": ((-8.0, 8.0), (-84, 100), (0.4, 5.2)),
     "botanical_vestibule": ((-8.5, 8.5), (-8.5, 8.5), (0.3, 5.5)), "sukhoi_tent": ((-1.45, 1.45), (-2.0, 2.0), (0.25, 2.15)),

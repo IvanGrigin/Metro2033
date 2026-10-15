@@ -71,7 +71,7 @@ for b in blocks:
 spec = {k: blk[k] for k in ("id", "location", "cast") if k in blk}
 spec["title"] = board_file.read_text(encoding="utf-8").splitlines()[0].lstrip("# ")
 spec["storyboard"] = str(board_file.relative_to(SB.parent))
-for k in ("crates", "props", "lights", "events", "clock", "light_scale", "crowd"):
+for k in ("crates", "props", "lights", "events", "clock", "light_scale", "light_color", "crowd"):
     if k in blk:
         spec[k] = blk[k]
 spec["shots"] = shots

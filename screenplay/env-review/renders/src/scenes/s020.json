@@ -99,6 +99,11 @@
  ],
  "clock": "23:40",
  "light_scale": 0.5,
+ "light_color": [
+  1.0,
+  0.5,
+  0.28
+ ],
  "crowd": 10,
  "shots": [
   {

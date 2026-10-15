@@ -213,6 +213,7 @@ POSES = {
     "sit_tap_temple": {**SIT, "shoulder_R": (110, 0, -25), "elbow_R": (125, 0, 0), "shoulder_L": (40, 0, 0), "elbow_L": (10, 0, 0)},
     "kneel_touch": {"pelvis_z": 0.55, "hip_L": (80, 0, 0), "knee_L": (-80, 0, 0), "hip_R": (10, 0, 0), "knee_R": (-100, 0, 0),
                     "chest": (-20, 0, 0), "shoulder_R": (75, 0, 0), "elbow_R": (15, 0, 0), "shoulder_L": (20, 0, 0)},
+    "reach_up": {"shoulder_L": (155, 0, 10), "elbow_L": (15, 0, 0), "shoulder_R": (155, 0, -10), "elbow_R": (15, 0, 0)},  # hanging laundry
     "wave": {"shoulder_R": (150, 0, -20), "elbow_R": (30, 0, 0), "shoulder_L": (5, 0, 0)},
     "sit_wave": {**SIT, "shoulder_R": (120, 0, -20), "elbow_R": (30, 0, 0), "shoulder_L": (40, 0, 0), "elbow_L": (10, 0, 0)},
 }
@@ -421,9 +422,9 @@ def handcar(name):
     iron = mat("handcar_iron", (0.08, 0.07, 0.06), flat=(0.30, 0.30, 0.34), rough=0.5, metal=0.7)
     wood = mat("old_wood", (0.13, 0.08, 0.05), flat=(0.45, 0.30, 0.15))
     attach(box((1.9, 2.4, 0.08), (0, 0, 0), wood, name=f"{name}.deck"), root, (0, 0, 0.62))
-    for x in (-0.76, 0.76):
+    for x in (-0.795, 0.795):  # on the rail heads (0.29 above the origin), gauge 1520
         for y in (-0.8, 0.8):
-            attach(cyl(0.3, 0.08, (0, 0, 0), iron, (0, math.pi / 2, 0), 16, f"{name}.wheel"), root, (x, y, 0.52))
+            attach(cyl(0.22, 0.08, (0, 0, 0), iron, (0, math.pi / 2, 0), 16, f"{name}.wheel"), root, (x, y, 0.51))
     attach(cyl(0.05, 0.9, (0, 0, 0), iron, name=f"{name}.post"), root, (0, 0, 1.1))
     attach(box((0.06, 1.4, 0.06), (0, 0, 0), iron, name=f"{name}.lever"), root, (0, 0, 1.58))
     return root
