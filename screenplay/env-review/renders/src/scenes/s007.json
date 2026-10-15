@@ -1,0 +1,546 @@
+{
+ "id": "s007",
+ "location": "vdnkh",
+ "cast": {
+  "Artyom": {
+   "height": 1.78,
+   "rifle": true
+  },
+  "Sentry": {
+   "height": 1.8,
+   "rifle": true,
+   "role": "Extra"
+  },
+  "Woman": {
+   "height": 1.65,
+   "role": "Extra"
+  },
+  "Kid1": {
+   "height": 1.2,
+   "role": "Extra"
+  },
+  "Kid2": {
+   "height": 1.15,
+   "role": "Extra"
+  },
+  "Kid3": {
+   "height": 1.25,
+   "role": "Extra"
+  },
+  "Extra1": {
+   "height": 1.75,
+   "role": "Extra"
+  },
+  "Extra2": {
+   "height": 1.7,
+   "role": "Extra"
+  },
+  "Extra3": {
+   "height": 1.68,
+   "role": "Extra"
+  },
+  "Extra4": {
+   "height": 1.72,
+   "role": "Extra"
+  },
+  "Extra5": {
+   "height": 1.8,
+   "role": "Extra"
+  },
+  "Extra6": {
+   "height": 1.62,
+   "role": "Extra"
+  },
+  "Extra7": {
+   "height": 1.74,
+   "role": "Extra"
+  },
+  "Extra8": {
+   "height": 1.66,
+   "role": "Extra"
+  }
+ },
+ "title": "Сцена 7. ИНТ. СТАНЦИЯ ВДНХ — ПЛАТФОРМА — «УТРО»",
+ "storyboard": "storyboard/02-вднх/007-инт-станция-вднх-платформа-утро.md",
+ "props": {
+  "tin_can": {
+   "type": "block",
+   "size": [
+    0.08,
+    0.08,
+    0.11
+   ],
+   "color": [
+    0.78,
+    0.78,
+    0.82
+   ],
+   "loc": [
+    0.05,
+    -27.0,
+    1.1
+   ]
+  }
+ },
+ "events": [
+  {
+   "at": "7.01",
+   "actor": "Sentry",
+   "do": "place",
+   "pos": [
+    6.6,
+    79.8,
+    1.1
+   ],
+   "facing": 180,
+   "pose": "stand_rifle"
+  },
+  {
+   "at": "7.01",
+   "actor": "Kid1",
+   "do": "place",
+   "pos": [
+    0.0,
+    -28.0,
+    1.1
+   ],
+   "facing": 0
+  },
+  {
+   "at": "7.01",
+   "actor": "Kid2",
+   "do": "place",
+   "pos": [
+    0.3,
+    -25.6,
+    1.1
+   ],
+   "facing": 190
+  },
+  {
+   "at": "7.01",
+   "actor": "Kid3",
+   "do": "place",
+   "pos": [
+    -0.4,
+    -28.9,
+    1.1
+   ],
+   "facing": 20
+  },
+  {
+   "at": "7.01",
+   "actor": "Woman",
+   "do": "place",
+   "pos": [
+    -4.1,
+    -17.4,
+    1.1
+   ],
+   "facing": 270,
+   "pose": "hold_light"
+  },
+  {
+   "at": "7.01",
+   "actor": "Extra1",
+   "do": "place",
+   "pos": [
+    0.25,
+    -40.0,
+    1.1
+   ],
+   "facing": 0
+  },
+  {
+   "at": "7.01",
+   "actor": "Extra2",
+   "do": "place",
+   "pos": [
+    -0.5,
+    -43.0,
+    1.1
+   ],
+   "facing": 90
+  },
+  {
+   "at": "7.01",
+   "actor": "Extra3",
+   "do": "place",
+   "pos": [
+    0.55,
+    -34.0,
+    1.1
+   ],
+   "facing": 180
+  },
+  {
+   "at": "7.01",
+   "actor": "Extra4",
+   "do": "place",
+   "pos": [
+    -0.3,
+    -20.0,
+    1.1
+   ],
+   "facing": 180
+  },
+  {
+   "at": "7.01",
+   "actor": "Extra5",
+   "do": "place",
+   "pos": [
+    -5.5,
+    -37.5,
+    1.1
+   ],
+   "facing": 90
+  },
+  {
+   "at": "7.01",
+   "actor": "Extra6",
+   "do": "place",
+   "pos": [
+    5.5,
+    -28.5,
+    1.1
+   ],
+   "facing": 270
+  },
+  {
+   "at": "7.01",
+   "actor": "Extra7",
+   "do": "place",
+   "pos": [
+    0.35,
+    -3.6,
+    1.1
+   ],
+   "facing": 0
+  },
+  {
+   "at": "7.01",
+   "actor": "Extra8",
+   "do": "place",
+   "pos": [
+    -0.4,
+    -6.8,
+    1.1
+   ],
+   "facing": 0
+  },
+  {
+   "at": "7.01",
+   "actor": "Artyom",
+   "do": "place",
+   "pos": [
+    0.0,
+    2.0,
+    1.1
+   ],
+   "facing": 180,
+   "pose": "stand_rifle"
+  },
+  {
+   "at": "7.01",
+   "actor": "Extra1",
+   "do": "walk",
+   "to": [
+    0.25,
+    -36.0,
+    1.1
+   ],
+   "speed": 1.0
+  },
+  {
+   "at": "7.01",
+   "actor": "Extra3",
+   "do": "walk",
+   "to": [
+    0.5,
+    -46.0,
+    1.1
+   ],
+   "speed": 1.0
+  },
+  {
+   "at": "7.07",
+   "actor": "Kid1",
+   "do": "walk",
+   "to": [
+    0.05,
+    -26.6,
+    1.1
+   ],
+   "speed": 2.5
+  },
+  {
+   "at": "7.08",
+   "actor": "Woman",
+   "do": "pose",
+   "pose": "reach_out",
+   "dur": 1.0
+  },
+  {
+   "at": "7.10",
+   "actor": "Artyom",
+   "do": "walk",
+   "to": [
+    0.0,
+    -8.0,
+    1.1
+   ],
+   "facing": 180,
+   "speed": 1.2,
+   "pose_after": "stand_rifle"
+  },
+  {
+   "at": "7.11",
+   "actor": "Extra7",
+   "do": "walk",
+   "to": [
+    0.4,
+    8.0,
+    1.1
+   ],
+   "speed": 1.1
+  },
+  {
+   "at": "7.11",
+   "actor": "Extra7",
+   "do": "look",
+   "yaw": -25
+  },
+  {
+   "at": "7.11",
+   "actor": "Extra8",
+   "do": "walk",
+   "to": [
+    -0.4,
+    6.0,
+    1.1
+   ],
+   "speed": 1.1
+  },
+  {
+   "at": "7.12",
+   "actor": "Artyom",
+   "do": "look",
+   "yaw": 20
+  }
+ ],
+ "clock": "06:14",
+ "light_scale": 0.7,
+ "crowd": 170,
+ "shots": [
+  {
+   "id": "7.01",
+   "dur": 3.0,
+   "cam": {
+    "view": "wide"
+   }
+  },
+  {
+   "id": "7.02",
+   "dur": 2.5,
+   "cam": {
+    "pos": [
+     0,
+     -46,
+     6.8
+    ],
+    "at": [
+     0,
+     -15,
+     1.2
+    ],
+    "lens": 24
+   }
+  },
+  {
+   "id": "7.03",
+   "dur": 2.0,
+   "cam": {
+    "pos": [
+     7.4,
+     71.5,
+     3.0
+    ],
+    "at": [
+     9.7,
+     80.5,
+     3.9
+    ],
+    "lens": 35
+   }
+  },
+  {
+   "id": "7.04",
+   "dur": 2.0,
+   "cam": {
+    "pos": [
+     9.6,
+     71.5,
+     1.0
+    ],
+    "at": "Sentry.torso",
+    "lens": 35
+   }
+  },
+  {
+   "id": "7.05",
+   "dur": 2.5,
+   "cam": {
+    "pos": [
+     0.2,
+     -52,
+     3.2
+    ],
+    "at": [
+     0,
+     -32,
+     1.8
+    ],
+    "lens": 24
+   }
+  },
+  {
+   "id": "7.06",
+   "dur": 2.0,
+   "cam": {
+    "auto": "cu",
+    "subject": "Extra4",
+    "side": 1
+   }
+  },
+  {
+   "id": "7.07",
+   "dur": 2.5,
+   "cam": {
+    "pos": [
+     1.3,
+     -32.8,
+     1.55
+    ],
+    "at": [
+     -0.1,
+     -26.5,
+     1.45
+    ],
+    "lens": 28
+   }
+  },
+  {
+   "id": "7.08",
+   "dur": 2.5,
+   "cam": {
+    "pos": [
+     -4.3,
+     -10.8,
+     2.5
+    ],
+    "at": [
+     -4.2,
+     -17.4,
+     2.4
+    ],
+    "lens": 50
+   }
+  },
+  {
+   "id": "7.09",
+   "dur": 2.0,
+   "cam": {
+    "pos": [
+     0,
+     30,
+     3.0
+    ],
+    "at": [
+     0,
+     -60,
+     2.0
+    ],
+    "lens": 35
+   }
+  },
+  {
+   "id": "7.10",
+   "dur": 3.0,
+   "cam": {
+    "auto": "med",
+    "subject": "Artyom",
+    "side": -1
+   }
+  },
+  {
+   "id": "7.11",
+   "dur": 2.5,
+   "cam": {
+    "auto": "ots",
+    "subject": "Extra7",
+    "side": -1,
+    "partner": "Artyom"
+   }
+  },
+  {
+   "id": "7.12",
+   "dur": 2.0,
+   "cam": {
+    "auto": "cu",
+    "subject": "Artyom",
+    "side": -1
+   }
+  },
+  {
+   "id": "7.13",
+   "dur": 3.0,
+   "cam": {
+    "pos": [
+     0.3,
+     58.5,
+     3.0
+    ],
+    "at": [
+     0,
+     70,
+     2.6
+    ],
+    "lens": 24
+   }
+  },
+  {
+   "id": "7.14",
+   "dur": 2.5,
+   "cam": {
+    "pos": [
+     0.7,
+     64.2,
+     1.7
+    ],
+    "at": [
+     0,
+     65.5,
+     1.35
+    ],
+    "lens": 40
+   }
+  },
+  {
+   "id": "7.15",
+   "dur": 2.5,
+   "cam": {
+    "pos": [
+     1.6,
+     61.0,
+     2.2
+    ],
+    "at": [
+     0,
+     66,
+     3.1
+    ],
+    "lens": 35
+   }
+  }
+ ]
+}

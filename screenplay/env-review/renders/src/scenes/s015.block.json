@@ -1,0 +1,127 @@
+{
+ "id": "s015",
+ "location": "tunnel_250",
+ "note": "Dream. Scene-1 seats (crates from s001). Sukhoi frozen on Artyom's s004 seat (-0.55, 0.55) facing the fire; Artyom runs in from the south and stops SE of the fire.",
+ "cast": {
+  "Artyom": {
+   "height": 1.78
+  },
+  "Sukhoi": {
+   "height": 1.75
+  }
+ },
+ "names": {
+  "Artyom": "Artyom",
+  "Sukhoi": "Sukhoi"
+ },
+ "crates": [
+  [
+   -0.35,
+   0.82,
+   0
+  ],
+  [
+   -0.4,
+   0.66,
+   234
+  ],
+  [
+   -1.85,
+   -0.93,
+   36
+  ],
+  [
+   0.2,
+   -1.05,
+   303
+  ],
+  [
+   -0.95,
+   -1.62,
+   348
+  ]
+ ],
+ "events": [
+  {
+   "at": "15.01",
+   "actor": "Sukhoi",
+   "do": "place",
+   "pos": [
+    -0.55,
+    0.55
+   ],
+   "facing": 234,
+   "pose": "sit"
+  },
+  {
+   "at": "15.01",
+   "actor": "Artyom",
+   "do": "place",
+   "pos": [
+    -0.2,
+    -9.0
+   ],
+   "facing": 0,
+   "pose": "stand"
+  },
+  {
+   "at": "15.01",
+   "actor": "Artyom",
+   "do": "walk",
+   "to": [
+    -0.75,
+    -0.95
+   ],
+   "facing": 330,
+   "speed": 3.0
+  },
+  {
+   "at": "15.02",
+   "actor": "Artyom",
+   "do": "place",
+   "pos": [
+    -0.75,
+    -0.95
+   ],
+   "facing": 330,
+   "pose": "reach_out"
+  }
+ ],
+ "cams": {
+  "15.01": {
+   "pos": [
+    0.9,
+    4.0,
+    1.6
+   ],
+   "at": [
+    -0.6,
+    -4.0,
+    1.1
+   ],
+   "lens": 24
+  },
+  "15.03": {
+   "pos": [
+    -1.6,
+    -0.3,
+    0.75
+   ],
+   "at": "Sukhoi.eyes",
+   "lens": 32
+  },
+  "15.02": {
+   "pos": [
+    0.7,
+    -1.3,
+    1.35
+   ],
+   "at": [
+    -1.0,
+    -0.45,
+    0.8
+   ],
+   "lens": 24
+  }
+ }
+}

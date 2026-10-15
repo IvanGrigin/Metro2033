@@ -1,0 +1,335 @@
+{
+ "id": "s023",
+ "location": "vdnkh_office",
+ "cast": {
+  "Artyom": {
+   "height": 1.78
+  },
+  "Sukhoi": {
+   "height": 1.76
+  },
+  "Alexander": {
+   "height": 1.72,
+   "role": "Alexander"
+  }
+ },
+ "title": "Сцена 23. ИНТ. ВДНХ — КАБИНЕТ НАЧАЛЬСТВА — ДЕНЬ",
+ "storyboard": "storyboard/03-порог/023-инт-вднх-кабинет-начальства-день.md",
+ "props": {
+  "desk_map": {
+   "type": "block",
+   "size": [
+    0.7,
+    0.5,
+    0.01
+   ],
+   "color": [
+    0.95,
+    0.9,
+    0.75
+   ],
+   "loc": [
+    0.1,
+    1.25,
+    0.805
+   ]
+  },
+  "backpack": {
+   "type": "block",
+   "size": [
+    0.34,
+    0.2,
+    0.45
+   ],
+   "color": [
+    0.32,
+    0.38,
+    0.22
+   ],
+   "attach": "Artyom.chest",
+   "loc": [
+    0,
+    -0.28,
+    0.1
+   ]
+  }
+ },
+ "events": [
+  {
+   "at": "23.01",
+   "do": "place",
+   "actor": "Sukhoi",
+   "pos": [
+    -0.3,
+    0.6
+   ],
+   "facing": 0,
+   "pose": "bend_over"
+  },
+  {
+   "at": "23.01",
+   "do": "place",
+   "actor": "Alexander",
+   "pos": [
+    1.15,
+    1.25
+   ],
+   "facing": 270,
+   "pose": "bend_over"
+  },
+  {
+   "at": "23.01",
+   "do": "place",
+   "actor": "Artyom",
+   "pos": [
+    0,
+    -2.3
+   ],
+   "facing": 0,
+   "pose": "stand"
+  },
+  {
+   "at": "23.01",
+   "do": "hide",
+   "actor": "Artyom"
+  },
+  {
+   "at": "23.02",
+   "do": "show",
+   "actor": "Artyom"
+  },
+  {
+   "at": "23.03",
+   "do": "pose",
+   "actor": "Sukhoi",
+   "pose": "stand",
+   "dur": 0.4
+  },
+  {
+   "at": "23.03",
+   "do": "turn",
+   "actor": "Sukhoi",
+   "facing": 175,
+   "dt": 0.3,
+   "dur": 0.6
+  },
+  {
+   "at": "23.04",
+   "do": "walk",
+   "actor": "Artyom",
+   "to": [
+    -0.3,
+    0.2
+   ],
+   "facing": 0,
+   "speed": 1.5,
+   "pose_after": "carry_child"
+  },
+  {
+   "at": "23.05",
+   "do": "pose",
+   "actor": "Sukhoi",
+   "pose": "carry_child",
+   "dur": 0.5
+  },
+  {
+   "at": "23.08",
+   "do": "pose",
+   "actor": "Artyom",
+   "pose": "stand",
+   "dur": 0.3
+  },
+  {
+   "at": "23.08",
+   "do": "pose",
+   "actor": "Sukhoi",
+   "pose": "stand",
+   "dur": 0.5
+  },
+  {
+   "at": "23.08",
+   "do": "walk",
+   "actor": "Artyom",
+   "to": [
+    0,
+    -3.4
+   ],
+   "facing": 180,
+   "speed": 1.3,
+   "dt": 0.3
+  },
+  {
+   "at": "23.09",
+   "do": "hide",
+   "actor": "Artyom",
+   "dt": 0.5
+  },
+  {
+   "at": "23.12",
+   "do": "turn",
+   "actor": "Sukhoi",
+   "facing": 0,
+   "dur": 0.6
+  },
+  {
+   "at": "23.12",
+   "do": "pose",
+   "actor": "Sukhoi",
+   "pose": "bend_over",
+   "dt": 0.6,
+   "dur": 0.5
+  },
+  {
+   "at": "23.09",
+   "do": "pose",
+   "actor": "Alexander",
+   "pose": "stand",
+   "dur": 0.5
+  },
+  {
+   "at": "23.12",
+   "dt": 0.6,
+   "do": "pose",
+   "actor": "Alexander",
+   "pose": "bend_over",
+   "dur": 0.5
+  }
+ ],
+ "shots": [
+  {
+   "id": "23.01",
+   "dur": 3.0,
+   "cam": {
+    "view": "wide"
+   }
+  },
+  {
+   "id": "23.02",
+   "dur": 2.5,
+   "cam": {
+    "auto": "med",
+    "subject": "Artyom",
+    "side": 1
+   }
+  },
+  {
+   "id": "23.03",
+   "dur": 2.5,
+   "cam": {
+    "auto": "med",
+    "subject": "Sukhoi",
+    "side": -1
+   }
+  },
+  {
+   "id": "23.04",
+   "dur": 2.5,
+   "cam": {
+    "pos": [
+     -1.7,
+     1.6,
+     1.8
+    ],
+    "at": [
+     0.0,
+     -1.0,
+     1.3
+    ],
+    "lens": 24
+   }
+  },
+  {
+   "id": "23.05",
+   "dur": 3.0,
+   "cam": {
+    "auto": "cu",
+    "subject": "Artyom",
+    "side": 1
+   }
+  },
+  {
+   "id": "23.06",
+   "dur": 2.5,
+   "cam": {
+    "auto": "cu",
+    "subject": "Sukhoi",
+    "side": -1
+   }
+  },
+  {
+   "id": "23.07",
+   "dur": 3.5,
+   "cam": {
+    "auto": "cu",
+    "subject": "Sukhoi",
+    "side": -1
+   }
+  },
+  {
+   "id": "23.08",
+   "dur": 3.0,
+   "cam": {
+    "auto": "med",
+    "subject": "Artyom",
+    "side": 1
+   }
+  },
+  {
+   "id": "23.09",
+   "dur": 2.5,
+   "cam": {
+    "auto": "cu",
+    "subject": "Sukhoi",
+    "side": -1
+   }
+  },
+  {
+   "id": "23.10",
+   "dur": 3.0,
+   "cam": {
+    "pos": [
+     0.1,
+     0.1,
+     1.6
+    ],
+    "at": "Alexander.torso",
+    "lens": 32
+   }
+  },
+  {
+   "id": "23.11",
+   "dur": 2.0,
+   "cam": {
+    "auto": "cu",
+    "subject": "Sukhoi",
+    "side": -1
+   }
+  },
+  {
+   "id": "23.12",
+   "dur": 2.0,
+   "cam": {
+    "auto": "med",
+    "subject": "Sukhoi",
+    "side": -1
+   }
+  },
+  {
+   "id": "23.13",
+   "dur": 3.0,
+   "cam": {
+    "pos": [
+     0.5,
+     -0.8,
+     1.95
+    ],
+    "at": [
+     0.3,
+     1.2,
+     1.05
+    ],
+    "lens": 26
+   }
+  }
+ ]
+}
