@@ -26,7 +26,8 @@ kit.setup_render()
 LOCATIONS[spec["location"]]()
 # Scene state controlled by the scene, not baked into the location (env-critic rule E): clock time and how bright
 # the location's own lights are ("night" at a station dims them).
-if "clock" in spec and "clock_digits" in bpy.data.objects:
+if "clock_digits" in bpy.data.objects:  # a station clock is in this location: the scene must say what it shows
+    assert "clock" in spec, f'{spec["id"]}: location {spec["location"]} has a clock, set "clock": "HH:MM" in the scene'
     bpy.data.objects["clock_digits"].data.body = spec["clock"]
 for o in list(bpy.context.scene.objects):
     if o.type == "LIGHT":
@@ -58,8 +59,13 @@ for name, c in spec["cast"].items():
 if spec["location"] == "vdnkh":  # ~200 people live here; at night most are inside their tents
     busy = [tuple(e.get("pos") or e.get("to"))[:2] for e in spec["events"] if e["do"] in ("place", "walk")]
     busy += [tuple(c[:2]) for c in spec.get("crates", [])]
+    for sh in spec["shots"]:  # keep the first 6 m in front of every hand-placed lens clear of extras
+        c = sh.get("cam", {})
+        if isinstance(c.get("pos"), list) and isinstance(c.get("at"), list):
+            p0, d = Vector(c["pos"][:2]), (Vector(c["at"][:2]) - Vector(c["pos"][:2])).normalized()
+            busy += [tuple(p0 + d * k) for k in range(0, 7)]
     kit.crowd(spec.get("crowd", 60 if spec.get("light_scale", 1) >= 1 else 12),
-              [((-4.0, 4.0), (-72, 58)), ((5.6, 6.0), (-72, 58)), ((-6.0, -5.6), (-72, 58))], PLAT_H_VDNKH, busy)
+              [((-3.7, 3.7), (-72, 58))], PLAT_H_VDNKH, busy)
 for i, c in enumerate(spec.get("crates", [])):  # [x, y, facing] or [x, y, facing, floor_z]
     kit.crate(f"crate_{i}", (c[0], c[1], c[3] if len(c) > 3 else 0.0), c[2])
 props = {}

@@ -472,7 +472,7 @@ def vdnkh():
     """VDNKh (scenes 7, 18, 19, 20, 24): pylon station, red emergency light. Layout follows the real station
     (WORLD.md) and the script ("two rows of tents along the platform; the passage between them is Main Street"):
     * Main Street = the open central hall (x in -4.75..4.75); laundry strung between pylons; crates, benches.
-    * Dwellings: a family tent in every arched passage between pylons (passage centres y = -73.5 + 9 k, x = ±6.9)
+    * Dwellings: a family tent in every arched passage between pylons, at its hall end (passage centres y = -73.5 + 9 k, x = ±5.7)
       and wooden 'apartments' along the side naves in front of each pylon (x = ±7.4) — about 70 homes for ~200 people.
     * Guest tent: in the east arch at y = 43.5 (x = 6.9), flap facing west onto Main Street ("edge of the platform,
       away from Main Street").
@@ -488,7 +488,8 @@ def vdnkh():
         while y + 3.0 <= 81 - 6.0 + 0.01:
             yc = y + 1.5
             if not (sx > 0 and abs(yc - 43.5) < 0.1) and yc < 60:  # leave the guest arch and the factory end
-                t = army_tent(f"arch_tent_{k}", (sx * 6.9, yc), facing=270 if sx > 0 else 90, size=(2.4, 2.6),
+                # tent at the hall end of its arch, flap 0.35 m out on Main Street: the two rows of the script read along the hall
+                t = army_tent(f"arch_tent_{k}", (sx * 5.7, yc), facing=270 if sx > 0 else 90, size=(2.4, 2.6),
                               h=rng.uniform(1.8, 2.1), open_flap=rng.random() < 0.4)
                 t.location.z = PLAT_H
             if yc - 4.5 > -78 and yc - 4.5 < 58:  # wooden 'apartment' in the side nave in front of the pylon
@@ -503,7 +504,7 @@ def vdnkh():
     scatter_crates(rng, ((-3.5, 3.5), (-70, 55)), 18, z=PLAT_H)
     box((5.0, 0.5, 4.0), (0, 80.2, PLAT_H + 2.0), mat("blast_door", (0.12, 0.12, 0.11), flat=(0.40, 0.42, 0.40), rough=0.5, metal=0.7),
         name="escalator_gate")  # sealed passage to the north vestibule
-    wall_clock("06:14", (9.85, 80.6, 5.3))
+    wall_clock("--:--", (9.85, 80.6, 5.3))  # the time is set by every scene ("clock"); run_scene refuses a scene without it
     # tea factory in the dead end before the sealed gate: rows of wires with drying mushroom caps, small fires, door tables
     # tarp partition with a wide doorway: closes the factory off from Main Street so it reads as a dead end; 2.4 m high,
     # so the existing cameras above it (19.01, 7.13) still look in
@@ -526,6 +527,22 @@ def vdnkh():
     for fx, fy in ((0, 65.5), (0, 72.5)):
         campfire_small((fx, fy, PLAT_H))
     scatter_crates(rng, ((-4.0, 4.0), (62, 76)), 8, z=PLAT_H)
+    # smoke of the drying fires hanging under the vault ("дымки костров"): a thin grey volume, lit pass only
+    smoke = box((9.0, 14.0, 4.5), (0, 69.0, PLAT_H + 2.6), _smoke_mat(), name="tea_smoke")
+    smoke["lit_only"] = True
+
+
+def _smoke_mat():
+    m = bpy.data.materials.get("smoke") or bpy.data.materials.new("smoke")
+    m.use_nodes = True
+    nt = m.node_tree
+    nt.nodes.clear()
+    v = nt.nodes.new("ShaderNodeVolumePrincipled")
+    v.inputs["Color"].default_value = (0.5, 0.48, 0.45, 1)
+    v.inputs["Density"].default_value = 0.12
+    nt.links.new(v.outputs[0], nt.nodes.new("ShaderNodeOutputMaterial").inputs["Volume"])
+    m["flat"] = (0.5, 0.5, 0.5)
+    return m
 
 
 def campfire_small(at, energy=60):
@@ -616,7 +633,10 @@ def sukhoi_tent():
         box((0.7, 1.9, 0.08), (x, 0.3, 0.42), cot, name="cot")
     books = mat("books", (0.35, 0.30, 0.15), flat=(0.85, 0.75, 0.40))
     for i, (x, z) in enumerate(((-0.4, 0.25), (0.4, 0.25), (0, 0.75))):
-        box((0.75, 0.4, 0.5), (x, 1.85, z), mat("crate_wood", (0.12, 0.09, 0.06), flat=(0.55, 0.40, 0.25)), name="shelf_crate")
+        wood = mat("crate_wood", (0.12, 0.09, 0.06), flat=(0.55, 0.40, 0.25))
+        for size, off in (((0.75, 0.03, 0.5), (0, 0.185, 0)), ((0.03, 0.4, 0.5), (-0.36, 0, 0)), ((0.03, 0.4, 0.5), (0.36, 0, 0)),
+                          ((0.75, 0.4, 0.03), (0, 0, -0.235)), ((0.75, 0.4, 0.03), (0, 0, 0.235))):  # crate on its side, open to the tent
+            box(size, (x + off[0], 1.85 + off[1], z + off[2]), wood, name="shelf_crate")
         box((0.6, 0.25, 0.3), (x, 1.85, z + 0.05), books, name="books")
     crate("seat_crate", (0.0, -0.4), 0)
     box((0.8, 0.6, 0.05), (0.0, 0.6, 0.7), mat("door_table", (0.18, 0.15, 0.11), flat=(0.60, 0.52, 0.40)), name="table")

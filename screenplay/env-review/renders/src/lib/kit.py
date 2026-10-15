@@ -405,6 +405,9 @@ def render_pass(kind, path):
             if o.type in ("MESH", "FONT") and o.name not in CHAR_OBJECTS:
                 saved[o.name] = tuple(o.color)
                 o.color = (0.35, 0.35, 0.35, 1)
+    for o in sc.objects:  # smoke volumes only exist for the lit pass; in Workbench they would be solid boxes
+        if o.get("lit_only"):
+            o.hide_render = kind != "lit"
     bpy.ops.render.render(write_still=True)
     for n, c in saved.items():
         sc.objects[n].color = c
@@ -470,14 +473,14 @@ def searchlight(name, handheld=False):
     return root
 
 
-def flame_jet(name, length=6.0):
+def flame_jet(name, length=6.0, width0=0.08):
     """Flamethrower jet along +Y: an emissive cone with a strong light inside; toggle it with show/hide."""
     root = empty(name)
     # a wall of orange fire that widens to fill the tunnel, not a white needle (emission kept low so AgX keeps the colour)
     fire = mat("flame_jet", (0, 0, 0), flat=(1.0, 0.55, 0.05), rough=1, emit=(1.0, 0.22, 0.02), strength=0.9)
     core = mat("flame_core", (0, 0, 0), flat=(1.0, 0.75, 0.2), rough=1, emit=(1.0, 0.45, 0.06), strength=2.0)
     for m, r, n in ((fire, 1.8, "cone"), (core, 0.7, "core")):
-        c = cone(0.08, r, length, (0, 0, 0), m, (math.pi / 2, 0, math.pi), f"{name}.{n}")
+        c = cone(width0 * r / 1.8, r, length, (0, 0, 0), m, (math.pi / 2, 0, math.pi), f"{name}.{n}")  # width0: radius at the nozzle end
         c.visible_shadow = False
         attach(c, root, (0, length / 2, 0))
     bpy.ops.object.light_add(type="POINT")
