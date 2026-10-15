@@ -170,9 +170,9 @@ def tunnel_250():
     """VDNKh north tunnel at the 250 m mark: scenes 1, 4, 6, 15. Fire at (-1.3, 0). Single-track tube (the turnback
     dead ends north of VDNKh are single-track deep tunnels); toward Botanichesky Sad the 1978 tunnels are lined with
     reinforced-concrete blocks, not cast-iron rings (russos.livejournal.com/1302721, see WORLD.md)."""
-    running_tunnel(lining="concrete")
+    running_tunnel(length=130.0, lining="concrete")
     wall_number("250", -1.2)
-    striped_post("300", -1.9, 5.5)
+    striped_post("300", -1.9, 48.8)  # 50 m on, beyond the firelight, in the dark (script line 18)
     campfire((-1.3, 0.0, 0.0))
 
 
@@ -680,7 +680,7 @@ LOCATIONS = {"tunnel_250": tunnel_250, "north_cordon": north_cordon, "peregon_sa
 # Camera bounds per location ((x0, x1), (y0, y1), (z0, z1)): auto cameras are pulled in so they never sit
 # inside a wall. Default views are used for wide/dark shots that have no character to frame.
 BOUNDS = {
-    "tunnel_250": ((-1.9, 1.9), (-44, 44), (0.3, 2.9)), "north_cordon": ((-1.9, 1.9), (-44, 44), (0.3, 2.9)),
+    "tunnel_250": ((-1.9, 1.9), (-60, 60), (0.3, 2.9)), "north_cordon": ((-1.9, 1.9), (-44, 44), (0.3, 2.9)),
     "peregon_savelovskaya": ((-1.9, 1.9), (-38, 98), (0.3, 2.9)), "timiryazevskaya": ((-7.8, 7.8), (-80, 80), (0.4, 8.5)),
     "vdnkh": ((-11.2, 11.2), (-80, 80), (0.4, 7.8)), "botanical": ((-8.0, 8.0), (-84, 100), (0.4, 5.2)),
     "botanical_vestibule": ((-8.5, 8.5), (-8.5, 8.5), (0.3, 5.5)), "sukhoi_tent": ((-1.45, 1.45), (-2.0, 2.0), (0.25, 2.15)),
