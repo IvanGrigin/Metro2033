@@ -323,6 +323,48 @@ if "--no-stills" not in args:
                 os.replace(src, f"{stem}_depth.png")
         print("STILLS", s["id"], len(frames), flush=True)
 
+if "--kling" in args:  # reference clips for a video model: each shot through its own camera, lit_fast, no overlays
+    from bpy_extras.object_utils import world_to_camera_view
+    min_sec = float(args[args.index("--kling") + 1])
+    kd = os.path.join(out, "kling")
+    os.makedirs(kd, exist_ok=True)
+    sc.render.resolution_percentage = 50
+    last = sc.frame_end
+    info = {}
+    for s in shots:
+        cam, f0, f1 = cams[s["id"]]
+        sc.camera = cam
+        need = -(-max(0, int(round(min_sec * FPS)) - (f1 - f0 + 1)) // 2)  # handle each side (24 fps frames) to reach min_sec
+        a, b = max(1, f0 - need), min(last, f1 + need)  # real timeline around the shot, never frozen frames
+        seen = set()
+        for f in (f0, (f0 + f1) // 2, f1):  # who is actually in frame (visible, projected inside the picture)
+            sc.frame_set(f)
+            for name, act in actors.items():
+                if act.J["root"].hide_render:
+                    continue
+                for j in ("eyes", "torso", "pelvis"):
+                    o = bpy.data.objects.get(f"{name}.{j}")
+                    if o is None:
+                        continue
+                    v = world_to_camera_view(sc, cam, o.matrix_world.translation)
+                    if 0 <= v.x <= 1 and 0 <= v.y <= 1 and v.z > 0:
+                        seen.add(name)
+                        break
+        sd = os.path.join(kd, s["id"])
+        os.makedirs(sd, exist_ok=True)
+        n = 0
+        for f in range(a, b + 1, 2):  # 12 fps
+            sc.frame_set(f)
+            kit.render_pass("lit_fast", os.path.join(sd, f"{n:05d}.png"))
+            n += 1
+        info[s["id"]] = {"visible": sorted(seen), "frames": n, "shot_from": (f0 - a) / FPS, "shot_to": (f1 - a + 1) / FPS}
+    kj = os.path.join(kd, "shots.json")  # merged: --kling may run over several --shots batches (one process each)
+    allinfo = json.load(open(kj)) if os.path.exists(kj) else {}
+    allinfo.update(info)
+    json.dump(allinfo, open(kj, "w"), ensure_ascii=False, indent=1)
+    sc.render.resolution_percentage = 100
+    print("KLING", len(info), flush=True)
+
 if "--no-animatic" not in args:
     an = os.path.join(out, "animatic")
     os.makedirs(an, exist_ok=True)

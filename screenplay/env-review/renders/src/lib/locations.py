@@ -116,7 +116,9 @@ def wall_number(text, y, side=-1, z=2.15):
     t = bpy.context.object
     t.data.body, t.data.size, t.data.extrude = text, 0.45, 0.005
     t.data.align_x, t.data.align_y = "CENTER", "CENTER"
-    return put(t, paint, f"mark_{text}")
+    t = put(t, paint, f"mark_{text}")
+    t.visible_shadow = False  # painted on: the fire must not cast a second, dark copy of the number on the wall (K7)
+    return t
 
 
 def striped_post(text, x, y):

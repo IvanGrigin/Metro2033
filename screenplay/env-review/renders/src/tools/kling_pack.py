@@ -1,11 +1,12 @@
 """Reference pack for a video model (Kling) from one scene: a clean clip per shot (the lit animatic frames — no
 subtitles, no title cards, no overlays), plus one prompt per shot: the board's EN line, the same character
 descriptions from characters.md for everyone named in it, and the fixed rules. Shots without a camera (title
-cards) are skipped and listed. Shots longer than MAX_SEC are cut into parts at even lengths and marked.
+cards) are skipped and listed. With `run_scene.py --kling MIN` the clips come from each shot's own camera with real handles
+up to MIN seconds and only the people visible in them are described (the rest of the named: off-screen).
     python3 storyboard/tools/kling_pack.py 1 storyboard/3d/out-r6/s001 storyboard/kling/s001"""
 import json, os, re, subprocess, sys
 
-FPS, MAX_SEC = 12, 10.0
+FPS = 12
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 REPO = os.path.dirname(ROOT)
 RULES = ("Photorealistic live-action film shot, 35 mm, post-apocalyptic Moscow metro in 2033: soot, grime, damp, worn "
@@ -33,37 +34,44 @@ def main(n, render_dir, out_dir):
         m = re.search(r"^EN: (.+)$", body, re.M)
         if m:
             en[sid] = m.group(1)
+    kinfo_path = os.path.join(render_dir, "kling", "shots.json")
+    kinfo = json.load(open(kinfo_path)) if os.path.exists(kinfo_path) else {}  # run_scene.py --kling: own camera + handles
     starts = dict(l.split("\t") for l in open(os.path.join(render_dir, "animatic_shots.txt")).read().split("\n") if l)
     chars = characters()
     os.makedirs(out_dir, exist_ok=True)
     rows, skipped = [], []
     for s in spec["shots"]:
-        if s["id"] not in starts:
+        if s["id"] not in starts and s["id"] not in kinfo:
             skipped.append(s["id"])
             continue
-        frames = int(round(s["dur"] * FPS))
-        parts = max(1, -(-frames // int(MAX_SEC * FPS)))
         line = en.get(s["id"], "").strip()
         assert line, f'{s["id"]}: no EN line in the storyboard'  # a prompt without the shot description is useless
-        who = [chars[name] for name in chars if re.search(rf"\b{re.escape(name)}\b", line)]
+        k = kinfo.get(s["id"])
+        named = [c for c in chars if re.search(rf"\b{re.escape(c)}\b", line)]
+        if k:  # describe exactly the people the reference shows: named ones in full, the rest as background
+            vis = [v for v in k["visible"] if v in chars]
+            who = [chars[c] for c in named if c in vis] + [f"In the background: {chars[c]}" for c in vis if c not in named]
+        else:
+            who = [chars[c] for c in named]
         prompt = " ".join([line[:1].upper() + line[1:] + "."] + who + [RULES])
-        for p in range(parts):
-            a = int(starts[s["id"]]) + p * frames // parts
-            b = int(starts[s["id"]]) + (p + 1) * frames // parts
-            name = s["id"] + (f"_part{p + 1}" if parts > 1 else "")
-            clip = os.path.join(out_dir, f"{name}.mp4")
-            subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-framerate", str(FPS), "-start_number", str(a),
-                            "-i", os.path.join(render_dir, "animatic", "%05d.png"), "-frames:v", str(b - a),
-                            "-c:v", "libx264", "-pix_fmt", "yuv420p", "-crf", "16", clip], check=True)
-            rows.append({"shot": name, "clip": os.path.basename(clip), "seconds": round((b - a) / FPS, 2), "prompt": prompt,
-                         "note": f"part {p + 1}/{parts} of {s['id']}" if parts > 1 else ""})
+        clip = os.path.join(out_dir, f'{s["id"]}.mp4')
+        if k:
+            src, first, count = os.path.join(render_dir, "kling", s["id"], "%05d.png"), 0, k["frames"]
+            trim = "" if k["shot_from"] == 0 and abs(k["shot_to"] - s["dur"]) < 0.05 else \
+                f'after generation keep {k["shot_from"]:.2f}–{k["shot_to"]:.2f} s (handles for the minimum length)'
+        else:
+            src, first, count, trim = os.path.join(render_dir, "animatic", "%05d.png"), int(starts[s["id"]]), int(round(s["dur"] * FPS)), ""
+        subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-framerate", str(FPS), "-start_number", str(first),
+                        "-i", src, "-frames:v", str(count), "-c:v", "libx264", "-pix_fmt", "yuv420p", "-crf", "16", clip], check=True)
+        rows.append({"shot": s["id"], "clip": os.path.basename(clip), "seconds": round(count / FPS, 2), "prompt": prompt,
+                     "note": trim, "off_screen": [c for c in named if k and c not in k["visible"]]})
     json.dump(rows, open(os.path.join(out_dir, "prompts.json"), "w"), ensure_ascii=False, indent=1)
     with open(os.path.join(out_dir, "manifest.md"), "w", encoding="utf-8") as m:
         m.write(f"# Kling: сцена {n} — референсы по планам\n\nКлип = чистый проход со светом (без текста), {FPS} кадров/с, "
                 f"полный хронометраж плана. Планы без камеры (титры) пропущены: {', '.join(skipped) or 'нет'}.\n\n"
-                "| План | Клип | с | Промпт |\n|---|---|---|---|\n")
+                "| План | Клип | с | Обрезка после генерации | Промпт |\n|---|---|---|---|---|\n")
         for r in rows:
-            m.write(f"| {r['shot']} | {r['clip']} | {r['seconds']} | {r['prompt']} |\n")
+            m.write(f"| {r['shot']} | {r['clip']} | {r['seconds']} | {r['note']} | {r['prompt']} |\n")
     print(out_dir, len(rows), "clips, skipped", skipped)
 
 

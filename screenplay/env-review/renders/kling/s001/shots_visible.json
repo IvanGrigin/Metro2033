@@ -1,0 +1,348 @@
+{
+ "1.02": {
+  "visible": [
+   "Artyom",
+   "Pyotr"
+  ],
+  "frames": 36,
+  "shot_from": 0.0,
+  "shot_to": 3.0
+ },
+ "1.03": {
+  "visible": [],
+  "frames": 36,
+  "shot_from": 0.5,
+  "shot_to": 2.5
+ },
+ "1.04": {
+  "visible": [],
+  "frames": 36,
+  "shot_from": 0.5,
+  "shot_to": 2.5
+ },
+ "1.05": {
+  "visible": [
+   "Artyom",
+   "Pyotr"
+  ],
+  "frames": 36,
+  "shot_from": 0.0,
+  "shot_to": 3.0
+ },
+ "1.06": {
+  "visible": [
+   "Pyotr"
+  ],
+  "frames": 36,
+  "shot_from": 0.5,
+  "shot_to": 2.5
+ },
+ "1.07": {
+  "visible": [
+   "Artyom"
+  ],
+  "frames": 36,
+  "shot_from": 0.5,
+  "shot_to": 2.5
+ },
+ "1.08": {
+  "visible": [],
+  "frames": 36,
+  "shot_from": 0.5,
+  "shot_to": 2.5
+ },
+ "1.09": {
+  "visible": [
+   "Artyom",
+   "Pyotr"
+  ],
+  "frames": 36,
+  "shot_from": 0.5,
+  "shot_to": 2.5
+ },
+ "1.10": {
+  "visible": [
+   "Artyom",
+   "Pyotr"
+  ],
+  "frames": 36,
+  "shot_from": 0.75,
+  "shot_to": 2.25
+ },
+ "1.11": {
+  "visible": [
+   "Artyom",
+   "Pyotr"
+  ],
+  "frames": 36,
+  "shot_from": 0.0,
+  "shot_to": 3.0
+ },
+ "1.12": {
+  "visible": [
+   "Artyom",
+   "Pyotr"
+  ],
+  "frames": 36,
+  "shot_from": 0.25,
+  "shot_to": 2.75
+ },
+ "1.13": {
+  "visible": [],
+  "frames": 36,
+  "shot_from": 0.5,
+  "shot_to": 2.5
+ },
+ "1.14": {
+  "visible": [],
+  "frames": 36,
+  "shot_from": 0.25,
+  "shot_to": 2.75
+ },
+ "1.15": {
+  "visible": [
+   "Artyom"
+  ],
+  "frames": 36,
+  "shot_from": 0.0,
+  "shot_to": 3.0
+ },
+ "1.16": {
+  "visible": [
+   "Pyotr"
+  ],
+  "frames": 36,
+  "shot_from": 0.25,
+  "shot_to": 2.75
+ },
+ "1.17": {
+  "visible": [
+   "Artyom",
+   "Pyotr"
+  ],
+  "frames": 36,
+  "shot_from": 0.75,
+  "shot_to": 2.25
+ },
+ "1.18": {
+  "visible": [
+   "Pyotr"
+  ],
+  "frames": 36,
+  "shot_from": 0.0,
+  "shot_to": 3.0
+ },
+ "1.19": {
+  "visible": [
+   "Artyom"
+  ],
+  "frames": 36,
+  "shot_from": 0.25,
+  "shot_to": 2.75
+ },
+ "1.20": {
+  "visible": [
+   "Pyotr"
+  ],
+  "frames": 36,
+  "shot_from": 0.5,
+  "shot_to": 2.5
+ },
+ "1.21": {
+  "visible": [
+   "Pyotr"
+  ],
+  "frames": 36,
+  "shot_from": 0.0,
+  "shot_to": 3.0
+ },
+ "1.22": {
+  "visible": [
+   "Pyotr"
+  ],
+  "frames": 48,
+  "shot_from": 0.0,
+  "shot_to": 4.0
+ },
+ "1.23": {
+  "visible": [],
+  "frames": 36,
+  "shot_from": 0.0,
+  "shot_to": 3.0
+ },
+ "1.24": {
+  "visible": [
+   "Artyom"
+  ],
+  "frames": 36,
+  "shot_from": 0.5,
+  "shot_to": 2.5
+ },
+ "1.25": {
+  "visible": [
+   "Pyotr"
+  ],
+  "frames": 36,
+  "shot_from": 0.75,
+  "shot_to": 2.25
+ },
+ "1.26": {
+  "visible": [
+   "Andrei",
+   "Artyom",
+   "Hunter",
+   "Kirill"
+  ],
+  "frames": 36,
+  "shot_from": 0.0,
+  "shot_to": 3.0
+ },
+ "1.27": {
+  "visible": [
+   "Pyotr"
+  ],
+  "frames": 36,
+  "shot_from": 0.25,
+  "shot_to": 2.75
+ },
+ "1.28": {
+  "visible": [
+   "Andrei",
+   "Artyom",
+   "Hunter",
+   "Kirill",
+   "Pyotr"
+  ],
+  "frames": 36,
+  "shot_from": 0.0,
+  "shot_to": 3.0
+ },
+ "1.29": {
+  "visible": [
+   "Andrei"
+  ],
+  "frames": 36,
+  "shot_from": 0.25,
+  "shot_to": 2.75
+ },
+ "1.30": {
+  "visible": [
+   "Andrei",
+   "Artyom",
+   "Kirill",
+   "Pyotr"
+  ],
+  "frames": 36,
+  "shot_from": 0.5,
+  "shot_to": 2.5
+ },
+ "1.31": {
+  "visible": [
+   "Andrei",
+   "Hunter"
+  ],
+  "frames": 36,
+  "shot_from": 0.0,
+  "shot_to": 3.0
+ },
+ "1.32": {
+  "visible": [
+   "Andrei",
+   "Hunter",
+   "Kirill"
+  ],
+  "frames": 36,
+  "shot_from": 0.25,
+  "shot_to": 2.75
+ },
+ "1.33": {
+  "visible": [
+   "Andrei",
+   "Kirill",
+   "Pyotr"
+  ],
+  "frames": 36,
+  "shot_from": 0.0,
+  "shot_to": 3.0
+ },
+ "1.34": {
+  "visible": [
+   "Pyotr"
+  ],
+  "frames": 36,
+  "shot_from": 0.75,
+  "shot_to": 2.25
+ },
+ "1.35": {
+  "visible": [
+   "Andrei"
+  ],
+  "frames": 36,
+  "shot_from": 0.0,
+  "shot_to": 3.0
+ },
+ "1.36": {
+  "visible": [
+   "Andrei",
+   "Kirill"
+  ],
+  "frames": 36,
+  "shot_from": 0.75,
+  "shot_to": 2.25
+ },
+ "1.37": {
+  "visible": [],
+  "frames": 36,
+  "shot_from": 0.0,
+  "shot_to": 3.0
+ },
+ "1.38": {
+  "visible": [
+   "Artyom",
+   "Hunter"
+  ],
+  "frames": 36,
+  "shot_from": 0.0,
+  "shot_to": 3.0
+ },
+ "1.39": {
+  "visible": [
+   "Andrei"
+  ],
+  "frames": 36,
+  "shot_from": 0.0,
+  "shot_to": 3.0
+ },
+ "1.40": {
+  "visible": [
+   "Artyom"
+  ],
+  "frames": 42,
+  "shot_from": 0.0,
+  "shot_to": 3.5
+ },
+ "1.41": {
+  "visible": [
+   "Andrei"
+  ],
+  "frames": 36,
+  "shot_from": 0.5,
+  "shot_to": 2.5
+ },
+ "1.42": {
+  "visible": [
+   "Pyotr"
+  ],
+  "frames": 36,
+  "shot_from": 0.25,
+  "shot_to": 2.75
+ },
+ "1.43": {
+  "visible": [
+   "Artyom"
+  ],
+  "frames": 36,
+  "shot_from": 0.0,
+  "shot_to": 3.0
+ }
+}
