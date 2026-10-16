@@ -10,8 +10,8 @@ FPS = 12
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 REPO = os.path.dirname(ROOT)
 RULES = ("Photorealistic live-action film shot, 35 mm, post-apocalyptic Moscow metro in 2033: soot, grime, damp, worn "
-         "clothes. Keep exactly the camera position, framing, movement and timing of the reference video, and where each "
-         "person is and what they do. Replace the grey mannequins with real people (the cone on a head marks the nose: "
+         "clothes. One continuous single shot, no cuts, no change of camera angle. Follow 视频1 exactly: keep its camera "
+         "position, framing, movement and timing, and where each person is and what they do. Replace the grey mannequins with real people (the cone on a head marks the nose: "
          "where the face looks). Light only from the sources visible in the reference (fire, lamps, flashlights), "
          "everything else stays dark. No text, letters or numbers on screen except painted marks that exist in the "
          "reference; no extra people or objects.")
@@ -69,10 +69,8 @@ def main(n, render_dir, out_dir):
         else:
             who = [chars[c] for c in named]
         c = s["cam"]
-        close = c.get("lens", 35) >= 50 or ("pos" in c and isinstance(c.get("at"), list) and
-                                            sum((a - b) ** 2 for a, b in zip(c["pos"], c["at"])) ** 0.5 < 1.5)
         # detail shot (the board calls it a close-up, or nobody is in a close frame): no list of the place's objects to paint in
-        insert = line.lower().startswith(("close-up", "extreme close-up", "insert", "detail")) or (k is not None and not k["visible"] and close)
+        insert = line.lower().startswith(("close-up", "extreme close-up", "insert", "detail")) or (k is not None and not k["visible"])  # critic П1: no people → short place at any lens
         place = ("The place: " + env["short"]) if insert else \
             ("The place (only what the reference shows of it is in frame): " + env["full"])
         clock = f' The clock shows {spec["clock"]}.' if spec.get("clock") and "clock" in line else ""  # only if its face is in the shot
