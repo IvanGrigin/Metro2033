@@ -360,8 +360,10 @@ if "--kling" in args:  # reference clips for a video model: each shot through it
             sc.frame_set(frame)
             return ({o.name: o.hide_render for o in sc.objects}, {o.name: o.data.energy for o in sc.objects if o.type == "LIGHT"})
         before, after = state(f0), state(f1)
+        switched = {e["light"] for e in spec["events"] if e["do"] == "light"}  # event switches only: fire flicker goes on
         frozen = [fc for o in sc.objects for ad in (o.animation_data, getattr(o.data, "animation_data", None) if o.type == "LIGHT" else None)
-                  if ad and ad.action for fc in ad.action.fcurves if fc.data_path in ("hide_render", "energy")]
+                  if ad and ad.action for fc in ad.action.fcurves
+                  if fc.data_path == "hide_render" or (fc.data_path == "energy" and o.name in switched)]
         n = 0
         for f in range(a, b + 1, 2):  # 12 fps
             handle = f < f0 or f > f1

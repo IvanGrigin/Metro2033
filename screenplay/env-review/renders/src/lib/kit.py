@@ -330,7 +330,8 @@ class Actor:
         self.pose = "stand"
         held = POSES[pose_after].get("rifle")  # walking: carry the rifle the way the pose after the walk holds it
         carry = held if held in ("hip", "shoulder") else "sling"
-        stride = "flashlight" if self.name == "Andrei" else "stand"  # Andrei keeps the flashlight up from the first step
+        torch = pose_after == "flashlight"  # walking with the flashlight: it stays up from the first step (critic: not without it)
+        stride = "flashlight" if torch else "stand"
         self._apply(stride, f, rifle=carry)
         self._key_root(f)
         steps = max(2, round(d.length / (speed * 0.5)))
@@ -341,7 +342,7 @@ class Actor:
             sw = amp if i % 2 else -amp
             gait = {"hip_L": (sw, 0, 0), "hip_R": (-sw, 0, 0), "knee_L": (0 if sw > 0 else -25, 0, 0),
                     "knee_R": (-25 if sw > 0 else 0, 0, 0), "shoulder_L": (-sw * 0.6, 0, 0), "shoulder_R": (sw * 0.6, 0, 0)}
-            if self.name == "Andrei":  # keeps the flashlight up while walking
+            if torch:  # keeps the flashlight up while walking
                 gait.pop("shoulder_R")
             self.pos = start + d * (i / steps)
             self._key_root(fi)
