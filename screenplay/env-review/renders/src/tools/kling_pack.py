@@ -4,7 +4,7 @@ descriptions from characters.md for everyone named in it, and the fixed rules. S
 cards) are skipped and listed. With `run_scene.py --kling MIN` the clips come from each shot's own camera with real handles
 up to MIN seconds and only the people visible in them are described (the rest of the named: off-screen).
     python3 storyboard/tools/kling_pack.py 1 storyboard/3d/out-r6/s001 storyboard/kling/s001"""
-import json, os, re, subprocess, sys
+import json, os, re, shutil, subprocess, sys
 
 FPS = 12
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -26,8 +26,23 @@ def characters():
     return out
 
 
+TIME = {"ночь": "It is night.", "утро": "It is morning.", "день": "It is day.", "вечер": "It is evening."}  # underground: only the hour
+
+
+def camera(c):
+    """The shot's camera in words, from the scene spec (lens, riding, push-in)."""
+    lens = c.get("lens", 35)
+    size = "wide-angle" if lens <= 28 else "normal" if lens <= 40 else "long-lens close" if lens >= 70 else "medium-long"
+    how = f"camera mounted on the {c['attach']}, moving with it" if "attach" in c else \
+        "slow push-in" if c.get("push") else "static camera"
+    return f"Camera: {size} {lens} mm lens, {how}."
+
+
 def main(n, render_dir, out_dir):
     spec = json.load(open(os.path.join(REPO, f"storyboard/3d/scenes/s{n:03d}.json")))
+    env = json.load(open(os.path.join(ROOT, "kling", "environment.json")))[spec["location"]]
+    word = next((w for w in TIME if w in os.path.basename(spec["storyboard"])), None)
+    when = " ".join(x for x in (TIME.get(word, ""), f'The clock shows {spec["clock"]}.' if spec.get("clock") else "") if x)
     board = open(os.path.join(REPO, spec["storyboard"]), encoding="utf-8").read().split("## Раскадровка", 1)[1]
     en = {}  # shot id -> its own EN line: split the board into shot blocks first, then look inside each block only
     for sid, body in re.findall(r"^\*\*(\d+\.\d\d) · [^\n]*\*\*$(.*?)(?=^\*\*\d+\.\d\d · |\Z)", board, re.M | re.S):
@@ -53,10 +68,12 @@ def main(n, render_dir, out_dir):
             who = [chars[c] for c in named if c in vis] + [f"In the background: {chars[c]}" for c in vis if c not in named]
         else:
             who = [chars[c] for c in named]
-        prompt = " ".join([line[:1].upper() + line[1:] + "."] + who + [RULES])
+        prompt = " ".join(x for x in [line[:1].upper() + line[1:] + ".", camera(s["cam"]), env, when] + who + [RULES] if x)
         clip = os.path.join(out_dir, f'{s["id"]}.mp4')
         if k:
             src, first, count = os.path.join(render_dir, "kling", s["id"], "%05d.png"), 0, k["frames"]
+            start = os.path.join(render_dir, "kling", s["id"], f'{int(round(k["shot_from"] * FPS)):05d}.png')
+            shutil.copy(start, os.path.join(out_dir, f'{s["id"]}_start.png'))  # first frame of the shot: image-to-video (MCP)
             trim = "" if k["shot_from"] == 0 and abs(k["shot_to"] - s["dur"]) < 0.05 else \
                 f'after generation keep {k["shot_from"]:.2f}–{k["shot_to"]:.2f} s (handles for the minimum length)'
         else:
