@@ -9,7 +9,9 @@ import csv, json, math, os, subprocess, sys, time, urllib.request
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 KL = os.path.join(ROOT, "kling")
 JOBS = os.path.join(KL, "jobs.json")
-MODEL, RES = "kling-video-v4_0", "720p"  # critic: 720p for the trial; 1080p is the user's call
+MODEL, RES = "kling-video-v4_0", "720p"
+FLOOR = int(os.environ.get("KLING_FLOOR", "0"))  # never let the balance drop below this (the user's daily cap)
+PER_SEC = 11  # credits per output second, measured on seq01 (151 for 14 s out + 14 s in)  # critic: 720p for the trial; 1080p is the user's call
 
 
 def kling(*a):
@@ -34,6 +36,8 @@ def submit(where, shots):
         sec = r.get("duration") or max(3, math.ceil(r["seconds"] - 0.01))  # output as long as the reference (min 3 s): timing 1:1
         attempt = 1 + sum(j["shot"] == sid for j in jobs)
         before = credits()
+        if before - sec * PER_SEC < FLOOR:
+            sys.exit(f"{sid}: ~{sec * PER_SEC} credits would take the balance {before} below the cap floor {FLOOR}; not sent")
         b = kling("omni_ref_video", "--model", MODEL, "--video", os.path.join(d, r["clip"]),
                   "--duration", str(sec), "--resolution", RES, "--enable_audio", "false", "--keepOriginalSound", "false",
                   "--imageCount", "1", "--prompt", r["prompt"])
