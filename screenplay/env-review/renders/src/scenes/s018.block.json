@@ -1127,5 +1127,23 @@
   1.0,
   0.5,
   0.28
- ]
+ ],
+ "lights": {
+  "guest_lamp": {
+   "type": "POINT",
+   "attach": "guest_tent",
+   "loc": [
+    -0.9,
+    1.6,
+    1.7
+   ],
+   "energy": 30,
+   "color": [
+    1.0,
+    0.62,
+    0.32
+   ],
+   "note": "lamp on the guest tent pole: night, edge of the platform"
+  }
+ }
 }
