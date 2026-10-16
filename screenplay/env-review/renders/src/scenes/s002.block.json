@@ -693,9 +693,17 @@
    "lens": 28
   },
   "2.08": {
-   "auto": "detail",
-   "subject": "Sukhoi",
-   "joint": "hand_R"
+   "pos": [
+    4.244,
+    31.009,
+    1.738
+   ],
+   "at": [
+    6.699,
+    29.291,
+    1.588
+   ],
+   "lens": 60
   },
   "2.10": {
    "attach": "handcar",

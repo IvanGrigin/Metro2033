@@ -191,11 +191,17 @@
    "id": "12.04",
    "dur": 2.0,
    "cam": {
-    "view": "wide",
-    "auto": "detail",
-    "subject": "Sukhoi",
-    "joint": "hand_R",
-    "side": 1
+    "pos": [
+     1.412,
+     -1.058,
+     1.218
+    ],
+    "at": [
+     -1.573,
+     -1.319,
+     1.068
+    ],
+    "lens": 60
    }
   },
   {

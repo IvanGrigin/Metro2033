@@ -261,7 +261,7 @@
    "loc": [
     0,
     1.42,
-    0.65
+    0.0
    ],
    "hidden": true
   }
@@ -610,19 +610,6 @@
    "dur": 0.6
   },
   {
-   "at": "18.48",
-   "actor": "Hunter",
-   "do": "walk",
-   "to": [
-    7.25,
-    36.8,
-    1.1
-   ],
-   "facing": 0,
-   "speed": 1.0,
-   "pose_after": "reach_out"
-  },
-  {
    "at": "18.49",
    "actor": "Hunter",
    "do": "hide"
@@ -639,6 +626,19 @@
    "dt": 1.8,
    "do": "show",
    "prop": "guest_flap"
+  },
+  {
+   "actor": "Hunter",
+   "at": "18.48",
+   "do": "walk",
+   "facing": 180,
+   "pose_after": "reach_out",
+   "speed": 1.0,
+   "to": [
+    7.25,
+    38.25,
+    1.1
+   ]
   }
  ],
  "clock": "23:40",
@@ -1149,12 +1149,16 @@
    "dur": 2.5,
    "cam": {
     "pos": [
-     7.55,
-     36.45,
-     2.7
+     8.5,
+     35.6,
+     2.3
     ],
-    "at": "Hunter.hand_R",
-    "lens": 50
+    "at": [
+     7.3,
+     36.9,
+     1.8
+    ],
+    "lens": 35
    }
   },
   {

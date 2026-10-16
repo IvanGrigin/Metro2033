@@ -150,18 +150,6 @@
    "dur": 0.6
   },
   {
-   "at": "17.18",
-   "dt": 1.0,
-   "do": "hide",
-   "prop": "mug_sukhoi"
-  },
-  {
-   "at": "17.18",
-   "dt": 1.0,
-   "do": "show",
-   "prop": "mug_on_crate"
-  },
-  {
    "at": "17.20",
    "actor": "Sukhoi",
    "do": "pose",
@@ -278,6 +266,18 @@
    "do": "look",
    "yaw": 49,
    "dur": 0.4
+  },
+  {
+   "at": "17.19",
+   "do": "hide",
+   "dt": 0.0,
+   "prop": "mug_sukhoi"
+  },
+  {
+   "at": "17.19",
+   "do": "show",
+   "dt": 0.0,
+   "prop": "mug_on_crate"
   }
  ],
  "shots": [

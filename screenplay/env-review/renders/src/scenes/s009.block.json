@@ -448,6 +448,14 @@
    "do": "light",
    "light": "lantern_beam",
    "energy": 500
+  },
+  {
+   "actor": "Zhenya",
+   "at": "9.21",
+   "do": "turn",
+   "dt": -0.05,
+   "dur": 0.0,
+   "facing": 0
   }
  ],
  "cams": {
@@ -616,6 +624,19 @@
    ],
    "at": "ArtyomC.eyes",
    "lens": 40
+  },
+  "9.12": {
+   "pos": [
+    1.4,
+    82.6,
+    2.36
+   ],
+   "at": [
+    0.6,
+    78.5,
+    2.25
+   ],
+   "lens": 35
   }
  }
 }

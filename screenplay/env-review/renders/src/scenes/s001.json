@@ -328,7 +328,7 @@
    "id": "1.15",
    "dur": 3,
    "cam": {
-    "at": "Artyom.chest",
+    "at": "Artyom.torso",
     "rel": [
      0.7,
      -1.0,
@@ -869,14 +869,6 @@
    "pose_after": "stand_rifle"
   },
   {
-   "at": "1.22",
-   "dt": 0.5,
-   "actor": "Artyom",
-   "do": "pose",
-   "pose": "sit_rifle",
-   "dur": 0.8
-  },
-  {
    "at": "1.26",
    "do": "light",
    "light": "flashlight",
@@ -919,24 +911,10 @@
    "speed": 1.4
   },
   {
-   "at": "1.30",
-   "actor": "Kirill",
-   "do": "pose",
-   "pose": "sit",
-   "dur": 0.8
-  },
-  {
    "at": "1.31",
    "do": "light",
    "light": "flashlight",
    "energy": 0
-  },
-  {
-   "at": "1.31",
-   "actor": "Andrei",
-   "do": "pose",
-   "pose": "sit",
-   "dur": 0.8
   },
   {
    "at": "1.33",
@@ -978,79 +956,6 @@
    ],
    "speed": 1.4,
    "note": "round crate_0 (-0.35,0.82) on the south side"
-  },
-  {
-   "at": "1.38",
-   "dt": 1.4,
-   "actor": "Artyom",
-   "do": "walk",
-   "to": [
-    0.4,
-    1.05
-   ],
-   "facing": 45,
-   "speed": 1.4,
-   "pose_after": "offer"
-  },
-  {
-   "at": "1.38",
-   "dt": 0.8,
-   "actor": "Hunter",
-   "do": "turn",
-   "facing": 255,
-   "dur": 0.3
-  },
-  {
-   "at": "1.38",
-   "dt": 0.8,
-   "actor": "Hunter",
-   "do": "look",
-   "yaw": 85,
-   "dur": 0.3
-  },
-  {
-   "at": "1.38",
-   "dt": 1.1,
-   "actor": "Hunter",
-   "do": "pose",
-   "pose": "offer",
-   "dur": 0.4
-  },
-  {
-   "at": "1.38",
-   "dt": 1.6,
-   "do": "hide",
-   "prop": "mug_artyom"
-  },
-  {
-   "at": "1.38",
-   "dt": 1.6,
-   "do": "show",
-   "prop": "mug_hunter"
-  },
-  {
-   "at": "1.38",
-   "dt": 1.7,
-   "actor": "Hunter",
-   "do": "pose",
-   "pose": "sit_mug",
-   "dur": 0.01
-  },
-  {
-   "at": "1.38",
-   "dt": 1.7,
-   "actor": "Hunter",
-   "do": "pose",
-   "pose": "stand",
-   "dur": 0.5
-  },
-  {
-   "at": "1.38",
-   "dt": 2.0,
-   "actor": "Hunter",
-   "do": "turn",
-   "facing": 0,
-   "dur": 0.4
   },
   {
    "at": "1.39",
@@ -1138,12 +1043,115 @@
    "dur": 0.4
   },
   {
-   "at": "1.39",
-   "dt": 2.7,
    "actor": "Artyom",
-   "do": "pose",
+   "at": "1.22",
+   "do": "move",
+   "dt": 0.5,
+   "dur": 0.8,
    "pose": "sit_rifle",
-   "dur": 0.3
+   "to": [
+    -0.55,
+    0.55
+   ]
+  },
+  {
+   "actor": "Kirill",
+   "at": "1.30",
+   "do": "move",
+   "dur": 0.8,
+   "pose": "sit",
+   "to": [
+    -0.96,
+    -1.57
+   ]
+  },
+  {
+   "actor": "Andrei",
+   "at": "1.31",
+   "do": "move",
+   "dur": 0.8,
+   "pose": "sit",
+   "to": [
+    0.16,
+    -1.02
+   ]
+  },
+  {
+   "actor": "Artyom",
+   "at": "1.38",
+   "do": "walk",
+   "dt": 1.4,
+   "facing": 40,
+   "pose_after": "offer",
+   "speed": 1.4,
+   "to": [
+    0.1,
+    0.82
+   ]
+  },
+  {
+   "actor": "Hunter",
+   "at": "1.38",
+   "do": "turn",
+   "dt": 2.2,
+   "dur": 0.3,
+   "facing": 200
+  },
+  {
+   "actor": "Hunter",
+   "at": "1.38",
+   "do": "look",
+   "dt": 2.2,
+   "dur": 0.3,
+   "yaw": 85
+  },
+  {
+   "actor": "Hunter",
+   "at": "1.38",
+   "do": "pose",
+   "dt": 2.5,
+   "dur": 0.4,
+   "pose": "offer_low"
+  },
+  {
+   "at": "1.38",
+   "do": "hide",
+   "dt": 2.95,
+   "prop": "mug_artyom"
+  },
+  {
+   "at": "1.38",
+   "do": "show",
+   "dt": 2.95,
+   "prop": "mug_hunter"
+  },
+  {
+   "actor": "Hunter",
+   "at": "1.38",
+   "do": "pose",
+   "dt": 3.0,
+   "dur": 0.5,
+   "pose": "stand"
+  },
+  {
+   "actor": "Hunter",
+   "at": "1.38",
+   "do": "turn",
+   "dt": 3.4,
+   "dur": 0.4,
+   "facing": 0
+  },
+  {
+   "actor": "Artyom",
+   "at": "1.39",
+   "do": "move",
+   "dt": 2.7,
+   "dur": 0.3,
+   "pose": "sit_rifle",
+   "to": [
+    -0.55,
+    0.55
+   ]
   }
  ]
 }
