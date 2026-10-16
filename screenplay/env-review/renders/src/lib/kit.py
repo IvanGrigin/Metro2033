@@ -241,6 +241,8 @@ class Actor:
     def __init__(self, name, J, rifle_obj=None):
         self.name, self.J, self.k, self.rifle = name, J, J["k"], rifle_obj
         self.pos, self.facing, self.pose, self.head_yaw = Vector((0, 0, 0)), 0.0, "stand", 0.0
+        self.placed = False  # a second place() keys the old state first, so the actor does not glide in between
+        self.stood_at = None  # seat point after getting up: sitting down again near it steps back onto the seat
 
     def _apply(self, pose_name, frame, walk=None, rifle=None):
         p = POSES[pose_name]
@@ -271,6 +273,10 @@ class Actor:
 
     def place(self, frame, pos, facing, pose):
         """pos = [x, y] or [x, y, z]; z is the floor the person stands on (1.1 on a station platform)."""
+        if self.placed:  # hold the previous state up to the frame before: place is a cut, not a slide
+            self._key_root(frame - 1)
+            self._apply(self.pose, frame - 1)
+        self.placed = True
         self.pos, self.facing, self.pose = Vector((pos[0], pos[1], pos[2] if len(pos) > 2 else 0)), facing, pose
         self._key_root(frame)
         self._apply(pose, frame)
@@ -288,8 +294,15 @@ class Actor:
         if seated(self.pose) == seated(new_pose):
             return
         fwd = Vector((math.sin(math.radians(self.facing)), math.cos(math.radians(self.facing)), 0)) * 0.45 * self.k
+        if seated(self.pose):  # getting up: step forward off the seat, remember where the seat was
+            self.stood_at = self.pos.copy()
+            target = self.pos + fwd
+        elif self.stood_at is not None and (self.stood_at - self.pos).length < 0.7:  # sitting back on that seat
+            target, self.stood_at = self.stood_at, None
+        else:  # walked straight onto the seat point (how the scenes are blocked): sit where he is
+            return
         self._key_root(frame)
-        self.pos = self.pos + (fwd if seated(self.pose) else -fwd)
+        self.pos = target
         self._key_root(frame + int(dur * FPS))
 
     def turn(self, frame, facing, dur=0.5):
@@ -305,14 +318,14 @@ class Actor:
     def walk(self, frame, to, facing=None, speed=1.2, pose_after="stand"):
         """Turn toward the goal, stride there with swinging legs and arms, then face `facing`."""
         to = Vector((to[0], to[1], to[2] if len(to) > 2 else self.pos.z))
-        d = to - self.pos
-        if d.length < 0.01:
+        if (to - self.pos).length < 0.01:
             return frame
-        heading = math.degrees(math.atan2(d.x, d.y))
         self._apply(self.pose, frame)
         self._key_root(frame)
         f = frame + int(0.3 * FPS)
         self._seat_step(frame, "stand", 0.3)  # getting up off a seat (forward, the way he sat) before the first step
+        d = to - self.pos  # measured after that step, so the walk ends on the target
+        heading = math.degrees(math.atan2(d.x, d.y))
         self.facing = _near_angle(self.facing, heading)
         self.pose = "stand"
         held = POSES[pose_after].get("rifle")  # walking: carry the rifle the way the pose after the walk holds it
@@ -597,7 +610,8 @@ def shotgun(name):
 
 
 def block(name, size=(0.3, 0.3, 0.3), color=(0.5, 0.5, 0.5)):
-    """Generic stand-in prop (backpack, books, bench, table...): a coloured box resting on its origin."""
+    """Generic stand-in prop (backpack, books, bench, table...): a coloured box resting on its origin — `loc` z is
+    the box BOTTOM, not its centre (a 1.3 m flap hung from z 0 spans 0..1.3)."""
     root = empty(name)
     m = mat(f"block_{tuple(color)}", tuple(c * 0.4 for c in color), flat=tuple(color))
     attach(box(size, (0, 0, 0), m, name=f"{name}.box"), root, (0, 0, size[2] / 2))

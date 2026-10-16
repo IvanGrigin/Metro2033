@@ -224,19 +224,21 @@ def auto_camera(c, f0):
     best = None
     sd = c.get("side", 1)
     # alternatives stay on the same side of the line of action (180-degree rule): never swing across the axis
-    for off in (0, 15 * sd, -15 * sd, 30 * sd, -25 * sd, 45 * sd):
-        a = base + math.radians(off) if off else base
-        cand = Vector((math.cos(a), math.sin(a), dz))
-        pos, clear, free = place(cand)
-        if clear:
-            if off:
-                print(f"AUTOCAM {c.get('subject')} frame {f0}: first angle blocked, took {off:+d} deg", flush=True)
-            return pos, tgt, c.get("lens", lens)
-        if best is None or free > best[1]:
-            best = (cand, free)
-    cand, free = best  # every angle is blocked: come in closer than the obstacle
-    pos = tgt + cand.normalized() * max(free - 0.25, 0.35)
-    return pos, tgt, c.get("lens", lens)
+    first = None
+    for off in (0, 15 * sd, -15 * sd, 30 * sd, -25 * sd, 45 * sd, 60 * sd, 75 * sd):
+        for lift in (0.0, 0.4, -0.4):
+            a = base + math.radians(off) if off else base
+            cand = Vector((math.cos(a), math.sin(a), dz + lift / max(dist0, 0.5)))  # lift: ±0.4 m at the nominal distance
+            pos, clear, free = place(cand)
+            if first is None:
+                first = pos
+            if clear:
+                if off or lift:
+                    print(f"AUTOCAM {c.get('subject')} frame {f0}: first angle blocked, took {off:+d} deg, height {lift:+.1f} m", flush=True)
+                return pos, tgt, c.get("lens", lens)
+    # every angle on this side is blocked: keep the nominal point (never creep up to the subject) and say so
+    print(f"AUTOCAM FAILED {c.get('subject')} frame {f0}: no clear angle on side {sd:+d}; nominal camera kept", flush=True)
+    return first, tgt, c.get("lens", lens)
 
 
 for s in spec["shots"]:
