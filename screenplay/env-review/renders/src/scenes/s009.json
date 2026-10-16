@@ -310,7 +310,7 @@
    "actor": "Vitalik",
    "do": "walk",
    "to": [
-    3.6,
+    3.45,
     82.9,
     1.1
    ],
@@ -534,9 +534,13 @@
    "id": "9.07",
    "dur": 2.5,
    "cam": {
-    "auto": "med",
-    "subject": "ArtyomC",
-    "side": -1
+    "pos": [
+     -1.9,
+     66.2,
+     1.15
+    ],
+    "at": "ArtyomC.eyes",
+    "lens": 40
    }
   },
   {
@@ -621,9 +625,13 @@
    "id": "9.15",
    "dur": 3.0,
    "cam": {
-    "auto": "med",
-    "subject": "Zhenya",
-    "side": 1
+    "pos": [
+     1.5,
+     81.0,
+     1.2
+    ],
+    "at": "Zhenya.eyes",
+    "lens": 40
    }
   },
   {
