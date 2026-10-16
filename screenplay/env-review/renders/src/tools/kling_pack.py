@@ -40,9 +40,9 @@ def camera(c):
 
 def main(n, render_dir, out_dir):
     spec = json.load(open(os.path.join(REPO, f"storyboard/3d/scenes/s{n:03d}.json")))
-    env = json.load(open(os.path.join(ROOT, "kling", "environment.json")))[spec["location"]]
+    env = json.load(open(os.path.join(ROOT, "kling", "environment.json")))[spec["location"]]  # {"full", "short"}
     word = next((w for w in TIME if w in os.path.basename(spec["storyboard"])), None)
-    when = " ".join(x for x in (TIME.get(word, ""), f'The clock shows {spec["clock"]}.' if spec.get("clock") else "") if x)
+    when = TIME.get(word, "")
     board = open(os.path.join(REPO, spec["storyboard"]), encoding="utf-8").read().split("## Раскадровка", 1)[1]
     en = {}  # shot id -> its own EN line: split the board into shot blocks first, then look inside each block only
     for sid, body in re.findall(r"^\*\*(\d+\.\d\d) · [^\n]*\*\*$(.*?)(?=^\*\*\d+\.\d\d · |\Z)", board, re.M | re.S):
@@ -68,7 +68,16 @@ def main(n, render_dir, out_dir):
             who = [chars[c] for c in named if c in vis] + [f"In the background: {chars[c]}" for c in vis if c not in named]
         else:
             who = [chars[c] for c in named]
-        prompt = " ".join(x for x in [line[:1].upper() + line[1:] + ".", camera(s["cam"]), env, when] + who + [RULES] if x)
+        c = s["cam"]
+        close = c.get("lens", 35) >= 50 or ("pos" in c and isinstance(c.get("at"), list) and
+                                            sum((a - b) ** 2 for a, b in zip(c["pos"], c["at"])) ** 0.5 < 1.5)
+        # detail shot (the board calls it a close-up, or nobody is in a close frame): no list of the place's objects to paint in
+        insert = line.lower().startswith(("close-up", "extreme close-up", "insert", "detail")) or (k is not None and not k["visible"] and close)
+        place = ("The place: " + env["short"]) if insert else \
+            ("The place (only what the reference shows of it is in frame): " + env["full"])
+        clock = f' The clock shows {spec["clock"]}.' if spec.get("clock") and "clock" in line else ""  # only if its face is in the shot
+        prompt = " ".join(x for x in [line[:1].upper() + line[1:] + ".", camera(c)] + who + [place, when + clock, RULES] if x.strip())
+        assert len(prompt) <= 2400, f'{s["id"]}: prompt {len(prompt)} chars, Kling limit ~2500'  # critic: fail before upload
         clip = os.path.join(out_dir, f'{s["id"]}.mp4')
         if k:
             src, first, count = os.path.join(render_dir, "kling", s["id"], "%05d.png"), 0, k["frames"]
