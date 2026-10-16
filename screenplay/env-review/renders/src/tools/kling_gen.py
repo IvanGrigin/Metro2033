@@ -1,6 +1,7 @@
 """Kling generations from a scene's pack, with measurements. Spends the user's credits: run only after the critic agreed
 the prompts and the user said yes to this batch.
     python3 storyboard/tools/kling_gen.py submit 1 1.02 1.22 1.28   # one omni_ref_video job per shot, Blender clip as 视频1
+    python3 storyboard/tools/kling_gen.py submit 1/seq seq01_1.02-1.07  # a multi-shot chunk from kling_seq.py
     python3 storyboard/tools/kling_gen.py fetch                      # finished jobs: download, write the ledger row
 Jobs live in storyboard/kling/jobs.json; every finished job is one row in storyboard/kling/LEDGER.csv."""
 import csv, json, math, os, subprocess, sys, time, urllib.request
@@ -23,15 +24,17 @@ def credits():
     return kling("account")["availableRemainCredits"]
 
 
-def submit(n, shots):
-    rows = {r["shot"]: r for r in json.load(open(os.path.join(KL, f"s{n:03d}", "prompts.json")))}
+def submit(where, shots):
+    n, _, sub = where.partition("/")  # "1" = per-shot pack, "1/seq" = multi-shot chunks
+    n, d = int(n), os.path.join(KL, f"s{int(n):03d}", sub)
+    rows = {r.get("shot") or r["chunk"]: r for r in json.load(open(os.path.join(d, "prompts.json")))}
     jobs = json.load(open(JOBS)) if os.path.exists(JOBS) else []
     for sid in shots:
         r = rows[sid]
-        sec = max(3, math.ceil(r["seconds"] - 0.01))  # output as long as the reference (min 3 s): timing 1:1
+        sec = r.get("duration") or max(3, math.ceil(r["seconds"] - 0.01))  # output as long as the reference (min 3 s): timing 1:1
         attempt = 1 + sum(j["shot"] == sid for j in jobs)
         before = credits()
-        b = kling("omni_ref_video", "--model", MODEL, "--video", os.path.join(KL, f"s{n:03d}", r["clip"]),
+        b = kling("omni_ref_video", "--model", MODEL, "--video", os.path.join(d, r["clip"]),
                   "--duration", str(sec), "--resolution", RES, "--enable_audio", "false", "--keepOriginalSound", "false",
                   "--imageCount", "1", "--prompt", r["prompt"])
         jobs.append({"scene": n, "shot": sid, "attempt": attempt, "seconds": sec, "id": b["generationId"],
@@ -73,6 +76,6 @@ def fetch():
 
 if __name__ == "__main__":
     if sys.argv[1] == "submit":
-        submit(int(sys.argv[2]), sys.argv[3:])
+        submit(sys.argv[2], sys.argv[3:])
     else:
         fetch()
