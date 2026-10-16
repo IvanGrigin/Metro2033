@@ -330,7 +330,8 @@ class Actor:
         self.pose = "stand"
         held = POSES[pose_after].get("rifle")  # walking: carry the rifle the way the pose after the walk holds it
         carry = held if held in ("hip", "shoulder") else "sling"
-        self._apply("stand", f, rifle=carry)
+        stride = "flashlight" if self.name == "Andrei" else "stand"  # Andrei keeps the flashlight up from the first step
+        self._apply(stride, f, rifle=carry)
         self._key_root(f)
         steps = max(2, round(d.length / (speed * 0.5)))
         start = self.pos.copy()
@@ -344,7 +345,7 @@ class Actor:
                 gait.pop("shoulder_R")
             self.pos = start + d * (i / steps)
             self._key_root(fi)
-            self._apply("flashlight" if self.name == "Andrei" else "stand", fi, walk=gait, rifle=carry)
+            self._apply(stride, fi, walk=gait, rifle=carry)
         end = f + int(steps * 0.5 * FPS)
         self._apply(pose_after, end + int(0.3 * FPS))
         self.pose = pose_after
@@ -426,11 +427,14 @@ def render_pass(kind, path):
     sc = bpy.context.scene
     sh = sc.display.shading
     sc.view_settings.view_transform = "AgX" if kind == "lit" else "Standard"  # flat colours stay exact
-    if kind == "lit_fast":  # animatic: the real light (fire, lamps, beams), few samples, nothing beyond DARK_FAR, no depth file
+    if kind in ("lit_fast", "lit_ref"):  # animatic / video-model reference: the real light, nothing beyond DARK_FAR, no depth file
         engines = {e.identifier for e in bpy.types.RenderSettings.bl_rna.properties["engine"].enum_items}
         sc.render.engine = "BLENDER_EEVEE_NEXT" if "BLENDER_EEVEE_NEXT" in engines else "BLENDER_EEVEE"
         sc.view_settings.view_transform = "AgX"
-        sc.eevee.taa_render_samples = 4
+        sc.eevee.taa_render_samples = 4 if kind == "lit_fast" else 12
+        # reference clips: a finer volume grid and more samples, so a flashlight beam is a soft shaft, not a pixel band
+        sc.eevee.volumetric_tile_size = "8" if kind == "lit_fast" else "2"
+        sc.eevee.volumetric_samples = 64 if kind == "lit_fast" else 128
         sc.use_nodes = False
         if sc.camera:
             sc.camera.data.clip_end = DARK_FAR
@@ -486,7 +490,7 @@ def render_pass(kind, path):
                 o.color = (0.35, 0.35, 0.35, 1)
     for o in sc.objects:  # smoke volumes only exist for the lit pass; in Workbench they would be solid boxes
         if o.get("lit_only"):
-            o.hide_render = kind not in ("lit", "lit_fast")
+            o.hide_render = kind not in ("lit", "lit_fast", "lit_ref")
     bpy.ops.render.render(write_still=True)
     for n, c in saved.items():
         sc.objects[n].color = c

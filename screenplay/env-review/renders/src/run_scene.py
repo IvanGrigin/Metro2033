@@ -352,11 +352,32 @@ if "--kling" in args:  # reference clips for a video model: each shot through it
                         break
         sd = os.path.join(kd, s["id"])
         os.makedirs(sd, exist_ok=True)
+        for fn in os.listdir(sd):  # frames of an earlier (maybe interrupted) run must not mix into this clip
+            if fn.endswith(".png"):
+                os.remove(os.path.join(sd, fn))
+
+        def state(frame):  # visibility and light of the shot itself: handles must not show the neighbours' events
+            sc.frame_set(frame)
+            return ({o.name: o.hide_render for o in sc.objects}, {o.name: o.data.energy for o in sc.objects if o.type == "LIGHT"})
+        before, after = state(f0), state(f1)
+        frozen = [fc for o in sc.objects for ad in (o.animation_data, getattr(o.data, "animation_data", None) if o.type == "LIGHT" else None)
+                  if ad and ad.action for fc in ad.action.fcurves if fc.data_path in ("hide_render", "energy")]
         n = 0
         for f in range(a, b + 1, 2):  # 12 fps
+            handle = f < f0 or f > f1
+            for fc in frozen:  # the render re-evaluates animation, so set values only hold with their curves muted
+                fc.mute = handle
             sc.frame_set(f)
-            kit.render_pass("lit_fast", os.path.join(sd, f"{n:05d}.png"))
+            if handle:  # handle: movement goes on, but show/hide and light stay as at the shot's edge
+                vis, en = before if f < f0 else after
+                for o in sc.objects:
+                    o.hide_render = vis.get(o.name, o.hide_render)
+                    if o.type == "LIGHT":
+                        o.data.energy = en.get(o.name, o.data.energy)
+            kit.render_pass("lit_ref", os.path.join(sd, f"{n:05d}.png"))
             n += 1
+        for fc in frozen:
+            fc.mute = False
         info[s["id"]] = {"visible": sorted(seen), "frames": n, "shot_from": (f0 - a) / FPS, "shot_to": (f1 - a + 1) / FPS}
     kj = os.path.join(kd, "shots.json")  # merged: --kling may run over several --shots batches (one process each)
     allinfo = json.load(open(kj)) if os.path.exists(kj) else {}

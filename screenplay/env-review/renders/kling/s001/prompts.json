@@ -211,7 +211,7 @@
   "shot": "1.28",
   "clip": "1.28.mp4",
   "seconds": 3.0,
-  "prompt": "Three men walk out of the darkness into the firelight, flashlight beam sliding over the walls. In the background: Andrei: man of 40, bushy mustache, old black beret, easy smile. In the background: Artyom: pale thin young man of 24, short dark hair, light stubble, worn grey padded jacket, old Kalashnikov. In the background: Hunter: tall broad-shouldered man of 45, shaved head, long black leather coat. In the background: Kirill: thin man of 30, messy hair, silent. In the background: Pyotr: old man of 60, grey beard, weathered face, quilted vatnik jacket. Photorealistic live-action film shot, 35 mm, post-apocalyptic Moscow metro in 2033: soot, grime, damp, worn clothes. Keep exactly the camera position, framing, movement and timing of the reference video, and where each person is and what they do. Replace the grey mannequins with real people (the cone on a head marks the nose: where the face looks). Light only from the sources visible in the reference (fire, lamps, flashlights), everything else stays dark. No text, letters or numbers on screen except painted marks that exist in the reference; no extra people or objects.",
+  "prompt": "Three men — Andrei with a flashlight, Kirill and Hunter — walk out of the darkness into the firelight, the flashlight beam sliding over the walls. Andrei: man of 40, bushy mustache, old black beret, easy smile. Kirill: thin man of 30, messy hair, silent. Hunter: tall broad-shouldered man of 45, shaved head, long black leather coat. In the background: Artyom: pale thin young man of 24, short dark hair, light stubble, worn grey padded jacket, old Kalashnikov. In the background: Pyotr: old man of 60, grey beard, weathered face, quilted vatnik jacket. Photorealistic live-action film shot, 35 mm, post-apocalyptic Moscow metro in 2033: soot, grime, damp, worn clothes. Keep exactly the camera position, framing, movement and timing of the reference video, and where each person is and what they do. Replace the grey mannequins with real people (the cone on a head marks the nose: where the face looks). Light only from the sources visible in the reference (fire, lamps, flashlights), everything else stays dark. No text, letters or numbers on screen except painted marks that exist in the reference; no extra people or objects.",
   "note": "",
   "off_screen": []
  },
@@ -299,11 +299,9 @@
   "shot": "1.39",
   "clip": "1.39.mp4",
   "seconds": 3.0,
-  "prompt": "Andrei asking Artyom across the fire. Andrei: man of 40, bushy mustache, old black beret, easy smile. Photorealistic live-action film shot, 35 mm, post-apocalyptic Moscow metro in 2033: soot, grime, damp, worn clothes. Keep exactly the camera position, framing, movement and timing of the reference video, and where each person is and what they do. Replace the grey mannequins with real people (the cone on a head marks the nose: where the face looks). Light only from the sources visible in the reference (fire, lamps, flashlights), everything else stays dark. No text, letters or numbers on screen except painted marks that exist in the reference; no extra people or objects.",
+  "prompt": "Andrei asking someone off-screen across the fire. Andrei: man of 40, bushy mustache, old black beret, easy smile. Photorealistic live-action film shot, 35 mm, post-apocalyptic Moscow metro in 2033: soot, grime, damp, worn clothes. Keep exactly the camera position, framing, movement and timing of the reference video, and where each person is and what they do. Replace the grey mannequins with real people (the cone on a head marks the nose: where the face looks). Light only from the sources visible in the reference (fire, lamps, flashlights), everything else stays dark. No text, letters or numbers on screen except painted marks that exist in the reference; no extra people or objects.",
   "note": "",
-  "off_screen": [
-   "Artyom"
-  ]
+  "off_screen": []
  },
  {
   "shot": "1.40",
