@@ -277,8 +277,20 @@ class Actor:
 
     def set_pose(self, frame, pose, dur=0.6):
         self._apply(self.pose, frame)
+        self._seat_step(frame, pose, dur)
         self.pose = pose
         self._apply(pose, frame + int(dur * FPS))
+
+    def _seat_step(self, frame, new_pose, dur):
+        """Getting up from a seat moves the body 0.45 k forward (off the crate); sitting down moves it back onto it,
+        so the shins never stay inside the crate."""
+        seated = lambda name: POSES[name].get("pelvis_z") == SIT["pelvis_z"]
+        if seated(self.pose) == seated(new_pose):
+            return
+        fwd = Vector((math.sin(math.radians(self.facing)), math.cos(math.radians(self.facing)), 0)) * 0.45 * self.k
+        self._key_root(frame)
+        self.pos = self.pos + (fwd if seated(self.pose) else -fwd)
+        self._key_root(frame + int(dur * FPS))
 
     def turn(self, frame, facing, dur=0.5):
         self._key_root(frame)
@@ -300,6 +312,7 @@ class Actor:
         self._apply(self.pose, frame)
         self._key_root(frame)
         f = frame + int(0.3 * FPS)
+        self._seat_step(frame, "stand", 0.3)  # getting up off a seat (forward, the way he sat) before the first step
         self.facing = _near_angle(self.facing, heading)
         self.pose = "stand"
         held = POSES[pose_after].get("rifle")  # walking: carry the rifle the way the pose after the walk holds it
@@ -328,14 +341,16 @@ class Actor:
 
 
     def move(self, frame, to, dur, facing=None, pose=None):
-        """Slide to `to` in `dur` seconds without stepping: riding a handcar, being carried, sliding a body."""
-        self._key_root(frame)
+        """Slide to `to` in `dur` seconds without stepping: riding a handcar, being carried, sliding a body.
+        dur < one frame is a cut: the actor is simply somewhere else from `frame` on (no flight in between)."""
+        cut = int(dur * FPS) < 1
+        self._key_root(frame - 1 if cut else frame)
         if pose:
             self._apply(self.pose, frame)
         self.pos = Vector((to[0], to[1], to[2] if len(to) > 2 else self.pos.z))
         if facing is not None:
             self.facing = _near_angle(self.facing, facing)
-        end = frame + int(dur * FPS)
+        end = frame + max(int(dur * FPS), 0)
         self._key_root(end)
         if pose:
             self.pose = pose

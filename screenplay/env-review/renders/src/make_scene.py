@@ -62,7 +62,7 @@ for b in blocks:
         cam["side"] = side
     last = subject or last
     over = blk.get("cams", {}).get(sid, {})
-    if any(k in over for k in ("pos", "rel", "view")):
+    if any(k in over for k in ("pos", "rel", "view", "attach")):
         cam = dict(over)  # a hand-placed or view camera replaces the derived one entirely
     else:
         cam.update(over)

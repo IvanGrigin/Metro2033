@@ -1,0 +1,813 @@
+{
+ "id": "s002",
+ "location": "timiryazevskaya",
+ "cast": {
+  "Mother": {
+   "height": 1.65,
+   "role": "Mother"
+  },
+  "ArtyomChild": {
+   "height": 1.1,
+   "role": "ArtyomChild"
+  },
+  "Sukhoi": {
+   "height": 1.75,
+   "role": "Sukhoi"
+  },
+  "Extra7": {
+   "height": 1.76,
+   "role": "Extra",
+   "rifle": true
+  },
+  "Extra1": {
+   "height": 1.72,
+   "role": "Extra"
+  },
+  "Extra2": {
+   "height": 1.72,
+   "role": "Extra"
+  },
+  "Extra3": {
+   "height": 1.72,
+   "role": "Extra"
+  },
+  "Extra4": {
+   "height": 1.72,
+   "role": "Extra"
+  },
+  "Extra6": {
+   "height": 1.72,
+   "role": "Extra"
+  },
+  "Extra5": {
+   "height": 1.75,
+   "role": "Extra"
+  }
+ },
+ "title": "Сцена 2. ИНТ. СТАНЦИЯ ТИМИРЯЗЕВСКАЯ — ДЕНЬ (ДЕВЯТНАДЦАТЬ ЛЕТ НАЗАД)",
+ "storyboard": "storyboard/01-дозор/002-инт-станция-тимирязевская-день-девятнадцать-лет-назад.md",
+ "crates": [],
+ "props": {
+  "handcar": {
+   "type": "handcar",
+   "loc": [
+    6.4,
+    -10,
+    -0.29
+   ]
+  },
+  "rats_track": {
+   "type": "rat_flood",
+   "loc": [
+    -6.4,
+    76.0,
+    -0.29
+   ],
+   "rot": [
+    0,
+    0,
+    3.141592653589793
+   ]
+  },
+  "rats_platform": {
+   "type": "rat_flood",
+   "loc": [
+    0,
+    76.0,
+    1.1
+   ],
+   "rot": [
+    0,
+    0,
+    3.141592653589793
+   ]
+  },
+  "rats_pour": {
+   "type": "rat_flood",
+   "loc": [
+    -8.0,
+    73.0,
+    2.15
+   ],
+   "rot": [
+    -0.95,
+    0,
+    -1.5707963
+   ],
+   "width": 3.6,
+   "length": 2.6,
+   "hidden": true
+  },
+  "flashlight_Extra7": {
+   "type": "searchlight",
+   "handheld": true,
+   "attach": "Extra7.hand_R",
+   "loc": [
+    0,
+    0,
+    -0.08
+   ]
+  }
+ },
+ "events": [
+  {
+   "at": "2.01",
+   "actor": "Extra1",
+   "do": "place",
+   "pos": [
+    -2,
+    45,
+    1.1
+   ],
+   "facing": 170,
+   "pose": "stand"
+  },
+  {
+   "at": "2.01",
+   "dt": 0.8,
+   "actor": "Extra1",
+   "do": "turn",
+   "facing": 0,
+   "dur": 0.6
+  },
+  {
+   "at": "2.03",
+   "actor": "Extra1",
+   "do": "walk",
+   "to": [
+    -4.3,
+    28,
+    1.1
+   ],
+   "facing": 270,
+   "speed": 3.0
+  },
+  {
+   "at": "2.01",
+   "actor": "Extra2",
+   "do": "place",
+   "pos": [
+    0,
+    48,
+    1.1
+   ],
+   "facing": 170,
+   "pose": "stand"
+  },
+  {
+   "at": "2.01",
+   "dt": 0.8,
+   "actor": "Extra2",
+   "do": "turn",
+   "facing": 0,
+   "dur": 0.6
+  },
+  {
+   "at": "2.03",
+   "actor": "Extra2",
+   "do": "walk",
+   "to": [
+    4.3,
+    26,
+    1.1
+   ],
+   "facing": 90,
+   "speed": 3.0
+  },
+  {
+   "at": "2.01",
+   "actor": "Extra3",
+   "do": "place",
+   "pos": [
+    2,
+    42,
+    1.1
+   ],
+   "facing": 170,
+   "pose": "stand"
+  },
+  {
+   "at": "2.01",
+   "dt": 0.8,
+   "actor": "Extra3",
+   "do": "turn",
+   "facing": 0,
+   "dur": 0.6
+  },
+  {
+   "at": "2.03",
+   "actor": "Extra3",
+   "do": "walk",
+   "to": [
+    4.0,
+    35,
+    1.1
+   ],
+   "facing": 90,
+   "speed": 3.0
+  },
+  {
+   "at": "2.01",
+   "actor": "Extra4",
+   "do": "place",
+   "pos": [
+    -1,
+    40,
+    1.1
+   ],
+   "facing": 170,
+   "pose": "stand"
+  },
+  {
+   "at": "2.01",
+   "dt": 0.8,
+   "actor": "Extra4",
+   "do": "turn",
+   "facing": 0,
+   "dur": 0.6
+  },
+  {
+   "at": "2.03",
+   "actor": "Extra4",
+   "do": "walk",
+   "to": [
+    -4.3,
+    33,
+    1.1
+   ],
+   "facing": 270,
+   "speed": 3.0
+  },
+  {
+   "at": "2.01",
+   "actor": "Extra6",
+   "do": "place",
+   "pos": [
+    -3,
+    50,
+    1.1
+   ],
+   "facing": 170,
+   "pose": "stand"
+  },
+  {
+   "at": "2.01",
+   "dt": 0.8,
+   "actor": "Extra6",
+   "do": "turn",
+   "facing": 0,
+   "dur": 0.6
+  },
+  {
+   "at": "2.03",
+   "actor": "Extra6",
+   "do": "walk",
+   "to": [
+    -4.4,
+    38,
+    1.1
+   ],
+   "facing": 270,
+   "speed": 3.0
+  },
+  {
+   "at": "2.01",
+   "actor": "Extra5",
+   "do": "place",
+   "pos": [
+    1.0,
+    57,
+    1.1
+   ],
+   "facing": 0,
+   "pose": "stand"
+  },
+  {
+   "at": "2.03",
+   "actor": "Extra5",
+   "do": "walk",
+   "to": [
+    1.2,
+    52.5,
+    1.1
+   ],
+   "facing": 180,
+   "speed": 3.0
+  },
+  {
+   "at": "2.04",
+   "actor": "Extra5",
+   "do": "pose",
+   "pose": "fallen",
+   "dur": 0.5
+  },
+  {
+   "at": "2.01",
+   "actor": "Mother",
+   "do": "place",
+   "pos": [
+    4.6,
+    30,
+    1.1
+   ],
+   "facing": 0,
+   "pose": "carry_child"
+  },
+  {
+   "at": "2.01",
+   "actor": "ArtyomChild",
+   "do": "place",
+   "pos": [
+    4.6,
+    30.3,
+    1.55
+   ],
+   "facing": 180,
+   "pose": "sit"
+  },
+  {
+   "at": "2.03",
+   "actor": "Mother",
+   "do": "turn",
+   "facing": 90,
+   "dur": 0.5
+  },
+  {
+   "at": "2.03",
+   "actor": "ArtyomChild",
+   "do": "move",
+   "to": [
+    4.9,
+    30,
+    1.55
+   ],
+   "facing": 270,
+   "dur": 0.5
+  },
+  {
+   "at": "2.01",
+   "actor": "Sukhoi",
+   "do": "place",
+   "pos": [
+    5.9,
+    -10,
+    0.37
+   ],
+   "facing": 270,
+   "pose": "stand"
+  },
+  {
+   "at": "2.01",
+   "actor": "Extra7",
+   "do": "place",
+   "pos": [
+    6.9,
+    -9.4,
+    0.37
+   ],
+   "facing": 180,
+   "pose": "hold_light"
+  },
+  {
+   "at": "2.05",
+   "dt": 1.0,
+   "do": "prop_move",
+   "prop": "handcar",
+   "to": [
+    6.4,
+    30,
+    -0.29
+   ],
+   "dur": 3.0
+  },
+  {
+   "at": "2.05",
+   "dt": 1.0,
+   "actor": "Sukhoi",
+   "do": "move",
+   "to": [
+    5.9,
+    30,
+    0.37
+   ],
+   "dur": 3.0
+  },
+  {
+   "at": "2.05",
+   "dt": 1.0,
+   "actor": "Extra7",
+   "do": "move",
+   "to": [
+    6.9,
+    30.6,
+    0.37
+   ],
+   "dur": 3.0
+  },
+  {
+   "at": "2.06",
+   "dt": 1.0,
+   "actor": "Sukhoi",
+   "do": "pose",
+   "pose": "reach_out",
+   "dur": 0.6
+  },
+  {
+   "at": "2.07",
+   "actor": "Mother",
+   "do": "pose",
+   "pose": "reach_out",
+   "dur": 0.8
+  },
+  {
+   "at": "2.07",
+   "actor": "ArtyomChild",
+   "do": "move",
+   "to": [
+    5.25,
+    30,
+    1.55
+   ],
+   "dur": 1.5
+  },
+  {
+   "at": "2.08",
+   "actor": "ArtyomChild",
+   "do": "move",
+   "to": [
+    5.6,
+    30,
+    1.21
+   ],
+   "facing": 90,
+   "dur": 0.6
+  },
+  {
+   "at": "2.08",
+   "dt": 0.3,
+   "actor": "Sukhoi",
+   "do": "pose",
+   "pose": "carry_child",
+   "dur": 0.5
+  },
+  {
+   "at": "2.09",
+   "actor": "Mother",
+   "do": "pose",
+   "pose": "stand",
+   "dur": 1.0
+  },
+  {
+   "at": "2.09",
+   "actor": "Sukhoi",
+   "do": "turn",
+   "facing": 180,
+   "dur": 0.5
+  },
+  {
+   "at": "2.09",
+   "actor": "ArtyomChild",
+   "do": "move",
+   "to": [
+    5.9,
+    29.7,
+    1.21
+   ],
+   "facing": 0,
+   "dur": 0.5
+  },
+  {
+   "at": "2.09",
+   "dt": 0.6,
+   "do": "prop_move",
+   "prop": "handcar",
+   "to": [
+    6.4,
+    -25,
+    -0.29
+   ],
+   "dur": 12.4
+  },
+  {
+   "at": "2.09",
+   "dt": 0.6,
+   "actor": "Sukhoi",
+   "do": "move",
+   "to": [
+    5.9,
+    -25,
+    0.37
+   ],
+   "dur": 12.4
+  },
+  {
+   "at": "2.09",
+   "dt": 0.6,
+   "actor": "ArtyomChild",
+   "do": "move",
+   "to": [
+    5.9,
+    -25.3,
+    1.21
+   ],
+   "dur": 12.4
+  },
+  {
+   "at": "2.09",
+   "dt": 0.6,
+   "actor": "Extra7",
+   "do": "move",
+   "to": [
+    6.9,
+    -24.4,
+    0.37
+   ],
+   "dur": 12.4
+  },
+  {
+   "at": "2.01",
+   "do": "prop_scale",
+   "prop": "rats_track",
+   "to": [
+    1,
+    0.3,
+    2.0
+   ],
+   "dur": 0.05
+  },
+  {
+   "at": "2.01",
+   "do": "prop_scale",
+   "prop": "rats_platform",
+   "to": [
+    1.6,
+    0.3,
+    2.8
+   ],
+   "dur": 0.05
+  },
+  {
+   "at": "2.02",
+   "do": "prop_scale",
+   "prop": "rats_track",
+   "to": [
+    1,
+    1.5,
+    2.0
+   ],
+   "dur": 2.5
+  },
+  {
+   "at": "2.02",
+   "do": "prop_scale",
+   "prop": "rats_platform",
+   "to": [
+    1.6,
+    1.2,
+    2.8
+   ],
+   "dur": 2.5
+  },
+  {
+   "at": "2.03",
+   "do": "prop_scale",
+   "prop": "rats_platform",
+   "to": [
+    1.6,
+    2.0,
+    2.8
+   ],
+   "dur": 2.5
+  },
+  {
+   "at": "2.04",
+   "do": "prop_scale",
+   "prop": "rats_platform",
+   "to": [
+    1.6,
+    3.0,
+    2.8
+   ],
+   "dur": 5.0
+  },
+  {
+   "at": "2.07",
+   "do": "prop_scale",
+   "prop": "rats_platform",
+   "to": [
+    1.6,
+    4.6,
+    2.8
+   ],
+   "dur": 5.0
+  },
+  {
+   "at": "2.12",
+   "do": "prop_scale",
+   "prop": "rats_platform",
+   "to": [
+    1.6,
+    9.0,
+    2.8
+   ],
+   "dur": 5.5
+  },
+  {
+   "at": "2.03",
+   "do": "prop_scale",
+   "prop": "rats_track",
+   "to": [
+    1,
+    6.0,
+    2.0
+   ],
+   "dur": 20.0
+  },
+  {
+   "at": "2.02",
+   "do": "show",
+   "prop": "rats_pour"
+  }
+ ],
+ "shots": [
+  {
+   "id": "2.01",
+   "dur": 2.0,
+   "cam": {
+    "pos": [
+     -2,
+     32,
+     3.0
+    ],
+    "at": [
+     0,
+     50,
+     1.8
+    ],
+    "lens": 28
+   }
+  },
+  {
+   "id": "2.02",
+   "dur": 2.5,
+   "cam": {
+    "pos": [
+     -2.0,
+     62.0,
+     3.0
+    ],
+    "at": [
+     -7.0,
+     73.0,
+     0.9
+    ],
+    "lens": 28
+   }
+  },
+  {
+   "id": "2.03",
+   "dur": 2.5,
+   "cam": {
+    "pos": [
+     2.5,
+     40.0,
+     6.5
+    ],
+    "at": [
+     -1.0,
+     68.0,
+     1.2
+    ],
+    "lens": 24
+   }
+  },
+  {
+   "id": "2.04",
+   "dur": 2.0,
+   "cam": {
+    "auto": "med",
+    "subject": "Extra5",
+    "side": 1
+   }
+  },
+  {
+   "id": "2.05",
+   "dur": 3.0,
+   "cam": {
+    "auto": "med",
+    "subject": "Mother",
+    "side": -1,
+    "behind": true
+   }
+  },
+  {
+   "id": "2.06",
+   "dur": 2.0,
+   "cam": {
+    "pos": [
+     2.8,
+     33.5,
+     2.8
+    ],
+    "at": [
+     6.4,
+     18,
+     1.0
+    ],
+    "lens": 28
+   }
+  },
+  {
+   "id": "2.07",
+   "dur": 3.0,
+   "cam": {
+    "auto": "med",
+    "subject": "Mother",
+    "side": -1,
+    "behind": true
+   }
+  },
+  {
+   "id": "2.08",
+   "dur": 2.0,
+   "cam": {
+    "auto": "detail",
+    "subject": "Sukhoi",
+    "side": 1,
+    "joint": "hand_R"
+   }
+  },
+  {
+   "id": "2.09",
+   "dur": 2.0,
+   "cam": {
+    "pos": [
+     3.5,
+     40,
+     2.8
+    ],
+    "at": [
+     6.4,
+     22,
+     1.0
+    ],
+    "lens": 24
+   }
+  },
+  {
+   "id": "2.10",
+   "dur": 2.5,
+   "cam": {
+    "attach": "handcar",
+    "loc": [
+     -1.6,
+     1.4,
+     2.5
+    ],
+    "at": "ArtyomChild.eyes",
+    "lens": 50
+   }
+  },
+  {
+   "id": "2.11",
+   "dur": 3.0,
+   "cam": {
+    "pos": [
+     6.0,
+     19.5,
+     2.2
+    ],
+    "at": "Mother.eyes",
+    "lens": 35,
+    "push": -0.3
+   }
+  },
+  {
+   "id": "2.12",
+   "dur": 2.0,
+   "cam": {
+    "auto": "med",
+    "subject": "Mother",
+    "side": 1,
+    "joint": "hand_R"
+   }
+  },
+  {
+   "id": "2.13",
+   "dur": 3.5,
+   "cam": {
+    "pos": [
+     4,
+     -45,
+     3.5
+    ],
+    "at": [
+     2,
+     20,
+     1.5
+    ],
+    "lens": 24
+   }
+  }
+ ]
+}

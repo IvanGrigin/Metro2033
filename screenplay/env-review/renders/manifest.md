@@ -18,7 +18,7 @@
 | 7 | scene-07.png | ИНТ. СТАНЦИЯ ВДНХ — ПЛАТФОРМА — «УТРО» | vdnkh | 06:14 |
 | 8 | scene-08.png | ИНТ. ПАЛАТКА СУХОГО — «УТРО» | sukhoi_tent | нет часов |
 | 9 | scene-09.png | ИНТ. СТАНЦИЯ БОТАНИЧЕСКИЙ САД — НОЧЬ (ШЕСТНАДЦАТЬ ЛЕТ НАЗАД) | botanical | нет часов |
-| 10 | scene-10.png | НАТ. ВЕСТИБЮЛЬ БОТАНИЧЕСКОГО САДА — НОЧЬ | botanical_vestibule | нет часов |
+| 10 | scene-10.png | НАТ. ВЕСТИБЮЛЬ БОТАНИЧЕСКОГО САДА — НОЧЬ (ШЕСТНАДЦАТЬ ЛЕТ НАЗАД) | botanical_vestibule | нет часов |
 | 11 | scene-11.png | ИНТ. СТАНЦИЯ БОТАНИЧЕСКИЙ САД — ПРОДОЛЖЕНИЕ | botanical | нет часов |
 | 12 | scene-12.png | ИНТ. ПАЛАТКА СУХОГО — НОЧЬ (ШЕСТНАДЦАТЬ ЛЕТ НАЗАД) | sukhoi_tent | нет часов |
 | 13 | scene-13.png | ИНТ. ПАЛАТКА СУХОГО — «УТРО» | sukhoi_tent | нет часов |
@@ -107,7 +107,7 @@
 Свет сцены: нет.
 
 **Сцена 3** (peregon_savelovskaya, light_scale 1.0): свет места — savelovskaya_light ×1, POINT, 1500.0 Вт, цвет RGB 1.00/0.80/0.55.
-Свет сцены: handcar_glow (POINT, на handcar, старт 700 Вт, цвет 0.80/0.85/1.00). События: 3.03: flame_high виден; 3.04: flame_high скрыт; 3.04: flame_wall виден.
+Свет сцены: torch1_beam (SPOT, на Extra1.hand_R, старт 700 Вт, цвет 0.80/0.85/1.00). События: 3.03: flame_high виден; 3.04: flame_high скрыт; 3.04: flame_wall виден.
 
 **Сцена 4** (tunnel_250, light_scale 1.0): свет места — fire_light ×1, POINT, 79.1 Вт, цвет RGB 1.00/0.52/0.22.
 Свет сцены: kirill_beam (SPOT, на Kirill.hand_R, старт 0 Вт, цвет 1.00/0.92/0.80). События: 4.08+0.5 с: kirill_beam → 1800 Вт; 4.20: kirill_beam → 0 Вт; 4.08: kirill_lamp виден.
@@ -137,10 +137,10 @@
 Свет сцены: cold_lamp (POINT, на tent_front_L, старт 70 Вт, цвет 0.60/0.72/1.00). События: 12.01: tent_lamp → 8 Вт.
 
 **Сцена 13** (sukhoi_tent, light_scale 1.0): свет места — tent_lamp ×1, POINT, 120.0 Вт, цвет RGB 1.00/0.75/0.45.
-Свет сцены: нет.
+Свет сцены: station_red (POINT, на tent_front_L, старт 250 Вт, цвет 1.00/0.18/0.10). События: 13.01: tent_lamp → 12 Вт.
 
 **Сцена 14** (sukhoi_tent, light_scale 1.0): свет места — tent_lamp ×1, POINT, 120.0 Вт, цвет RGB 1.00/0.75/0.45.
-Свет сцены: torch_beam (SPOT, на Hunter.hand_L, старт 800 Вт, цвет 0.75/0.85/1.00); face_glow (POINT, на Hunter.hand_L, старт 0 Вт, цвет 0.75/0.85/1.00); dark_face (POINT, на DarkOne.head, старт 0 Вт, цвет 0.75/0.85/1.00). События: 14.06+0.6 с: torch_beam → 0 Вт; 14.06+0.6 с: face_glow → 40 Вт; 14.07: dark_face → 40 Вт; 14.08: dark_face → 0 Вт; 14.08: tent_lamp → 0 Вт.
+Свет сцены: torch_beam (SPOT, на Hunter.hand_L, старт 800 Вт, цвет 0.75/0.85/1.00); face_glow (POINT, на Hunter.hand_L, старт 0 Вт, цвет 0.75/0.85/1.00); dark_face (POINT, на DarkOne.hand_L, старт 0 Вт, цвет 0.75/0.85/1.00). События: 14.06+0.6 с: torch_beam → 0 Вт; 14.06+0.6 с: face_glow → 40 Вт; 14.07: dark_face → 40 Вт; 14.08: dark_face → 0 Вт; 14.08: tent_lamp → 0 Вт; 14.07: dark_torch виден.
 
 **Сцена 15** (tunnel_250, light_scale 1.0): свет места — fire_light ×1, POINT, 79.1 Вт, цвет RGB 1.00/0.52/0.22.
 Свет сцены: нет.
@@ -158,17 +158,17 @@
 Свет сцены: нет.
 
 **Сцена 20** (vdnkh, light_scale 0.5): свет места — side_nave_light ×18, POINT, 60.0 Вт, цвет RGB 1.00/0.22/0.12; chandelier_light ×18, POINT, 100.0 Вт, цвет RGB 1.00/0.22/0.12; small_fire_light ×2, POINT, 30.0 Вт, цвет RGB 1.00/0.50/0.20.
-Свет сцены: flap_glow (POINT, на guest_cot, старт 30 Вт, цвет 1.00/0.25/0.12).
+Свет сцены: flap_glow (POINT, на guest_tent, старт 20 Вт, цвет 1.00/0.25/0.12).
 
 **Сцена 21** (white_room, light_scale 1.0): свет места — нет.
 Свет сцены: fill_front (POINT, на Hunter, старт 500 Вт, цвет 1.00/1.00/1.00); fill_back (POINT, на Hunter, старт 250 Вт, цвет 1.00/1.00/1.00).
 
 **Сцена 22** (sukhoi_tent, light_scale 1.0): свет места — tent_lamp ×1, POINT, 120.0 Вт, цвет RGB 1.00/0.75/0.45.
-Свет сцены: нет. События: 22.19: flashlight виден; 22.20: flashlight скрыт.
+Свет сцены: station_red (POINT, на tent_front_L, старт 250 Вт, цвет 1.00/0.18/0.10). События: 22.01: tent_lamp → 12 Вт; 22.19: flashlight виден; 22.20: flashlight скрыт.
 
 **Сцена 23** (vdnkh_office, light_scale 1.0): свет места — desk_lamp ×1, POINT, 35.0 Вт, цвет RGB 1.00/0.80/0.55.
-Свет сцены: нет.
+Свет сцены: station_red (POINT, на desk, старт 250 Вт, цвет 1.00/0.18/0.10). События: 23.01: desk_lamp → 12 Вт.
 
-**Сцена 24** (vdnkh, light_scale 2.0): свет места — side_nave_light ×18, POINT, 240.0 Вт, цвет RGB 1.00/0.22/0.12; chandelier_light ×18, POINT, 400.0 Вт, цвет RGB 1.00/0.22/0.12; small_fire_light ×2, POINT, 120.0 Вт, цвет RGB 1.00/0.50/0.20.
+**Сцена 24** (vdnkh, light_scale 0.7): свет места — side_nave_light ×18, POINT, 84.0 Вт, цвет RGB 1.00/0.22/0.12; chandelier_light ×18, POINT, 140.0 Вт, цвет RGB 1.00/0.22/0.12; small_fire_light ×2, POINT, 42.0 Вт, цвет RGB 1.00/0.50/0.20.
 Свет сцены: нет.
 

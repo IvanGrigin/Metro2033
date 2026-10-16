@@ -1,0 +1,22 @@
+{
+ "id": "s013",
+ "location": "sukhoi_tent",
+ "note": "Same cot as s008 (east, x 1.15), lying on his back, head toward the shelf. No side-lying pose: turning to the wall = head yaw toward the east wall.",
+ "cast": {"Artyom": {"height": 1.78}},
+ "names": {"Artyom": "Artyom"},
+ "events": [
+  {"at": "13.01", "do": "light", "light": "tent_lamp", "energy": 12},
+  {"at": "13.01", "actor": "Artyom", "do": "place", "pos": [1.15, 0.35, 0.45], "facing": 180, "pose": "fallen"},
+  {"at": "13.02", "dt": 0.5, "actor": "Artyom", "do": "look", "yaw": -85, "dur": 0.8}
+ ],
+ "cams": {
+  "13.01": {"pos": [0.7, 1.0, 1.75], "at": "Artyom.eyes", "lens": 35},
+  "13.02": {"pos": [-0.6, 0.0, 1.35], "at": "Artyom.torso", "lens": 28}
+ },
+ "lights": {
+  "station_red": {"type": "POINT", "attach": "tent_front_L", "loc": [0.833, -20.0, 0.2], "energy": 250, "color": [1.0, 0.18, 0.1]}
+ },
+ "props": {
+  "artyom_rifle": {"type": "rifle", "loc": [0.68, 0.35, 0.03], "rot": [0, 1.5708, 0]}
+ }
+}

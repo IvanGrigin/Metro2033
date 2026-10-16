@@ -1,0 +1,725 @@
+{
+ "id": "s022",
+ "location": "sukhoi_tent",
+ "note": "Artyom on the east cot (x=1.15) as in scenes 8, 13, 14, 16, head to the back wall; Sukhoi bends over the table at (0.55,0.95) facing 238, packing papers into his map case, back to Artyom; sits on the seat crate (0,-0.4) in 22.15-22.16; waves in 22.13. (Blocking mirrored from the former west-cot version; the tent is symmetric.) Morning (screenplay: УТРО): lights as in s008 — tent lamp turned down to 12, red station light through the flap (station_red). Backpack on the floor at the cot's head end (it covered his face in 22.01 when on the cot).",
+ "cast": {
+  "Artyom": {
+   "height": 1.78
+  },
+  "Sukhoi": {
+   "height": 1.76
+  }
+ },
+ "names": {
+  "Artyom": "Artyom",
+  "Sukhoi": "Sukhoi"
+ },
+ "props": {
+  "papers": {
+   "type": "block",
+   "size": [
+    0.35,
+    0.25,
+    0.03
+   ],
+   "color": [
+    0.95,
+    0.92,
+    0.85
+   ],
+   "loc": [
+    0.15,
+    0.75,
+    0.74
+   ]
+  },
+  "map_case": {
+   "type": "block",
+   "size": [
+    0.3,
+    0.05,
+    0.25
+   ],
+   "color": [
+    0.35,
+    0.22,
+    0.12
+   ],
+   "attach": "Sukhoi.hand_L",
+   "loc": [
+    0,
+    0.05,
+    -0.2
+   ]
+  },
+  "backpack": {
+   "type": "block",
+   "size": [
+    0.35,
+    0.25,
+    0.45
+   ],
+   "color": [
+    0.32,
+    0.38,
+    0.22
+   ],
+   "loc": [
+    0.6,
+    -0.55,
+    0.0
+   ]
+  },
+  "cartridge_neck": {
+   "type": "block",
+   "size": [
+    0.012,
+    0.012,
+    0.04
+   ],
+   "color": [
+    0.85,
+    0.65,
+    0.2
+   ],
+   "attach": "Artyom.chest",
+   "loc": [
+    0,
+    0.16,
+    0.42
+   ],
+   "hidden": true,
+   "note": "320: под свитером — внутри торса (r 0.183), не поверх"
+  },
+  "flashlight": {
+   "type": "block",
+   "size": [
+    0.05,
+    0.05,
+    0.18
+   ],
+   "color": [
+    0.2,
+    0.2,
+    0.22
+   ],
+   "attach": "Artyom.hand_R",
+   "loc": [
+    0,
+    0.03,
+    -0.12
+   ],
+   "hidden": true
+  },
+  "batteries": {
+   "type": "block",
+   "size": [
+    0.06,
+    0.08,
+    0.03
+   ],
+   "color": [
+    0.9,
+    0.75,
+    0.2
+   ],
+   "attach": "Artyom.hand_R",
+   "loc": [
+    0,
+    0.03,
+    -0.12
+   ],
+   "hidden": true
+  },
+  "food": {
+   "type": "block",
+   "size": [
+    0.16,
+    0.1,
+    0.1
+   ],
+   "color": [
+    0.8,
+    0.4,
+    0.3
+   ],
+   "attach": "Artyom.hand_R",
+   "loc": [
+    0,
+    0.03,
+    -0.12
+   ],
+   "hidden": true
+  },
+  "magazine": {
+   "type": "block",
+   "size": [
+    0.04,
+    0.08,
+    0.2
+   ],
+   "color": [
+    0.1,
+    0.1,
+    0.1
+   ],
+   "attach": "Artyom.hand_R",
+   "loc": [
+    0,
+    0.03,
+    -0.12
+   ],
+   "hidden": true
+  },
+  "passport": {
+   "type": "block",
+   "size": [
+    0.09,
+    0.012,
+    0.13
+   ],
+   "color": [
+    0.6,
+    0.1,
+    0.1
+   ],
+   "attach": "Artyom.hand_R",
+   "loc": [
+    0,
+    0.03,
+    -0.12
+   ],
+   "hidden": true
+  },
+  "metro_map": {
+   "type": "block",
+   "size": [
+    0.1,
+    0.005,
+    0.14
+   ],
+   "color": [
+    0.95,
+    0.95,
+    0.9
+   ],
+   "attach": "Artyom.hand_R",
+   "loc": [
+    0,
+    0.03,
+    -0.12
+   ],
+   "hidden": true
+  },
+  "cartridge": {
+   "type": "block",
+   "size": [
+    0.012,
+    0.012,
+    0.04
+   ],
+   "color": [
+    0.85,
+    0.65,
+    0.2
+   ],
+   "attach": "Artyom.hand_R",
+   "loc": [
+    0,
+    0.03,
+    -0.12
+   ],
+   "hidden": true
+  }
+ },
+ "events": [
+  {
+   "at": "22.01",
+   "do": "light",
+   "light": "tent_lamp",
+   "energy": 12
+  },
+  {
+   "at": "22.01",
+   "do": "place",
+   "actor": "Artyom",
+   "pos": [
+    1.15,
+    0.35,
+    0.5
+   ],
+   "facing": 180,
+   "pose": "fallen"
+  },
+  {
+   "at": "22.01",
+   "do": "place",
+   "actor": "Sukhoi",
+   "pos": [
+    0.55,
+    0.95
+   ],
+   "facing": 238,
+   "pose": "bend_over"
+  },
+  {
+   "at": "22.03",
+   "do": "look",
+   "actor": "Artyom",
+   "yaw": 50,
+   "dur": 0.8
+  },
+  {
+   "at": "22.06",
+   "do": "look",
+   "actor": "Artyom",
+   "yaw": 0,
+   "dt": 2.7,
+   "dur": 0.1
+  },
+  {
+   "at": "22.06",
+   "do": "move",
+   "actor": "Artyom",
+   "dt": 2.8,
+   "to": [
+    1.0,
+    0.3,
+    0
+   ],
+   "dur": 0.6,
+   "facing": 270,
+   "pose": "sit"
+  },
+  {
+   "at": "22.11",
+   "do": "turn",
+   "actor": "Sukhoi",
+   "facing": 145,
+   "dur": 0.6
+  },
+  {
+   "at": "22.11",
+   "do": "pose",
+   "actor": "Sukhoi",
+   "pose": "stand",
+   "dur": 0.4
+  },
+  {
+   "at": "22.13",
+   "do": "pose",
+   "actor": "Sukhoi",
+   "pose": "wave",
+   "dur": 0.3
+  },
+  {
+   "at": "22.13",
+   "do": "pose",
+   "actor": "Sukhoi",
+   "pose": "stand",
+   "dt": 1.0,
+   "dur": 0.4
+  },
+  {
+   "at": "22.14",
+   "do": "walk",
+   "actor": "Sukhoi",
+   "to": [
+    -0.6,
+    1.15
+   ],
+   "speed": 1.0
+  },
+  {
+   "at": "22.14",
+   "dt": 1.3,
+   "do": "walk",
+   "actor": "Sukhoi",
+   "to": [
+    -0.6,
+    -0.05
+   ],
+   "speed": 1.0
+  },
+  {
+   "at": "22.14",
+   "dt": 2.6,
+   "do": "walk",
+   "actor": "Sukhoi",
+   "to": [
+    0.0,
+    -0.4
+   ],
+   "facing": 60,
+   "speed": 1.0,
+   "pose_after": "sit"
+  },
+  {
+   "at": "22.16",
+   "do": "pose",
+   "actor": "Sukhoi",
+   "pose": "sit_feed",
+   "dur": 0.5
+  },
+  {
+   "at": "22.17",
+   "do": "walk",
+   "actor": "Sukhoi",
+   "to": [
+    -0.6,
+    -0.05
+   ],
+   "speed": 1.0
+  },
+  {
+   "at": "22.17",
+   "dt": 1.3,
+   "do": "walk",
+   "actor": "Sukhoi",
+   "to": [
+    -0.6,
+    1.15
+   ],
+   "speed": 1.0
+  },
+  {
+   "at": "22.17",
+   "dt": 2.6,
+   "do": "walk",
+   "actor": "Sukhoi",
+   "to": [
+    0.55,
+    0.95
+   ],
+   "facing": 238,
+   "speed": 1.0,
+   "pose_after": "bend_over"
+  },
+  {
+   "at": "22.18",
+   "do": "turn",
+   "actor": "Artyom",
+   "facing": 230,
+   "dur": 0.5
+  },
+  {
+   "at": "22.18",
+   "do": "pose",
+   "actor": "Artyom",
+   "pose": "sit_pour",
+   "dur": 0.5
+  },
+  {
+   "at": "22.19",
+   "do": "show",
+   "prop": "flashlight"
+  },
+  {
+   "at": "22.20",
+   "do": "hide",
+   "prop": "flashlight"
+  },
+  {
+   "at": "22.20",
+   "do": "show",
+   "prop": "batteries"
+  },
+  {
+   "at": "22.21",
+   "do": "hide",
+   "prop": "batteries"
+  },
+  {
+   "at": "22.21",
+   "do": "show",
+   "prop": "food"
+  },
+  {
+   "at": "22.22",
+   "do": "hide",
+   "prop": "food"
+  },
+  {
+   "at": "22.22",
+   "do": "show",
+   "prop": "magazine"
+  },
+  {
+   "at": "22.23",
+   "do": "hide",
+   "prop": "magazine"
+  },
+  {
+   "at": "22.23",
+   "do": "show",
+   "prop": "passport"
+  },
+  {
+   "at": "22.24",
+   "do": "hide",
+   "prop": "passport"
+  },
+  {
+   "at": "22.24",
+   "do": "show",
+   "prop": "metro_map"
+  },
+  {
+   "at": "22.25",
+   "do": "hide",
+   "prop": "metro_map"
+  },
+  {
+   "at": "22.25",
+   "do": "show",
+   "prop": "cartridge"
+  },
+  {
+   "at": "22.26",
+   "do": "hide",
+   "prop": "cartridge"
+  },
+  {
+   "at": "22.26",
+   "do": "pose",
+   "actor": "Artyom",
+   "pose": "sit_mug",
+   "dur": 0.6
+  },
+  {
+   "at": "22.26",
+   "do": "show",
+   "prop": "cartridge_neck",
+   "dt": 1.2
+  }
+ ],
+ "cams": {
+  "22.01": {
+   "pos": [
+    0.85,
+    0.95,
+    1.85
+   ],
+   "at": "Artyom.eyes",
+   "lens": 32
+  },
+  "22.02": {
+   "pos": [
+    0.2,
+    1.4,
+    0.85
+   ],
+   "at": "Artyom.eyes",
+   "lens": 40
+  },
+  "22.03": {
+   "pos": [
+    0.55,
+    -0.35,
+    1.2
+   ],
+   "at": "Artyom.eyes",
+   "lens": 40
+  },
+  "22.04": {
+   "pos": [
+    1.15,
+    1.0,
+    0.95
+   ],
+   "at": [
+    -0.0,
+    -2.0,
+    1.0
+   ],
+   "lens": 24
+  },
+  "22.09": {
+   "pos": [
+    -0.3,
+    -1.9,
+    1.8
+   ],
+   "at": [
+    0.4,
+    0.8,
+    0.7
+   ],
+   "lens": 18
+  },
+  "22.05": {
+   "pos": [
+    1.25,
+    0.2,
+    1.55
+   ],
+   "at": "Sukhoi.torso",
+   "lens": 24
+  },
+  "22.11": {
+   "pos": [
+    0.3,
+    -0.5,
+    1.5
+   ],
+   "at": [
+    0.55,
+    0.95,
+    1.3
+   ],
+   "lens": 26
+  },
+  "22.13": {
+   "pos": [
+    0.3,
+    -0.6,
+    1.5
+   ],
+   "at": [
+    0.55,
+    0.95,
+    1.4
+   ],
+   "lens": 24
+  },
+  "22.19": {
+   "pos": [
+    0.45,
+    -0.55,
+    1.1
+   ],
+   "at": "Artyom.hand_R",
+   "lens": 50
+  },
+  "22.21": {
+   "pos": [
+    0.45,
+    -0.55,
+    1.1
+   ],
+   "at": "Artyom.hand_R",
+   "lens": 50
+  },
+  "22.23": {
+   "pos": [
+    0.45,
+    -0.55,
+    1.1
+   ],
+   "at": "Artyom.hand_R",
+   "lens": 50
+  },
+  "22.15": {
+   "pos": [
+    0.95,
+    -1.45,
+    1.45
+   ],
+   "at": [
+    -0.35,
+    -0.15,
+    1.0
+   ],
+   "lens": 22
+  },
+  "22.16": {
+   "pos": [
+    0.85,
+    -0.05,
+    1.35
+   ],
+   "at": [
+    -0.0,
+    -0.4,
+    1.0
+   ],
+   "lens": 26
+  },
+  "22.14": {
+   "pos": [
+    0.35,
+    -0.15,
+    1.3
+   ],
+   "at": "Artyom.eyes",
+   "lens": 40
+  },
+  "22.26": {
+   "pos": [
+    0.2,
+    -0.5,
+    1.3
+   ],
+   "at": "Artyom.eyes",
+   "lens": 40
+  },
+  "22.20": {
+   "pos": [
+    0.45,
+    -0.55,
+    1.1
+   ],
+   "at": "Artyom.hand_R",
+   "lens": 50
+  },
+  "22.22": {
+   "pos": [
+    0.45,
+    -0.55,
+    1.1
+   ],
+   "at": "Artyom.hand_R",
+   "lens": 50
+  },
+  "22.24": {
+   "pos": [
+    0.45,
+    -0.55,
+    1.1
+   ],
+   "at": "Artyom.hand_R",
+   "lens": 50
+  },
+  "22.25": {
+   "pos": [
+    0.45,
+    -0.55,
+    1.1
+   ],
+   "at": "Artyom.hand_R",
+   "lens": 50
+  },
+  "22.06": {
+   "pos": [
+    0.35,
+    -0.45,
+    1.55
+   ],
+   "at": "Sukhoi.torso",
+   "lens": 28
+  },
+  "22.18": {
+   "side": 1
+  },
+  "22.12": {
+   "side": -1
+  }
+ },
+ "lights": {
+  "station_red": {
+   "type": "POINT",
+   "attach": "tent_front_L",
+   "loc": [
+    0.833,
+    -20.0,
+    0.2
+   ],
+   "energy": 250,
+   "color": [
+    1.0,
+    0.18,
+    0.1
+   ]
+  }
+ }
+}

@@ -973,11 +973,23 @@
    "actor": "Artyom",
    "do": "walk",
    "to": [
+    0.05,
+    0.25
+   ],
+   "speed": 1.4,
+   "note": "round crate_0 (-0.35,0.82) on the south side"
+  },
+  {
+   "at": "1.38",
+   "dt": 1.4,
+   "actor": "Artyom",
+   "do": "walk",
+   "to": [
     0.4,
     1.05
    ],
    "facing": 45,
-   "speed": 1.0,
+   "speed": 1.4,
    "pose_after": "offer"
   },
   {
@@ -1045,11 +1057,23 @@
    "actor": "Artyom",
    "do": "walk",
    "to": [
+    0.05,
+    0.25
+   ],
+   "speed": 1.4,
+   "note": "back round crate_0"
+  },
+  {
+   "at": "1.39",
+   "dt": 1.4,
+   "actor": "Artyom",
+   "do": "walk",
+   "to": [
     -0.55,
     0.55
    ],
    "facing": 234,
-   "speed": 1.0,
+   "speed": 1.4,
    "pose_after": "stand"
   },
   {
@@ -1115,11 +1139,11 @@
   },
   {
    "at": "1.39",
-   "dt": 2.0,
+   "dt": 2.7,
    "actor": "Artyom",
    "do": "pose",
    "pose": "sit_rifle",
-   "dur": 0.6
+   "dur": 0.3
   }
  ]
 }

@@ -222,11 +222,15 @@ def auto_camera(c, f0):
 
     base = math.atan2(d.y, d.x)
     best = None
-    for off in (0, -2 * 35 * c.get("side", 1), 35, -35, 70, -70, 10, -10):  # first choice, then alternatives
+    sd = c.get("side", 1)
+    # alternatives stay on the same side of the line of action (180-degree rule): never swing across the axis
+    for off in (0, 15 * sd, -15 * sd, 30 * sd, -25 * sd, 45 * sd):
         a = base + math.radians(off) if off else base
         cand = Vector((math.cos(a), math.sin(a), dz))
         pos, clear, free = place(cand)
         if clear:
+            if off:
+                print(f"AUTOCAM {c.get('subject')} frame {f0}: first angle blocked, took {off:+d} deg", flush=True)
             return pos, tgt, c.get("lens", lens)
         if best is None or free > best[1]:
             best = (cand, free)
@@ -248,6 +252,19 @@ for s in spec["shots"]:
             cam.keyframe_insert("location", frame=f0)
             cam.location = pos + (tgt - pos) * c["push"]
             cam.keyframe_insert("location", frame=f1)
+        cams[s["id"]] = (cam, f0, f1)
+        continue
+    if "attach" in c:  # camera riding on a prop or a person (e.g. on the handcar), always aimed at "at"
+        cam = kit.camera(f"cam_{s['id']}", (0, 0, 0), (0, 1, 0), c.get("lens", 35))
+        kit.attach(cam, bpy.data.objects[c["attach"]], c.get("loc", (0, 0, 0)))
+        if isinstance(c["at"], str):
+            aim = bpy.data.objects[c["at"]]
+        else:
+            aim = bpy.data.objects.new(f"cam_{s['id']}_aim", None)
+            bpy.context.scene.collection.objects.link(aim)
+            aim.location = c["at"]
+        tr = cam.constraints.new("TRACK_TO")
+        tr.target, tr.track_axis, tr.up_axis = aim, "TRACK_NEGATIVE_Z", "UP_Y"
         cams[s["id"]] = (cam, f0, f1)
         continue
     tgt = point(c["at"], f0)

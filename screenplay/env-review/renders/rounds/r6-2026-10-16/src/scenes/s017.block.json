@@ -1,0 +1,474 @@
+{
+ "id": "s017",
+ "location": "sukhoi_tent",
+ "note": "Sukhoi on the seat crate (0,-0.42) facing 57; Hunter (no coat) sits on the east cot edge at (1.05,0.25) facing 237: 1.25 m apart so the knees do not meet; Artyom sits on the floor by the entrance (sit pose sunk 0.3 m into the floor: no floor-sitting pose). Side crate at (0.25,-0.95) takes Sukhoi's mug in 17.18. At 17.31 Hunter is swapped for HunterCoat (same role, coat on) who walks out. Hunter stands at (0.75,-0.85) after getting up. 17.26: he rises stepping off the cot toward the ridge (0.55, 0.0), so his head stays under the canvas (roof ~2.05 there, height 1.95).",
+ "cast": {
+  "Artyom": {
+   "height": 1.78
+  },
+  "Sukhoi": {
+   "height": 1.75
+  },
+  "Hunter": {
+   "height": 1.95,
+   "coat": false
+  },
+  "HunterCoat": {
+   "height": 1.95,
+   "coat": true,
+   "role": "Hunter"
+  }
+ },
+ "names": {
+  "Artyom": "Artyom",
+  "Sukhoi": "Sukhoi",
+  "Hunter": "Hunter"
+ },
+ "crates": [],
+ "props": {
+  "mug_sukhoi": {
+   "type": "mug",
+   "attach": "Sukhoi.hand_R",
+   "loc": [
+    0,
+    0.02,
+    -0.1
+   ]
+  },
+  "mug_hunter": {
+   "type": "mug",
+   "attach": "Hunter.hand_R",
+   "loc": [
+    0,
+    0.02,
+    -0.1
+   ]
+  },
+  "mug_artyom": {
+   "type": "mug",
+   "attach": "Artyom.hand_R",
+   "loc": [
+    0,
+    0.02,
+    -0.1
+   ]
+  },
+  "mug_on_crate": {
+   "type": "mug",
+   "loc": [
+    0.25,
+    0.38,
+    0.725
+   ],
+   "hidden": true
+  }
+ },
+ "events": [
+  {
+   "at": "17.01",
+   "actor": "Sukhoi",
+   "do": "place",
+   "pos": [
+    0.0,
+    -0.42
+   ],
+   "facing": 57,
+   "pose": "sit_mug"
+  },
+  {
+   "at": "17.01",
+   "actor": "Hunter",
+   "do": "place",
+   "pos": [
+    1.05,
+    0.25
+   ],
+   "facing": 237,
+   "pose": "sit_mug"
+  },
+  {
+   "at": "17.01",
+   "actor": "Artyom",
+   "do": "place",
+   "pos": [
+    -0.3,
+    -1.55,
+    -0.3
+   ],
+   "facing": 30,
+   "pose": "sit_mug"
+  },
+  {
+   "at": "17.01",
+   "actor": "Hunter",
+   "do": "show"
+  },
+  {
+   "at": "17.01",
+   "actor": "HunterCoat",
+   "do": "hide"
+  },
+  {
+   "at": "17.01",
+   "actor": "HunterCoat",
+   "do": "place",
+   "pos": [
+    0.45,
+    -0.55
+   ],
+   "facing": 310,
+   "pose": "stand"
+  },
+  {
+   "at": "17.07",
+   "actor": "Sukhoi",
+   "do": "pose",
+   "pose": "sit_feed",
+   "dur": 0.5
+  },
+  {
+   "at": "17.12",
+   "actor": "Artyom",
+   "do": "look",
+   "yaw": 15
+  },
+  {
+   "at": "17.12",
+   "dt": 1.5,
+   "actor": "Artyom",
+   "do": "look",
+   "yaw": 0
+  },
+  {
+   "at": "17.15",
+   "actor": "Sukhoi",
+   "do": "pose",
+   "pose": "sit_feed",
+   "dur": 0.5
+  },
+  {
+   "at": "17.18",
+   "actor": "Sukhoi",
+   "do": "pose",
+   "pose": "sit_pour",
+   "dur": 0.6
+  },
+  {
+   "at": "17.18",
+   "dt": 1.0,
+   "do": "hide",
+   "prop": "mug_sukhoi"
+  },
+  {
+   "at": "17.18",
+   "dt": 1.0,
+   "do": "show",
+   "prop": "mug_on_crate"
+  },
+  {
+   "at": "17.20",
+   "actor": "Sukhoi",
+   "do": "pose",
+   "pose": "sit",
+   "dur": 0.5
+  },
+  {
+   "at": "17.25",
+   "actor": "Sukhoi",
+   "do": "look",
+   "yaw": -20
+  },
+  {
+   "at": "17.26",
+   "do": "hide",
+   "prop": "mug_hunter"
+  },
+  {
+   "at": "17.26",
+   "actor": "Hunter",
+   "do": "move",
+   "to": [
+    0.55,
+    0.0
+   ],
+   "dur": 0.6,
+   "facing": 237,
+   "pose": "stand"
+  },
+  {
+   "at": "17.26",
+   "dt": 0.7,
+   "actor": "Hunter",
+   "do": "walk",
+   "to": [
+    0.45,
+    -0.55
+   ],
+   "facing": 310,
+   "speed": 1.0
+  },
+  {
+   "at": "17.29",
+   "actor": "Sukhoi",
+   "do": "look",
+   "yaw": 49
+  },
+  {
+   "at": "17.31",
+   "actor": "Hunter",
+   "do": "hide"
+  },
+  {
+   "at": "17.31",
+   "actor": "HunterCoat",
+   "do": "show"
+  },
+  {
+   "at": "17.31",
+   "dt": 0.3,
+   "actor": "HunterCoat",
+   "do": "walk",
+   "to": [
+    0.2,
+    -1.8
+   ],
+   "speed": 1.2,
+   "facing": 180
+  },
+  {
+   "at": "17.31",
+   "dt": 1.0,
+   "actor": "Artyom",
+   "do": "turn",
+   "facing": 120,
+   "dur": 0.6
+  },
+  {
+   "at": "17.32",
+   "dt": 0.5,
+   "actor": "HunterCoat",
+   "do": "look",
+   "yaw": 90,
+   "dur": 0.4
+  },
+  {
+   "at": "17.08",
+   "actor": "Sukhoi",
+   "do": "pose",
+   "pose": "sit_tap_temple",
+   "dur": 0.4
+  },
+  {
+   "at": "17.08",
+   "do": "hide",
+   "prop": "mug_sukhoi"
+  },
+  {
+   "at": "17.09",
+   "do": "show",
+   "prop": "mug_sukhoi"
+  },
+  {
+   "at": "17.09",
+   "actor": "Sukhoi",
+   "do": "pose",
+   "pose": "sit_mug",
+   "dur": 0.3
+  },
+  {
+   "at": "17.27",
+   "dt": 3.0,
+   "actor": "Sukhoi",
+   "do": "look",
+   "yaw": 49,
+   "dur": 0.4
+  }
+ ],
+ "cams": {
+  "17.01": {
+   "pos": [
+    0.6,
+    -1.95,
+    0.35
+   ],
+   "at": [
+    0.1,
+    0.4,
+    0.75
+   ],
+   "lens": 16
+  },
+  "17.02": {
+   "pos": [
+    0.35,
+    -1.0,
+    1.25
+   ],
+   "at": [
+    0.5,
+    -0.1,
+    0.8
+   ],
+   "lens": 24
+  },
+  "17.03": {
+   "pos": [
+    -0.25,
+    -0.75,
+    1.4
+   ],
+   "at": "Hunter.eyes",
+   "lens": 28
+  },
+  "17.15": {
+   "pos": [
+    0.55,
+    -1.5,
+    1.3
+   ],
+   "at": [
+    0.5,
+    -0.1,
+    1.0
+   ],
+   "lens": 22
+  },
+  "17.18": {
+   "auto": "detail",
+   "subject": "Sukhoi",
+   "joint": "hand_R",
+   "lens": 35,
+   "side": -1
+  },
+  "17.28": {
+   "pos": [
+    0.23,
+    -1.3,
+    1.35
+   ],
+   "at": "Sukhoi.eyes",
+   "lens": 50
+  },
+  "17.31": {
+   "pos": [
+    -0.75,
+    -1.3,
+    1.5
+   ],
+   "at": "HunterCoat.torso",
+   "lens": 24
+  },
+  "17.32": {
+   "pos": [
+    -0.6,
+    -0.6,
+    0.7
+   ],
+   "at": "HunterCoat.eyes",
+   "lens": 24
+  },
+  "17.10": {
+   "side": 1
+  },
+  "17.30": {
+   "pos": [
+    -0.35,
+    -1.05,
+    1.25
+   ],
+   "at": "Hunter.eyes",
+   "lens": 40
+  },
+  "17.08": {
+   "pos": [
+    0.85,
+    -0.3,
+    1.3
+   ],
+   "at": "Sukhoi.eyes",
+   "lens": 30
+  },
+  "17.07": {
+   "pos": [
+    0.9,
+    -0.75,
+    1.25
+   ],
+   "at": [
+    0.0,
+    -0.42,
+    1.0
+   ],
+   "lens": 20
+  },
+  "17.13": {
+   "side": 1
+  },
+  "17.16": {
+   "side": 1
+  },
+  "17.23": {
+   "side": 1
+  },
+  "17.24": {
+   "side": 1
+  },
+  "17.26": {
+   "side": 1
+  },
+  "17.14": {
+   "side": -1
+  },
+  "17.17": {
+   "side": -1
+  },
+  "17.20": {
+   "side": -1
+  },
+  "17.21": {
+   "side": -1
+  },
+  "17.22": {
+   "side": -1
+  },
+  "17.25": {
+   "side": -1
+  },
+  "17.12": {
+   "pos": [
+    0.58,
+    -1.2,
+    1.35
+   ],
+   "at": "Artyom.eyes",
+   "lens": 50
+  },
+  "17.19": {
+   "pos": [
+    0.58,
+    -1.2,
+    1.35
+   ],
+   "at": "Artyom.eyes",
+   "lens": 50
+  },
+  "17.29": {
+   "pos": [
+    0.23,
+    -1.3,
+    1.35
+   ],
+   "at": "Sukhoi.eyes",
+   "lens": 50
+  },
+  "17.27": {
+   "pos": [
+    -0.6,
+    -1.0,
+    0.9
+   ],
+   "at": "Hunter.torso",
+   "lens": 24
+  }
+ }
+}

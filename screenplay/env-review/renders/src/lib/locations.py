@@ -621,7 +621,7 @@ def botanical():
     box((5.5, 0.5, 4.3), (0, 85.6, PLAT_H + 6.6), mat("blast_door", (0.12, 0.12, 0.11), flat=(0.40, 0.42, 0.40), rough=0.5, metal=0.7), name="blast_door")  # raised: open
     box((0.08, 0.08, 0.9), (3.2, 83.4, PLAT_H + 0.9), rust, rot=(math.radians(25), 0, 0), name="lever")  # beside the doors, wrapped in wire
     # T-handle at the top of the lever: wide enough for three children's hands side by side (scene 9, 9.17)
-    box((0.9, 0.06, 0.06), (3.2, 83.4 - 0.45 * math.sin(math.radians(25)), PLAT_H + 0.9 + 0.45 * math.cos(math.radians(25))), rust, name="lever_bar")
+    box((1.4, 0.06, 0.06), (3.05, 83.40, PLAT_H + 0.98), rust, name="lever_bar")  # at the children's hands (critic, round 5)
     box((5.6, 2.6, 0.3), (0, 85.9, PLAT_H - 0.15), mat("granite_floor", (0.20, 0.14, 0.12), flat=(0.55, 0.42, 0.38), rough=0.5),
         name="escalator_landing")  # floor from the doors to the first step (the shaft bottom lies below it)
     steps = mat("rotten_steps", (0.08, 0.06, 0.05), flat=(0.35, 0.28, 0.20))
@@ -632,6 +632,9 @@ def botanical():
             cyl(0.3, 1.2, (0, y, z - 0.45), gear, rot=(0, math.pi / 2, 0), verts=16, name="esc_gear")
             continue
         box((1.4, 0.4, 0.06), (0, y, z), steps, name="esc_step")
+    # escalator truss under the steps: a solid body along the incline, so the gaps show gears, not a void (307)
+    box((1.5, 16.0, 0.9), (0, 86.5 + 7.0, PLAT_H + 0.2 + 4.0 - 0.75), mat("esc_truss", (0.05, 0.045, 0.04), flat=(0.25, 0.23, 0.2)),
+        rot=(math.radians(29.7), 0, 0), name="esc_truss")
     for sx in (-1, 1):  # balustrades along the incline
         box((0.12, 16.0, 0.9), (sx * 0.8, 86.5 + 7.0, PLAT_H + 0.2 + 4.0 + 0.5), rust, rot=(math.radians(29.7), 0, 0), name="esc_balustrade")
     bpy.ops.mesh.primitive_cylinder_add(radius=2.2, depth=17, location=(0, 93.5, PLAT_H + 4.2), rotation=(math.radians(-60), 0, 0),

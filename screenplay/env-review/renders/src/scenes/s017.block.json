@@ -24,13 +24,7 @@
   "Sukhoi": "Sukhoi",
   "Hunter": "Hunter"
  },
- "crates": [
-  [
-   -0.45,
-   -0.85,
-   0
-  ]
- ],
+ "crates": [],
  "props": {
   "mug_sukhoi": {
    "type": "mug",
@@ -62,9 +56,9 @@
   "mug_on_crate": {
    "type": "mug",
    "loc": [
-    -0.45,
-    -0.85,
-    0.42
+    0.25,
+    0.38,
+    0.725
    ],
    "hidden": true
   }
