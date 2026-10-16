@@ -295,6 +295,15 @@ if "--preview" in args:  # quick camera check: flat pass of each shot's first fr
         kit.render_pass("flat", os.path.join(pv, f"{s['id']}.png"))
     print("PREVIEW", len(shots), flush=True)
     sys.exit(0)
+if "--lit-first" in args:  # light check: lit pass of each shot's first frame only (cheap compared with full stills)
+    lf = os.path.join(out, "lit_first")
+    os.makedirs(lf, exist_ok=True)
+    for s in shots:
+        cam, f0, f1 = cams[s["id"]]
+        sc.camera = cam
+        sc.frame_set(f0)
+        kit.render_pass("lit", os.path.join(lf, f"{s['id']}_lit.png"))
+    print("LIT_FIRST", len(shots), flush=True)
 if "--no-stills" not in args:
     st = os.path.join(out, "stills")
     os.makedirs(st, exist_ok=True)
