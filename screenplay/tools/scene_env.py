@@ -26,7 +26,7 @@ from collections import OrderedDict
 HEADING = re.compile(r"^\.(ИНТ|НАТ)\.\s*(.+)$")
 TIME_OF_DAY = re.compile(
     r"«?(ДЕНЬ|НОЧЬ|УТРО|ВЕЧЕР|РАССВЕТ|РАННЕЕ УТРО|ПРЕДРАССВЕТНОЕ ВРЕМЯ|ПОЗЖЕ|"
-    r"ПРОДОЛЖЕНИЕ|НЕПРЕРЫВНО|СОН|ВИДЕНИЕ|ВСПЫШКА|РАНЬШЕ)»?"
+    r"ПРОДОЛЖЕНИЕ|НЕПРЕРЫВНО|СОН|ВИДЕНИЕ|ВСПЫШКА|РАНЬШЕ|ДНИ|НЕДЕЛИ)»?"
 )
 CLOCK = re.compile(r"\b([01]?\d|2[0-3]):[0-5]\d\b")
 CLOCK_WORDS = re.compile(
@@ -88,7 +88,9 @@ def split_heading(heading):
     times = []
     place = []
     for p in parts:
-        if TIME_OF_DAY.fullmatch(p.split(" (")[0].strip()):
+        head = p.split(" (")[0].strip()
+        # «5:45 УТРА», «23:40», «В ПОЛНОЧЬ» — тоже время, а не часть места.
+        if TIME_OF_DAY.fullmatch(head) or CLOCK.search(head) or re.search(r"\b(УТРА|ВЕЧЕРА|НОЧИ|ДНЯ)$", head):
             times.append(p)
         else:
             place.append(p)
@@ -137,6 +139,9 @@ STATIONS = [
     ("ЧЕХОВСК", "ЧЕХОВСКАЯ"), ("ПАВЕЛЕЦК", "ПАВЕЛЕЦКАЯ"), ("САВЕЛОВСК", "САВЕЛОВСКАЯ"),
     ("ТИМИРЯЗЕВСК", "ТИМИРЯЗЕВСКАЯ"), ("БОТАНИЧЕСК", "БОТАНИЧЕСКИЙ САД"),
     ("ДМИТРОВСК", "ДМИТРОВСКАЯ"), ("ТРЕТЬЯКОВСК", "ТРЕТЬЯКОВСКАЯ"), ("ТАГАНСК", "ТАГАНСКАЯ"),
+    ("ДОБРЫНИНСК", "ДОБРЫНИНСКАЯ"), ("СЕРПУХОВСК", "СЕРПУХОВСКАЯ"), ("ПОЛЯНК", "ПОЛЯНКА"),
+    ("БОРОВИЦК", "БОРОВИЦКАЯ"), ("ТУЛЬСК", "ТУЛЬСКАЯ"), ("ТЕАТРАЛЬН", "ТЕАТРАЛЬНАЯ"),
+    ("НОВОКУЗНЕЦК", "НОВОКУЗНЕЦКАЯ"), ("АРБАТСК", "АРБАТСКАЯ"), ("БИБЛИОТЕК", "БИБЛИОТЕКА ИМЕНИ ЛЕНИНА"),
 ]
 
 
@@ -149,19 +154,25 @@ def stations_in(text):
     return [n for _, n in sorted(found)]
 
 
-def place_key(place, last_tunnel):
+def place_key(place, last_tunnel, prev_key=None):
     """Ключ места для сводки. Перегоны не сливаются со станциями:
-    «ПЕРЕГОН АЛЕКСЕЕВСКАЯ — РИЖСКАЯ» → «ПЕРЕГОН АЛЕКСЕЕВСКАЯ — РИЖСКАЯ»,
-    «ТУННЕЛЬ К ПРОСПЕКТУ МИРА» и «ПЕРЕГОН — ДАЛЬШЕ» — продолжение последнего
-    перегона, если он ведёт к той же станции (или станция не названа)."""
+    «ПЕРЕГОН АЛЕКСЕЕВСКАЯ — РИЖСКАЯ» → «ПЕРЕГОН АЛЕКСЕЕВСКАЯ — РИЖСКАЯ».
+    «ТУННЕЛЬ К ПРОСПЕКТУ МИРА» и «ПЕРЕГОН — ДАЛЬШЕ» — продолжение перегона,
+    только если предыдущая сцена шла в нём же и станция совпадает (или не названа);
+    иначе это новый туннель. «ПЕРЕХОД — …» сразу после перехода — тот же переход."""
+    first = place.split(" — ")[0]
+    if first == "ПЕРЕХОД" and prev_key and prev_key.startswith("ПЕРЕХОД"):
+        return prev_key
     if not re.match(r"^(ТУННЕЛЬ|ПЕРЕГОН)\b", place):
-        return base_place(place)
+        return re.sub(r"\s*\(РАДИАЛЬНАЯ\)", "", base_place(place))
     st = stations_in(place)
     if len(st) >= 2:
         return f"ПЕРЕГОН {st[0]} — {st[1]}"
-    if last_tunnel and (not st or st[0] in last_tunnel):
+    if last_tunnel and prev_key == last_tunnel and (not st or st[0] in last_tunnel):
         return last_tunnel
-    return place.split(" — ")[0]
+    if first in ("ТУННЕЛЬ", "ПЕРЕГОН"):
+        return place  # безымянный туннель — отдельное место со своим описанием
+    return first
 
 
 # Места, у которых в заголовке нет станции, но модель — часть станции.
@@ -172,6 +183,9 @@ PARENT = {
     "СЕВЕРНЫЙ КОРДОН ВДНХ": "ВДНХ",
     "СЕВЕРНЫЙ ТУННЕЛЬ ВДНХ": "ВДНХ",
     "ВЕСТИБЮЛЬ БОТАНИЧЕСКОГО САДА": "БОТАНИЧЕСКИЙ САД",
+    "СТОРОЖЕВАЯ БАШНЯ": "ТУННЕЛЬ ЗА СЕРПУХОВСКОЙ",
+    "ПОЛИС": "БОРОВИЦКАЯ",
+    "ПЕРЕХОД НА КОЛЬЦЕВУЮ": "ПАВЕЛЕЦКАЯ",
 }
 
 
@@ -196,12 +210,13 @@ def render(scenes, wanted, src):
     last_time = "не указано"
     before_insert = "не указано"
     prev_place = None
+    prev_real_place = None  # место последней сцены, не считая вставок
     last_tunnel = None
     by_place = {}
     seen_present = set()
     for sc in scenes:
         place, tod = split_heading(sc["heading"])
-        key = place_key(place, last_tunnel)
+        key = place_key(place, last_tunnel, prev_real_place)
         if key.startswith(("ПЕРЕГОН", "ТУННЕЛЬ")):
             last_tunnel = key
         if tod.startswith(("ПРОДОЛЖЕНИЕ", "НЕПРЕРЫВНО")):
@@ -227,6 +242,8 @@ def render(scenes, wanted, src):
         last_time = real
         prev_place = key
         if not is_insert(real):
+            prev_real_place = key
+        if not is_insert(real):
             by_place[key] = real
         if not is_flashback(real) and not is_insert(real):
             seen_present.add(key)
@@ -238,7 +255,8 @@ def render(scenes, wanted, src):
         out.append(f"- Строка в сценарии: {sc['line']}")
         out.append(f"- Место: {sc['place']}")
         out.append(f"- Время суток: {sc['tod']}")
-        clocks = sorted({m.group(0) for _, l in sc["action"] for m in CLOCK.finditer(l)})
+        clocks = sorted({m.group(0) for _, l in sc["action"] for m in CLOCK.finditer(l)}
+                        | {m.group(0) for m in CLOCK.finditer(sc["heading"])})
         if clocks:
             out.append(f"- **Точное время в кадре: {', '.join(clocks)}** — часы на модели должны показывать именно это")
         spoken = [m.group(0) for _, l in sc["action"] for m in CLOCK_WORDS.finditer(l)]
