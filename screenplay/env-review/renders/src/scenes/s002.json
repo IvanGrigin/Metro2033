@@ -761,7 +761,7 @@
     "attach": "handcar",
     "loc": [
      -1.6,
-     1.4,
+     -1.4,
      2.5
     ],
     "at": "ArtyomChild.eyes",
