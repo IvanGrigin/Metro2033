@@ -1,7 +1,7 @@
 {
  "id": "s022",
  "location": "sukhoi_tent",
- "note": "Artyom on the west cot (x=-1.15), head to the back wall; Sukhoi bends over the table at (-0.55,0.95) facing 122, packing papers into his map case, back to Artyom; sits on the seat crate (0,-0.4) in 22.15-22.16; waves in 22.13.",
+ "note": "Artyom on the east cot (x=1.15) as in scenes 8, 13, 14, 16, head to the back wall; Sukhoi bends over the table at (0.55,0.95) facing 238, packing papers into his map case, back to Artyom; sits on the seat crate (0,-0.4) in 22.15-22.16; waves in 22.13. (Blocking mirrored from the former west-cot version; the tent is symmetric.) Morning (screenplay: УТРО): lights as in s008 — tent lamp turned down to 12, red station light through the flap (station_red). Backpack on the floor at the cot's head end (it covered his face in 22.01 when on the cot).",
  "cast": {
   "Artyom": {
    "height": 1.78
@@ -28,7 +28,7 @@
     0.85
    ],
    "loc": [
-    -0.15,
+    0.15,
     0.75,
     0.74
    ]
@@ -65,9 +65,9 @@
     0.22
    ],
    "loc": [
-    -1.3,
-    1.05,
-    0.46
+    1.15,
+    1.55,
+    0.0
    ]
   },
   "cartridge_neck": {
@@ -234,10 +234,16 @@
  "events": [
   {
    "at": "22.01",
+   "do": "light",
+   "light": "tent_lamp",
+   "energy": 12
+  },
+  {
+   "at": "22.01",
    "do": "place",
    "actor": "Artyom",
    "pos": [
-    -1.15,
+    1.15,
     0.35,
     0.5
    ],
@@ -249,17 +255,17 @@
    "do": "place",
    "actor": "Sukhoi",
    "pos": [
-    -0.55,
+    0.55,
     0.95
    ],
-   "facing": 122,
+   "facing": 238,
    "pose": "bend_over"
   },
   {
    "at": "22.03",
    "do": "look",
    "actor": "Artyom",
-   "yaw": -50,
+   "yaw": 50,
    "dur": 0.8
   },
   {
@@ -276,19 +282,19 @@
    "actor": "Artyom",
    "dt": 2.8,
    "to": [
-    -1.0,
+    1.0,
     0.3,
     0
    ],
    "dur": 0.6,
-   "facing": 90,
+   "facing": 270,
    "pose": "sit"
   },
   {
    "at": "22.11",
    "do": "turn",
    "actor": "Sukhoi",
-   "facing": 215,
+   "facing": 145,
    "dur": 0.6
   },
   {
@@ -318,10 +324,10 @@
    "do": "walk",
    "actor": "Sukhoi",
    "to": [
-    0.0,
+    -0.0,
     -0.4
    ],
-   "facing": 300,
+   "facing": 60,
    "speed": 1.0,
    "pose_after": "sit"
   },
@@ -337,10 +343,10 @@
    "do": "walk",
    "actor": "Sukhoi",
    "to": [
-    -0.55,
+    0.55,
     0.95
    ],
-   "facing": 122,
+   "facing": 238,
    "speed": 1.0,
    "pose_after": "bend_over"
   },
@@ -445,7 +451,7 @@
  "cams": {
   "22.01": {
    "pos": [
-    -0.85,
+    0.85,
     0.95,
     1.85
    ],
@@ -454,7 +460,7 @@
   },
   "22.02": {
    "pos": [
-    -0.2,
+    0.2,
     1.4,
     0.85
    ],
@@ -463,7 +469,7 @@
   },
   "22.03": {
    "pos": [
-    -0.55,
+    0.55,
     -0.35,
     1.2
    ],
@@ -472,12 +478,12 @@
   },
   "22.04": {
    "pos": [
-    -1.15,
+    1.15,
     1.0,
     0.95
    ],
    "at": [
-    0.0,
+    -0.0,
     -2.0,
     1.0
    ],
@@ -485,12 +491,12 @@
   },
   "22.09": {
    "pos": [
-    0.3,
+    -0.3,
     -1.9,
     1.8
    ],
    "at": [
-    -0.4,
+    0.4,
     0.8,
     0.7
    ],
@@ -498,7 +504,7 @@
   },
   "22.05": {
    "pos": [
-    -1.25,
+    1.25,
     0.2,
     1.55
    ],
@@ -507,12 +513,12 @@
   },
   "22.11": {
    "pos": [
-    -0.3,
+    0.3,
     -0.5,
     1.5
    ],
    "at": [
-    -0.55,
+    0.55,
     0.95,
     1.3
    ],
@@ -520,12 +526,12 @@
   },
   "22.13": {
    "pos": [
-    -0.3,
+    0.3,
     -0.6,
     1.5
    ],
    "at": [
-    -0.55,
+    0.55,
     0.95,
     1.4
    ],
@@ -545,12 +551,12 @@
   },
   "22.15": {
    "pos": [
-    -0.6,
+    0.6,
     -0.2,
     1.25
    ],
    "at": [
-    0.0,
+    -0.0,
     -0.4,
     1.2
    ],
@@ -558,16 +564,33 @@
   },
   "22.16": {
    "pos": [
-    -0.85,
+    0.85,
     -0.05,
     1.35
    ],
    "at": [
-    0.0,
+    -0.0,
     -0.4,
     1.0
    ],
    "lens": 26
+  }
+ },
+ "lights": {
+  "station_red": {
+   "type": "POINT",
+   "attach": "tent_front_L",
+   "loc": [
+    0.833,
+    -20.0,
+    0.2
+   ],
+   "energy": 250,
+   "color": [
+    1.0,
+    0.18,
+    0.1
+   ]
   }
  }
 }

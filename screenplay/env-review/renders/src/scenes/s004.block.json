@@ -132,7 +132,7 @@
     -0.75
    ],
    "facing": 36,
-   "pose": "sit"
+   "pose": "sit_rifle_beside"
   },
   {
    "at": "4.01",
@@ -191,7 +191,7 @@
    "at": "4.04",
    "actor": "Pyotr",
    "do": "pose",
-   "pose": "sit_feed",
+   "pose": "sit_reach_rifle",
    "dur": 0.5
   },
   {
@@ -269,7 +269,7 @@
    "at": "4.13",
    "actor": "Pyotr",
    "do": "pose",
-   "pose": "sit",
+   "pose": "sit_rifle_beside",
    "dur": 0.5
   },
   {
@@ -501,9 +501,17 @@
    "lens": 24
   },
   "4.04": {
-   "auto": "med",
-   "subject": "Pyotr",
-   "side": -1
+   "pos": [
+    -2.2,
+    -1.75,
+    1.05
+   ],
+   "at": [
+    -1.45,
+    -0.95,
+    0.25
+   ],
+   "lens": 30
   },
   "4.07": {
    "at": "Andrei.eyes",

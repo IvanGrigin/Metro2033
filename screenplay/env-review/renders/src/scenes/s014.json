@@ -25,6 +25,16 @@
     0.05,
     -0.05
    ]
+  },
+  "dark_torch": {
+   "type": "lantern",
+   "attach": "DarkOne.hand_L",
+   "loc": [
+    0,
+    0.05,
+    -0.05
+   ],
+   "hidden": true
   }
  },
  "lights": {
@@ -61,11 +71,11 @@
   },
   "dark_face": {
    "type": "POINT",
-   "attach": "DarkOne.head",
+   "attach": "DarkOne.hand_L",
    "loc": [
     0,
-    0.45,
-    0.05
+    0.08,
+    -0.05
    ],
    "energy": 0,
    "color": [
@@ -205,6 +215,11 @@
    "at": "14.08",
    "actor": "DarkOne",
    "do": "hide"
+  },
+  {
+   "at": "14.07",
+   "do": "show",
+   "prop": "dark_torch"
   }
  ],
  "shots": [

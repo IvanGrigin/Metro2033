@@ -55,7 +55,7 @@ for name, c in spec["cast"].items():
     J = kit.person(name, c.get("height", 1.75), coat=c.get("coat", False), beret=c.get("beret", False), role=c.get("role"), costume=c.get("costume"))
     rifle = None
     if c.get("rifle"):
-        rifle = kit.attach(kit.rifle(f"{name}.rifle"), J["chest"], *kit.RIFLE_HOLD["lap"])
+        rifle = kit.attach(kit.rifle(f"{name}.rifle"), J["chest"], *kit.RIFLE_HOLD["sling"])
     actors[name] = kit.Actor(name, J, rifle)
     kit.key_visible(J["root"], 1, True)  # so a later 'hide' only hides from that moment on
 if spec["location"] == "vdnkh":  # ~200 people live here; at night most are inside their tents
@@ -248,6 +248,7 @@ bpy.ops.wm.save_as_mainfile(filepath=os.path.join(out, f"{spec['id']}.blend"))
 
 shots = [s for s in spec["shots"] if s["id"] in cams and (only is None or s["id"] in only)]
 if "--preview" in args:  # quick camera check: flat pass of each shot's first frame only
+    bpy.context.scene.render.resolution_percentage = 50  # half size: enough to judge framing, a quarter of the GPU work
     pv = os.path.join(out, "preview")
     os.makedirs(pv, exist_ok=True)
     for s in shots:

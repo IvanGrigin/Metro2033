@@ -213,6 +213,8 @@ POSES = {
     "sit_tap_temple": {**SIT, "shoulder_R": (110, 0, -25), "elbow_R": (125, 0, 0), "shoulder_L": (40, 0, 0), "elbow_L": (10, 0, 0)},
     "kneel_touch": {"pelvis_z": 0.55, "hip_L": (80, 0, 0), "knee_L": (-80, 0, 0), "hip_R": (10, 0, 0), "knee_R": (-100, 0, 0),
                     "chest": (-20, 0, 0), "shoulder_R": (75, 0, 0), "elbow_R": (15, 0, 0), "shoulder_L": (20, 0, 0)},
+    "sit_rifle_beside": {**SIT, "shoulder_L": (40, 0, 0), "elbow_L": (10, 0, 0), "rifle": "beside_R"},
+    "sit_reach_rifle": {**SIT, "chest": (-15, 0, -10), "shoulder_R": (35, 0, -35), "elbow_R": (10, 0, 0), "rifle": "beside_R"},
     "reach_up": {"shoulder_L": (155, 0, 10), "elbow_L": (15, 0, 0), "shoulder_R": (155, 0, -10), "elbow_R": (15, 0, 0)},  # hanging laundry
     "wave": {"shoulder_R": (150, 0, -20), "elbow_R": (30, 0, 0), "shoulder_L": (5, 0, 0)},
     "sit_wave": {**SIT, "shoulder_R": (120, 0, -20), "elbow_R": (30, 0, 0), "shoulder_L": (40, 0, 0), "elbow_L": (10, 0, 0)},
@@ -221,6 +223,8 @@ RIFLE_HOLD = {  # rifle transform in chest space for each way of holding it
     "lap": ((0.0, 0.30, -0.42), (0, 0, math.radians(80))),
     "hip": ((0.08, 0.30, 0.10), (math.radians(25), 0, math.radians(-10))),
     "shoulder": ((0.13, 0.20, 0.47), (0, 0, 0)),
+    "sling": ((0.05, -0.17, 0.0), (math.radians(70), math.radians(30), 0)),  # on the back, muzzle up over the left shoulder
+    "beside_R": ((0.45, 0.15, -0.27), (0, 0, math.radians(10))),  # seated: lying on the floor at the right hip
 }
 JOINT_NAMES = ["pelvis", "chest", "head", "shoulder_L", "elbow_L", "hip_L", "knee_L", "shoulder_R", "elbow_R", "hip_R", "knee_R"]
 
@@ -245,8 +249,8 @@ class Actor:
                 rot = (rot[0], rot[1], rot[2] - self.head_yaw)
             J[j].rotation_euler = tuple(math.radians(a) for a in rot)
             J[j].keyframe_insert("rotation_euler", frame=frame)
-        if self.rifle and "rifle" in p:
-            loc, rot = RIFLE_HOLD[p["rifle"]]
+        if self.rifle:  # poses that do not use the rifle carry it slung on the back
+            loc, rot = RIFLE_HOLD[p.get("rifle", "sling")]
             self.rifle.location, self.rifle.rotation_euler = loc, rot
             self.rifle.keyframe_insert("location", frame=frame)
             self.rifle.keyframe_insert("rotation_euler", frame=frame)

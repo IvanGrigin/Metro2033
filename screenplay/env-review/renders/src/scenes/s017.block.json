@@ -1,7 +1,7 @@
 {
  "id": "s017",
  "location": "sukhoi_tent",
- "note": "Sukhoi on the seat crate (0,-0.42) facing 57; Hunter (no coat) sits on the east cot edge at (1.05,0.25) facing 237: 1.25 m apart so the knees do not meet; Artyom sits on the floor by the entrance (sit pose sunk 0.3 m into the floor: no floor-sitting pose). Side crate at (0.25,-0.95) takes Sukhoi's mug in 17.18. At 17.31 Hunter is swapped for HunterCoat (same role, coat on) who walks out. Hunter stands at (0.75,-0.85) after getting up.",
+ "note": "Sukhoi on the seat crate (0,-0.42) facing 57; Hunter (no coat) sits on the east cot edge at (1.05,0.25) facing 237: 1.25 m apart so the knees do not meet; Artyom sits on the floor by the entrance (sit pose sunk 0.3 m into the floor: no floor-sitting pose). Side crate at (0.25,-0.95) takes Sukhoi's mug in 17.18. At 17.31 Hunter is swapped for HunterCoat (same role, coat on) who walks out. Hunter stands at (0.75,-0.85) after getting up. 17.26: he rises stepping off the cot toward the ridge (0.55, 0.0), so his head stays under the canvas (roof ~2.05 there, height 1.95).",
  "cast": {
   "Artyom": {
    "height": 1.78
@@ -192,9 +192,14 @@
   {
    "at": "17.26",
    "actor": "Hunter",
-   "do": "pose",
-   "pose": "stand",
-   "dur": 0.6
+   "do": "move",
+   "to": [
+    0.55,
+    0.0
+   ],
+   "dur": 0.6,
+   "facing": 237,
+   "pose": "stand"
   },
   {
    "at": "17.26",

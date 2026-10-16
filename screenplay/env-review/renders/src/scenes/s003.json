@@ -26,13 +26,6 @@
  },
  "title": "Сцена 3. ИНТ. ПЕРЕГОН К САВЕЛОВСКОЙ — ПРОДОЛЖЕНИЕ",
  "storyboard": "storyboard/01-дозор/003-инт-перегон-к-савеловской-продолжение.md",
- "crates": [
-  [
-   -1.5,
-   61.2,
-   0
-  ]
- ],
  "props": {
   "handcar": {
    "type": "handcar",
@@ -53,14 +46,14 @@
   "flame_high": {
    "type": "flame_jet",
    "loc": [
-    -1.0,
-    60.8,
-    3.6
+    -1.49,
+    59.36,
+    2.78
    ],
    "rot": [
-    -0.03,
+    0.1122,
     0,
-    3.191592653589793
+    -2.9827
    ],
    "hidden": true
   },
@@ -78,18 +71,29 @@
    ],
    "hidden": true,
    "width0": 1.2
+  },
+  "torch1": {
+   "type": "searchlight",
+   "handheld": true,
+   "attach": "Extra1.hand_R",
+   "loc": [
+    0,
+    0,
+    -0.08
+   ]
   }
  },
  "lights": {
-  "handcar_glow": {
-   "type": "POINT",
-   "attach": "handcar",
+  "torch1_beam": {
+   "type": "SPOT",
+   "attach": "Extra1.hand_R",
    "loc": [
     0,
-    -3.0,
-    1.2
+    0,
+    -0.2
    ],
    "energy": 700,
+   "angle": 40,
    "color": [
     0.8,
     0.85,
@@ -203,7 +207,7 @@
     10.55,
     0.66
    ],
-   "facing": 0,
+   "facing": 180,
    "pose": "hold_light"
   },
   {
@@ -294,11 +298,11 @@
    "actor": "Extra2",
    "do": "place",
    "pos": [
-    -1.5,
-    61.2,
-    0.42
+    -1.6,
+    60.0,
+    1.38
    ],
-   "facing": 175,
+   "facing": 170,
    "pose": "flame"
   },
   {
@@ -317,9 +321,9 @@
    "do": "prop_scale",
    "prop": "flame_high",
    "to": [
-    0.3,
-    2,
-    0.3
+    0.22,
+    1.369,
+    0.22
    ],
    "dur": 0.05
   },
@@ -350,6 +354,14 @@
    "dt": 0.8,
    "do": "show",
    "prop": "flame_wall"
+  },
+  {
+   "at": "3.04",
+   "dt": 1.5,
+   "actor": "Extra1",
+   "do": "turn",
+   "facing": 0,
+   "dur": 0.4
   }
  ],
  "shots": [

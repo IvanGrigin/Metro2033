@@ -122,12 +122,12 @@ def wall_number(text, y, side=-1, z=2.15):
 def striped_post(text, x, y):
     paint = mat("white_paint", (0.75, 0.75, 0.72), flat=(1, 1, 1), rough=0.7)
     black = mat("black_paint", (0.02, 0.02, 0.02), flat=(0.02, 0.02, 0.02), rough=0.7)
+    # white paint (bands and plate) glows faintly: the far firelight it catches, so the striped post can be made out
+    # at the edge of the dark (script: «за кругом света, в темноте»)
+    glint = mat("post_glint_paint", (0.75, 0.75, 0.72), flat=(1, 1, 1), rough=0.7, emit=(1.0, 0.7, 0.45), strength=0.15)
     for k in range(8):
-        cyl(0.06, 0.18, (x, y, 0.09 + k * 0.18), paint if k % 2 else black, verts=12, name=f"post_{text}")
-    # the white plate faces the station; a faint glow stands for the far firelight it catches, so the post can be
-    # made out at the edge of the dark (script: «за кругом света, в темноте»)
-    plate_paint = mat("post_plate_paint", (0.75, 0.75, 0.72), flat=(1, 1, 1), rough=0.7, emit=(1.0, 0.7, 0.45), strength=0.15)
-    box((0.35, 0.02, 0.22), (x, y - 0.07, 1.55), plate_paint, name=f"post_{text}_plate")
+        cyl(0.06, 0.18, (x, y, 0.09 + k * 0.18), glint if k % 2 else black, verts=12, name=f"post_{text}")
+    box((0.35, 0.02, 0.22), (x, y - 0.07, 1.55), glint, name=f"post_{text}_plate")
     bpy.ops.object.text_add(location=(x, y - 0.085, 1.55), rotation=(math.pi / 2, 0, 0))
     t = bpy.context.object
     t.data.body, t.data.size = text, 0.16
@@ -201,14 +201,26 @@ def lamp_row(xs, ys, z, color, energy, name="lamp"):
             li.data.use_shadow = False
 
 
+def _drop_faces(o, normal):
+    """Delete the mesh faces whose local normal points along `normal` (open a box top, a prism bottom)."""
+    bm = bmesh.new()
+    bm.from_mesh(o.data)
+    n = Vector(normal)
+    bmesh.ops.delete(bm, geom=[f for f in bm.faces if f.normal.dot(n) > 0.9], context="FACES")
+    bm.to_mesh(o.data)
+    bm.free()
+
+
 def army_tent(name, at, facing=0.0, size=(2.2, 2.8), h=1.9, rgb=(0.20, 0.22, 0.14), flat=(0.40, 0.48, 0.30), open_flap=False):
     """Ridge tent made of a box and a prism roof; door flap on the +Y side (after `facing`)."""
     root = empty(name)
     canvas = mat(f"canvas_{flat}", rgb, flat=flat, rough=0.95)
     w, d = size
-    attach(box((w, d, h * 0.65), (0, 0, 0), canvas, name=f"{name}.wall"), root, (0, 0, h * 0.325))
+    wall = attach(box((w, d, h * 0.65), (0, 0, 0), canvas, name=f"{name}.wall"), root, (0, 0, h * 0.325))
+    _drop_faces(wall, (0, 0, 1))  # open top: inside, the tent is as high as its ridge (people stand, cameras fit)
     bpy.ops.mesh.primitive_cylinder_add(vertices=3, radius=w * 0.58, depth=d, location=(0, 0, 0), rotation=(math.pi / 2, 0, 0))
     roof = put(bpy.context.object, canvas, f"{name}.roof")
+    _drop_faces(roof, (0, -1, 0))  # the prism's flat underside
     roof.scale = (1, 0.55, 1)
     attach(roof, root, (0, 0, h * 0.65 + w * 0.14), (math.pi / 2, 0, math.pi / 2 * 0))
     if open_flap:
@@ -382,7 +394,8 @@ def station(kind="pylon", length=162.0, light=(1.0, 0.25, 0.15), energy=180, lam
             if h1 > h0:
                 box((h1 - h0, 0.4, -TRACK_Z), ((h0 + h1) / 2, wy, TRACK_Z / 2), marble, name="end_wall")
         for tx in (-tx_, tx_):
-            box((5.2, 0.4, low - 4.3), (tx, wy, 4.3 + (low - 4.3) / 2), marble, name="end_wall")  # over the tunnel
+            top = 4.3 + TRACK_Z  # tunnel crown (lowered with the track) + a little
+            box((5.2, 0.4, low - top), (tx, wy, top + (low - top) / 2), marble, name="end_wall")  # over the tunnel
             _tunnel_stub(tx, ey + (15.2 if ey > 0 else -15.2))
     return {"length": length, "plat_z": PLAT_H, **K}
 
@@ -433,7 +446,7 @@ def tent_street(rng, y0, y1, gap=1.6, rows_x=(-2.4, 2.4), plat_z=PLAT_H, dressed
 def north_cordon():
     """Sandbag post in the north tunnel (scene 5): wall at y = 0 across the track, MG and searchlight on top."""
     from kit import sandbags, machine_gun, searchlight
-    running_tunnel()
+    running_tunnel()  # cast iron: the cordon may stand in the 1958 section, the 250 m post in the 1978 extension (V6 — check)
     s = sandbags("cordon_bags", width=4.4, height=1.2)
     s.location = (0, 0, 0)
     mg = machine_gun("cordon_mg")
@@ -516,7 +529,7 @@ def vdnkh():
     g.location.z = PLAT_H
     for i in range(10):  # laundry on wires along the faces of the west pylons, between the arches (clear of the tents)
         yc = -73.5 + i * 9
-        laundry_line((-4.55, yc + 1.8), (-4.55, yc + 7.2), PLAT_H + 1.95, rng)  # within reach
+        laundry_line((-4.05, yc + 1.8), (-4.05, yc + 7.2), PLAT_H + 1.95, rng)  # over the bench edge, within reach
     scatter_crates(rng, ((-3.5, 3.5), (-70, 55)), 18, z=PLAT_H)
     box((5.0, 0.5, 4.0), (0, 80.2, PLAT_H + 2.0), mat("blast_door", (0.12, 0.12, 0.11), flat=(0.40, 0.42, 0.40), rough=0.5, metal=0.7),
         name="escalator_gate")  # sealed passage to the north vestibule

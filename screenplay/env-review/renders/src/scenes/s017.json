@@ -188,9 +188,14 @@
   {
    "at": "17.26",
    "actor": "Hunter",
-   "do": "pose",
-   "pose": "stand",
-   "dur": 0.6
+   "do": "move",
+   "to": [
+    0.55,
+    0.0
+   ],
+   "dur": 0.6,
+   "facing": 237,
+   "pose": "stand"
   },
   {
    "at": "17.26",

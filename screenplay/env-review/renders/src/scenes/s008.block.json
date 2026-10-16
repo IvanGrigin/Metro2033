@@ -1,7 +1,7 @@
 {
  "id": "s008",
  "location": "sukhoi_tent",
- "note": "Artyom's cot = east cot (x 1.15). Lying: pose fallen, root z 0.45, facing 180 = head toward the shelf (+Y). books_front: yellow block in front of the top shelf crate (location books sit inside the crates).",
+ "note": "Artyom's cot = east cot (x 1.15). Lying: pose fallen, root z 0.45, facing 180 = head toward the shelf (+Y). books_front: yellow block in front of the top shelf crate (location books sit inside the crates). artyom_rifle: his rifle from scene 7 lies on the floor beside his cot.",
  "cast": {
   "Artyom": {
    "height": 1.78
@@ -121,6 +121,19 @@
     0,
     1.6,
     0.6
+   ]
+  },
+  "artyom_rifle": {
+   "type": "rifle",
+   "loc": [
+    0.68,
+    0.35,
+    0.03
+   ],
+   "rot": [
+    0,
+    1.5708,
+    0
    ]
   }
  },

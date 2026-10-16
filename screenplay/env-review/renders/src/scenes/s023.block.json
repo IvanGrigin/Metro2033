@@ -1,7 +1,7 @@
 {
  "id": "s023",
  "location": "vdnkh_office",
- "note": "Desk at (0, 1.3); Sukhoi south of it facing north, Alexander at its east end facing west. Door at y=-2.5. Both bend over the map (bend_over); Alexander straightens 23.09-23.12.",
+ "note": "Desk at (0, 1.3); Sukhoi south of it facing north, Alexander at its east end facing west. Door at y=-2.5. Both bend over the map (bend_over); Alexander straightens 23.09-23.12. Morning (screenplay: УТРО): as in s008 — desk lamp down to 12, red station light falling in through the door (station_red).",
  "cast": {
   "Artyom": {
    "height": 1.78
@@ -59,6 +59,12 @@
   }
  },
  "events": [
+  {
+   "at": "23.01",
+   "do": "light",
+   "light": "desk_lamp",
+   "energy": 12
+  },
   {
    "at": "23.01",
    "do": "place",
@@ -237,6 +243,23 @@
     1.05
    ],
    "lens": 26
+  }
+ },
+ "lights": {
+  "station_red": {
+   "type": "POINT",
+   "attach": "desk",
+   "loc": [
+    0,
+    -5.8,
+    0.72
+   ],
+   "energy": 250,
+   "color": [
+    1.0,
+    0.18,
+    0.1
+   ]
   }
  }
 }

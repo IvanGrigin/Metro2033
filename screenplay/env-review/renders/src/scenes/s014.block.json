@@ -1,7 +1,7 @@
 {
  "id": "s014",
  "location": "sukhoi_tent",
- "note": "Dream. Artyom lies on the east cot as in s013 (head toward the shelf, forehead ~(1.15,1.15,0.7)). Hunter enters stooping, looms over the cot at (0.35,1.4) facing east, kneels to lay his right palm on the forehead (kneel_touch), rises with the lantern; a cold point light at the lantern lights his face (14.06); the Dark One replaces him at the same spot from 14.07 with its own face light; 14.08 everything goes out, tent lamp included.",
+ "note": "Dream. Artyom lies on the east cot as in s013 (head toward the shelf, forehead ~(1.15,1.15,0.7)). Hunter enters stooping, looms over the cot at (0.35,1.4) facing east, kneels to lay his right palm on the forehead (kneel_touch), rises with the lantern; a cold point light at the lantern lights his face (14.06); the Dark One replaces him at the same spot from 14.07 holding the same lantern (dark_torch), whose light (dark_face, in its hand) lights the face; 14.08 everything goes out, tent lamp included.",
  "cast": {
   "Artyom": {
    "height": 1.78
@@ -29,6 +29,16 @@
     0.05,
     -0.05
    ]
+  },
+  "dark_torch": {
+   "type": "lantern",
+   "attach": "DarkOne.hand_L",
+   "loc": [
+    0,
+    0.05,
+    -0.05
+   ],
+   "hidden": true
   }
  },
  "lights": {
@@ -65,11 +75,11 @@
   },
   "dark_face": {
    "type": "POINT",
-   "attach": "DarkOne.head",
+   "attach": "DarkOne.hand_L",
    "loc": [
     0,
-    0.45,
-    0.05
+    0.08,
+    -0.05
    ],
    "energy": 0,
    "color": [
@@ -209,6 +219,11 @@
    "at": "14.08",
    "actor": "DarkOne",
    "do": "hide"
+  },
+  {
+   "at": "14.07",
+   "do": "show",
+   "prop": "dark_torch"
   }
  ],
  "cams": {

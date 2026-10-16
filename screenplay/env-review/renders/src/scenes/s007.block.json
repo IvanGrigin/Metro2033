@@ -1,7 +1,7 @@
 {
  "id": "s007",
  "location": "vdnkh",
- "note": "Morning on Main Street. Aisle x~0, tents at x=+-2.4 (y -75..32), pylons at x=+-5.5, clock over the east track mouth (8.6, 80.6, 5.3), tea factory y 62..76. Platform z=1.1.",
+ "note": "Morning on Main Street. Central hall x -4.75..4.75; family tents in the arches (centre x +-5.7, every third arch free), pylons x +-4.75..6.25; laundry on the west pylon faces at x -4.55, z 3.05; clock over the east track mouth, tea factory y 62..76. Named extras stand in the hall (|x| < 4.2). Platform z=1.1.",
  "cast": {
   "Artyom": {
    "height": 1.78,
@@ -139,7 +139,7 @@
    "actor": "Woman",
    "do": "place",
    "pos": [
-    -4.2,
+    -3.7,
     -15.0,
     1.1
    ],
@@ -195,7 +195,7 @@
    "actor": "Extra5",
    "do": "place",
    "pos": [
-    -5.5,
+    -3.5,
     -37.5,
     1.1
    ],
@@ -206,7 +206,7 @@
    "actor": "Extra6",
    "do": "place",
    "pos": [
-    5.5,
+    3.5,
     -28.5,
     1.1
    ],
@@ -278,13 +278,6 @@
     1.1
    ],
    "speed": 2.5
-  },
-  {
-   "at": "7.08",
-   "actor": "Woman",
-   "do": "pose",
-   "pose": "reach_out",
-   "dur": 1.0
   },
   {
    "at": "7.10",
@@ -460,9 +453,9 @@
     2.4
    ],
    "at": [
-    -4.4,
+    -4.1,
     -15.0,
-    2.4
+    2.5
    ],
    "lens": 40
   }
