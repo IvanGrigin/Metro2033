@@ -82,10 +82,11 @@
    "attach": "Artyom.chest",
    "loc": [
     0,
-    0.19,
+    0.16,
     0.42
    ],
-   "hidden": true
+   "hidden": true,
+   "note": "320: под свитером — внутри торса (r 0.183), не поверх"
   },
   "flashlight": {
    "type": "block",
