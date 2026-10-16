@@ -72,7 +72,7 @@ for i, c in enumerate(spec.get("crates", [])):  # [x, y, facing] or [x, y, facin
     kit.crate(f"crate_{i}", (c[0], c[1], c[3] if len(c) > 3 else 0.0), c[2])
 props = {}
 for name, p in spec.get("props", {}).items():
-    extra = {k: v for k, v in p.items() if k not in ("type", "attach", "loc", "rot", "hidden")}  # e.g. size/color, handheld
+    extra = {k: v for k, v in p.items() if k not in ("type", "attach", "loc", "rot", "hidden", "note")}  # e.g. size/color, handheld; "note" is a comment
     o = getattr(kit, p["type"])(name, **extra)
     parent = bpy.data.objects[p["attach"]] if "attach" in p else None
     rot = p.get("rot")
