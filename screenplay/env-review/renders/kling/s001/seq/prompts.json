@@ -12,8 +12,20 @@
   ],
   "seconds": 14.0,
   "duration": 14,
-  "chars": 2297,
-  "prompt": "A sequence of 6 shots, 14 seconds. Shot 1 (0–3 s): wide shot, abandoned metro tunnel, small campfire of wooden sleepers one metre from the rails, circle of light five steps wide, wall of darkness beyond. Shot 2 (3–5 s): close-up, number 250 painted in white on a ribbed concrete tunnel wall, flickering firelight. Shot 3 (5–7 s): striped post marked 300 at the edge of the firelight, darkness behind it, slow pan along the wall. Shot 4 (7–10 s): Artyom sits facing the camera and the dark tunnel, the campfire behind his back, we see his face, old Kalashnikov on his knees. Shot 5 (10–12 s): Pyotr feeds wood chips into the campfire, a sooty kettle hangs above the flames. Shot 6 (12–14 s): extreme close-up, Artyom's eyes staring into darkness, firelight on one side of his face. Artyom: pale thin young man of 24, short dark hair, light stubble, worn grey quilted padded jacket (the same grey jacket in every shot), old Kalashnikov. Pyotr: old man of 60, grey beard, weathered face, quilted vatnik jacket. The place (only what 视频1 shows of it is in frame): a round running tunnel of the Moscow metro north of VDNKh station, about 5.5 m across, ribbed concrete lining stained black with soot and seepage, bundles of old cables along both walls, two rusty rails on wooden sleepers. A distance number '250' is painted on the wall and a black-and-white striped post stands by the track. The outpost is a small campfire beside the track, a metre from the rails, with wooden crates as seats around it. Beyond the circle of firelight the tunnel falls into total darkness in both directions. It is night. Photorealistic live-action film, 35 mm, post-apocalyptic Moscow metro in 2033: soot, grime, damp, worn clothes. Follow 视频1 exactly: the same shots in the same order, hard cuts only where 视频1 cuts and nowhere else; in every shot keep its camera position, framing, movement and timing, and where each person is and what they do. Replace the grey mannequins with real people (the cone on a head marks the nose: where the face looks); the same person keeps the same face and clothes in every shot. Light only from the sources visible in 视频1 (fire, lamps, flashlights), everything else stays dark. No text, letters or numbers on screen except painted marks that exist in 视频1; no extra people or objects.",
+  "chars": 2417,
+  "prompt": "A sequence of 6 shots, 14 seconds. Shot 1 (0–3 s): wide shot, abandoned metro tunnel, small campfire of wooden sleepers one metre from the rails, circle of light five steps wide, wall of darkness beyond. Shot 2 (3–5 s): close-up, number 250 painted in white on a ribbed concrete tunnel wall, flickering firelight. Shot 3 (5–7 s): striped post marked 300 at the edge of the firelight, darkness behind it, slow pan along the wall. Shot 4 (7–10 s): Artyom sits facing the camera and the dark tunnel, the campfire behind his back, we see his face, old Kalashnikov on his knees. Shot 5 (10–12 s): Pyotr feeds wood chips into the campfire, a sooty kettle hangs above the flames. Shot 6 (12–14 s): extreme close-up, Artyom's eyes staring into darkness, firelight on one side of his face. Artyom is <<<324149639307310>>>: pale thin young man of 24, short dark hair, light stubble, worn grey quilted padded jacket (the same grey jacket in every shot), old Kalashnikov. Pyotr is <<<324149629653154>>>: old man of 60, grey beard, weathered face, grey quilted vatnik jacket (the same in every shot). The place (only what 视频1 shows of it is in frame): a round running tunnel of the Moscow metro north of VDNKh station, about 5.5 m across, ribbed concrete lining stained black with soot and seepage, bundles of old cables along both walls, two rusty rails on wooden sleepers. A distance number '250' is painted on the wall and a black-and-white striped post stands by the track. The outpost is a small low campfire, flames no higher than a hand span, beside the track, a metre from the rails, with wooden crates as seats around it. Beyond the circle of firelight the tunnel falls into total darkness in both directions. It is night. Photorealistic live-action film, 35 mm, post-apocalyptic Moscow metro in 2033: soot, grime, damp, worn clothes. Follow 视频1 exactly: the same shots in the same order, hard cuts only where 视频1 cuts and nowhere else; in every shot keep its camera position, framing, movement and timing, and where each person is and what they do. Replace the grey mannequins with real people (the cone on a head marks the nose: where the face looks); the same person keeps the same face and clothes in every shot. Light only from the sources visible in 视频1 (fire, lamps, flashlights), everything else stays dark. No text, letters or numbers on screen except painted marks that exist in 视频1; no extra people or objects.",
+  "elements": [
+   {
+    "id": "324149639307310",
+    "bindName": "Artyom",
+    "type": "image"
+   },
+   {
+    "id": "324149629653154",
+    "bindName": "Pyotr",
+    "type": "image"
+   }
+  ],
   "note": ""
  },
  {
@@ -29,8 +41,20 @@
   ],
   "seconds": 13.0,
   "duration": 13,
-  "chars": 2089,
-  "prompt": "A sequence of 6 shots, 13 seconds. Shot 1 (0–2 s): point of view, pitch black tunnel, rails disappearing into darkness. Shot 2 (2–4 s): Artyom rises to his feet, rifle in hands, tense. Shot 3 (4–5.5 s): close-up, thumb clicking off the safety of an old Kalashnikov. Shot 4 (5.5–8.5 s): Artyom steps toward the edge of the light, backlit silhouette against the campfire, camera backing away. Shot 5 (8.5–11 s): close-up, Artyom shouting into the darkness, fear in his eyes, rifle barrel in foreground. Shot 6 (11–13 s): pitch black tunnel, nothing visible, dust in the air. Artyom: pale thin young man of 24, short dark hair, light stubble, worn grey quilted padded jacket (the same grey jacket in every shot), old Kalashnikov. Pyotr: old man of 60, grey beard, weathered face, quilted vatnik jacket. The place (only what 视频1 shows of it is in frame): a round running tunnel of the Moscow metro north of VDNKh station, about 5.5 m across, ribbed concrete lining stained black with soot and seepage, bundles of old cables along both walls, two rusty rails on wooden sleepers. A distance number '250' is painted on the wall and a black-and-white striped post stands by the track. The outpost is a small campfire beside the track, a metre from the rails, with wooden crates as seats around it. Beyond the circle of firelight the tunnel falls into total darkness in both directions. It is night. Photorealistic live-action film, 35 mm, post-apocalyptic Moscow metro in 2033: soot, grime, damp, worn clothes. Follow 视频1 exactly: the same shots in the same order, hard cuts only where 视频1 cuts and nowhere else; in every shot keep its camera position, framing, movement and timing, and where each person is and what they do. Replace the grey mannequins with real people (the cone on a head marks the nose: where the face looks); the same person keeps the same face and clothes in every shot. Light only from the sources visible in 视频1 (fire, lamps, flashlights), everything else stays dark. No text, letters or numbers on screen except painted marks that exist in 视频1; no extra people or objects.",
+  "chars": 2209,
+  "prompt": "A sequence of 6 shots, 13 seconds. Shot 1 (0–2 s): point of view, pitch black tunnel, rails disappearing into darkness. Shot 2 (2–4 s): Artyom rises to his feet, rifle in hands, tense. Shot 3 (4–5.5 s): close-up, thumb clicking off the safety of an old Kalashnikov. Shot 4 (5.5–8.5 s): Artyom steps toward the edge of the light, backlit silhouette against the campfire, camera backing away. Shot 5 (8.5–11 s): close-up, Artyom shouting into the darkness, fear in his eyes, rifle barrel in foreground. Shot 6 (11–13 s): pitch black tunnel, nothing visible, dust in the air. Artyom is <<<324149639307310>>>: pale thin young man of 24, short dark hair, light stubble, worn grey quilted padded jacket (the same grey jacket in every shot), old Kalashnikov. Pyotr is <<<324149629653154>>>: old man of 60, grey beard, weathered face, grey quilted vatnik jacket (the same in every shot). The place (only what 视频1 shows of it is in frame): a round running tunnel of the Moscow metro north of VDNKh station, about 5.5 m across, ribbed concrete lining stained black with soot and seepage, bundles of old cables along both walls, two rusty rails on wooden sleepers. A distance number '250' is painted on the wall and a black-and-white striped post stands by the track. The outpost is a small low campfire, flames no higher than a hand span, beside the track, a metre from the rails, with wooden crates as seats around it. Beyond the circle of firelight the tunnel falls into total darkness in both directions. It is night. Photorealistic live-action film, 35 mm, post-apocalyptic Moscow metro in 2033: soot, grime, damp, worn clothes. Follow 视频1 exactly: the same shots in the same order, hard cuts only where 视频1 cuts and nowhere else; in every shot keep its camera position, framing, movement and timing, and where each person is and what they do. Replace the grey mannequins with real people (the cone on a head marks the nose: where the face looks); the same person keeps the same face and clothes in every shot. Light only from the sources visible in 视频1 (fire, lamps, flashlights), everything else stays dark. No text, letters or numbers on screen except painted marks that exist in 视频1; no extra people or objects.",
+  "elements": [
+   {
+    "id": "324149639307310",
+    "bindName": "Artyom",
+    "type": "image"
+   },
+   {
+    "id": "324149629653154",
+    "bindName": "Pyotr",
+    "type": "image"
+   }
+  ],
   "note": ""
  },
  {
@@ -46,42 +70,78 @@
   ],
   "seconds": 15.0,
   "duration": 15,
-  "chars": 2027,
-  "prompt": "A sequence of 6 shots, 15 seconds. Shot 1 (0–2.5 s): low angle along the rails, small shadows scurrying away into the darkness. Shot 2 (2.5–5.5 s): Artyom from behind, standing at the edge of the light, rifle aimed into the empty tunnel. Shot 3 (5.5–8 s): Pyotr sitting by the campfire, not looking up, speaking. Shot 4 (8–9.5 s): close-up, Artyom lowering his rifle slightly. Shot 5 (9.5–12.5 s): Pyotr by the fire, stern, speaking. Shot 6 (12.5–15 s): close-up, Artyom turning back toward the fire, doubtful. Artyom: pale thin young man of 24, short dark hair, light stubble, worn grey quilted padded jacket (the same grey jacket in every shot), old Kalashnikov. Pyotr: old man of 60, grey beard, weathered face, quilted vatnik jacket. The place (only what 视频1 shows of it is in frame): a round running tunnel of the Moscow metro north of VDNKh station, about 5.5 m across, ribbed concrete lining stained black with soot and seepage, bundles of old cables along both walls, two rusty rails on wooden sleepers. A distance number '250' is painted on the wall and a black-and-white striped post stands by the track. The outpost is a small campfire beside the track, a metre from the rails, with wooden crates as seats around it. Beyond the circle of firelight the tunnel falls into total darkness in both directions. It is night. Photorealistic live-action film, 35 mm, post-apocalyptic Moscow metro in 2033: soot, grime, damp, worn clothes. Follow 视频1 exactly: the same shots in the same order, hard cuts only where 视频1 cuts and nowhere else; in every shot keep its camera position, framing, movement and timing, and where each person is and what they do. Replace the grey mannequins with real people (the cone on a head marks the nose: where the face looks); the same person keeps the same face and clothes in every shot. Light only from the sources visible in 视频1 (fire, lamps, flashlights), everything else stays dark. No text, letters or numbers on screen except painted marks that exist in 视频1; no extra people or objects.",
+  "chars": 2147,
+  "prompt": "A sequence of 6 shots, 15 seconds. Shot 1 (0–2.5 s): low angle along the rails, small shadows scurrying away into the darkness. Shot 2 (2.5–5.5 s): Artyom from behind, standing at the edge of the light, rifle aimed into the empty tunnel. Shot 3 (5.5–8 s): Pyotr sitting by the campfire, not looking up, speaking. Shot 4 (8–9.5 s): close-up, Artyom lowering his rifle slightly. Shot 5 (9.5–12.5 s): Pyotr by the fire, stern, speaking. Shot 6 (12.5–15 s): close-up, Artyom turning back toward the fire, doubtful. Artyom is <<<324149639307310>>>: pale thin young man of 24, short dark hair, light stubble, worn grey quilted padded jacket (the same grey jacket in every shot), old Kalashnikov. Pyotr is <<<324149629653154>>>: old man of 60, grey beard, weathered face, grey quilted vatnik jacket (the same in every shot). The place (only what 视频1 shows of it is in frame): a round running tunnel of the Moscow metro north of VDNKh station, about 5.5 m across, ribbed concrete lining stained black with soot and seepage, bundles of old cables along both walls, two rusty rails on wooden sleepers. A distance number '250' is painted on the wall and a black-and-white striped post stands by the track. The outpost is a small low campfire, flames no higher than a hand span, beside the track, a metre from the rails, with wooden crates as seats around it. Beyond the circle of firelight the tunnel falls into total darkness in both directions. It is night. Photorealistic live-action film, 35 mm, post-apocalyptic Moscow metro in 2033: soot, grime, damp, worn clothes. Follow 视频1 exactly: the same shots in the same order, hard cuts only where 视频1 cuts and nowhere else; in every shot keep its camera position, framing, movement and timing, and where each person is and what they do. Replace the grey mannequins with real people (the cone on a head marks the nose: where the face looks); the same person keeps the same face and clothes in every shot. Light only from the sources visible in 视频1 (fire, lamps, flashlights), everything else stays dark. No text, letters or numbers on screen except painted marks that exist in 视频1; no extra people or objects.",
+  "elements": [
+   {
+    "id": "324149639307310",
+    "bindName": "Artyom",
+    "type": "image"
+   },
+   {
+    "id": "324149629653154",
+    "bindName": "Pyotr",
+    "type": "image"
+   }
+  ],
   "note": ""
  },
  {
-  "chunk": "seq04_1.20-1.24",
-  "clip": "seq04_1.20-1.24.mp4",
+  "chunk": "seq04_1.20-1.25",
+  "clip": "seq04_1.20-1.25.mp4",
   "shots": [
    "1.20",
    "1.21",
    "1.22",
    "1.23",
-   "1.24"
+   "1.24",
+   "1.25"
   ],
-  "seconds": 14.0,
-  "duration": 14,
-  "chars": 1864,
-  "prompt": "A sequence of 5 shots, 14 seconds. Shot 1 (0–2 s): Pyotr, skeptical, glancing at the dark north. Shot 2 (2–5 s): close-up, Pyotr staring into the flames, haunted, slow push in. Shot 3 (5–9 s): close-up, Pyotr speaking quietly, firelight on his face. Shot 4 (9–12 s): close-up of glowing embers and flames. Shot 5 (12–14 s): close-up, Artyom, grim. Pyotr: old man of 60, grey beard, weathered face, quilted vatnik jacket. Artyom: pale thin young man of 24, short dark hair, light stubble, worn grey quilted padded jacket (the same grey jacket in every shot), old Kalashnikov. The place (only what 视频1 shows of it is in frame): a round running tunnel of the Moscow metro north of VDNKh station, about 5.5 m across, ribbed concrete lining stained black with soot and seepage, bundles of old cables along both walls, two rusty rails on wooden sleepers. A distance number '250' is painted on the wall and a black-and-white striped post stands by the track. The outpost is a small campfire beside the track, a metre from the rails, with wooden crates as seats around it. Beyond the circle of firelight the tunnel falls into total darkness in both directions. It is night. Photorealistic live-action film, 35 mm, post-apocalyptic Moscow metro in 2033: soot, grime, damp, worn clothes. Follow 视频1 exactly: the same shots in the same order, hard cuts only where 视频1 cuts and nowhere else; in every shot keep its camera position, framing, movement and timing, and where each person is and what they do. Replace the grey mannequins with real people (the cone on a head marks the nose: where the face looks); the same person keeps the same face and clothes in every shot. Light only from the sources visible in 视频1 (fire, lamps, flashlights), everything else stays dark. No text, letters or numbers on screen except painted marks that exist in 视频1; no extra people or objects.",
-  "note": ""
+  "seconds": 15.5,
+  "duration": 16,
+  "chars": 2031,
+  "prompt": "A sequence of 6 shots, 15.5 seconds. Shot 1 (0–2 s): Pyotr, skeptical, glancing at the dark north. Shot 2 (2–5 s): close-up, Pyotr staring into the flames, haunted, slow push in. Shot 3 (5–9 s): close-up, Pyotr speaking quietly, firelight on his face. Shot 4 (9–12 s): close-up of glowing embers and flames. Shot 5 (12–14 s): close-up, Artyom, grim. Shot 6 (14–15.5 s): close-up, Pyotr nodding. Pyotr is <<<324149629653154>>>: old man of 60, grey beard, weathered face, grey quilted vatnik jacket (the same in every shot). Artyom is <<<324149639307310>>>: pale thin young man of 24, short dark hair, light stubble, worn grey quilted padded jacket (the same grey jacket in every shot), old Kalashnikov. The place (only what 视频1 shows of it is in frame): a round running tunnel of the Moscow metro north of VDNKh station, about 5.5 m across, ribbed concrete lining stained black with soot and seepage, bundles of old cables along both walls, two rusty rails on wooden sleepers. A distance number '250' is painted on the wall and a black-and-white striped post stands by the track. The outpost is a small low campfire, flames no higher than a hand span, beside the track, a metre from the rails, with wooden crates as seats around it. Beyond the circle of firelight the tunnel falls into total darkness in both directions. It is night. Photorealistic live-action film, 35 mm, post-apocalyptic Moscow metro in 2033: soot, grime, damp, worn clothes. Follow 视频1 exactly: the same shots in the same order, hard cuts only where 视频1 cuts and nowhere else; in every shot keep its camera position, framing, movement and timing, and where each person is and what they do. Replace the grey mannequins with real people (the cone on a head marks the nose: where the face looks); the same person keeps the same face and clothes in every shot. Light only from the sources visible in 视频1 (fire, lamps, flashlights), everything else stays dark. No text, letters or numbers on screen except painted marks that exist in 视频1; no extra people or objects.",
+  "elements": [
+   {
+    "id": "324149629653154",
+    "bindName": "Pyotr",
+    "type": "image"
+   },
+   {
+    "id": "324149639307310",
+    "bindName": "Artyom",
+    "type": "image"
+   }
+  ],
+  "note": "generate 16 s, keep 0–15.5 s"
  },
  {
-  "chunk": "seq05_1.25-1.30",
-  "clip": "seq05_1.25-1.30.mp4",
+  "chunk": "seq05_1.26-1.30",
+  "clip": "seq05_1.26-1.30.mp4",
   "shots": [
-   "1.25",
    "1.26",
    "1.27",
    "1.28",
    "1.29",
    "1.30"
   ],
-  "seconds": 14.5,
-  "duration": 15,
-  "chars": 2279,
-  "prompt": "A sequence of 6 shots, 14.5 seconds. Shot 1 (0–1.5 s): close-up, Pyotr nodding. Shot 2 (1.5–4.5 s): wide shot down the tunnel to the south, a flashlight beam approaching from the depth. Shot 3 (4.5–7 s): Pyotr by the fire, not turning around, the dark tunnel behind him. Shot 4 (7–10 s): three men — Andrei with a flashlight, Kirill and Hunter — walk out of the darkness into the firelight, the flashlight beam sliding over the walls. Shot 5 (10–12.5 s): Andrei smiling, at ease, stepping into the firelight. Shot 6 (12.5–14.5 s): Kirill sits down by the fire without a word. Pyotr: old man of 60, grey beard, weathered face, quilted vatnik jacket. Andrei: man of 40, bushy mustache, old black beret, easy smile. Artyom: pale thin young man of 24, short dark hair, light stubble, worn grey quilted padded jacket (the same grey jacket in every shot), old Kalashnikov. Hunter: tall broad-shouldered man of 45, shaved head, long black leather coat. Kirill: thin man of 30, messy hair, silent. The place (only what 视频1 shows of it is in frame): a round running tunnel of the Moscow metro north of VDNKh station, about 5.5 m across, ribbed concrete lining stained black with soot and seepage, bundles of old cables along both walls, two rusty rails on wooden sleepers. A distance number '250' is painted on the wall and a black-and-white striped post stands by the track. The outpost is a small campfire beside the track, a metre from the rails, with wooden crates as seats around it. Beyond the circle of firelight the tunnel falls into total darkness in both directions. It is night. Photorealistic live-action film, 35 mm, post-apocalyptic Moscow metro in 2033: soot, grime, damp, worn clothes. Follow 视频1 exactly: the same shots in the same order, hard cuts only where 视频1 cuts and nowhere else; in every shot keep its camera position, framing, movement and timing, and where each person is and what they do. Replace the grey mannequins with real people (the cone on a head marks the nose: where the face looks); the same person keeps the same face and clothes in every shot. Light only from the sources visible in 视频1 (fire, lamps, flashlights), everything else stays dark. No text, letters or numbers on screen except painted marks that exist in 视频1; no extra people or objects.",
-  "note": "generate 15 s, keep 0–14.5 s"
+  "seconds": 13.0,
+  "duration": 13,
+  "chars": 2348,
+  "prompt": "A sequence of 5 shots, 13 seconds. Shot 1 (0–3 s): wide shot down the tunnel to the south, a flashlight beam approaching from the depth. Shot 2 (3–5.5 s): Pyotr by the fire, not turning around, the dark tunnel behind him. Shot 3 (5.5–8.5 s): three men — Andrei with a flashlight, Kirill and Hunter — walk out of the darkness into the firelight, the flashlight beam sliding over the walls. Shot 4 (8.5–11 s): Andrei smiling, at ease, stepping into the firelight. Shot 5 (11–13 s): Kirill sits down by the fire without a word. Andrei: man of 40, bushy mustache, old black beret, easy smile. Artyom is <<<324149639307310>>>: pale thin young man of 24, short dark hair, light stubble, worn grey quilted padded jacket (the same grey jacket in every shot), old Kalashnikov. Hunter: tall broad-shouldered man of 45, shaved head, long black leather coat. Kirill: thin man of 30, messy hair, silent. Pyotr is <<<324149629653154>>>: old man of 60, grey beard, weathered face, grey quilted vatnik jacket (the same in every shot). The place (only what 视频1 shows of it is in frame): a round running tunnel of the Moscow metro north of VDNKh station, about 5.5 m across, ribbed concrete lining stained black with soot and seepage, bundles of old cables along both walls, two rusty rails on wooden sleepers. A distance number '250' is painted on the wall and a black-and-white striped post stands by the track. The outpost is a small low campfire, flames no higher than a hand span, beside the track, a metre from the rails, with wooden crates as seats around it. Beyond the circle of firelight the tunnel falls into total darkness in both directions. It is night. Photorealistic live-action film, 35 mm, post-apocalyptic Moscow metro in 2033: soot, grime, damp, worn clothes. Follow 视频1 exactly: the same shots in the same order, hard cuts only where 视频1 cuts and nowhere else; in every shot keep its camera position, framing, movement and timing, and where each person is and what they do. Replace the grey mannequins with real people (the cone on a head marks the nose: where the face looks); the same person keeps the same face and clothes in every shot. Light only from the sources visible in 视频1 (fire, lamps, flashlights), everything else stays dark. No text, letters or numbers on screen except painted marks that exist in 视频1; no extra people or objects.",
+  "elements": [
+   {
+    "id": "324149639307310",
+    "bindName": "Artyom",
+    "type": "image"
+   },
+   {
+    "id": "324149629653154",
+    "bindName": "Pyotr",
+    "type": "image"
+   }
+  ],
+  "note": ""
  },
  {
   "chunk": "seq06_1.31-1.36",
@@ -96,8 +156,15 @@
   ],
   "seconds": 14.5,
   "duration": 15,
-  "chars": 2029,
-  "prompt": "A sequence of 6 shots, 14.5 seconds. Shot 1 (0–3 s): low angle, Hunter standing apart by the tunnel wall in shadow, not joining the fire. Shot 2 (3–5.5 s): close-up, Hunter facing the camera, staring past it north into the darkness, face half lit by the fire. Shot 3 (5.5–8.5 s): Andrei and Pyotr by the campfire, Andrei joking. Shot 4 (8.5–10 s): close-up, Pyotr grumbling. Shot 5 (10–13 s): Andrei grinning, telling a tunnel tale. Shot 6 (13–14.5 s): close-up, Kirill smirking. Andrei: man of 40, bushy mustache, old black beret, easy smile. Hunter: tall broad-shouldered man of 45, shaved head, long black leather coat. Kirill: thin man of 30, messy hair, silent. Pyotr: old man of 60, grey beard, weathered face, quilted vatnik jacket. The place (only what 视频1 shows of it is in frame): a round running tunnel of the Moscow metro north of VDNKh station, about 5.5 m across, ribbed concrete lining stained black with soot and seepage, bundles of old cables along both walls, two rusty rails on wooden sleepers. A distance number '250' is painted on the wall and a black-and-white striped post stands by the track. The outpost is a small campfire beside the track, a metre from the rails, with wooden crates as seats around it. Beyond the circle of firelight the tunnel falls into total darkness in both directions. It is night. Photorealistic live-action film, 35 mm, post-apocalyptic Moscow metro in 2033: soot, grime, damp, worn clothes. Follow 视频1 exactly: the same shots in the same order, hard cuts only where 视频1 cuts and nowhere else; in every shot keep its camera position, framing, movement and timing, and where each person is and what they do. Replace the grey mannequins with real people (the cone on a head marks the nose: where the face looks); the same person keeps the same face and clothes in every shot. Light only from the sources visible in 视频1 (fire, lamps, flashlights), everything else stays dark. No text, letters or numbers on screen except painted marks that exist in 视频1; no extra people or objects.",
+  "chars": 2124,
+  "prompt": "A sequence of 6 shots, 14.5 seconds. Shot 1 (0–3 s): low angle, Hunter standing apart by the tunnel wall in shadow, not joining the fire. Shot 2 (3–5.5 s): close-up, Hunter facing the camera, staring past it north into the darkness, face half lit by the fire. Shot 3 (5.5–8.5 s): Andrei and Pyotr by the campfire, Andrei joking. Shot 4 (8.5–10 s): close-up, Pyotr grumbling. Shot 5 (10–13 s): Andrei grinning, telling a tunnel tale. Shot 6 (13–14.5 s): close-up, Kirill smirking. Andrei: man of 40, bushy mustache, old black beret, easy smile. Hunter: tall broad-shouldered man of 45, shaved head, long black leather coat. Kirill: thin man of 30, messy hair, silent. Pyotr is <<<324149629653154>>>: old man of 60, grey beard, weathered face, grey quilted vatnik jacket (the same in every shot). The place (only what 视频1 shows of it is in frame): a round running tunnel of the Moscow metro north of VDNKh station, about 5.5 m across, ribbed concrete lining stained black with soot and seepage, bundles of old cables along both walls, two rusty rails on wooden sleepers. A distance number '250' is painted on the wall and a black-and-white striped post stands by the track. The outpost is a small low campfire, flames no higher than a hand span, beside the track, a metre from the rails, with wooden crates as seats around it. Beyond the circle of firelight the tunnel falls into total darkness in both directions. It is night. Photorealistic live-action film, 35 mm, post-apocalyptic Moscow metro in 2033: soot, grime, damp, worn clothes. Follow 视频1 exactly: the same shots in the same order, hard cuts only where 视频1 cuts and nowhere else; in every shot keep its camera position, framing, movement and timing, and where each person is and what they do. Replace the grey mannequins with real people (the cone on a head marks the nose: where the face looks); the same person keeps the same face and clothes in every shot. Light only from the sources visible in 视频1 (fire, lamps, flashlights), everything else stays dark. No text, letters or numbers on screen except painted marks that exist in 视频1; no extra people or objects.",
+  "elements": [
+   {
+    "id": "324149629653154",
+    "bindName": "Pyotr",
+    "type": "image"
+   }
+  ],
   "note": "generate 15 s, keep 0–14.5 s"
  }
 ]

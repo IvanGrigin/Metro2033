@@ -1,7 +1,8 @@
 """Multi-shot sequences for Kling 4.0 (omni_ref_video, prefer_multi_shots): consecutive shots of a scene joined at their
 cuts into chunks of at most MAX seconds, up to a total budget. Each chunk = one reference clip (the shots' own Kling
 frames, handles cut off, so 视频1 cuts exactly where the film cuts) + one prompt that lists the shots with their times.
-    python3 storyboard/tools/kling_seq.py 1 storyboard/3d/out-r6/s001 storyboard/kling/s001/seq 1.02 1.37 15"""
+    python3 storyboard/tools/kling_seq.py 1 storyboard/3d/out-r6/s001 storyboard/kling/s001/seq 1.02 1.37 15
+    ... 1.02 1.36 15 1.08,1.14,1.20,1.26,1.31   # optional: the shots that open a new chunk (dramatic pairs stay together)"""
 import json, math, os, re, subprocess, sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from kling_pack import FPS, REPO, ROOT, TIME, characters
@@ -15,7 +16,7 @@ RULES = ("Photorealistic live-action film, 35 mm, post-apocalyptic Moscow metro 
          "in 视频1; no extra people or objects.")
 
 
-def main(n, render_dir, out_dir, first, last, cap):
+def main(n, render_dir, out_dir, first, last, cap, starts=None):
     spec = json.load(open(os.path.join(REPO, f"storyboard/3d/scenes/s{n:03d}.json")))
     board = open(os.path.join(REPO, spec["storyboard"]), encoding="utf-8").read().split("## Раскадровка", 1)[1]
     en = {sid: re.search(r"^EN: (.+)$", body, re.M).group(1)
@@ -25,11 +26,13 @@ def main(n, render_dir, out_dir, first, last, cap):
     env = json.load(open(os.path.join(ROOT, "kling", "environment.json")))[spec["location"]]
     word = next((w for w in TIME if w in os.path.basename(spec["storyboard"])), None)
     chars = characters()
+    ep = os.path.join(ROOT, "kling", "elements.json")  # saved Kling Elements {name: {"id", "type"}}: one face per character
+    elements = json.load(open(ep)) if os.path.exists(ep) else {}
     ids = [s["id"] for s in spec["shots"]]
     shots = [s for s in spec["shots"][ids.index(first):ids.index(last) + 1] if s.get("cam")]
     chunks, cur = [], []
-    for s in shots:  # greedy: close a chunk at the cut before it would pass the cap
-        if cur and sum(x["dur"] for x in cur) + s["dur"] > cap:
+    for s in shots:  # given starts, else greedy: close a chunk at the cut before it would pass the cap
+        if cur and (s["id"] in starts if starts else sum(x["dur"] for x in cur) + s["dur"] > cap):
             chunks.append(cur)
             cur = []
         cur.append(s)
@@ -55,12 +58,14 @@ def main(n, render_dir, out_dir, first, last, cap):
             lines.append(f"Shot {i} ({t:g}–{t + s['dur']:g} s): {en[s['id']]}.")
             t += s["dur"]
             vis += [v for v in kinfo[s["id"]]["visible"] if v in chars and v not in vis]
-        who = [chars[c] for c in vis]
+        who = [(f"{c} is <<<{elements[c]['id']}>>>: " + chars[c].split(":", 1)[1].strip()) if c in elements else chars[c]
+               for c in vis]
+        bound = [{"id": elements[c]["id"], "bindName": c, "type": elements[c]["type"]} for c in vis if c in elements]
         prompt = " ".join([f"A sequence of {len(ch)} shots, {t:g} seconds."] + lines + who +
                           ["The place (only what 视频1 shows of it is in frame): " + env["full"], TIME.get(word, ""), RULES])
         sec = max(3, math.ceil(t - 0.01))
         rows.append({"chunk": name, "clip": os.path.basename(clip), "shots": [s["id"] for s in ch], "seconds": t,
-                     "duration": sec, "chars": len(prompt), "prompt": prompt,
+                     "duration": sec, "chars": len(prompt), "prompt": prompt, "elements": bound,
                      "note": f"generate {sec} s, keep 0–{t:g} s" if sec != t else ""})
     json.dump(rows, open(os.path.join(out_dir, "prompts.json"), "w"), ensure_ascii=False, indent=1)
     for r in rows:
@@ -70,4 +75,4 @@ def main(n, render_dir, out_dir, first, last, cap):
 
 if __name__ == "__main__":
     a = sys.argv
-    main(int(a[1]), a[2], a[3], a[4], a[5], float(a[6]))
+    main(int(a[1]), a[2], a[3], a[4], a[5], float(a[6]), a[7].split(",") if len(a) > 7 else None)

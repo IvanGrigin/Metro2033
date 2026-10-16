@@ -40,7 +40,8 @@ def submit(where, shots):
             sys.exit(f"{sid}: ~{sec * PER_SEC} credits would take the balance {before} below the cap floor {FLOOR}; not sent")
         b = kling("omni_ref_video", "--model", MODEL, "--video", os.path.join(d, r["clip"]),
                   "--duration", str(sec), "--resolution", RES, "--enable_audio", "false", "--keepOriginalSound", "false",
-                  "--imageCount", "1", "--prompt", r["prompt"])
+                  "--imageCount", "1", *(["--elements", json.dumps(r["elements"])] if r.get("elements") else []),
+                  "--prompt", r["prompt"])
         jobs.append({"scene": n, "shot": sid, "attempt": attempt, "seconds": sec, "id": b["generationId"],
                      "consumed": b.get("creditsConsumed"), "before": before, "after": credits(), "t0": time.time(),
                      "input": r["clip"], "note": r.get("note", ""), "done": False})
