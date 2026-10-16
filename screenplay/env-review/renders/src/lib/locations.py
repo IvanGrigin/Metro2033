@@ -141,7 +141,7 @@ def campfire(at, energy=90):
     from kit import mug
     f = Vector(at)
     char = mat("charred", (0.03, 0.02, 0.02), flat=(0.20, 0.12, 0.08))
-    flame = mat("flame", (1, 0.5, 0.1), flat=(1.0, 0.62, 0.10), rough=1, emit=(1.0, 0.45, 0.08), strength=25.0)
+    flame = mat("flame", (1, 0.5, 0.1), flat=(1.0, 0.62, 0.10), rough=1, emit=(1.0, 0.45, 0.08), strength=8.0)  # warm, not burnt to white
     ember = mat("ember", (1, 0.3, 0.05), flat=(1.0, 0.35, 0.05), rough=1, emit=(1.0, 0.25, 0.03), strength=8.0)
     soot = mat("sooty_metal", (0.04, 0.035, 0.03), flat=(0.25, 0.25, 0.27), rough=0.6, metal=0.7)
     for a in (0, 60, 120):
@@ -156,6 +156,13 @@ def campfire(at, energy=90):
     li.data.keyframe_insert("energy", frame=1)
     noise = li.data.animation_data.action.fcurves[0].modifiers.new("NOISE")
     noise.scale, noise.strength = 3.0, energy * 0.35  # firelight flicker
+    # firelight bounced off the tunnel rings ahead of the fire, ~8 % of it: faces turned away from the fire keep a
+    # cheekbone and an eye (close-ups 1.07, 1.32) while the darkness stays dark
+    bpy.ops.object.light_add(type="POINT", location=(f.x + 1.5, f.y + 2.6, 1.7))
+    b = bpy.context.object
+    b.name = "fire_bounce"
+    b.data.energy, b.data.color, b.data.shadow_soft_size = energy * 0.08, (1.0, 0.55, 0.28), 1.5
+    b.data.use_shadow = False
     for a in (0, 120, 240):
         ang = math.radians(a)
         p = Vector((math.cos(ang) * 0.45, math.sin(ang) * 0.45, 0.45))
@@ -289,7 +296,27 @@ KINDS = {
 }
 
 
-def station(kind="pylon", length=162.0, light=(1.0, 0.25, 0.15), energy=180, lamps_every=9.0, seed=1, north_opening=0.0):
+# Finish and lighting of a pylon hall (1958 pylon stations of the Rizhsky radius share the VDNKh plan; only the finish and
+# the light differ). Facts and their status: screenplay/env-review/places/*.md (critic), storyboard/3d/WORLD.md.
+PYLON_STYLES = {
+    "vdnkh": {"pylon": "rect", "pylon_rgb": ((0.42, 0.40, 0.37), (0.80, 0.78, 0.74)), "trim_rgb": ((0.05, 0.22, 0.12), (0.15, 0.55, 0.30)),
+              "track_high": ((0.55, 0.45, 0.18), (0.92, 0.82, 0.45)), "track_low": ((0.03, 0.03, 0.03), (0.10, 0.10, 0.10)),
+              "medallions": True, "benches": True, "lamps": "chandeliers"},
+    # Alekseevskaya: octagonal pylons of white marble with green stripes, white arches and ceiling, plain finish
+    # ("борьба с излишествами"); a dark poor station in 2033 (script :673): a few dim lamps, no chandeliers.
+    "alekseevskaya": {"pylon": "octagon", "pylon_rgb": ((0.55, 0.54, 0.50), (0.93, 0.93, 0.90)), "trim_rgb": ((0.06, 0.25, 0.14), (0.20, 0.60, 0.35)),
+                      "track_high": ((0.50, 0.49, 0.46), (0.86, 0.86, 0.83)), "track_low": ((0.20, 0.20, 0.19), (0.45, 0.45, 0.43)),
+                      "medallions": False, "benches": False, "lamps": "dim"},
+    # Rizhskaya: all ceramic — light-yellow track walls, pylons in yolk-yellow and burgundy tile, yellow arches; in 2033
+    # everything in soot and grease (script :809) — darker colours; dim electric lamps.
+    "rizhskaya": {"pylon": "rect", "pylon_rgb": ((0.45, 0.30, 0.06), (0.88, 0.66, 0.22)), "trim_rgb": ((0.28, 0.05, 0.06), (0.60, 0.15, 0.18)),
+                  "track_high": ((0.50, 0.44, 0.24), (0.92, 0.86, 0.58)), "track_low": ((0.25, 0.05, 0.06), (0.55, 0.14, 0.16)),
+                  "medallions": False, "benches": False, "lamps": "dim"},
+}
+
+
+def station(kind="pylon", length=162.0, light=(1.0, 0.25, 0.15), energy=180, lamps_every=9.0, seed=1, north_opening=0.0,
+            style="vdnkh"):
     """Island-platform station along Y centred on 0: platform top z = 1.1, tracks at x = ±track_x on z = 0.
     Tunnel mouths at both ends on each track. Returns the dimensions used."""
     K = KINDS[kind]
@@ -310,9 +337,11 @@ def station(kind="pylon", length=162.0, light=(1.0, 0.25, 0.15), energy=180, lam
         for dx in (-0.795, 0.795):
             box((0.07, length, 0.15), (tx + dx, 0, TRACK_Z + 0.215), rust, name="rail")
     if kind == "pylon":
-        yellow = mat("track_tile", (0.55, 0.45, 0.18), flat=(0.92, 0.82, 0.45))
-        black = mat("black_tile", (0.03, 0.03, 0.03), flat=(0.10, 0.10, 0.10))
-        green = mat("pylon_green", (0.05, 0.22, 0.12), flat=(0.15, 0.55, 0.30))
+        st = PYLON_STYLES[style]
+        yellow = mat(f"track_tile_{style}", st["track_high"][0], flat=st["track_high"][1])
+        black = mat(f"track_low_{style}", st["track_low"][0], flat=st["track_low"][1])
+        green = mat(f"pylon_trim_{style}", st["trim_rgb"][0], flat=st["trim_rgb"][1])
+        marble = mat(f"pylon_marble_{style}", st["pylon_rgb"][0], flat=st["pylon_rgb"][1], rough=0.35)
         for sx in (-1, 1):
             box((0.4, length, 1.6), (sx * (wx + 0.2), 0, 0.8), black, name="track_wall_low")
             box((0.4, length, 4.4), (sx * (wx + 0.2), 0, 3.8), yellow, name="track_wall_high")
@@ -325,25 +354,37 @@ def station(kind="pylon", length=162.0, light=(1.0, 0.25, 0.15), energy=180, lam
         while y + 6.0 <= length / 2 + 0.01:
             for sx in (-1, 1):
                 cx = sx * 5.5
-                box((1.5, 6.0, 4.2), (cx, y + 3.0, PLAT_H + 2.1), marble, name="pylon")
-                for ey in (y + 0.1, y + 5.9):  # green bevels on the pylon ends, facing the arched passages
-                    box((1.52, 0.2, 3.2), (cx, ey, PLAT_H + 1.8), green, name="pylon_bevel")
+                if st["pylon"] == "octagon":  # elongated octagon in plan: chamfered corners, 1.5 x 6 m
+                    o = cyl(0.75 / math.cos(math.pi / 8), 4.2, (cx, y + 3.0, PLAT_H + 2.1), marble, rot=(0, 0, math.pi / 8), verts=8, name="pylon")
+                    o.scale = (1, 4.0, 1)
+                    for ey in (y + 0.55, y + 5.45):  # green stripes up the chamfers at both pylon ends
+                        box((1.3, 0.12, 3.6), (cx, ey, PLAT_H + 1.9), green, name="pylon_stripe")
+                else:
+                    box((1.5, 6.0, 4.2), (cx, y + 3.0, PLAT_H + 2.1), marble, name="pylon")
+                    for ey in (y + 0.1, y + 5.9):  # bevels on the pylon ends, facing the arched passages
+                        box((1.52, 0.2, 3.2), (cx, ey, PLAT_H + 1.8), green, name="pylon_bevel")
                 box((1.5, 3.0, 0.9), (cx, y + 7.5, PLAT_H + 4.65), marble, name="arch_lintel")
                 arch_spandrel(cx, y + 6.0, y + 9.0, PLAT_H + 2.7, PLAT_H + 4.2, marble, green)  # round arch, ~4.2 m at the crown
-                cyl(0.45, 0.06, (sx * 4.72, y + 3.0, PLAT_H + 3.2), mat("medallion", (0.20, 0.16, 0.05), flat=(0.75, 0.62, 0.25), metal=0.8),
-                    rot=(0, math.pi / 2, 0), verts=24, name="medallion")
-                box((0.5, 2.4, 0.45), (sx * 4.35, y + 3.0, PLAT_H + 0.22), marble, name="bench")
+                if st["medallions"]:
+                    cyl(0.45, 0.06, (sx * 4.72, y + 3.0, PLAT_H + 3.2), mat("medallion", (0.20, 0.16, 0.05), flat=(0.75, 0.62, 0.25), metal=0.8),
+                        rot=(0, math.pi / 2, 0), verts=24, name="medallion")
+                if st["benches"]:
+                    box((0.5, 2.4, 0.45), (sx * 4.35, y + 3.0, PLAT_H + 0.22), marble, name="bench")
             pylons += 1
             y += 9.0
-        for sx in (-1, 1):  # side naves have their own lamps over the platform strip and track
+        for sx in (-1, 1) if st["lamps"] == "chandeliers" else ():  # side naves have their own lamps over the platform strip and track
             for cy in _range(-length / 2 + 4.5, length / 2 - 4.5, lamps_every * 2):
                 bpy.ops.object.light_add(type="POINT", location=(sx * 7.6, cy, PLAT_H + 4.0))
                 li = bpy.context.object
                 li.name, li.data.energy, li.data.color, li.data.shadow_soft_size = "side_nave_light", energy * 0.6, light, 0.4
                 li.data.use_shadow = False
-        for cy in _range(-length / 2 + 4.5, length / 2 - 4.5, lamps_every):  # six-arm chandeliers along the axis
-            cyl(0.02, 1.4, (0, cy, PLAT_H + 5.9), dark, verts=6, name="chandelier_rod")
-            cyl(0.45, 0.6, (0, cy, PLAT_H + 4.9), mat("chandelier", (0.6, 0.55, 0.45), flat=(0.95, 0.90, 0.70), emit=light, strength=4), verts=6, name="chandelier")
+        for cy in _range(-length / 2 + 4.5, length / 2 - 4.5, lamps_every):  # six-arm chandeliers along the axis, or bare dim lamps
+            if st["lamps"] == "chandeliers":
+                cyl(0.02, 1.4, (0, cy, PLAT_H + 5.9), dark, verts=6, name="chandelier_rod")
+                cyl(0.45, 0.6, (0, cy, PLAT_H + 4.9), mat("chandelier", (0.6, 0.55, 0.45), flat=(0.95, 0.90, 0.70), emit=light, strength=4), verts=6, name="chandelier")
+            else:
+                cyl(0.01, 1.6, (0, cy, PLAT_H + 5.8), dark, verts=4, name="lamp_cord")
+                box((0.16, 0.16, 0.2), (0, cy, PLAT_H + 4.9), mat("bare_lamp_glow", light, flat=(1, 0.95, 0.8), emit=light, strength=3), name="bare_lamp").visible_shadow = False
             bpy.ops.object.light_add(type="POINT", location=(0, cy, PLAT_H + 4.6))
             li = bpy.context.object
             li.name, li.data.energy, li.data.color, li.data.shadow_soft_size = "chandelier_light", energy, light, 0.4

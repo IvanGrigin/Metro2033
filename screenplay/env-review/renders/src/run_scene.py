@@ -333,7 +333,7 @@ if "--no-animatic" not in args:
             log.write(f"{s['id']}\t{n}\n")
             for f in range(f0, f1 + 1, 2):  # 12 fps
                 sc.frame_set(f)
-                kit.render_pass("flat", os.path.join(an, f"{n:05d}.png"))
+                kit.render_pass("lit_fast", os.path.join(an, f"{n:05d}.png"))  # the real light, fast (user: «вот такой аниматик»)
                 n += 1
     sc.render.resolution_percentage = 100
     print("ANIMATIC frames", n, flush=True)

@@ -404,15 +404,27 @@ def setup_render(width=1344, height=756):
     sh.color_type = "OBJECT"
 
 
+DARK_FALLOFF, DARK_GAIN, DARK_FAR = 6.0, 1.0, 30.0  # "dark" pass: brightness e^(-distance/6 m); clipped at 30 m
+
+
 def render_pass(kind, path):
     """lit = EEVEE with the scene's own lights (+ depth via mist); flat = object colours under even studio
     light with shadows and cavity; id = pure flat object colours."""
     sc = bpy.context.scene
     sh = sc.display.shading
     sc.view_settings.view_transform = "AgX" if kind == "lit" else "Standard"  # flat colours stay exact
-    if kind == "lit":
+    if kind == "lit_fast":  # animatic: the real light (fire, lamps, beams), few samples, nothing beyond DARK_FAR, no depth file
+        engines = {e.identifier for e in bpy.types.RenderSettings.bl_rna.properties["engine"].enum_items}
+        sc.render.engine = "BLENDER_EEVEE_NEXT" if "BLENDER_EEVEE_NEXT" in engines else "BLENDER_EEVEE"
+        sc.view_settings.view_transform = "AgX"
+        sc.eevee.taa_render_samples = 4
+        sc.use_nodes = False
+        if sc.camera:
+            sc.camera.data.clip_end = DARK_FAR
+    elif kind == "lit":
         engines = {e.identifier for e in bpy.types.RenderSettings.bl_rna.properties["engine"].enum_items}
         sc.render.engine = "BLENDER_EEVEE_NEXT" if "BLENDER_EEVEE_NEXT" in engines else "BLENDER_EEVEE"  # 4.2 / 5.x
+        sc.eevee.taa_render_samples = 12
         sc.use_nodes = True
         nt = sc.node_tree
         nt.nodes.clear()
@@ -426,8 +438,32 @@ def render_pass(kind, path):
     else:
         sc.render.engine = "BLENDER_WORKBENCH"
         sc.use_nodes = False
-        sh.light = "STUDIO" if kind == "flat" else "FLAT"
-        sh.show_shadows = sh.show_cavity = kind == "flat"
+        sh.light = "STUDIO" if kind in ("flat", "dark") else "FLAT"
+        sh.show_shadows = sh.show_cavity = kind in ("flat", "dark")
+    if kind == "dark":  # animatic look: flat colours fading into black with distance — depth by darkness, cheap
+        if sc.camera:
+            sc.camera.data.clip_end = DARK_FAR  # nothing beyond is visible anyway: less to draw
+        sc.view_layers[0].use_pass_z = True
+        sc.use_nodes = True
+        nt = sc.node_tree
+        nt.nodes.clear()
+        rl = nt.nodes.new("CompositorNodeRLayers")
+        k = nt.nodes.new("CompositorNodeMath")
+        k.operation, k.inputs[1].default_value = "DIVIDE", -DARK_FALLOFF
+        e = nt.nodes.new("CompositorNodeMath")
+        e.operation = "EXPONENT"
+        g = nt.nodes.new("CompositorNodeMath")
+        g.operation, g.inputs[1].default_value = "MULTIPLY", DARK_GAIN
+        mix = nt.nodes.new("CompositorNodeMixRGB")
+        mix.blend_type = "MULTIPLY"
+        comp = nt.nodes.new("CompositorNodeComposite")
+        nt.links.new(rl.outputs["Depth"], k.inputs[0])
+        nt.links.new(k.outputs[0], e.inputs[0])
+        nt.links.new(e.outputs[0], g.inputs[0])
+        nt.links.new(g.outputs[0], mix.inputs[0])  # factor: e^(-d/falloff) * gain
+        nt.links.new(rl.outputs["Image"], mix.inputs[1])
+        mix.inputs[2].default_value = (0, 0, 0, 1)
+        nt.links.new(mix.outputs[0], comp.inputs["Image"])
     sc.render.filepath = path
     saved = {}
     if kind == "id":  # only people keep their colour
@@ -437,7 +473,7 @@ def render_pass(kind, path):
                 o.color = (0.35, 0.35, 0.35, 1)
     for o in sc.objects:  # smoke volumes only exist for the lit pass; in Workbench they would be solid boxes
         if o.get("lit_only"):
-            o.hide_render = kind != "lit"
+            o.hide_render = kind not in ("lit", "lit_fast")
     bpy.ops.render.render(write_still=True)
     for n, c in saved.items():
         sc.objects[n].color = c

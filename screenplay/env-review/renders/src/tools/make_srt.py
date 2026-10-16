@@ -11,6 +11,17 @@ def ts(t):
     return f"{ms // 3600000:02d}:{ms // 60000 % 60:02d}:{ms // 1000 % 60:02d},{ms % 1000:03d}"
 
 
+def unquote(text):
+    """The board writes a line as «text». or «text»: drop the outer guillemets wherever the closing one sits."""
+    t = text.strip()
+    if t.startswith("«"):
+        t = t[1:]
+        i = t.rfind("»")
+        if i >= 0:
+            t = t[:i] + t[i + 1:]
+    return t.strip()
+
+
 def srt(n):
     f = glob.glob(os.path.join(ROOT, f"*/{n:03d}-*.md"))[0]
     board = open(f, encoding="utf-8").read().split("## Раскадровка", 1)[1]
@@ -21,7 +32,7 @@ def srt(n):
         for i, (note, who, text) in enumerate(lines):
             a, b = t + dur * i / len(lines), t + dur * (i + 1) / len(lines)
             who = who.strip() + (" (за кадром)" if "за кадром" in note else "")
-            out.append(f"{k}\n{ts(a)} --> {ts(b - 0.05)}\n{who}: {text.strip().strip('«»')}\n")
+            out.append(f"{k}\n{ts(a)} --> {ts(b - 0.05)}\n{who}: {unquote(text)}\n")
             k += 1
         t += dur
     return "\n".join(out)

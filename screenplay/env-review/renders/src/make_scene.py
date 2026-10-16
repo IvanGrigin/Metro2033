@@ -12,6 +12,8 @@ from pathlib import Path
 
 SB = Path(__file__).resolve().parents[1]
 blk_path = Path(sys.argv[1]).resolve()
+if not blk_path.name.endswith(".block.json"):  # it writes sNNN.json next to the block: never run it on a hand-made sNNN.json
+    sys.exit(f"make_scene: expected a .block.json, got {blk_path.name} (s001.json is edited by hand)")
 blk = json.loads(blk_path.read_text(encoding="utf-8"))
 num = int(blk["id"][1:])
 board_file = next(SB.glob(f"[0-9][0-9]-*/{num:03d}-*.md"))
