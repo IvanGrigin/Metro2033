@@ -1,0 +1,653 @@
+{
+ "id": "s018",
+ "location": "vdnkh",
+ "note": "By the guest tent in the east arch (6.9, 43.5), flap facing west. Hunter's crate at (4.78, 42.5); Artyom opposite at (-1.6, 39.0). 18.45 'north, toward the tunnel' looks from the platform edge behind the guest tent along the east track to its tunnel mouth (9.85, 81). Platform z=1.1.",
+ "cast": {
+  "Artyom": {
+   "height": 1.78
+  },
+  "Hunter": {
+   "height": 1.95,
+   "coat": true
+  }
+ },
+ "names": {
+  "Artyom": "Artyom",
+  "Hunter": "Hunter"
+ },
+ "crates": [
+  [
+   4.78,
+   42.5,
+   270,
+   1.1
+  ]
+ ],
+ "props": {
+  "meat_whole": {
+   "type": "block",
+   "size": [
+    0.12,
+    0.07,
+    0.04
+   ],
+   "color": [
+    0.45,
+    0.2,
+    0.12
+   ],
+   "attach": "Hunter.hand_R",
+   "loc": [
+    0,
+    0.03,
+    -0.08
+   ],
+   "hidden": true
+  },
+  "meat_h": {
+   "type": "block",
+   "size": [
+    0.06,
+    0.07,
+    0.04
+   ],
+   "color": [
+    0.45,
+    0.2,
+    0.12
+   ],
+   "attach": "Hunter.hand_R",
+   "loc": [
+    0,
+    0.03,
+    -0.08
+   ],
+   "hidden": true
+  },
+  "meat_h2": {
+   "type": "block",
+   "size": [
+    0.06,
+    0.07,
+    0.04
+   ],
+   "color": [
+    0.45,
+    0.2,
+    0.12
+   ],
+   "attach": "Hunter.hand_L",
+   "loc": [
+    0,
+    0.03,
+    -0.08
+   ],
+   "hidden": true
+  },
+  "meat_a": {
+   "type": "block",
+   "size": [
+    0.06,
+    0.07,
+    0.04
+   ],
+   "color": [
+    0.45,
+    0.2,
+    0.12
+   ],
+   "attach": "Artyom.hand_R",
+   "loc": [
+    0,
+    0.03,
+    -0.08
+   ],
+   "hidden": true
+  },
+  "cart_h": {
+   "type": "block",
+   "size": [
+    0.014,
+    0.014,
+    0.06
+   ],
+   "color": [
+    0.85,
+    0.65,
+    0.25
+   ],
+   "attach": "Hunter.hand_R",
+   "loc": [
+    0,
+    0.03,
+    -0.09
+   ],
+   "hidden": true
+  },
+  "cart_a": {
+   "type": "block",
+   "size": [
+    0.014,
+    0.014,
+    0.06
+   ],
+   "color": [
+    0.85,
+    0.65,
+    0.25
+   ],
+   "attach": "Artyom.hand_R",
+   "loc": [
+    0,
+    0.03,
+    -0.09
+   ],
+   "hidden": true
+  },
+  "blanket": {
+   "type": "block",
+   "size": [
+    1.6,
+    1.2,
+    0.02
+   ],
+   "color": [
+    0.35,
+    0.3,
+    0.2
+   ],
+   "loc": [
+    7.2,
+    43.5,
+    1.1
+   ]
+  },
+  "lmg": {
+   "type": "machine_gun",
+   "loc": [
+    7.3,
+    43.2,
+    1.12
+   ],
+   "rot": [
+    0,
+    0,
+    1.57
+   ]
+  },
+  "drum1": {
+   "type": "block",
+   "size": [
+    0.25,
+    0.25,
+    0.08
+   ],
+   "color": [
+    0.12,
+    0.12,
+    0.12
+   ],
+   "loc": [
+    6.8,
+    43.85,
+    1.12
+   ]
+  },
+  "drum2": {
+   "type": "block",
+   "size": [
+    0.25,
+    0.25,
+    0.08
+   ],
+   "color": [
+    0.12,
+    0.12,
+    0.12
+   ],
+   "loc": [
+    7.15,
+    43.95,
+    1.12
+   ]
+  },
+  "grenades": {
+   "type": "block",
+   "size": [
+    0.3,
+    0.12,
+    0.08
+   ],
+   "color": [
+    0.25,
+    0.35,
+    0.18
+   ],
+   "loc": [
+    7.6,
+    43.9,
+    1.12
+   ]
+  },
+  "backpack": {
+   "type": "block",
+   "size": [
+    0.35,
+    0.25,
+    0.45
+   ],
+   "color": [
+    0.3,
+    0.32,
+    0.2
+   ],
+   "loc": [
+    5.75,
+    43.1,
+    1.1
+   ]
+  }
+ },
+ "events": [
+  {
+   "at": "18.01",
+   "actor": "Hunter",
+   "do": "place",
+   "pos": [
+    4.5,
+    41.8,
+    1.1
+   ],
+   "facing": 0
+  },
+  {
+   "at": "18.01",
+   "actor": "Artyom",
+   "do": "place",
+   "pos": [
+    -1.6,
+    39.0,
+    1.1
+   ],
+   "facing": 90
+  },
+  {
+   "at": "18.02",
+   "actor": "Hunter",
+   "do": "move",
+   "to": [
+    4.6,
+    42.5,
+    1.1
+   ],
+   "dur": 0.8,
+   "facing": 270,
+   "pose": "sit"
+  },
+  {
+   "at": "18.02",
+   "dt": 1.2,
+   "do": "show",
+   "prop": "meat_whole"
+  },
+  {
+   "at": "18.02",
+   "dt": 1.2,
+   "actor": "Hunter",
+   "do": "pose",
+   "pose": "sit_mug",
+   "dur": 0.5
+  },
+  {
+   "at": "18.03",
+   "dt": 1.0,
+   "do": "hide",
+   "prop": "meat_whole"
+  },
+  {
+   "at": "18.03",
+   "dt": 1.0,
+   "do": "show",
+   "prop": "meat_h"
+  },
+  {
+   "at": "18.03",
+   "dt": 1.0,
+   "do": "show",
+   "prop": "meat_h2"
+  },
+  {
+   "at": "18.04",
+   "actor": "Hunter",
+   "do": "pose",
+   "pose": "sit_feed",
+   "dur": 0.4
+  },
+  {
+   "at": "18.04",
+   "dt": 1.0,
+   "actor": "Artyom",
+   "do": "pose",
+   "pose": "offer",
+   "dur": 0.4
+  },
+  {
+   "at": "18.04",
+   "dt": 1.6,
+   "do": "hide",
+   "prop": "meat_h"
+  },
+  {
+   "at": "18.04",
+   "dt": 1.6,
+   "do": "show",
+   "prop": "meat_a"
+  },
+  {
+   "at": "18.05",
+   "actor": "Hunter",
+   "do": "pose",
+   "pose": "sit",
+   "dur": 0.4
+  },
+  {
+   "at": "18.05",
+   "actor": "Artyom",
+   "do": "pose",
+   "pose": "flashlight",
+   "dur": 0.4
+  },
+  {
+   "at": "18.11",
+   "actor": "Hunter",
+   "do": "pose",
+   "pose": "sit_mug",
+   "dur": 0.4
+  },
+  {
+   "at": "18.12",
+   "actor": "Hunter",
+   "do": "pose",
+   "pose": "sit",
+   "dur": 0.4
+  },
+  {
+   "at": "18.14",
+   "actor": "Artyom",
+   "do": "look",
+   "yaw": 0
+  },
+  {
+   "at": "18.28",
+   "actor": "Hunter",
+   "do": "look",
+   "yaw": 80,
+   "dur": 0.6
+  },
+  {
+   "at": "18.29",
+   "actor": "Hunter",
+   "do": "look",
+   "yaw": 0
+  },
+  {
+   "at": "18.35",
+   "actor": "Hunter",
+   "do": "pose",
+   "pose": "stand",
+   "dur": 0.5
+  },
+  {
+   "at": "18.35",
+   "dt": 0.5,
+   "actor": "Hunter",
+   "do": "walk",
+   "to": [
+    4.9,
+    43.5,
+    1.1
+   ],
+   "facing": 90,
+   "speed": 1.0,
+   "pose_after": "reach_out"
+  },
+  {
+   "at": "18.37",
+   "actor": "Hunter",
+   "do": "pose",
+   "pose": "kneel_up",
+   "dur": 0.5
+  },
+  {
+   "at": "18.38",
+   "do": "show",
+   "prop": "cart_h"
+  },
+  {
+   "at": "18.37",
+   "actor": "Hunter",
+   "do": "turn",
+   "facing": 270,
+   "dur": 0.1,
+   "dt": 2.0
+  },
+  {
+   "at": "18.37",
+   "actor": "Hunter",
+   "do": "pose",
+   "pose": "offer",
+   "dur": 0.1,
+   "dt": 2.0
+  },
+  {
+   "at": "18.39",
+   "actor": "Hunter",
+   "do": "walk",
+   "to": [
+    3.95,
+    42.5,
+    1.1
+   ],
+   "facing": 270,
+   "speed": 1.0,
+   "pose_after": "offer"
+  },
+  {
+   "at": "18.40",
+   "actor": "Artyom",
+   "do": "pose",
+   "pose": "offer",
+   "dur": 0.4
+  },
+  {
+   "at": "18.41",
+   "dt": 1.2,
+   "do": "hide",
+   "prop": "cart_h"
+  },
+  {
+   "at": "18.41",
+   "dt": 1.2,
+   "do": "show",
+   "prop": "cart_a"
+  },
+  {
+   "at": "18.44",
+   "actor": "Hunter",
+   "do": "pose",
+   "pose": "stand",
+   "dur": 0.5
+  },
+  {
+   "at": "18.44",
+   "actor": "Artyom",
+   "do": "pose",
+   "pose": "flashlight",
+   "dur": 0.5
+  },
+  {
+   "at": "18.45",
+   "actor": "Artyom",
+   "do": "turn",
+   "facing": 5,
+   "dur": 0.6
+  },
+  {
+   "at": "18.45",
+   "actor": "Hunter",
+   "do": "walk",
+   "to": [
+    3.7,
+    41.4,
+    1.1
+   ],
+   "facing": 340,
+   "speed": 1.0
+  },
+  {
+   "at": "18.47",
+   "dt": 0.8,
+   "actor": "Hunter",
+   "do": "walk",
+   "to": [
+    4.9,
+    43.5,
+    1.1
+   ],
+   "facing": 90,
+   "speed": 1.2,
+   "pose_after": "reach_out"
+  },
+  {
+   "at": "18.49",
+   "actor": "Hunter",
+   "do": "hide"
+  },
+  {
+   "at": "18.49",
+   "actor": "Artyom",
+   "do": "pose",
+   "pose": "stand",
+   "dur": 0.3
+  }
+ ],
+ "cams": {
+  "18.01": {
+   "pos": [
+    -3.5,
+    46.5,
+    2.8
+   ],
+   "at": [
+    5.2,
+    41.5,
+    1.6
+   ],
+   "lens": 24
+  },
+  "18.04": {
+   "auto": "ots",
+   "subject": "Hunter",
+   "partner": "Artyom"
+  },
+  "18.12": {
+   "auto": "ots",
+   "subject": "Hunter",
+   "partner": "Artyom"
+  },
+  "18.18": {
+   "pos": [
+    3.95,
+    39.1,
+    1.95
+   ],
+   "at": [
+    3.95,
+    42.5,
+    1.9
+   ],
+   "lens": 35
+  },
+  "18.25": {
+   "auto": "ots",
+   "subject": "Hunter",
+   "partner": "Artyom"
+  },
+  "18.33": {
+   "auto": "ots",
+   "subject": "Hunter",
+   "partner": "Artyom"
+  },
+  "18.36": {
+   "pos": [
+    5.7,
+    43.5,
+    1.9
+   ],
+   "at": [
+    7.1,
+    43.5,
+    1.15
+   ],
+   "lens": 28
+  },
+  "18.39": {
+   "pos": [
+    -2.5,
+    37.6,
+    2.5
+   ],
+   "at": "Hunter.torso",
+   "lens": 35
+  },
+  "18.45": {
+   "pos": [
+    8.75,
+    45.5,
+    2.75
+   ],
+   "at": [
+    9.85,
+    81.0,
+    2.0
+   ],
+   "lens": 35
+  },
+  "18.49": {
+   "pos": [
+    -4.0,
+    34.5,
+    2.6
+   ],
+   "at": [
+    4.9,
+    43.0,
+    1.7
+   ],
+   "lens": 24
+  },
+  "18.37": {
+   "pos": [
+    3.7,
+    41.3,
+    2.2
+   ],
+   "at": "Hunter.torso",
+   "lens": 35
+  },
+  "18.38": {
+   "pos": [
+    3.9,
+    41.7,
+    2.0
+   ],
+   "at": "Hunter.hand_R",
+   "lens": 50
+  },
+  "18.48": {
+   "auto": "wide",
+   "subject": "Artyom",
+   "side": -1
+  }
+ }
+}

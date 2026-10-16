@@ -1,0 +1,297 @@
+{
+ "id": "s014",
+ "location": "sukhoi_tent",
+ "note": "Dream. Artyom lies on the east cot as in s013 (head toward the shelf, forehead ~(1.15,1.15,0.7)). Hunter enters stooping, looms over the cot at (0.35,1.4) facing east, kneels to lay his right palm on the forehead (kneel_touch), rises with the lantern; a cold point light at the lantern lights his face (14.06); the Dark One replaces him at the same spot from 14.07 holding the same lantern (dark_torch), whose light (dark_face, in its hand) lights the face; 14.08 everything goes out, tent lamp included.",
+ "cast": {
+  "Artyom": {
+   "height": 1.78
+  },
+  "Hunter": {
+   "height": 1.95,
+   "coat": true
+  },
+  "DarkOne": {
+   "height": 1.95,
+   "role": "Black"
+  }
+ },
+ "names": {
+  "Artyom": "Artyom",
+  "Hunter": "Hunter",
+  "Dark One": "DarkOne"
+ },
+ "props": {
+  "hunter_torch": {
+   "type": "lantern",
+   "attach": "Hunter.hand_L",
+   "loc": [
+    0,
+    0.05,
+    -0.05
+   ]
+  },
+  "dark_torch": {
+   "type": "lantern",
+   "attach": "DarkOne.hand_L",
+   "loc": [
+    0,
+    0.05,
+    -0.05
+   ],
+   "hidden": true
+  }
+ },
+ "lights": {
+  "torch_beam": {
+   "type": "SPOT",
+   "attach": "Hunter.hand_L",
+   "loc": [
+    0,
+    0.1,
+    -0.05
+   ],
+   "energy": 800,
+   "angle": 30,
+   "color": [
+    0.75,
+    0.85,
+    1.0
+   ]
+  },
+  "face_glow": {
+   "type": "POINT",
+   "attach": "Hunter.hand_L",
+   "loc": [
+    0,
+    0.08,
+    -0.05
+   ],
+   "energy": 0,
+   "color": [
+    0.75,
+    0.85,
+    1.0
+   ]
+  },
+  "dark_face": {
+   "type": "POINT",
+   "attach": "DarkOne.hand_L",
+   "loc": [
+    0,
+    0.08,
+    -0.05
+   ],
+   "energy": 0,
+   "color": [
+    0.75,
+    0.85,
+    1.0
+   ]
+  }
+ },
+ "events": [
+  {
+   "at": "14.01",
+   "actor": "Artyom",
+   "do": "place",
+   "pos": [
+    1.15,
+    0.35,
+    0.45
+   ],
+   "facing": 180,
+   "pose": "fallen"
+  },
+  {
+   "at": "14.01",
+   "actor": "DarkOne",
+   "do": "hide"
+  },
+  {
+   "at": "14.01",
+   "actor": "DarkOne",
+   "do": "place",
+   "pos": [
+    0.35,
+    1.4
+   ],
+   "facing": 90,
+   "pose": "hold_light"
+  },
+  {
+   "at": "14.01",
+   "actor": "Hunter",
+   "do": "show"
+  },
+  {
+   "at": "14.01",
+   "actor": "Hunter",
+   "do": "place",
+   "pos": [
+    0.1,
+    -2.35
+   ],
+   "facing": 0,
+   "pose": "stoop"
+  },
+  {
+   "at": "14.01",
+   "dt": 0.3,
+   "actor": "Hunter",
+   "do": "move",
+   "to": [
+    0.3,
+    -0.7
+   ],
+   "dur": 1.7,
+   "facing": 10,
+   "pose": "stoop"
+  },
+  {
+   "at": "14.02",
+   "actor": "Hunter",
+   "do": "place",
+   "pos": [
+    0.35,
+    1.4
+   ],
+   "facing": 90,
+   "pose": "stoop"
+  },
+  {
+   "at": "14.04",
+   "dt": 0.2,
+   "actor": "Hunter",
+   "do": "pose",
+   "pose": "kneel_touch",
+   "dur": 0.8
+  },
+  {
+   "at": "14.06",
+   "actor": "Hunter",
+   "do": "pose",
+   "pose": "hold_light",
+   "dur": 0.6
+  },
+  {
+   "at": "14.06",
+   "dt": 0.6,
+   "do": "light",
+   "light": "torch_beam",
+   "energy": 0
+  },
+  {
+   "at": "14.06",
+   "dt": 0.6,
+   "do": "light",
+   "light": "face_glow",
+   "energy": 40
+  },
+  {
+   "at": "14.07",
+   "actor": "Hunter",
+   "do": "hide"
+  },
+  {
+   "at": "14.07",
+   "actor": "DarkOne",
+   "do": "show"
+  },
+  {
+   "at": "14.07",
+   "do": "light",
+   "light": "dark_face",
+   "energy": 40
+  },
+  {
+   "at": "14.08",
+   "do": "light",
+   "light": "dark_face",
+   "energy": 0
+  },
+  {
+   "at": "14.08",
+   "do": "light",
+   "light": "tent_lamp",
+   "energy": 0
+  },
+  {
+   "at": "14.08",
+   "actor": "DarkOne",
+   "do": "hide"
+  },
+  {
+   "at": "14.07",
+   "do": "show",
+   "prop": "dark_torch"
+  }
+ ],
+ "cams": {
+  "14.01": {
+   "pos": [
+    1.15,
+    1.55,
+    1.0
+   ],
+   "at": "Hunter.torso",
+   "lens": 28
+  },
+  "14.02": {
+   "pos": [
+    1.1,
+    1.15,
+    0.72
+   ],
+   "at": "Hunter.eyes",
+   "lens": 18
+  },
+  "14.04": {
+   "pos": [
+    0.6,
+    0.55,
+    1.25
+   ],
+   "at": [
+    1.1,
+    1.15,
+    0.7
+   ],
+   "lens": 35
+  },
+  "14.05": {
+   "pos": [
+    0.9,
+    0.75,
+    1.25
+   ],
+   "at": "Artyom.eyes",
+   "lens": 50
+  },
+  "14.03": {
+   "lens": 40
+  },
+  "14.06": {
+   "pos": [
+    1.3,
+    0.25,
+    1.35
+   ],
+   "at": [
+    0.4,
+    1.35,
+    1.75
+   ],
+   "lens": 24
+  },
+  "14.07": {
+   "pos": [
+    1.3,
+    0.25,
+    1.35
+   ],
+   "at": "DarkOne.eyes",
+   "lens": 28,
+   "push": 0.15
+  }
+ }
+}

@@ -1,0 +1,405 @@
+{
+ "id": "s006",
+ "location": "tunnel_250",
+ "cast": {
+  "Artyom": {
+   "height": 1.78,
+   "rifle": true
+  },
+  "Pyotr": {
+   "height": 1.7,
+   "rifle": true
+  },
+  "Andrei": {
+   "height": 1.76,
+   "beret": true,
+   "rifle": true
+  },
+  "Kirill": {
+   "height": 1.74
+  },
+  "Hunter": {
+   "height": 1.95,
+   "coat": true
+  },
+  "Extra1": {
+   "height": 1.76,
+   "role": "Extra",
+   "rifle": true
+  },
+  "Extra2": {
+   "height": 1.72,
+   "role": "Extra",
+   "rifle": true
+  }
+ },
+ "title": "Сцена 6. ИНТ. СЕВЕРНЫЙ ТУННЕЛЬ ВДНХ — 250-Й МЕТР — ПОЗЖЕ",
+ "storyboard": "storyboard/01-дозор/006-инт-северный-туннель-вднх-250-й-метр-позже.md",
+ "crates": [
+  [
+   -0.35,
+   0.82,
+   0
+  ],
+  [
+   -0.4,
+   0.66,
+   234
+  ],
+  [
+   -1.85,
+   -0.93,
+   36
+  ],
+  [
+   0.2,
+   -1.05,
+   303
+  ],
+  [
+   -0.95,
+   -1.62,
+   348
+  ]
+ ],
+ "props": {
+  "puppy_jacket": {
+   "type": "puppy",
+   "attach": "Andrei.torso",
+   "loc": [
+    0,
+    0.22,
+    -0.1
+   ]
+  }
+ },
+ "events": [
+  {
+   "at": "6.01",
+   "actor": "Artyom",
+   "do": "place",
+   "pos": [
+    -0.55,
+    0.55
+   ],
+   "facing": 0,
+   "pose": "sit_rifle"
+  },
+  {
+   "at": "6.01",
+   "actor": "Pyotr",
+   "do": "place",
+   "pos": [
+    -1.85,
+    -0.75
+   ],
+   "facing": 36,
+   "pose": "sit"
+  },
+  {
+   "at": "6.01",
+   "actor": "Andrei",
+   "do": "place",
+   "pos": [
+    0.2,
+    -0.85
+   ],
+   "facing": 303,
+   "pose": "sit_carry"
+  },
+  {
+   "at": "6.01",
+   "actor": "Kirill",
+   "do": "place",
+   "pos": [
+    -0.95,
+    -1.45
+   ],
+   "facing": 348,
+   "pose": "sit"
+  },
+  {
+   "at": "6.01",
+   "actor": "Hunter",
+   "do": "place",
+   "pos": [
+    0.71,
+    0.96
+   ],
+   "facing": 235,
+   "pose": "stand"
+  },
+  {
+   "at": "6.01",
+   "actor": "Extra1",
+   "do": "place",
+   "pos": [
+    0.5,
+    -9.0
+   ],
+   "facing": 0,
+   "pose": "stand_rifle"
+  },
+  {
+   "at": "6.01",
+   "actor": "Extra2",
+   "do": "place",
+   "pos": [
+    -0.6,
+    -10.0
+   ],
+   "facing": 0,
+   "pose": "stand_rifle"
+  },
+  {
+   "at": "6.01",
+   "actor": "Extra1",
+   "do": "walk",
+   "to": [
+    0.6,
+    -4.0
+   ],
+   "facing": 340,
+   "speed": 1.2,
+   "pose_after": "stand_rifle"
+  },
+  {
+   "at": "6.01",
+   "actor": "Extra2",
+   "do": "walk",
+   "to": [
+    -0.5,
+    -4.6
+   ],
+   "facing": 20,
+   "speed": 1.2,
+   "pose_after": "stand_rifle"
+  },
+  {
+   "at": "6.03",
+   "actor": "Artyom",
+   "do": "turn",
+   "facing": 45,
+   "dur": 0.5
+  },
+  {
+   "at": "6.04",
+   "actor": "Artyom",
+   "do": "pose",
+   "pose": "offer",
+   "dur": 0.6,
+   "dt": 1.2
+  },
+  {
+   "at": "6.04",
+   "actor": "Hunter",
+   "do": "pose",
+   "pose": "offer",
+   "dur": 0.6,
+   "dt": 1.2
+  },
+  {
+   "at": "6.07",
+   "actor": "Hunter",
+   "do": "pose",
+   "pose": "stand",
+   "dur": 0.4
+  },
+  {
+   "at": "6.07",
+   "actor": "Artyom",
+   "do": "pose",
+   "pose": "stand_rifle",
+   "dur": 0.4
+  },
+  {
+   "at": "6.09",
+   "actor": "Hunter",
+   "do": "walk",
+   "to": [
+    0.4,
+    -22.0
+   ],
+   "facing": 180,
+   "speed": 1.4
+  },
+  {
+   "at": "6.09",
+   "actor": "Artyom",
+   "do": "turn",
+   "facing": 175,
+   "dur": 0.8
+  },
+  {
+   "at": "6.09",
+   "actor": "Pyotr",
+   "do": "turn",
+   "facing": 150,
+   "dur": 0.6,
+   "dt": 2.5
+  },
+  {
+   "at": "6.01",
+   "do": "light",
+   "light": "fire_light",
+   "energy": 40
+  },
+  {
+   "at": "6.01",
+   "do": "prop_scale",
+   "prop": "flame",
+   "to": [
+    0.8,
+    0.8,
+    0.4
+   ],
+   "dur": 0.05
+  },
+  {
+   "at": "6.01",
+   "do": "prop_scale",
+   "prop": "flame.001",
+   "to": [
+    0.8,
+    0.8,
+    0.4
+   ],
+   "dur": 0.05
+  },
+  {
+   "at": "6.01",
+   "do": "prop_scale",
+   "prop": "flame.002",
+   "to": [
+    0.8,
+    0.8,
+    0.4
+   ],
+   "dur": 0.05
+  }
+ ],
+ "shots": [
+  {
+   "id": "6.01",
+   "dur": 3.0,
+   "cam": {
+    "pos": [
+     1.3,
+     -12.0,
+     1.6
+    ],
+    "at": [
+     -0.5,
+     0,
+     0.8
+    ],
+    "lens": 28
+   }
+  },
+  {
+   "id": "6.02",
+   "dur": 2.5,
+   "cam": {
+    "auto": "med",
+    "subject": "Andrei",
+    "side": 1
+   }
+  },
+  {
+   "id": "6.03",
+   "dur": 2.5,
+   "cam": {
+    "pos": [
+     -0.9,
+     0.0,
+     0.7
+    ],
+    "at": "Hunter.eyes",
+    "lens": 28
+   }
+  },
+  {
+   "id": "6.04",
+   "dur": 2.0,
+   "cam": {
+    "auto": "cu",
+    "subject": "Artyom",
+    "side": 1
+   }
+  },
+  {
+   "id": "6.05",
+   "dur": 2.0,
+   "cam": {
+    "pos": [
+     0.31,
+     -0.06,
+     1.55
+    ],
+    "at": [
+     0.03,
+     0.8,
+     1.5
+    ],
+    "lens": 50
+   }
+  },
+  {
+   "id": "6.06",
+   "dur": 2.0,
+   "cam": {
+    "auto": "cu",
+    "subject": "Hunter",
+    "side": -1
+   }
+  },
+  {
+   "id": "6.07",
+   "dur": 2.0,
+   "cam": {
+    "auto": "cu",
+    "subject": "Artyom",
+    "side": 1
+   }
+  },
+  {
+   "id": "6.08",
+   "dur": 2.5,
+   "cam": {
+    "auto": "cu",
+    "subject": "Hunter",
+    "side": -1
+   }
+  },
+  {
+   "id": "6.09",
+   "dur": 4.0,
+   "cam": {
+    "pos": [
+     0.3,
+     4.2,
+     1.7
+    ],
+    "at": [
+     0.3,
+     -6,
+     1.2
+    ],
+    "lens": 28
+   }
+  },
+  {
+   "id": "6.10",
+   "dur": 3.5,
+   "cam": {
+    "pos": [
+     0.2,
+     -2.6,
+     2.3
+    ],
+    "at": "Pyotr.eyes",
+    "lens": 40
+   }
+  }
+ ]
+}

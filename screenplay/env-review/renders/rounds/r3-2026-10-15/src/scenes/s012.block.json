@@ -1,0 +1,174 @@
+{
+ "id": "s012",
+ "location": "sukhoi_tent",
+ "note": "Flashback, 16 years ago. Sukhoi (younger) whips 8-year-old Artyom in the aisle near the entrance. Belt = brown block in Sukhoi's right hand.",
+ "cast": {
+  "ArtyomChild": {
+   "height": 1.3,
+   "role": "ArtyomChild"
+  },
+  "Sukhoi": {
+   "height": 1.75
+  }
+ },
+ "names": {
+  "young Artyom": "ArtyomChild",
+  "Artyom": "ArtyomChild",
+  "Sukhoi": "Sukhoi"
+ },
+ "props": {
+  "belt": {
+   "type": "block",
+   "size": [
+    0.04,
+    0.02,
+    0.6
+   ],
+   "color": [
+    0.45,
+    0.25,
+    0.1
+   ],
+   "attach": "Sukhoi.hand_R",
+   "loc": [
+    0,
+    0,
+    -0.62
+   ]
+  }
+ },
+ "events": [
+  {
+   "at": "12.01",
+   "actor": "Sukhoi",
+   "do": "place",
+   "pos": [
+    -0.35,
+    -1.35
+   ],
+   "facing": 50,
+   "pose": "offer"
+  },
+  {
+   "at": "12.01",
+   "actor": "ArtyomChild",
+   "do": "place",
+   "pos": [
+    0.3,
+    -0.85
+   ],
+   "facing": 230,
+   "pose": "stand"
+  },
+  {
+   "at": "12.01",
+   "dt": 0.5,
+   "actor": "Sukhoi",
+   "do": "pose",
+   "pose": "wave",
+   "dur": 0.3
+  },
+  {
+   "at": "12.01",
+   "dt": 1.2,
+   "actor": "Sukhoi",
+   "do": "pose",
+   "pose": "offer",
+   "dur": 0.4
+  },
+  {
+   "at": "12.04",
+   "actor": "Sukhoi",
+   "do": "pose",
+   "pose": "wave",
+   "dur": 0.3
+  },
+  {
+   "at": "12.04",
+   "dt": 0.6,
+   "actor": "Sukhoi",
+   "do": "pose",
+   "pose": "offer",
+   "dur": 0.3
+  },
+  {
+   "at": "12.04",
+   "dt": 1.0,
+   "actor": "Sukhoi",
+   "do": "pose",
+   "pose": "wave",
+   "dur": 0.3
+  },
+  {
+   "at": "12.04",
+   "dt": 1.6,
+   "actor": "Sukhoi",
+   "do": "pose",
+   "pose": "offer",
+   "dur": 0.3
+  },
+  {
+   "at": "12.01",
+   "do": "light",
+   "light": "tent_lamp",
+   "energy": 8
+  }
+ ],
+ "cams": {
+  "12.04": {
+   "auto": "detail",
+   "subject": "Sukhoi",
+   "joint": "hand_R",
+   "side": 1
+  },
+  "12.01": {
+   "pos": [
+    -0.5,
+    0.9,
+    1.6
+   ],
+   "at": [
+    0.0,
+    -1.1,
+    1.0
+   ],
+   "lens": 24
+  },
+  "12.02": {
+   "pos": [
+    0.25,
+    0.25,
+    1.55
+   ],
+   "at": "Sukhoi.eyes",
+   "lens": 24
+  },
+  "12.03": {
+   "at": "ArtyomChild.eyes",
+   "rel": [
+    -0.2,
+    -1.0,
+    0.05
+   ],
+   "lens": 35,
+   "size": 0.6
+  }
+ },
+ "lights": {
+  "cold_lamp": {
+   "type": "POINT",
+   "attach": "tent_front_L",
+   "loc": [
+    0.833,
+    67.5,
+    0.227
+   ],
+   "energy": 70,
+   "color": [
+    0.6,
+    0.72,
+    1.0
+   ]
+  }
+ }
+}

@@ -1,0 +1,645 @@
+{
+ "id": "s019",
+ "location": "vdnkh",
+ "cast": {
+  "Artyom": {
+   "height": 1.78
+  },
+  "Zhenya": {
+   "height": 1.75,
+   "role": "Zhenya"
+  },
+  "Kirill": {
+   "height": 1.74
+  },
+  "OldWorker": {
+   "height": 1.68,
+   "role": "OldWorker"
+  },
+  "Extra1": {
+   "height": 1.72,
+   "role": "Extra"
+  },
+  "Extra2": {
+   "height": 1.66,
+   "role": "Extra"
+  }
+ },
+ "title": "Сцена 19. ИНТ. ЧАЙНАЯ ФАБРИКА — НОЧЬ",
+ "storyboard": "storyboard/03-порог/019-инт-чайная-фабрика-ночь.md",
+ "crates": [
+  [
+   3.25,
+   68.8,
+   270,
+   1.1
+  ],
+  [
+   3.25,
+   69.6,
+   270,
+   1.1
+  ],
+  [
+   1.15,
+   67.4,
+   90,
+   1.1
+  ],
+  [
+   -3.25,
+   70.4,
+   90,
+   1.1
+  ],
+  [
+   -1.15,
+   67.4,
+   270,
+   1.1
+  ],
+  [
+   -3.25,
+   67.9,
+   90,
+   1.1
+  ]
+ ],
+ "props": {
+  "pile_artyom": {
+   "type": "block",
+   "size": [
+    0.3,
+    0.35,
+    0.07
+   ],
+   "color": [
+    0.95,
+    0.9,
+    0.75
+   ],
+   "loc": [
+    2.4,
+    68.75,
+    1.9300000000000002
+   ]
+  },
+  "pile_old": {
+   "type": "block",
+   "size": [
+    0.3,
+    0.35,
+    0.06
+   ],
+   "color": [
+    0.95,
+    0.9,
+    0.75
+   ],
+   "loc": [
+    -2.0,
+    70.4,
+    1.9300000000000002
+   ]
+  },
+  "knife_artyom": {
+   "type": "block",
+   "size": [
+    0.02,
+    0.03,
+    0.2
+   ],
+   "color": [
+    0.7,
+    0.7,
+    0.72
+   ],
+   "attach": "Artyom.hand_R",
+   "loc": [
+    0,
+    0.02,
+    -0.22
+   ]
+  },
+  "knife_zhenya": {
+   "type": "block",
+   "size": [
+    0.02,
+    0.03,
+    0.2
+   ],
+   "color": [
+    0.7,
+    0.7,
+    0.72
+   ],
+   "attach": "Zhenya.hand_R",
+   "loc": [
+    0,
+    0.02,
+    -0.22
+   ]
+  },
+  "knife_kirill": {
+   "type": "block",
+   "size": [
+    0.02,
+    0.03,
+    0.2
+   ],
+   "color": [
+    0.7,
+    0.7,
+    0.72
+   ],
+   "attach": "Kirill.hand_R",
+   "loc": [
+    0,
+    0.02,
+    -0.22
+   ]
+  },
+  "knife_old": {
+   "type": "block",
+   "size": [
+    0.02,
+    0.03,
+    0.2
+   ],
+   "color": [
+    0.7,
+    0.7,
+    0.72
+   ],
+   "attach": "OldWorker.hand_R",
+   "loc": [
+    0,
+    0.02,
+    -0.22
+   ]
+  }
+ },
+ "events": [
+  {
+   "at": "19.01",
+   "do": "place",
+   "actor": "Artyom",
+   "pos": [
+    2.95,
+    68.8,
+    1.1
+   ],
+   "facing": 270,
+   "pose": "sit_pour"
+  },
+  {
+   "at": "19.01",
+   "do": "place",
+   "actor": "Zhenya",
+   "pos": [
+    2.95,
+    69.6,
+    1.1
+   ],
+   "facing": 270,
+   "pose": "sit_pour"
+  },
+  {
+   "at": "19.01",
+   "do": "place",
+   "actor": "Kirill",
+   "pos": [
+    1.45,
+    67.4,
+    1.1
+   ],
+   "facing": 90,
+   "pose": "sit_pour"
+  },
+  {
+   "at": "19.01",
+   "do": "place",
+   "actor": "OldWorker",
+   "pos": [
+    -2.95,
+    70.4,
+    1.1
+   ],
+   "facing": 90,
+   "pose": "sit_pour"
+  },
+  {
+   "at": "19.01",
+   "do": "place",
+   "actor": "Extra1",
+   "pos": [
+    -1.45,
+    67.4,
+    1.1
+   ],
+   "facing": 270,
+   "pose": "sit_pour"
+  },
+  {
+   "at": "19.01",
+   "do": "place",
+   "actor": "Extra2",
+   "pos": [
+    -2.95,
+    67.9,
+    1.1
+   ],
+   "facing": 90,
+   "pose": "sit_pour"
+  },
+  {
+   "at": "19.03",
+   "do": "look",
+   "actor": "Zhenya",
+   "yaw": -40
+  },
+  {
+   "at": "19.04",
+   "do": "look",
+   "actor": "Zhenya",
+   "yaw": 0
+  },
+  {
+   "at": "19.07",
+   "do": "turn",
+   "actor": "Artyom",
+   "facing": 286,
+   "dur": 0.4
+  },
+  {
+   "at": "19.09",
+   "do": "turn",
+   "actor": "Artyom",
+   "facing": 270,
+   "dt": 1.0,
+   "dur": 0.5
+  },
+  {
+   "at": "19.10",
+   "do": "turn",
+   "actor": "Zhenya",
+   "facing": 230,
+   "dur": 0.5
+  },
+  {
+   "at": "19.12",
+   "do": "turn",
+   "actor": "Zhenya",
+   "facing": 270,
+   "dur": 0.5
+  },
+  {
+   "at": "19.14",
+   "do": "pose",
+   "actor": "Zhenya",
+   "pose": "offer",
+   "dur": 0.4
+  },
+  {
+   "at": "19.15",
+   "do": "pose",
+   "actor": "Zhenya",
+   "pose": "sit_pour",
+   "dur": 0.4
+  },
+  {
+   "at": "19.16",
+   "do": "pose",
+   "actor": "Artyom",
+   "pose": "sit_mug",
+   "dt": 1.5,
+   "dur": 1.5
+  },
+  {
+   "at": "19.17",
+   "do": "pose",
+   "actor": "Artyom",
+   "pose": "sit_pour",
+   "dur": 0.5
+  },
+  {
+   "at": "19.18",
+   "do": "turn",
+   "actor": "Zhenya",
+   "facing": 220,
+   "dur": 0.5
+  },
+  {
+   "at": "19.19",
+   "do": "turn",
+   "actor": "Zhenya",
+   "facing": 240,
+   "dur": 0.5
+  },
+  {
+   "at": "19.23",
+   "do": "pose",
+   "actor": "Zhenya",
+   "pose": "sit_feed",
+   "dur": 0.3
+  },
+  {
+   "at": "19.24",
+   "do": "pose",
+   "actor": "Zhenya",
+   "pose": "sit_pour",
+   "dur": 0.4
+  },
+  {
+   "at": "19.26",
+   "do": "pose",
+   "actor": "Artyom",
+   "pose": "sit",
+   "dur": 0.6
+  }
+ ],
+ "clock": "22:15",
+ "light_scale": 0.5,
+ "shots": [
+  {
+   "id": "19.01",
+   "dur": 3.0,
+   "cam": {
+    "pos": [
+     -3.9,
+     62.4,
+     2.9
+    ],
+    "at": [
+     1.2,
+     72.0,
+     2.0
+    ],
+    "lens": 20,
+    "push": 0.08
+   }
+  },
+  {
+   "id": "19.02",
+   "dur": 3.0,
+   "cam": {
+    "auto": "wide",
+    "subject": "Kirill",
+    "side": -1
+   }
+  },
+  {
+   "id": "19.03",
+   "dur": 2.0,
+   "cam": {
+    "auto": "med",
+    "subject": "Zhenya",
+    "side": 1
+   }
+  },
+  {
+   "id": "19.04",
+   "dur": 2.0,
+   "cam": {
+    "auto": "detail",
+    "subject": "Artyom",
+    "side": -1
+   }
+  },
+  {
+   "id": "19.05",
+   "dur": 2.5,
+   "cam": {
+    "auto": "cu",
+    "subject": "Artyom",
+    "side": -1
+   }
+  },
+  {
+   "id": "19.06",
+   "dur": 2.0,
+   "cam": {
+    "pos": [
+     2.35,
+     68.25,
+     2.4
+    ],
+    "at": [
+     2.4,
+     68.75,
+     1.95
+    ],
+    "lens": 50
+   }
+  },
+  {
+   "id": "19.07",
+   "dur": 3.0,
+   "cam": {
+    "auto": "med",
+    "subject": "OldWorker",
+    "side": 1
+   }
+  },
+  {
+   "id": "19.08",
+   "dur": 2.5,
+   "cam": {
+    "auto": "detail",
+    "subject": "OldWorker",
+    "side": 1
+   }
+  },
+  {
+   "id": "19.09",
+   "dur": 2.0,
+   "cam": {
+    "auto": "cu",
+    "subject": "Artyom",
+    "side": -1
+   }
+  },
+  {
+   "id": "19.10",
+   "dur": 3.5,
+   "cam": {
+    "auto": "med",
+    "subject": "Zhenya",
+    "side": 1
+   }
+  },
+  {
+   "id": "19.11",
+   "dur": 3.5,
+   "cam": {
+    "pos": [
+     1.95,
+     69.5,
+     2.4
+    ],
+    "at": "Zhenya.eyes",
+    "lens": 45
+   }
+  },
+  {
+   "id": "19.12",
+   "dur": 2.5,
+   "cam": {
+    "auto": "med",
+    "subject": "Kirill",
+    "side": -1
+   }
+  },
+  {
+   "id": "19.13",
+   "dur": 3.0,
+   "cam": {
+    "auto": "cu",
+    "subject": "Zhenya",
+    "side": 1
+   }
+  },
+  {
+   "id": "19.14",
+   "dur": 3.5,
+   "cam": {
+    "auto": "med",
+    "subject": "Zhenya",
+    "side": 1
+   }
+  },
+  {
+   "id": "19.15",
+   "dur": 3.0,
+   "cam": {
+    "view": "wide",
+    "auto": "detail",
+    "subject": "Artyom",
+    "lens": 85
+   }
+  },
+  {
+   "id": "19.16",
+   "dur": 4.0,
+   "cam": {
+    "auto": "cu",
+    "subject": "Artyom",
+    "side": -1,
+    "push": 0.15
+   }
+  },
+  {
+   "id": "19.17",
+   "dur": 2.0,
+   "cam": {
+    "pos": [
+     3.0,
+     66.6,
+     2.2
+    ],
+    "at": "Kirill.torso",
+    "lens": 35
+   }
+  },
+  {
+   "id": "19.18",
+   "dur": 3.0,
+   "cam": {
+    "auto": "med",
+    "subject": "Zhenya",
+    "side": -1
+   }
+  },
+  {
+   "id": "19.19",
+   "dur": 2.5,
+   "cam": {
+    "auto": "cu",
+    "subject": "Artyom",
+    "side": 1
+   }
+  },
+  {
+   "id": "19.20",
+   "dur": 1.5,
+   "cam": {
+    "auto": "cu",
+    "subject": "Zhenya",
+    "side": -1
+   }
+  },
+  {
+   "id": "19.21",
+   "dur": 1.5,
+   "cam": {
+    "auto": "cu",
+    "subject": "Artyom",
+    "side": 1
+   }
+  },
+  {
+   "id": "19.22",
+   "dur": 2.5,
+   "cam": {
+    "auto": "cu",
+    "subject": "Artyom",
+    "side": 1
+   }
+  },
+  {
+   "id": "19.23",
+   "dur": 2.0,
+   "cam": {
+    "auto": "med",
+    "subject": "Zhenya",
+    "side": -1
+   }
+  },
+  {
+   "id": "19.24",
+   "dur": 3.5,
+   "cam": {
+    "auto": "med",
+    "subject": "Zhenya",
+    "side": -1
+   }
+  },
+  {
+   "id": "19.25",
+   "dur": 2.0,
+   "cam": {
+    "auto": "cu",
+    "subject": "Zhenya",
+    "side": -1
+   }
+  },
+  {
+   "id": "19.26",
+   "dur": 3.0,
+   "cam": {
+    "auto": "cu",
+    "subject": "Artyom",
+    "side": 1
+   }
+  },
+  {
+   "id": "19.27",
+   "dur": 2.5,
+   "cam": {
+    "auto": "cu",
+    "subject": "Zhenya",
+    "side": -1
+   }
+  },
+  {
+   "id": "19.28",
+   "dur": 3.0,
+   "cam": {
+    "auto": "cu",
+    "subject": "Artyom",
+    "side": 1,
+    "push": 0.15
+   }
+  }
+ ]
+}

@@ -1,0 +1,292 @@
+{
+ "id": "s016",
+ "location": "sukhoi_tent",
+ "note": "Artyom wakes on the east cot (head toward the shelf), sits up on its edge facing the aisle. Sukhoi (55) crouches (kneel_up) to shake him, stands, steps aside west. Hunter without coat: coat = black block hanging from his left hand; TT = small block on his belt. Hunter is hidden outside the flap until 16.05, enters stooping, straightens in 16.06.",
+ "cast": {
+  "Artyom": {
+   "height": 1.78
+  },
+  "Sukhoi": {
+   "height": 1.75
+  },
+  "Hunter": {
+   "height": 1.95,
+   "coat": false
+  }
+ },
+ "names": {
+  "Artyom": "Artyom",
+  "Sukhoi": "Sukhoi",
+  "Hunter": "Hunter"
+ },
+ "props": {
+  "coat_on_arm": {
+   "type": "block",
+   "size": [
+    0.14,
+    0.3,
+    0.75
+   ],
+   "color": [
+    0.08,
+    0.08,
+    0.08
+   ],
+   "attach": "Hunter.hand_L",
+   "loc": [
+    -0.03,
+    0.05,
+    -0.65
+   ]
+  },
+  "belt": {
+   "type": "block",
+   "size": [
+    0.44,
+    0.44,
+    0.06
+   ],
+   "color": [
+    0.3,
+    0.18,
+    0.08
+   ],
+   "attach": "Hunter.pelvis",
+   "loc": [
+    0,
+    0,
+    0.0
+   ]
+  },
+  "tt_pistol": {
+   "type": "block",
+   "size": [
+    0.05,
+    0.3,
+    0.14
+   ],
+   "color": [
+    0.12,
+    0.12,
+    0.14
+   ],
+   "attach": "Hunter.pelvis",
+   "loc": [
+    0.25,
+    0.02,
+    -0.1
+   ]
+  }
+ },
+ "events": [
+  {
+   "at": "16.01",
+   "actor": "Artyom",
+   "do": "place",
+   "pos": [
+    1.15,
+    0.35,
+    0.45
+   ],
+   "facing": 180,
+   "pose": "fallen"
+  },
+  {
+   "at": "16.01",
+   "actor": "Sukhoi",
+   "do": "place",
+   "pos": [
+    0.55,
+    0.95
+   ],
+   "facing": 90,
+   "pose": "kneel_up"
+  },
+  {
+   "at": "16.02",
+   "actor": "Sukhoi",
+   "do": "pose",
+   "pose": "stand",
+   "dur": 0.4
+  },
+  {
+   "at": "16.02",
+   "dt": 0.3,
+   "actor": "Sukhoi",
+   "do": "walk",
+   "to": [
+    0.3,
+    0.0
+   ],
+   "facing": 60,
+   "speed": 1.2
+  },
+  {
+   "at": "16.02",
+   "actor": "Artyom",
+   "do": "move",
+   "to": [
+    0.9,
+    0.5,
+    0.0
+   ],
+   "dur": 0.4,
+   "facing": 250,
+   "pose": "sit"
+  },
+  {
+   "at": "16.05",
+   "actor": "Sukhoi",
+   "do": "walk",
+   "to": [
+    -0.55,
+    -0.1
+   ],
+   "facing": 100,
+   "speed": 1.0
+  },
+  {
+   "at": "16.08",
+   "actor": "Artyom",
+   "do": "turn",
+   "facing": 215,
+   "dur": 0.4
+  },
+  {
+   "at": "16.08",
+   "actor": "Hunter",
+   "do": "walk",
+   "to": [
+    0.45,
+    -0.3
+   ],
+   "facing": 30,
+   "speed": 1.4,
+   "pose_after": "offer",
+   "dt": 0.2
+  },
+  {
+   "at": "16.10",
+   "actor": "Artyom",
+   "do": "pose",
+   "pose": "sit_feed",
+   "dur": 0.3
+  },
+  {
+   "at": "16.09",
+   "actor": "Hunter",
+   "do": "pose",
+   "pose": "offer",
+   "dur": 0.3
+  },
+  {
+   "at": "16.01",
+   "actor": "Hunter",
+   "do": "place",
+   "pos": [
+    0.1,
+    -2.35
+   ],
+   "facing": 0,
+   "pose": "stoop"
+  },
+  {
+   "at": "16.01",
+   "actor": "Hunter",
+   "do": "hide"
+  },
+  {
+   "at": "16.05",
+   "actor": "Hunter",
+   "do": "show"
+  },
+  {
+   "at": "16.05",
+   "dt": 0.2,
+   "actor": "Hunter",
+   "do": "move",
+   "to": [
+    0.15,
+    -1.3
+   ],
+   "dur": 1.5,
+   "facing": 20,
+   "pose": "stoop"
+  },
+  {
+   "at": "16.06",
+   "actor": "Hunter",
+   "do": "pose",
+   "pose": "stand",
+   "dur": 0.6
+  }
+ ],
+ "cams": {
+  "16.01": {
+   "pos": [
+    0.55,
+    0.3,
+    1.35
+   ],
+   "at": [
+    1.05,
+    0.9,
+    0.62
+   ],
+   "lens": 35
+  },
+  "16.03": {
+   "pos": [
+    0.68,
+    0.42,
+    1.2
+   ],
+   "at": "Sukhoi.eyes",
+   "lens": 20
+  },
+  "16.05": {
+   "pos": [
+    1.35,
+    -0.2,
+    1.0
+   ],
+   "at": [
+    0.12,
+    -1.7,
+    1.3
+   ],
+   "lens": 18
+  },
+  "16.06": {
+   "auto": "med",
+   "subject": "Hunter",
+   "angle": "low",
+   "lens": 28
+  },
+  "16.07": {
+   "auto": "detail",
+   "subject": "Hunter",
+   "joint": "pelvis",
+   "lens": 35
+  },
+  "16.10": {
+   "auto": "detail",
+   "subject": "Hunter",
+   "joint": "hand_R",
+   "lens": 35
+  },
+  "16.09": {
+   "pos": [
+    -0.5,
+    0.45,
+    1.45
+   ],
+   "at": [
+    0.65,
+    0.1,
+    1.1
+   ],
+   "lens": 22
+  }
+ }
+}

@@ -1,0 +1,335 @@
+{
+ "id": "s005",
+ "location": "north_cordon",
+ "note": "Flashback, a year ago. Sandbags at y=0 across the track, MG at (0.6,-0.35), searchlight at (-1.2,-0.3) beaming north. Dark Ones walk south from y~17 at a steady pace.",
+ "cast": {
+  "Artyom": {
+   "height": 1.77,
+   "rifle": true
+  },
+  "Extra1": {
+   "height": 1.74,
+   "role": "Extra"
+  },
+  "Extra2": {
+   "height": 1.78,
+   "role": "Extra"
+  },
+  "Black1": {
+   "height": 1.85,
+   "role": "Black"
+  },
+  "Black2": {
+   "height": 1.9,
+   "role": "Black"
+  },
+  "Black3": {
+   "height": 1.8,
+   "role": "Black"
+  },
+  "Black4": {
+   "height": 1.88,
+   "role": "Black"
+  }
+ },
+ "names": {
+  "Artyom": "Artyom",
+  "guard": "Extra1",
+  "Dark One": "Black2",
+  "humanoid figures": "Black2",
+  "black glossy face": "Black2",
+  "black figures": "Black2",
+  "first black figure": "Black1",
+  "fallen black figure": "Black1",
+  "black figure": "Black1"
+ },
+ "props": {
+  "guard_rifle": {
+   "type": "rifle",
+   "attach": "Extra1.chest",
+   "loc": [
+    0.13,
+    0.2,
+    0.47
+   ]
+  },
+  "guard_rifle_floor": {
+   "type": "rifle",
+   "loc": [
+    0.35,
+    -0.35,
+    0.05
+   ],
+   "rot": [
+    0,
+    0,
+    1.2
+   ],
+   "hidden": true
+  },
+  "mg_flash": {
+   "type": "muzzle_flash",
+   "loc": [
+    0.6,
+    1.0,
+    1.72
+   ],
+   "hidden": true
+  },
+  "artyom_flash": {
+   "type": "muzzle_flash",
+   "attach": "Artyom.rifle",
+   "loc": [
+    0,
+    0.62,
+    0.015
+   ],
+   "hidden": true
+  }
+ },
+ "events": [
+  {
+   "at": "5.01",
+   "actor": "Artyom",
+   "do": "place",
+   "pos": [
+    -0.6,
+    -0.65
+   ],
+   "facing": 0,
+   "pose": "aim"
+  },
+  {
+   "at": "5.01",
+   "actor": "Extra1",
+   "do": "place",
+   "pos": [
+    0.05,
+    -0.8
+   ],
+   "facing": 0,
+   "pose": "aim"
+  },
+  {
+   "at": "5.01",
+   "actor": "Extra2",
+   "do": "place",
+   "pos": [
+    0.65,
+    -1.05
+   ],
+   "facing": 0,
+   "pose": "aim"
+  },
+  {
+   "at": "5.01",
+   "actor": "Black1",
+   "do": "place",
+   "pos": [
+    -0.3,
+    16.0
+   ],
+   "facing": 180,
+   "pose": "stand"
+  },
+  {
+   "at": "5.01",
+   "actor": "Black2",
+   "do": "place",
+   "pos": [
+    0.5,
+    17.0
+   ],
+   "facing": 180,
+   "pose": "stand"
+  },
+  {
+   "at": "5.01",
+   "actor": "Black3",
+   "do": "place",
+   "pos": [
+    -1.1,
+    18.0
+   ],
+   "facing": 180,
+   "pose": "stand"
+  },
+  {
+   "at": "5.01",
+   "actor": "Black4",
+   "do": "place",
+   "pos": [
+    1.2,
+    18.5
+   ],
+   "facing": 180,
+   "pose": "stand"
+  },
+  {
+   "at": "5.02",
+   "actor": "Black1",
+   "do": "walk",
+   "to": [
+    -0.3,
+    9.5
+   ],
+   "facing": 180,
+   "speed": 0.7
+  },
+  {
+   "at": "5.02",
+   "actor": "Black2",
+   "do": "walk",
+   "to": [
+    0.5,
+    1.6
+   ],
+   "facing": 180,
+   "speed": 0.7
+  },
+  {
+   "at": "5.02",
+   "actor": "Black3",
+   "do": "walk",
+   "to": [
+    -1.1,
+    2.0
+   ],
+   "facing": 180,
+   "speed": 0.72
+  },
+  {
+   "at": "5.02",
+   "actor": "Black4",
+   "do": "walk",
+   "to": [
+    1.2,
+    2.2
+   ],
+   "facing": 180,
+   "speed": 0.72
+  },
+  {
+   "at": "5.05",
+   "do": "show",
+   "prop": "mg_flash"
+  },
+  {
+   "at": "5.06",
+   "actor": "Black1",
+   "do": "pose",
+   "pose": "fallen",
+   "dur": 0.4
+  },
+  {
+   "at": "5.07",
+   "actor": "Black1",
+   "do": "pose",
+   "pose": "stand",
+   "dur": 0.8
+  },
+  {
+   "at": "5.07",
+   "dt": 1.0,
+   "actor": "Black1",
+   "do": "walk",
+   "to": [
+    -0.3,
+    1.4
+   ],
+   "facing": 180,
+   "speed": 0.75
+  },
+  {
+   "at": "5.08",
+   "do": "show",
+   "prop": "artyom_flash"
+  },
+  {
+   "at": "5.09",
+   "do": "hide",
+   "prop": "guard_rifle"
+  },
+  {
+   "at": "5.09",
+   "do": "show",
+   "prop": "guard_rifle_floor"
+  },
+  {
+   "at": "5.09",
+   "actor": "Extra1",
+   "do": "pose",
+   "pose": "floor_ears",
+   "dur": 0.8
+  },
+  {
+   "at": "5.09",
+   "actor": "Extra1",
+   "do": "turn",
+   "facing": 160,
+   "dur": 0.8
+  },
+  {
+   "at": "5.12",
+   "do": "hide",
+   "prop": "artyom_flash"
+  }
+ ],
+ "cams": {
+  "5.05": {
+   "pos": [
+    0.95,
+    -1.7,
+    1.65
+   ],
+   "at": [
+    0.6,
+    6.0,
+    1.4
+   ],
+   "lens": 35
+  },
+  "5.01": {
+   "view": "wide"
+  },
+  "5.03": {
+   "subject": "Black1",
+   "side": -1
+  },
+  "5.11": {
+   "pos": [
+    1.2,
+    -4.5,
+    2.0
+   ],
+   "at": [
+    0,
+    2,
+    1.2
+   ],
+   "lens": 24
+  },
+  "5.12": {
+   "pos": [
+    -0.25,
+    0.75,
+    1.62
+   ],
+   "at": "Artyom.eyes",
+   "lens": 50
+  },
+  "5.07": {
+   "pos": [
+    0.7,
+    6.3,
+    1.1
+   ],
+   "at": [
+    -0.3,
+    9.5,
+    0.7
+   ],
+   "lens": 35
+  }
+ }
+}

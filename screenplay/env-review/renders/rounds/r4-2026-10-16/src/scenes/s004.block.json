@@ -1,0 +1,558 @@
+{
+ "id": "s004",
+ "location": "tunnel_250",
+ "note": "Continues scene 1: same seats. Fire at (-1.3, 0); +Y north into the dark.",
+ "cast": {
+  "Artyom": {
+   "height": 1.78,
+   "rifle": true
+  },
+  "Pyotr": {
+   "height": 1.7,
+   "rifle": true
+  },
+  "Andrei": {
+   "height": 1.76,
+   "beret": true,
+   "rifle": true
+  },
+  "Kirill": {
+   "height": 1.74
+  },
+  "Hunter": {
+   "height": 1.95,
+   "coat": true
+  }
+ },
+ "names": {
+  "Artyom": "Artyom",
+  "Pyotr": "Pyotr",
+  "Andrei": "Andrei",
+  "Kirill": "Kirill",
+  "Hunter": "Hunter"
+ },
+ "crates": [
+  [
+   -0.35,
+   0.82,
+   0
+  ],
+  [
+   -0.4,
+   0.66,
+   234
+  ],
+  [
+   -1.85,
+   -0.93,
+   36
+  ],
+  [
+   0.2,
+   -1.05,
+   303
+  ],
+  [
+   -0.95,
+   -1.62,
+   348
+  ]
+ ],
+ "props": {
+  "kirill_lamp": {
+   "type": "searchlight",
+   "attach": "Kirill.hand_R",
+   "loc": [
+    0,
+    0.1,
+    -0.05
+   ],
+   "hidden": true,
+   "handheld": true
+  },
+  "puppy_dark": {
+   "type": "puppy",
+   "loc": [
+    0.1,
+    21.0,
+    0.0
+   ]
+  },
+  "puppy_jacket": {
+   "type": "puppy",
+   "attach": "Andrei.torso",
+   "loc": [
+    0,
+    0.22,
+    -0.1
+   ],
+   "hidden": true
+  },
+  "mug_artyom": {
+   "type": "mug",
+   "attach": "Artyom.hand_R",
+   "loc": [
+    0,
+    0.02,
+    -0.1
+   ]
+  }
+ },
+ "lights": {
+  "kirill_beam": {
+   "type": "SPOT",
+   "attach": "Kirill.hand_R",
+   "loc": [
+    0,
+    0.2,
+    -0.05
+   ],
+   "energy": 0,
+   "angle": 22
+  }
+ },
+ "events": [
+  {
+   "at": "4.01",
+   "actor": "Artyom",
+   "do": "place",
+   "pos": [
+    -0.55,
+    0.55
+   ],
+   "facing": 234,
+   "pose": "sit_mug"
+  },
+  {
+   "at": "4.01",
+   "actor": "Pyotr",
+   "do": "place",
+   "pos": [
+    -1.85,
+    -0.75
+   ],
+   "facing": 36,
+   "pose": "sit_rifle_beside"
+  },
+  {
+   "at": "4.01",
+   "actor": "Andrei",
+   "do": "place",
+   "pos": [
+    0.2,
+    -0.85
+   ],
+   "facing": 303,
+   "pose": "sit"
+  },
+  {
+   "at": "4.01",
+   "actor": "Kirill",
+   "do": "place",
+   "pos": [
+    -0.95,
+    -1.45
+   ],
+   "facing": 348,
+   "pose": "sit"
+  },
+  {
+   "at": "4.01",
+   "actor": "Hunter",
+   "do": "place",
+   "pos": [
+    0.95,
+    1.6
+   ],
+   "facing": 0,
+   "pose": "stand"
+  },
+  {
+   "at": "4.03",
+   "actor": "Artyom",
+   "do": "turn",
+   "facing": 0,
+   "dur": 0.5
+  },
+  {
+   "at": "4.03",
+   "actor": "Andrei",
+   "do": "turn",
+   "facing": 0,
+   "dur": 0.5
+  },
+  {
+   "at": "4.03",
+   "actor": "Kirill",
+   "do": "look",
+   "yaw": 15
+  },
+  {
+   "at": "4.04",
+   "actor": "Pyotr",
+   "do": "pose",
+   "pose": "sit_reach_rifle",
+   "dur": 0.5
+  },
+  {
+   "at": "4.05",
+   "actor": "Andrei",
+   "do": "pose",
+   "pose": "offer",
+   "dur": 0.4
+  },
+  {
+   "at": "4.06",
+   "actor": "Andrei",
+   "do": "walk",
+   "to": [
+    -0.1,
+    3.3
+   ],
+   "facing": 0,
+   "speed": 2.0,
+   "pose_after": "prone"
+  },
+  {
+   "at": "4.08",
+   "actor": "Kirill",
+   "do": "pose",
+   "pose": "hold_light",
+   "dur": 0.4
+  },
+  {
+   "at": "4.08",
+   "do": "show",
+   "prop": "kirill_lamp"
+  },
+  {
+   "at": "4.08",
+   "dt": 0.5,
+   "do": "light",
+   "light": "kirill_beam",
+   "energy": 1800
+  },
+  {
+   "at": "4.10",
+   "actor": "Artyom",
+   "do": "pose",
+   "pose": "stand_rifle",
+   "dur": 0.5
+  },
+  {
+   "at": "4.10",
+   "dt": 0.5,
+   "actor": "Artyom",
+   "do": "pose",
+   "pose": "aim",
+   "dur": 0.3
+  },
+  {
+   "at": "4.11",
+   "actor": "Andrei",
+   "do": "pose",
+   "pose": "stand",
+   "dur": 0.8
+  },
+  {
+   "at": "4.12",
+   "actor": "Andrei",
+   "do": "walk",
+   "to": [
+    0.1,
+    12.0
+   ],
+   "facing": 0,
+   "speed": 1.2
+  },
+  {
+   "at": "4.13",
+   "actor": "Pyotr",
+   "do": "pose",
+   "pose": "sit_rifle_beside",
+   "dur": 0.5
+  },
+  {
+   "at": "4.15",
+   "do": "hide",
+   "prop": "puppy_dark"
+  },
+  {
+   "at": "4.15",
+   "do": "show",
+   "prop": "puppy_jacket"
+  },
+  {
+   "at": "4.15",
+   "actor": "Andrei",
+   "do": "move",
+   "to": [
+    0.1,
+    9.0
+   ],
+   "dur": 0.1,
+   "facing": 180
+  },
+  {
+   "at": "4.15",
+   "dt": 0.1,
+   "actor": "Andrei",
+   "do": "walk",
+   "to": [
+    0.15,
+    2.0
+   ],
+   "facing": 220,
+   "speed": 1.3
+  },
+  {
+   "at": "4.17",
+   "actor": "Artyom",
+   "do": "pose",
+   "pose": "stand_rifle",
+   "dur": 0.5
+  },
+  {
+   "at": "4.18",
+   "actor": "Andrei",
+   "do": "pose",
+   "pose": "carry_child",
+   "dur": 0.5
+  },
+  {
+   "at": "4.20",
+   "actor": "Pyotr",
+   "do": "look",
+   "yaw": -60
+  },
+  {
+   "at": "4.20",
+   "dt": 1.5,
+   "actor": "Pyotr",
+   "do": "pose",
+   "pose": "sit_feed",
+   "dur": 0.5
+  },
+  {
+   "at": "4.20",
+   "do": "light",
+   "light": "kirill_beam",
+   "energy": 0
+  },
+  {
+   "at": "4.20",
+   "actor": "Kirill",
+   "do": "pose",
+   "pose": "stand",
+   "dur": 0.5
+  },
+  {
+   "at": "4.22",
+   "actor": "Kirill",
+   "do": "walk",
+   "to": [
+    -0.95,
+    -1.45
+   ],
+   "facing": 348,
+   "speed": 1.0,
+   "pose_after": "sit"
+  },
+  {
+   "at": "4.24",
+   "actor": "Andrei",
+   "do": "walk",
+   "to": [
+    0.2,
+    -0.85
+   ],
+   "facing": 303,
+   "speed": 1.0,
+   "pose_after": "sit"
+  },
+  {
+   "at": "4.25",
+   "actor": "Artyom",
+   "do": "turn",
+   "facing": 60,
+   "dur": 0.4
+  },
+  {
+   "at": "4.25",
+   "actor": "Pyotr",
+   "do": "look",
+   "yaw": 50
+  },
+  {
+   "at": "4.27",
+   "actor": "Pyotr",
+   "do": "look",
+   "yaw": 0
+  },
+  {
+   "at": "4.30",
+   "actor": "Artyom",
+   "do": "walk",
+   "to": [
+    -0.55,
+    0.55
+   ],
+   "facing": 0,
+   "speed": 1.0,
+   "pose_after": "sit_rifle"
+  },
+  {
+   "at": "4.33",
+   "actor": "Hunter",
+   "do": "turn",
+   "facing": 245,
+   "dur": 0.6
+  },
+  {
+   "at": "4.14",
+   "actor": "Andrei",
+   "do": "hide"
+  },
+  {
+   "at": "4.15",
+   "actor": "Andrei",
+   "do": "show"
+  },
+  {
+   "at": "4.15",
+   "do": "hide",
+   "prop": "puppy_jacket"
+  },
+  {
+   "at": "4.16",
+   "do": "show",
+   "prop": "puppy_jacket"
+  },
+  {
+   "at": "4.01",
+   "do": "prop_scale",
+   "prop": "puppy_dark",
+   "to": [
+    3,
+    3,
+    3
+   ],
+   "dur": 0.05
+  }
+ ],
+ "cams": {
+  "4.02": {
+   "view": "dark"
+  },
+  "4.14": {
+   "view": "dark"
+  },
+  "4.31": {
+   "view": "dark",
+   "push": 0.2
+  },
+  "4.09": {
+   "pos": [
+    0.3,
+    0.9,
+    1.8
+   ],
+   "at": [
+    0.1,
+    21.0,
+    0.4
+   ],
+   "lens": 35
+  },
+  "4.15": {
+   "pos": [
+    0.45,
+    0.3,
+    1.55
+   ],
+   "at": [
+    0.1,
+    9.0,
+    1.1
+   ],
+   "lens": 35
+  },
+  "4.17": {
+   "auto": "detail",
+   "subject": "Andrei",
+   "joint": "torso"
+  },
+  "4.35": {
+   "auto": "detail",
+   "subject": "Andrei",
+   "joint": "torso"
+  },
+  "4.36": {
+   "pos": [
+    0.3,
+    -7.5,
+    1.6
+   ],
+   "at": [
+    -0.7,
+    2.0,
+    0.7
+   ],
+   "lens": 24
+  },
+  "4.04": {
+   "pos": [
+    -2.2,
+    -1.75,
+    1.05
+   ],
+   "at": [
+    -1.45,
+    -0.95,
+    0.25
+   ],
+   "lens": 30
+  },
+  "4.07": {
+   "at": "Andrei.eyes",
+   "rel": [
+    0.7,
+    1.0,
+    0.15
+   ],
+   "lens": 50,
+   "size": 0.65
+  },
+  "4.08": {
+   "auto": "wide",
+   "subject": "Kirill",
+   "side": 1
+  },
+  "4.06": {
+   "pos": [
+    0.8,
+    5.8,
+    0.35
+   ],
+   "at": [
+    -0.1,
+    2.0,
+    0.5
+   ],
+   "lens": 28
+  },
+  "4.11": {
+   "pos": [
+    1.3,
+    6.0,
+    1.3
+   ],
+   "at": [
+    -0.1,
+    3.3,
+    0.8
+   ],
+   "lens": 30
+  }
+ }
+}

@@ -1,0 +1,453 @@
+{
+ "id": "s003",
+ "location": "peregon_savelovskaya",
+ "cast": {
+  "Sukhoi": {
+   "height": 1.8,
+   "role": "Sukhoi"
+  },
+  "ArtyomChild": {
+   "height": 1.1,
+   "role": "ArtyomChild"
+  },
+  "Extra1": {
+   "height": 1.76,
+   "role": "Extra"
+  },
+  "Extra2": {
+   "height": 1.78,
+   "role": "Extra"
+  },
+  "Extra3": {
+   "height": 1.74,
+   "role": "Extra",
+   "rifle": true
+  }
+ },
+ "title": "Сцена 3. ИНТ. ПЕРЕГОН К САВЕЛОВСКОЙ — ПРОДОЛЖЕНИЕ",
+ "storyboard": "storyboard/01-дозор/003-инт-перегон-к-савеловской-продолжение.md",
+ "crates": [
+  [
+   -1.5,
+   61.2,
+   0
+  ]
+ ],
+ "props": {
+  "handcar": {
+   "type": "handcar",
+   "loc": [
+    0,
+    10.0,
+    0
+   ]
+  },
+  "rats": {
+   "type": "rat_flood",
+   "loc": [
+    0,
+    -10,
+    0
+   ]
+  },
+  "flame_high": {
+   "type": "flame_jet",
+   "loc": [
+    -1.0,
+    60.8,
+    3.6
+   ],
+   "rot": [
+    -0.03,
+    0,
+    3.191592653589793
+   ],
+   "hidden": true
+  },
+  "flame_wall": {
+   "type": "flame_jet",
+   "loc": [
+    -1.0,
+    60.8,
+    2.4
+   ],
+   "rot": [
+    -0.2,
+    0,
+    3.191592653589793
+   ],
+   "hidden": true,
+   "width0": 1.2
+  }
+ },
+ "lights": {
+  "handcar_glow": {
+   "type": "POINT",
+   "attach": "handcar",
+   "loc": [
+    0,
+    -3.0,
+    1.2
+   ],
+   "energy": 700,
+   "color": [
+    0.8,
+    0.85,
+    1.0
+   ]
+  }
+ },
+ "events": [
+  {
+   "at": "3.01",
+   "actor": "Sukhoi",
+   "do": "place",
+   "pos": [
+    -0.45,
+    9.5,
+    0.66
+   ],
+   "facing": 0,
+   "pose": "carry_child"
+  },
+  {
+   "at": "3.01",
+   "dt": 0,
+   "actor": "Sukhoi",
+   "do": "move",
+   "to": [
+    -0.45,
+    57.5,
+    0.66
+   ],
+   "dur": 7.0
+  },
+  {
+   "at": "3.04",
+   "dt": 0,
+   "actor": "Sukhoi",
+   "do": "move",
+   "to": [
+    -0.45,
+    69.5,
+    0.66
+   ],
+   "dur": 2.0
+  },
+  {
+   "at": "3.05",
+   "dt": 0,
+   "actor": "Sukhoi",
+   "do": "move",
+   "to": [
+    -0.45,
+    70.0,
+    0.66
+   ],
+   "dur": 1.0
+  },
+  {
+   "at": "3.01",
+   "actor": "ArtyomChild",
+   "do": "place",
+   "pos": [
+    -0.45,
+    9.8,
+    1.5
+   ],
+   "facing": 180,
+   "pose": "sit"
+  },
+  {
+   "at": "3.01",
+   "dt": 0,
+   "actor": "ArtyomChild",
+   "do": "move",
+   "to": [
+    -0.45,
+    57.8,
+    1.5
+   ],
+   "dur": 7.0
+  },
+  {
+   "at": "3.04",
+   "dt": 0,
+   "actor": "ArtyomChild",
+   "do": "move",
+   "to": [
+    -0.45,
+    69.8,
+    1.5
+   ],
+   "dur": 2.0
+  },
+  {
+   "at": "3.05",
+   "dt": 0,
+   "actor": "ArtyomChild",
+   "do": "move",
+   "to": [
+    -0.45,
+    70.3,
+    1.5
+   ],
+   "dur": 1.0
+  },
+  {
+   "at": "3.01",
+   "actor": "Extra1",
+   "do": "place",
+   "pos": [
+    0.45,
+    10.55,
+    0.66
+   ],
+   "facing": 0,
+   "pose": "hold_light"
+  },
+  {
+   "at": "3.01",
+   "dt": 0,
+   "actor": "Extra1",
+   "do": "move",
+   "to": [
+    0.45,
+    58.55,
+    0.66
+   ],
+   "dur": 7.0
+  },
+  {
+   "at": "3.04",
+   "dt": 0,
+   "actor": "Extra1",
+   "do": "move",
+   "to": [
+    0.45,
+    70.55,
+    0.66
+   ],
+   "dur": 2.0
+  },
+  {
+   "at": "3.05",
+   "dt": 0,
+   "actor": "Extra1",
+   "do": "move",
+   "to": [
+    0.45,
+    71.05,
+    0.66
+   ],
+   "dur": 1.0
+  },
+  {
+   "at": "3.01",
+   "dt": 0,
+   "do": "prop_move",
+   "prop": "handcar",
+   "to": [
+    0,
+    58.0,
+    0
+   ],
+   "dur": 7.0
+  },
+  {
+   "at": "3.04",
+   "dt": 0,
+   "do": "prop_move",
+   "prop": "handcar",
+   "to": [
+    0,
+    70.0,
+    0
+   ],
+   "dur": 2.0
+  },
+  {
+   "at": "3.05",
+   "dt": 0,
+   "do": "prop_move",
+   "prop": "handcar",
+   "to": [
+    0,
+    70.5,
+    0
+   ],
+   "dur": 1.0
+  },
+  {
+   "at": "3.01",
+   "do": "prop_move",
+   "prop": "rats",
+   "to": [
+    0,
+    40,
+    0
+   ],
+   "dur": 7.0
+  },
+  {
+   "at": "3.01",
+   "actor": "Extra2",
+   "do": "place",
+   "pos": [
+    -1.5,
+    61.2,
+    0.42
+   ],
+   "facing": 175,
+   "pose": "flame"
+  },
+  {
+   "at": "3.01",
+   "actor": "Extra3",
+   "do": "place",
+   "pos": [
+    1.6,
+    61.3
+   ],
+   "facing": 180,
+   "pose": "stand_rifle"
+  },
+  {
+   "at": "3.01",
+   "do": "prop_scale",
+   "prop": "flame_high",
+   "to": [
+    0.3,
+    2,
+    0.3
+   ],
+   "dur": 0.05
+  },
+  {
+   "at": "3.01",
+   "do": "prop_scale",
+   "prop": "flame_wall",
+   "to": [
+    1.3,
+    2,
+    1.3
+   ],
+   "dur": 0.05
+  },
+  {
+   "at": "3.03",
+   "do": "show",
+   "prop": "flame_high"
+  },
+  {
+   "at": "3.04",
+   "dt": 0.8,
+   "do": "hide",
+   "prop": "flame_high"
+  },
+  {
+   "at": "3.04",
+   "dt": 0.8,
+   "do": "show",
+   "prop": "flame_wall"
+  }
+ ],
+ "shots": [
+  {
+   "id": "3.01",
+   "dur": 2.5,
+   "cam": {
+    "pos": [
+     0,
+     11.5,
+     2.1
+    ],
+    "at": [
+     0,
+     60,
+     1.4
+    ],
+    "lens": 40,
+    "push": 0.35
+   }
+  },
+  {
+   "id": "3.02",
+   "dur": 2.0,
+   "cam": {
+    "pos": [
+     0.3,
+     17.7,
+     2.1
+    ],
+    "at": [
+     0,
+     0,
+     0.4
+    ],
+    "lens": 28,
+    "push": -0.4
+   }
+  },
+  {
+   "id": "3.03",
+   "dur": 2.5,
+   "cam": {
+    "pos": [
+     1.5,
+     64,
+     2.4
+    ],
+    "at": [
+     -0.5,
+     50,
+     1.4
+    ],
+    "lens": 24
+   }
+  },
+  {
+   "id": "3.04",
+   "dur": 2.0,
+   "cam": {
+    "pos": [
+     0.9,
+     66,
+     1.5
+    ],
+    "at": [
+     0,
+     50,
+     1.5
+    ],
+    "lens": 24
+   }
+  },
+  {
+   "id": "3.05",
+   "dur": 3.0,
+   "cam": {
+    "pos": [
+     1.55,
+     70.4,
+     1.9
+    ],
+    "at": "Sukhoi.torso",
+    "lens": 35
+   }
+  },
+  {
+   "id": "3.06",
+   "dur": 2.0,
+   "cam": {
+    "at": "Sukhoi.eyes",
+    "rel": [
+     1.0,
+     0.25,
+     0.1
+    ],
+    "lens": 70
+   }
+  }
+ ]
+}

@@ -1,0 +1,171 @@
+{
+ "id": "s008",
+ "location": "sukhoi_tent",
+ "cast": {
+  "Artyom": {
+   "height": 1.78
+  }
+ },
+ "title": "Сцена 8. ИНТ. ПАЛАТКА СУХОГО — «УТРО»",
+ "storyboard": "storyboard/02-вднх/008-инт-палатка-сухого-утро.md",
+ "props": {
+  "books_front": {
+   "type": "block",
+   "size": [
+    0.55,
+    0.12,
+    0.28
+   ],
+   "color": [
+    0.85,
+    0.75,
+    0.4
+   ],
+   "loc": [
+    0,
+    1.6,
+    0.6
+   ]
+  },
+  "artyom_rifle": {
+   "type": "rifle",
+   "loc": [
+    0.68,
+    0.35,
+    0.03
+   ],
+   "rot": [
+    0,
+    1.5708,
+    0
+   ]
+  }
+ },
+ "lights": {
+  "station_red": {
+   "type": "POINT",
+   "attach": "tent_front_L",
+   "loc": [
+    0.833,
+    -20.0,
+    0.2
+   ],
+   "energy": 250,
+   "color": [
+    1.0,
+    0.18,
+    0.1
+   ]
+  }
+ },
+ "events": [
+  {
+   "at": "8.01",
+   "actor": "Artyom",
+   "do": "place",
+   "pos": [
+    0.35,
+    -0.9
+   ],
+   "facing": 10,
+   "pose": "stand"
+  },
+  {
+   "at": "8.03",
+   "actor": "Artyom",
+   "do": "place",
+   "pos": [
+    0.85,
+    0.4
+   ],
+   "facing": 270,
+   "pose": "sit"
+  },
+  {
+   "at": "8.03",
+   "dt": 0.8,
+   "actor": "Artyom",
+   "do": "move",
+   "to": [
+    1.15,
+    0.35,
+    0.45
+   ],
+   "dur": 0.8,
+   "facing": 180,
+   "pose": "fallen"
+  },
+  {
+   "at": "8.01",
+   "do": "light",
+   "light": "tent_lamp",
+   "energy": 12
+  }
+ ],
+ "shots": [
+  {
+   "id": "8.01",
+   "dur": 3.0,
+   "cam": {
+    "pos": [
+     -0.9,
+     -1.85,
+     1.45
+    ],
+    "at": [
+     0.4,
+     1.2,
+     0.6
+    ],
+    "lens": 16
+   }
+  },
+  {
+   "id": "8.02",
+   "dur": 2.0,
+   "cam": {
+    "pos": [
+     0.15,
+     1.0,
+     1.05
+    ],
+    "at": [
+     0.0,
+     1.85,
+     0.8
+    ],
+    "lens": 35
+   }
+  },
+  {
+   "id": "8.03",
+   "dur": 2.0,
+   "cam": {
+    "pos": [
+     -0.9,
+     -0.6,
+     1.35
+    ],
+    "at": [
+     1.0,
+     0.5,
+     0.7
+    ],
+    "lens": 24
+   }
+  },
+  {
+   "id": "8.04",
+   "dur": 3.0,
+   "cam": {
+    "pos": [
+     0.7,
+     1.0,
+     1.75
+    ],
+    "at": "Artyom.eyes",
+    "lens": 35
+   }
+  }
+ ]
+}

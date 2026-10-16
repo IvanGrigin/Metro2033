@@ -1,0 +1,898 @@
+{
+ "id": "s024",
+ "location": "vdnkh",
+ "cast": {
+  "Artyom": {
+   "height": 1.78
+  },
+  "Zhenya": {
+   "height": 1.75,
+   "role": "Zhenya"
+  },
+  "Kirill": {
+   "height": 1.74
+  },
+  "Commander": {
+   "height": 1.8,
+   "role": "Commander"
+  },
+  "Nikita": {
+   "height": 1.72,
+   "role": "Nikita"
+  }
+ },
+ "title": "Сцена 24. ИНТ. ВДНХ — ПЛАТФОРМА У ЮЖНОГО ТУННЕЛЯ — ДЕНЬ",
+ "storyboard": "storyboard/03-порог/024-инт-вднх-платформа-у-южного-туннеля-день.md",
+ "crates": [],
+ "props": {
+  "handcar": {
+   "type": "handcar",
+   "loc": [
+    9.85,
+    -77.8,
+    -0.29
+   ]
+  },
+  "cargo": {
+   "type": "block",
+   "size": [
+    0.55,
+    1.0,
+    0.45
+   ],
+   "color": [
+    0.55,
+    0.4,
+    0.25
+   ],
+   "attach": "handcar",
+   "loc": [
+    0.62,
+    0.3,
+    0.66
+   ]
+  },
+  "cargo2": {
+   "type": "block",
+   "size": [
+    0.5,
+    0.5,
+    0.35
+   ],
+   "color": [
+    0.5,
+    0.36,
+    0.22
+   ],
+   "attach": "handcar",
+   "loc": [
+    -0.62,
+    -0.9,
+    0.66
+   ]
+  },
+  "telegraph": {
+   "type": "block",
+   "size": [
+    0.3,
+    0.22,
+    0.14
+   ],
+   "color": [
+    0.15,
+    0.15,
+    0.17
+   ],
+   "attach": "handcar",
+   "loc": [
+    0.62,
+    0.3,
+    1.11
+   ]
+  },
+  "ledger": {
+   "type": "block",
+   "size": [
+    0.2,
+    0.28,
+    0.03
+   ],
+   "color": [
+    0.3,
+    0.15,
+    0.1
+   ],
+   "attach": "Commander.hand_L",
+   "loc": [
+    0,
+    0.05,
+    -0.08
+   ]
+  },
+  "rifle_given": {
+   "type": "rifle",
+   "attach": "Commander.hand_R",
+   "loc": [
+    0,
+    0.05,
+    -0.05
+   ]
+  },
+  "rifle_0": {
+   "type": "rifle",
+   "loc": [
+    7.6,
+    -76.32,
+    1.52
+   ],
+   "rot": [
+    1.25,
+    0,
+    0.0
+   ]
+  },
+  "rifle_1": {
+   "type": "rifle",
+   "loc": [
+    7.48,
+    -76.2,
+    1.52
+   ],
+   "rot": [
+    1.25,
+    0,
+    1.5707963267948966
+   ]
+  },
+  "rifle_2": {
+   "type": "rifle",
+   "loc": [
+    7.6,
+    -76.08,
+    1.52
+   ],
+   "rot": [
+    1.25,
+    0,
+    3.141592653589793
+   ]
+  },
+  "rifle_3": {
+   "type": "rifle",
+   "loc": [
+    7.72,
+    -76.2,
+    1.52
+   ],
+   "rot": [
+    1.25,
+    0,
+    4.71238898038469
+   ]
+  },
+  "rifle_Artyom": {
+   "type": "rifle",
+   "loc": [
+    0.12,
+    -0.46,
+    0.3
+   ],
+   "rot": [
+    1.75,
+    0,
+    0
+   ],
+   "hidden": true,
+   "attach": "Artyom.chest"
+  },
+  "rifle_Zhenya": {
+   "type": "rifle",
+   "loc": [
+    0.0,
+    -0.22,
+    0.3
+   ],
+   "rot": [
+    1.75,
+    0,
+    0
+   ],
+   "hidden": true,
+   "attach": "Zhenya.chest"
+  },
+  "rifle_Kirill": {
+   "type": "rifle",
+   "loc": [
+    0.0,
+    -0.22,
+    0.3
+   ],
+   "rot": [
+    1.75,
+    0,
+    0
+   ],
+   "hidden": true,
+   "attach": "Kirill.chest"
+  },
+  "rifle_Nikita": {
+   "type": "rifle",
+   "loc": [
+    0.0,
+    -0.22,
+    0.3
+   ],
+   "rot": [
+    1.75,
+    0,
+    0
+   ],
+   "hidden": true,
+   "attach": "Nikita.chest"
+  },
+  "rifle_Commander": {
+   "type": "rifle",
+   "loc": [
+    0.0,
+    -0.22,
+    0.3
+   ],
+   "rot": [
+    1.75,
+    0,
+    0
+   ],
+   "hidden": true,
+   "attach": "Commander.chest"
+  },
+  "backpack": {
+   "type": "block",
+   "size": [
+    0.34,
+    0.2,
+    0.45
+   ],
+   "color": [
+    0.32,
+    0.38,
+    0.22
+   ],
+   "attach": "Artyom.chest",
+   "loc": [
+    0,
+    -0.28,
+    0.1
+   ]
+  }
+ },
+ "events": [
+  {
+   "at": "24.01",
+   "do": "place",
+   "actor": "Commander",
+   "pos": [
+    6.75,
+    -77.4,
+    1.1
+   ],
+   "facing": 90,
+   "pose": "offer"
+  },
+  {
+   "at": "24.01",
+   "do": "place",
+   "actor": "Zhenya",
+   "pos": [
+    7.6,
+    -77.45,
+    1.1
+   ],
+   "facing": 270,
+   "pose": "stand"
+  },
+  {
+   "at": "24.01",
+   "do": "place",
+   "actor": "Kirill",
+   "pos": [
+    7.9,
+    -78.3,
+    1.1
+   ],
+   "facing": 300,
+   "pose": "stand"
+  },
+  {
+   "at": "24.01",
+   "do": "place",
+   "actor": "Nikita",
+   "pos": [
+    7.45,
+    -79.25,
+    1.1
+   ],
+   "facing": 330,
+   "pose": "stand"
+  },
+  {
+   "at": "24.01",
+   "do": "place",
+   "actor": "Artyom",
+   "pos": [
+    7.95,
+    -80.1,
+    1.1
+   ],
+   "facing": 40,
+   "pose": "stand"
+  },
+  {
+   "at": "24.04",
+   "dt": 0.8,
+   "do": "hide",
+   "prop": "rifle_0"
+  },
+  {
+   "at": "24.04",
+   "dt": 0.8,
+   "do": "show",
+   "prop": "rifle_Artyom"
+  },
+  {
+   "at": "24.05",
+   "do": "pose",
+   "actor": "Zhenya",
+   "pose": "offer",
+   "dur": 0.3
+  },
+  {
+   "at": "24.05",
+   "dt": 0.2,
+   "do": "hide",
+   "prop": "rifle_1"
+  },
+  {
+   "at": "24.05",
+   "dt": 0.2,
+   "do": "show",
+   "prop": "rifle_Zhenya"
+  },
+  {
+   "at": "24.05",
+   "dt": 1.0,
+   "do": "pose",
+   "actor": "Zhenya",
+   "pose": "stand",
+   "dur": 0.3
+  },
+  {
+   "at": "24.05",
+   "dt": 1.0,
+   "do": "hide",
+   "prop": "rifle_2"
+  },
+  {
+   "at": "24.05",
+   "dt": 1.0,
+   "do": "show",
+   "prop": "rifle_Kirill"
+  },
+  {
+   "at": "24.05",
+   "dt": 1.8,
+   "do": "hide",
+   "prop": "rifle_3"
+  },
+  {
+   "at": "24.05",
+   "dt": 1.8,
+   "do": "show",
+   "prop": "rifle_Nikita"
+  },
+  {
+   "at": "24.06",
+   "do": "hide",
+   "prop": "rifle_given"
+  },
+  {
+   "at": "24.06",
+   "do": "show",
+   "prop": "rifle_Commander"
+  },
+  {
+   "at": "24.06",
+   "do": "look",
+   "actor": "Nikita",
+   "yaw": -30,
+   "dur": 0.3
+  },
+  {
+   "at": "24.06",
+   "dt": 0.8,
+   "do": "look",
+   "actor": "Nikita",
+   "yaw": 30,
+   "dur": 0.3
+  },
+  {
+   "at": "24.07",
+   "do": "look",
+   "actor": "Nikita",
+   "yaw": 0,
+   "dur": 0.3
+  },
+  {
+   "at": "24.07",
+   "do": "pose",
+   "actor": "Commander",
+   "pose": "stand",
+   "dur": 0.4
+  },
+  {
+   "at": "24.08",
+   "do": "move",
+   "actor": "Commander",
+   "to": [
+    4.2,
+    -79.0,
+    1.1
+   ],
+   "dt": 0,
+   "dur": 0.1,
+   "facing": 270,
+   "pose": "sit"
+  },
+  {
+   "at": "24.08",
+   "do": "move",
+   "actor": "Artyom",
+   "to": [
+    4.2,
+    -78.5,
+    1.1
+   ],
+   "dt": 0,
+   "dur": 0.1,
+   "facing": 270,
+   "pose": "sit"
+  },
+  {
+   "at": "24.08",
+   "do": "move",
+   "actor": "Zhenya",
+   "to": [
+    4.2,
+    -78.0,
+    1.1
+   ],
+   "dt": 0,
+   "dur": 0.1,
+   "facing": 270,
+   "pose": "sit"
+  },
+  {
+   "at": "24.08",
+   "do": "move",
+   "actor": "Kirill",
+   "to": [
+    4.2,
+    -77.5,
+    1.1
+   ],
+   "dt": 0,
+   "dur": 0.1,
+   "facing": 270,
+   "pose": "sit"
+  },
+  {
+   "at": "24.08",
+   "do": "move",
+   "actor": "Nikita",
+   "to": [
+    4.2,
+    -77.0,
+    1.1
+   ],
+   "dt": 0,
+   "dur": 0.1,
+   "facing": 270,
+   "pose": "sit"
+  },
+  {
+   "at": "24.10",
+   "do": "move",
+   "actor": "Artyom",
+   "to": [
+    9.85,
+    -78.8,
+    0.37
+   ],
+   "dt": 0,
+   "dur": 0.1,
+   "facing": 0,
+   "pose": "pump"
+  },
+  {
+   "at": "24.11",
+   "do": "move",
+   "actor": "Artyom",
+   "to": [
+    9.85,
+    -89.3,
+    0.37
+   ],
+   "dur": 3.0
+  },
+  {
+   "at": "24.10",
+   "do": "move",
+   "actor": "Zhenya",
+   "to": [
+    9.85,
+    -76.8,
+    0.37
+   ],
+   "dt": 0,
+   "dur": 0.1,
+   "facing": 180,
+   "pose": "pump"
+  },
+  {
+   "at": "24.11",
+   "do": "move",
+   "actor": "Zhenya",
+   "to": [
+    9.85,
+    -87.3,
+    0.37
+   ],
+   "dur": 3.0
+  },
+  {
+   "at": "24.10",
+   "do": "move",
+   "actor": "Commander",
+   "to": [
+    9.2,
+    -77.3,
+    0.37
+   ],
+   "dt": 0,
+   "dur": 0.1,
+   "facing": 90,
+   "pose": "stand"
+  },
+  {
+   "at": "24.11",
+   "do": "move",
+   "actor": "Commander",
+   "to": [
+    9.2,
+    -87.8,
+    0.37
+   ],
+   "dur": 3.0
+  },
+  {
+   "at": "24.10",
+   "do": "move",
+   "actor": "Kirill",
+   "to": [
+    9.2,
+    -78.25,
+    0.37
+   ],
+   "dt": 0,
+   "dur": 0.1,
+   "facing": 90,
+   "pose": "stand"
+  },
+  {
+   "at": "24.11",
+   "do": "move",
+   "actor": "Kirill",
+   "to": [
+    9.2,
+    -88.75,
+    0.37
+   ],
+   "dur": 3.0
+  },
+  {
+   "at": "24.10",
+   "do": "move",
+   "actor": "Nikita",
+   "to": [
+    10.45,
+    -78.6,
+    0.37
+   ],
+   "dt": 0,
+   "dur": 0.1,
+   "facing": 0,
+   "pose": "stand"
+  },
+  {
+   "at": "24.11",
+   "do": "move",
+   "actor": "Nikita",
+   "to": [
+    10.45,
+    -89.1,
+    0.37
+   ],
+   "dur": 3.0
+  },
+  {
+   "at": "24.11",
+   "do": "prop_move",
+   "prop": "handcar",
+   "to": [
+    9.85,
+    -88.3,
+    -0.29
+   ],
+   "dur": 3.0
+  },
+  {
+   "at": "24.12",
+   "do": "move",
+   "actor": "Artyom",
+   "to": [
+    9.85,
+    -94.9,
+    0.37
+   ],
+   "dur": 3.5
+  },
+  {
+   "at": "24.12",
+   "do": "move",
+   "actor": "Zhenya",
+   "to": [
+    9.85,
+    -92.9,
+    0.37
+   ],
+   "dur": 3.5
+  },
+  {
+   "at": "24.12",
+   "do": "move",
+   "actor": "Commander",
+   "to": [
+    9.2,
+    -93.4,
+    0.37
+   ],
+   "dur": 3.5
+  },
+  {
+   "at": "24.12",
+   "do": "move",
+   "actor": "Kirill",
+   "to": [
+    9.2,
+    -94.35,
+    0.37
+   ],
+   "dur": 3.5
+  },
+  {
+   "at": "24.12",
+   "do": "move",
+   "actor": "Nikita",
+   "to": [
+    10.45,
+    -94.7,
+    0.37
+   ],
+   "dur": 3.5
+  },
+  {
+   "at": "24.12",
+   "do": "prop_move",
+   "prop": "handcar",
+   "to": [
+    9.85,
+    -93.9,
+    -0.29
+   ],
+   "dur": 3.5
+  }
+ ],
+ "clock": "08:50",
+ "light_scale": 0.7,
+ "crowd": 170,
+ "shots": [
+  {
+   "id": "24.01",
+   "dur": 3.0,
+   "cam": {
+    "pos": [
+     10.8,
+     -64.0,
+     2.4
+    ],
+    "at": [
+     9.0,
+     -78.0,
+     1.2
+    ],
+    "lens": 24
+   }
+  },
+  {
+   "id": "24.02",
+   "dur": 2.0,
+   "cam": {
+    "pos": [
+     9.85,
+     -76.7,
+     1.6
+    ],
+    "at": [
+     10.47,
+     -77.5,
+     0.9
+    ],
+    "lens": 45
+   }
+  },
+  {
+   "id": "24.03",
+   "dur": 2.0,
+   "cam": {
+    "pos": [
+     7.95,
+     -75.0,
+     2.0
+    ],
+    "at": [
+     7.6,
+     -76.2,
+     1.5
+    ],
+    "lens": 40
+   }
+  },
+  {
+   "id": "24.04",
+   "dur": 3.0,
+   "cam": {
+    "pos": [
+     9.3,
+     -76.2,
+     2.4
+    ],
+    "at": "Commander.torso",
+    "lens": 35
+   }
+  },
+  {
+   "id": "24.05",
+   "dur": 2.5,
+   "cam": {
+    "pos": [
+     7.2,
+     -75.1,
+     2.6
+    ],
+    "at": [
+     7.6,
+     -78.6,
+     1.9
+    ],
+    "lens": 28
+   }
+  },
+  {
+   "id": "24.06",
+   "dur": 2.0,
+   "cam": {
+    "pos": [
+     6.6,
+     -78.1,
+     2.7
+    ],
+    "at": "Nikita.eyes",
+    "lens": 50
+   }
+  },
+  {
+   "id": "24.07",
+   "dur": 2.0,
+   "cam": {
+    "pos": [
+     8.3,
+     -75.6,
+     2.85
+    ],
+    "at": "Commander.eyes",
+    "lens": 70
+   }
+  },
+  {
+   "id": "24.08",
+   "dur": 3.0,
+   "cam": {
+    "pos": [
+     0.8,
+     -78.6,
+     2.3
+    ],
+    "at": [
+     4.0,
+     -78.0,
+     1.6
+    ],
+    "lens": 24
+   }
+  },
+  {
+   "id": "24.09",
+   "dur": 2.5,
+   "cam": {
+    "pos": [
+     2.6,
+     -79.9,
+     2.1
+    ],
+    "at": "Commander.torso",
+    "lens": 30
+   }
+  },
+  {
+   "id": "24.10",
+   "dur": 2.5,
+   "cam": {
+    "pos": [
+     10.9,
+     -75.0,
+     2.3
+    ],
+    "at": [
+     9.85,
+     -77.8,
+     1.4
+    ],
+    "lens": 35
+   }
+  },
+  {
+   "id": "24.11",
+   "dur": 3.0,
+   "cam": {
+    "pos": [
+     10.6,
+     -69.5,
+     2.2
+    ],
+    "at": [
+     9.85,
+     -82.0,
+     1.2
+    ],
+    "lens": 28
+   }
+  },
+  {
+   "id": "24.12",
+   "dur": 3.5,
+   "cam": {
+    "pos": [
+     9.85,
+     -89.9,
+     2.6
+    ],
+    "at": [
+     9.85,
+     -50.0,
+     2.6
+    ],
+    "lens": 35,
+    "push": -0.14
+   }
+  }
+ ]
+}

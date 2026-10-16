@@ -1,0 +1,283 @@
+{
+ "id": "s023",
+ "location": "vdnkh_office",
+ "note": "Desk at (0, 1.3); Sukhoi south of it facing north, Alexander at its east end facing west. Door at y=-2.5. Both bend over the map (bend_over); Alexander straightens 23.09-23.12. Morning (screenplay: УТРО): as in s008 — desk lamp down to 12, red station light falling in through the door (station_red).",
+ "cast": {
+  "Artyom": {
+   "height": 1.78
+  },
+  "Sukhoi": {
+   "height": 1.76
+  },
+  "Alexander": {
+   "height": 1.72,
+   "role": "Alexander"
+  }
+ },
+ "names": {
+  "Artyom": "Artyom",
+  "Sukhoi": "Sukhoi",
+  "Alexander Nikolaevich": "Alexander"
+ },
+ "props": {
+  "desk_map": {
+   "type": "block",
+   "size": [
+    0.7,
+    0.5,
+    0.01
+   ],
+   "color": [
+    0.95,
+    0.9,
+    0.75
+   ],
+   "loc": [
+    0.1,
+    1.25,
+    0.725
+   ]
+  },
+  "backpack": {
+   "type": "block",
+   "size": [
+    0.34,
+    0.2,
+    0.45
+   ],
+   "color": [
+    0.32,
+    0.38,
+    0.22
+   ],
+   "attach": "Artyom.chest",
+   "loc": [
+    0,
+    -0.28,
+    0.1
+   ]
+  },
+  "desk_lamp_body": {
+   "type": "block",
+   "size": [
+    0.12,
+    0.12,
+    0.45
+   ],
+   "color": [
+    0.15,
+    0.15,
+    0.12
+   ],
+   "loc": [
+    0.4,
+    1.3,
+    0.725
+   ]
+  }
+ },
+ "events": [
+  {
+   "at": "23.01",
+   "do": "light",
+   "light": "desk_lamp",
+   "energy": 12
+  },
+  {
+   "at": "23.01",
+   "do": "place",
+   "actor": "Sukhoi",
+   "pos": [
+    -0.3,
+    0.6
+   ],
+   "facing": 0,
+   "pose": "bend_over"
+  },
+  {
+   "at": "23.01",
+   "do": "place",
+   "actor": "Alexander",
+   "pos": [
+    1.15,
+    1.25
+   ],
+   "facing": 270,
+   "pose": "bend_over"
+  },
+  {
+   "at": "23.01",
+   "do": "place",
+   "actor": "Artyom",
+   "pos": [
+    0,
+    -2.3
+   ],
+   "facing": 0,
+   "pose": "stand"
+  },
+  {
+   "at": "23.01",
+   "do": "hide",
+   "actor": "Artyom"
+  },
+  {
+   "at": "23.02",
+   "do": "show",
+   "actor": "Artyom"
+  },
+  {
+   "at": "23.03",
+   "do": "pose",
+   "actor": "Sukhoi",
+   "pose": "stand",
+   "dur": 0.4
+  },
+  {
+   "at": "23.03",
+   "do": "turn",
+   "actor": "Sukhoi",
+   "facing": 175,
+   "dt": 0.3,
+   "dur": 0.6
+  },
+  {
+   "at": "23.04",
+   "do": "walk",
+   "actor": "Artyom",
+   "to": [
+    -0.3,
+    0.2
+   ],
+   "facing": 0,
+   "speed": 1.5,
+   "pose_after": "carry_child"
+  },
+  {
+   "at": "23.05",
+   "do": "pose",
+   "actor": "Sukhoi",
+   "pose": "carry_child",
+   "dur": 0.5
+  },
+  {
+   "at": "23.08",
+   "do": "pose",
+   "actor": "Artyom",
+   "pose": "stand",
+   "dur": 0.3
+  },
+  {
+   "at": "23.08",
+   "do": "pose",
+   "actor": "Sukhoi",
+   "pose": "stand",
+   "dur": 0.5
+  },
+  {
+   "at": "23.08",
+   "do": "walk",
+   "actor": "Artyom",
+   "to": [
+    0,
+    -3.4
+   ],
+   "facing": 180,
+   "speed": 1.3,
+   "dt": 0.3
+  },
+  {
+   "at": "23.08",
+   "do": "hide",
+   "actor": "Artyom",
+   "dt": 2.85
+  },
+  {
+   "at": "23.12",
+   "do": "turn",
+   "actor": "Sukhoi",
+   "facing": 0,
+   "dur": 0.6
+  },
+  {
+   "at": "23.12",
+   "do": "pose",
+   "actor": "Sukhoi",
+   "pose": "bend_over",
+   "dt": 0.6,
+   "dur": 0.5
+  },
+  {
+   "at": "23.09",
+   "do": "pose",
+   "actor": "Alexander",
+   "pose": "stand",
+   "dur": 0.5
+  },
+  {
+   "at": "23.12",
+   "dt": 0.6,
+   "do": "pose",
+   "actor": "Alexander",
+   "pose": "bend_over",
+   "dur": 0.5
+  }
+ ],
+ "cams": {
+  "23.01": {
+   "view": "wide"
+  },
+  "23.04": {
+   "pos": [
+    -1.7,
+    1.6,
+    1.8
+   ],
+   "at": [
+    0.0,
+    -1.0,
+    1.3
+   ],
+   "lens": 24
+  },
+  "23.10": {
+   "pos": [
+    0.1,
+    0.1,
+    1.6
+   ],
+   "at": "Alexander.torso",
+   "lens": 32
+  },
+  "23.13": {
+   "pos": [
+    0.5,
+    -0.8,
+    1.95
+   ],
+   "at": [
+    0.3,
+    1.2,
+    1.05
+   ],
+   "lens": 26
+  }
+ },
+ "lights": {
+  "station_red": {
+   "type": "POINT",
+   "attach": "desk",
+   "loc": [
+    0,
+    -5.8,
+    0.72
+   ],
+   "energy": 250,
+   "color": [
+    1.0,
+    0.18,
+    0.1
+   ]
+  }
+ }
+}

@@ -1,0 +1,1032 @@
+{
+ "id": "s018",
+ "location": "vdnkh",
+ "cast": {
+  "Artyom": {
+   "height": 1.78
+  },
+  "Hunter": {
+   "height": 1.95,
+   "coat": true
+  }
+ },
+ "title": "Сцена 18. ИНТ. СТАНЦИЯ ВДНХ — У ГОСТЕВОЙ ПАЛАТКИ — ДЕНЬ",
+ "storyboard": "storyboard/02-вднх/018-инт-станция-вднх-у-гостевой-палатки-день.md",
+ "crates": [
+  [
+   4.78,
+   42.5,
+   270,
+   1.1
+  ]
+ ],
+ "props": {
+  "meat_whole": {
+   "type": "block",
+   "size": [
+    0.12,
+    0.07,
+    0.04
+   ],
+   "color": [
+    0.45,
+    0.2,
+    0.12
+   ],
+   "attach": "Hunter.hand_R",
+   "loc": [
+    0,
+    0.03,
+    -0.08
+   ],
+   "hidden": true
+  },
+  "meat_h": {
+   "type": "block",
+   "size": [
+    0.06,
+    0.07,
+    0.04
+   ],
+   "color": [
+    0.45,
+    0.2,
+    0.12
+   ],
+   "attach": "Hunter.hand_R",
+   "loc": [
+    0,
+    0.03,
+    -0.08
+   ],
+   "hidden": true
+  },
+  "meat_h2": {
+   "type": "block",
+   "size": [
+    0.06,
+    0.07,
+    0.04
+   ],
+   "color": [
+    0.45,
+    0.2,
+    0.12
+   ],
+   "attach": "Hunter.hand_L",
+   "loc": [
+    0,
+    0.03,
+    -0.08
+   ],
+   "hidden": true
+  },
+  "meat_a": {
+   "type": "block",
+   "size": [
+    0.06,
+    0.07,
+    0.04
+   ],
+   "color": [
+    0.45,
+    0.2,
+    0.12
+   ],
+   "attach": "Artyom.hand_R",
+   "loc": [
+    0,
+    0.03,
+    -0.08
+   ],
+   "hidden": true
+  },
+  "cart_h": {
+   "type": "block",
+   "size": [
+    0.014,
+    0.014,
+    0.06
+   ],
+   "color": [
+    0.85,
+    0.65,
+    0.25
+   ],
+   "attach": "Hunter.hand_R",
+   "loc": [
+    0,
+    0.03,
+    -0.09
+   ],
+   "hidden": true
+  },
+  "cart_a": {
+   "type": "block",
+   "size": [
+    0.014,
+    0.014,
+    0.06
+   ],
+   "color": [
+    0.85,
+    0.65,
+    0.25
+   ],
+   "attach": "Artyom.hand_R",
+   "loc": [
+    0,
+    0.03,
+    -0.09
+   ],
+   "hidden": true
+  },
+  "blanket": {
+   "type": "block",
+   "size": [
+    1.6,
+    1.2,
+    0.02
+   ],
+   "color": [
+    0.35,
+    0.3,
+    0.2
+   ],
+   "loc": [
+    7.2,
+    43.5,
+    1.1
+   ]
+  },
+  "lmg": {
+   "type": "machine_gun",
+   "loc": [
+    7.3,
+    43.2,
+    1.12
+   ],
+   "rot": [
+    0,
+    0,
+    1.57
+   ]
+  },
+  "drum1": {
+   "type": "block",
+   "size": [
+    0.25,
+    0.25,
+    0.08
+   ],
+   "color": [
+    0.12,
+    0.12,
+    0.12
+   ],
+   "loc": [
+    6.8,
+    43.85,
+    1.12
+   ]
+  },
+  "drum2": {
+   "type": "block",
+   "size": [
+    0.25,
+    0.25,
+    0.08
+   ],
+   "color": [
+    0.12,
+    0.12,
+    0.12
+   ],
+   "loc": [
+    7.15,
+    43.95,
+    1.12
+   ]
+  },
+  "grenades": {
+   "type": "block",
+   "size": [
+    0.3,
+    0.12,
+    0.08
+   ],
+   "color": [
+    0.25,
+    0.35,
+    0.18
+   ],
+   "loc": [
+    7.6,
+    43.9,
+    1.12
+   ]
+  },
+  "backpack": {
+   "type": "block",
+   "size": [
+    0.35,
+    0.25,
+    0.45
+   ],
+   "color": [
+    0.3,
+    0.32,
+    0.2
+   ],
+   "loc": [
+    5.75,
+    43.1,
+    1.1
+   ]
+  }
+ },
+ "events": [
+  {
+   "at": "18.01",
+   "actor": "Hunter",
+   "do": "place",
+   "pos": [
+    4.5,
+    41.8,
+    1.1
+   ],
+   "facing": 0
+  },
+  {
+   "at": "18.01",
+   "actor": "Artyom",
+   "do": "place",
+   "pos": [
+    -1.6,
+    39.0,
+    1.1
+   ],
+   "facing": 90
+  },
+  {
+   "at": "18.02",
+   "actor": "Hunter",
+   "do": "move",
+   "to": [
+    4.6,
+    42.5,
+    1.1
+   ],
+   "dur": 0.8,
+   "facing": 270,
+   "pose": "sit"
+  },
+  {
+   "at": "18.02",
+   "dt": 1.2,
+   "do": "show",
+   "prop": "meat_whole"
+  },
+  {
+   "at": "18.02",
+   "dt": 1.2,
+   "actor": "Hunter",
+   "do": "pose",
+   "pose": "sit_mug",
+   "dur": 0.5
+  },
+  {
+   "at": "18.03",
+   "dt": 1.0,
+   "do": "hide",
+   "prop": "meat_whole"
+  },
+  {
+   "at": "18.03",
+   "dt": 1.0,
+   "do": "show",
+   "prop": "meat_h"
+  },
+  {
+   "at": "18.03",
+   "dt": 1.0,
+   "do": "show",
+   "prop": "meat_h2"
+  },
+  {
+   "at": "18.04",
+   "actor": "Hunter",
+   "do": "pose",
+   "pose": "sit_feed",
+   "dur": 0.4
+  },
+  {
+   "at": "18.04",
+   "dt": 1.0,
+   "actor": "Artyom",
+   "do": "pose",
+   "pose": "offer",
+   "dur": 0.4
+  },
+  {
+   "at": "18.04",
+   "dt": 1.6,
+   "do": "hide",
+   "prop": "meat_h"
+  },
+  {
+   "at": "18.04",
+   "dt": 1.6,
+   "do": "show",
+   "prop": "meat_a"
+  },
+  {
+   "at": "18.05",
+   "actor": "Hunter",
+   "do": "pose",
+   "pose": "sit",
+   "dur": 0.4
+  },
+  {
+   "at": "18.05",
+   "actor": "Artyom",
+   "do": "pose",
+   "pose": "flashlight",
+   "dur": 0.4
+  },
+  {
+   "at": "18.11",
+   "actor": "Hunter",
+   "do": "pose",
+   "pose": "sit_mug",
+   "dur": 0.4
+  },
+  {
+   "at": "18.12",
+   "actor": "Hunter",
+   "do": "pose",
+   "pose": "sit",
+   "dur": 0.4
+  },
+  {
+   "at": "18.14",
+   "actor": "Artyom",
+   "do": "look",
+   "yaw": 0
+  },
+  {
+   "at": "18.28",
+   "actor": "Hunter",
+   "do": "look",
+   "yaw": 80,
+   "dur": 0.6
+  },
+  {
+   "at": "18.29",
+   "actor": "Hunter",
+   "do": "look",
+   "yaw": 0
+  },
+  {
+   "at": "18.35",
+   "actor": "Hunter",
+   "do": "pose",
+   "pose": "stand",
+   "dur": 0.5
+  },
+  {
+   "at": "18.35",
+   "dt": 0.5,
+   "actor": "Hunter",
+   "do": "walk",
+   "to": [
+    4.9,
+    43.5,
+    1.1
+   ],
+   "facing": 90,
+   "speed": 1.0,
+   "pose_after": "reach_out"
+  },
+  {
+   "at": "18.37",
+   "actor": "Hunter",
+   "do": "pose",
+   "pose": "kneel_up",
+   "dur": 0.5
+  },
+  {
+   "at": "18.38",
+   "do": "show",
+   "prop": "cart_h"
+  },
+  {
+   "at": "18.37",
+   "actor": "Hunter",
+   "do": "turn",
+   "facing": 270,
+   "dur": 0.1,
+   "dt": 2.0
+  },
+  {
+   "at": "18.37",
+   "actor": "Hunter",
+   "do": "pose",
+   "pose": "offer",
+   "dur": 0.1,
+   "dt": 2.0
+  },
+  {
+   "at": "18.39",
+   "actor": "Hunter",
+   "do": "walk",
+   "to": [
+    3.95,
+    42.5,
+    1.1
+   ],
+   "facing": 270,
+   "speed": 1.0,
+   "pose_after": "offer"
+  },
+  {
+   "at": "18.40",
+   "actor": "Artyom",
+   "do": "pose",
+   "pose": "offer",
+   "dur": 0.4
+  },
+  {
+   "at": "18.41",
+   "dt": 1.2,
+   "do": "hide",
+   "prop": "cart_h"
+  },
+  {
+   "at": "18.41",
+   "dt": 1.2,
+   "do": "show",
+   "prop": "cart_a"
+  },
+  {
+   "at": "18.44",
+   "actor": "Hunter",
+   "do": "pose",
+   "pose": "stand",
+   "dur": 0.5
+  },
+  {
+   "at": "18.44",
+   "actor": "Artyom",
+   "do": "pose",
+   "pose": "flashlight",
+   "dur": 0.5
+  },
+  {
+   "at": "18.45",
+   "actor": "Artyom",
+   "do": "turn",
+   "facing": 5,
+   "dur": 0.6
+  },
+  {
+   "at": "18.45",
+   "actor": "Hunter",
+   "do": "walk",
+   "to": [
+    3.7,
+    41.4,
+    1.1
+   ],
+   "facing": 340,
+   "speed": 1.0
+  },
+  {
+   "at": "18.47",
+   "dt": 0.8,
+   "actor": "Hunter",
+   "do": "walk",
+   "to": [
+    4.9,
+    43.5,
+    1.1
+   ],
+   "facing": 90,
+   "speed": 1.2,
+   "pose_after": "reach_out"
+  },
+  {
+   "at": "18.49",
+   "actor": "Hunter",
+   "do": "hide"
+  },
+  {
+   "at": "18.49",
+   "actor": "Artyom",
+   "do": "pose",
+   "pose": "stand",
+   "dur": 0.3
+  }
+ ],
+ "shots": [
+  {
+   "id": "18.01",
+   "dur": 3.0,
+   "cam": {
+    "pos": [
+     -3.5,
+     46.5,
+     2.8
+    ],
+    "at": [
+     5.2,
+     41.5,
+     1.6
+    ],
+    "lens": 24
+   }
+  },
+  {
+   "id": "18.02",
+   "dur": 2.5,
+   "cam": {
+    "auto": "med",
+    "subject": "Hunter",
+    "side": -1
+   }
+  },
+  {
+   "id": "18.03",
+   "dur": 2.0,
+   "cam": {
+    "auto": "detail",
+    "subject": "Hunter",
+    "side": -1
+   }
+  },
+  {
+   "id": "18.04",
+   "dur": 2.0,
+   "cam": {
+    "auto": "ots",
+    "subject": "Hunter",
+    "side": 1,
+    "partner": "Artyom"
+   }
+  },
+  {
+   "id": "18.05",
+   "dur": 3.0,
+   "cam": {
+    "auto": "cu",
+    "subject": "Hunter",
+    "side": -1
+   }
+  },
+  {
+   "id": "18.06",
+   "dur": 2.5,
+   "cam": {
+    "auto": "cu",
+    "subject": "Hunter",
+    "side": -1
+   }
+  },
+  {
+   "id": "18.07",
+   "dur": 2.0,
+   "cam": {
+    "auto": "cu",
+    "subject": "Artyom",
+    "side": 1
+   }
+  },
+  {
+   "id": "18.08",
+   "dur": 2.5,
+   "cam": {
+    "auto": "cu",
+    "subject": "Artyom",
+    "side": 1
+   }
+  },
+  {
+   "id": "18.09",
+   "dur": 1.5,
+   "cam": {
+    "auto": "cu",
+    "subject": "Hunter",
+    "side": -1
+   }
+  },
+  {
+   "id": "18.10",
+   "dur": 3.0,
+   "cam": {
+    "auto": "cu",
+    "subject": "Artyom",
+    "side": 1
+   }
+  },
+  {
+   "id": "18.11",
+   "dur": 2.5,
+   "cam": {
+    "auto": "med",
+    "subject": "Hunter",
+    "side": -1
+   }
+  },
+  {
+   "id": "18.12",
+   "dur": 3.0,
+   "cam": {
+    "auto": "ots",
+    "subject": "Hunter",
+    "side": 1,
+    "partner": "Artyom"
+   }
+  },
+  {
+   "id": "18.13",
+   "dur": 3.0,
+   "cam": {
+    "auto": "cu",
+    "subject": "Hunter",
+    "side": -1
+   }
+  },
+  {
+   "id": "18.14",
+   "dur": 2.5,
+   "cam": {
+    "auto": "cu",
+    "subject": "Artyom",
+    "side": 1,
+    "push": 0.15
+   }
+  },
+  {
+   "id": "18.15",
+   "dur": 3.0,
+   "cam": {
+    "auto": "cu",
+    "subject": "Artyom",
+    "side": 1
+   }
+  },
+  {
+   "id": "18.16",
+   "dur": 3.0,
+   "cam": {
+    "auto": "detail",
+    "subject": "Artyom",
+    "side": 1
+   }
+  },
+  {
+   "id": "18.17",
+   "dur": 2.5,
+   "cam": {
+    "auto": "cu",
+    "subject": "Artyom",
+    "side": 1
+   }
+  },
+  {
+   "id": "18.18",
+   "dur": 2.0,
+   "cam": {
+    "pos": [
+     3.95,
+     39.1,
+     1.95
+    ],
+    "at": [
+     3.95,
+     42.5,
+     1.9
+    ],
+    "lens": 35
+   }
+  },
+  {
+   "id": "18.19",
+   "dur": 3.0,
+   "cam": {
+    "auto": "cu",
+    "subject": "Artyom",
+    "side": 1
+   }
+  },
+  {
+   "id": "18.20",
+   "dur": 3.0,
+   "cam": {
+    "auto": "cu",
+    "subject": "Hunter",
+    "side": -1
+   }
+  },
+  {
+   "id": "18.21",
+   "dur": 2.5,
+   "cam": {
+    "auto": "cu",
+    "subject": "Hunter",
+    "side": -1
+   }
+  },
+  {
+   "id": "18.22",
+   "dur": 2.0,
+   "cam": {
+    "auto": "cu",
+    "subject": "Artyom",
+    "side": 1
+   }
+  },
+  {
+   "id": "18.23",
+   "dur": 2.0,
+   "cam": {
+    "auto": "cu",
+    "subject": "Hunter",
+    "side": -1
+   }
+  },
+  {
+   "id": "18.24",
+   "dur": 3.0,
+   "cam": {
+    "auto": "cu",
+    "subject": "Hunter",
+    "side": -1
+   }
+  },
+  {
+   "id": "18.25",
+   "dur": 3.0,
+   "cam": {
+    "auto": "ots",
+    "subject": "Hunter",
+    "side": 1,
+    "partner": "Artyom"
+   }
+  },
+  {
+   "id": "18.26",
+   "dur": 2.0,
+   "cam": {
+    "auto": "cu",
+    "subject": "Artyom",
+    "side": 1
+   }
+  },
+  {
+   "id": "18.27",
+   "dur": 3.0,
+   "cam": {
+    "auto": "cu",
+    "subject": "Hunter",
+    "side": -1
+   }
+  },
+  {
+   "id": "18.28",
+   "dur": 3.5,
+   "cam": {
+    "auto": "med",
+    "subject": "Hunter",
+    "side": -1
+   }
+  },
+  {
+   "id": "18.29",
+   "dur": 2.5,
+   "cam": {
+    "auto": "cu",
+    "subject": "Hunter",
+    "side": -1
+   }
+  },
+  {
+   "id": "18.30",
+   "dur": 1.5,
+   "cam": {
+    "auto": "cu",
+    "subject": "Artyom",
+    "side": 1
+   }
+  },
+  {
+   "id": "18.31",
+   "dur": 2.5,
+   "cam": {
+    "auto": "cu",
+    "subject": "Hunter",
+    "side": -1
+   }
+  },
+  {
+   "id": "18.32",
+   "dur": 2.0,
+   "cam": {
+    "auto": "cu",
+    "subject": "Artyom",
+    "side": 1
+   }
+  },
+  {
+   "id": "18.33",
+   "dur": 3.0,
+   "cam": {
+    "auto": "ots",
+    "subject": "Hunter",
+    "side": 1,
+    "partner": "Artyom"
+   }
+  },
+  {
+   "id": "18.34",
+   "dur": 3.0,
+   "cam": {
+    "auto": "cu",
+    "subject": "Hunter",
+    "side": -1,
+    "push": 0.15
+   }
+  },
+  {
+   "id": "18.35",
+   "dur": 2.5,
+   "cam": {
+    "auto": "med",
+    "subject": "Hunter",
+    "side": -1
+   }
+  },
+  {
+   "id": "18.36",
+   "dur": 3.0,
+   "cam": {
+    "pos": [
+     5.7,
+     43.5,
+     1.9
+    ],
+    "at": [
+     7.1,
+     43.5,
+     1.15
+    ],
+    "lens": 28
+   }
+  },
+  {
+   "id": "18.37",
+   "dur": 2.5,
+   "cam": {
+    "pos": [
+     3.7,
+     41.3,
+     2.2
+    ],
+    "at": "Hunter.torso",
+    "lens": 35
+   }
+  },
+  {
+   "id": "18.38",
+   "dur": 2.5,
+   "cam": {
+    "pos": [
+     3.9,
+     41.7,
+     2.0
+    ],
+    "at": "Hunter.hand_R",
+    "lens": 50
+   }
+  },
+  {
+   "id": "18.39",
+   "dur": 3.5,
+   "cam": {
+    "pos": [
+     -2.5,
+     37.6,
+     2.5
+    ],
+    "at": "Hunter.torso",
+    "lens": 35
+   }
+  },
+  {
+   "id": "18.40",
+   "dur": 2.0,
+   "cam": {
+    "auto": "cu",
+    "subject": "Hunter",
+    "side": -1
+   }
+  },
+  {
+   "id": "18.41",
+   "dur": 3.0,
+   "cam": {
+    "auto": "detail",
+    "subject": "Hunter",
+    "side": -1
+   }
+  },
+  {
+   "id": "18.42",
+   "dur": 3.0,
+   "cam": {
+    "auto": "cu",
+    "subject": "Hunter",
+    "side": -1
+   }
+  },
+  {
+   "id": "18.43",
+   "dur": 3.5,
+   "cam": {
+    "auto": "cu",
+    "subject": "Hunter",
+    "side": -1
+   }
+  },
+  {
+   "id": "18.44",
+   "dur": 2.5,
+   "cam": {
+    "auto": "cu",
+    "subject": "Artyom",
+    "side": 1
+   }
+  },
+  {
+   "id": "18.45",
+   "dur": 3.0,
+   "cam": {
+    "pos": [
+     8.75,
+     45.5,
+     2.75
+    ],
+    "at": [
+     9.85,
+     81.0,
+     2.0
+    ],
+    "lens": 35
+   }
+  },
+  {
+   "id": "18.46",
+   "dur": 3.0,
+   "cam": {
+    "auto": "med",
+    "subject": "Artyom",
+    "side": 1
+   }
+  },
+  {
+   "id": "18.47",
+   "dur": 3.0,
+   "cam": {
+    "auto": "cu",
+    "subject": "Hunter",
+    "side": -1
+   }
+  },
+  {
+   "id": "18.48",
+   "dur": 2.5,
+   "cam": {
+    "auto": "wide",
+    "subject": "Artyom",
+    "side": -1
+   }
+  },
+  {
+   "id": "18.49",
+   "dur": 3.0,
+   "cam": {
+    "pos": [
+     -4.0,
+     34.5,
+     2.6
+    ],
+    "at": [
+     4.9,
+     43.0,
+     1.7
+    ],
+    "lens": 24
+   }
+  }
+ ]
+}

@@ -1,0 +1,1095 @@
+{
+ "id": "s001",
+ "title": "Сцена 1. ИНТ. СЕВЕРНЫЙ ТУННЕЛЬ ВДНХ — 250-Й МЕТР — НОЧЬ",
+ "storyboard": "storyboard/01-дозор/001-инт-северный-туннель-вднх-250-й-метр-ночь.md",
+ "location": "tunnel_250",
+ "note": "Fire at (-1.3, 0). +Y is north (darkness), -Y south (station). Facing is degrees clockwise from north.",
+ "cast": {
+  "Artyom": {
+   "height": 1.78,
+   "rifle": true
+  },
+  "Pyotr": {
+   "height": 1.7
+  },
+  "Andrei": {
+   "height": 1.76,
+   "beret": true
+  },
+  "Kirill": {
+   "height": 1.74
+  },
+  "Hunter": {
+   "height": 1.95,
+   "coat": true
+  }
+ },
+ "crates": [
+  [
+   -0.35,
+   0.82,
+   0
+  ],
+  [
+   -0.4,
+   0.66,
+   234
+  ],
+  [
+   -1.85,
+   -0.93,
+   36
+  ],
+  [
+   0.2,
+   -1.05,
+   303
+  ],
+  [
+   -0.95,
+   -1.62,
+   348
+  ]
+ ],
+ "props": {
+  "mug_artyom": {
+   "type": "mug",
+   "attach": "Artyom.hand_R",
+   "loc": [
+    0,
+    0.02,
+    -0.1
+   ],
+   "hidden": true
+  },
+  "mug_hunter": {
+   "type": "mug",
+   "attach": "Hunter.hand_R",
+   "loc": [
+    0,
+    0.02,
+    -0.1
+   ],
+   "hidden": true
+  },
+  "critter": {
+   "type": "puppy",
+   "loc": [
+    0.2,
+    9.0,
+    0.0
+   ],
+   "hidden": true
+  }
+ },
+ "lights": {
+  "flashlight": {
+   "type": "SPOT",
+   "attach": "Andrei.hand_R",
+   "loc": [
+    0,
+    0.05,
+    -0.05
+   ],
+   "energy": 0,
+   "angle": 30
+  }
+ },
+ "shots": [
+  {
+   "id": "1.01",
+   "dur": 3,
+   "title": true
+  },
+  {
+   "id": "1.02",
+   "dur": 3,
+   "cam": {
+    "pos": [
+     0.25,
+     -8.5,
+     1.55
+    ],
+    "at": [
+     -0.7,
+     2.5,
+     0.7
+    ],
+    "lens": 24
+   }
+  },
+  {
+   "id": "1.03",
+   "dur": 2,
+   "cam": {
+    "pos": [
+     -0.4,
+     -1.3,
+     1.7
+    ],
+    "at": [
+     -2.4,
+     -1.2,
+     2.15
+    ],
+    "lens": 50
+   }
+  },
+  {
+   "id": "1.04",
+   "dur": 2,
+   "cam": {
+    "pos": [
+     -0.4,
+     2.6,
+     1.4
+    ],
+    "at": [
+     -1.9,
+     5.5,
+     1.0
+    ],
+    "lens": 35,
+    "push": 0.1
+   }
+  },
+  {
+   "id": "1.05",
+   "dur": 3,
+   "cam": {
+    "pos": [
+     -0.3,
+     3.9,
+     1.05
+    ],
+    "at": [
+     -0.4,
+     0.8,
+     0.9
+    ],
+    "lens": 35
+   }
+  },
+  {
+   "id": "1.06",
+   "dur": 2,
+   "cam": {
+    "pos": [
+     0.3,
+     -2.7,
+     1.3
+    ],
+    "at": [
+     -1.85,
+     -0.3,
+     0.55
+    ],
+    "lens": 35
+   }
+  },
+  {
+   "id": "1.07",
+   "dur": 2,
+   "cam": {
+    "at": "Artyom.eyes",
+    "rel": [
+     0.05,
+     1.0,
+     0.0
+    ],
+    "lens": 85,
+    "size": 0.28
+   }
+  },
+  {
+   "id": "1.08",
+   "dur": 2,
+   "cam": {
+    "pos": [
+     -0.35,
+     1.15,
+     1.15
+    ],
+    "at": [
+     -0.2,
+     20,
+     0.8
+    ],
+    "lens": 28
+   }
+  },
+  {
+   "id": "1.09",
+   "dur": 2,
+   "cam": {
+    "pos": [
+     1.2,
+     3.4,
+     1.1
+    ],
+    "at": "Artyom.chest",
+    "lens": 28
+   }
+  },
+  {
+   "id": "1.10",
+   "dur": 1.5,
+   "cam": {
+    "at": "Artyom.rifle",
+    "rel": [
+     0.6,
+     0.4,
+     0.25
+    ],
+    "lens": 60
+   }
+  },
+  {
+   "id": "1.11",
+   "dur": 3,
+   "cam": {
+    "pos": [
+     -0.2,
+     7.0,
+     1.3
+    ],
+    "at": [
+     -0.3,
+     2.0,
+     1.0
+    ],
+    "lens": 35,
+    "push": -0.15
+   }
+  },
+  {
+   "id": "1.12",
+   "dur": 2.5,
+   "cam": {
+    "at": "Artyom.eyes",
+    "rel": [
+     0.25,
+     0.9,
+     0.0
+    ],
+    "lens": 70
+   }
+  },
+  {
+   "id": "1.13",
+   "dur": 2,
+   "cam": {
+    "pos": [
+     -0.3,
+     4.2,
+     1.5
+    ],
+    "at": [
+     -0.3,
+     25,
+     1.0
+    ],
+    "lens": 35
+   }
+  },
+  {
+   "id": "1.14",
+   "dur": 2.5,
+   "cam": {
+    "pos": [
+     -0.76,
+     4.4,
+     0.42
+    ],
+    "at": [
+     -0.2,
+     25,
+     0.3
+    ],
+    "lens": 28
+   }
+  },
+  {
+   "id": "1.15",
+   "dur": 3,
+   "cam": {
+    "at": "Artyom.chest",
+    "rel": [
+     0.7,
+     -1.0,
+     0.15
+    ],
+    "lens": 35
+   }
+  },
+  {
+   "id": "1.16",
+   "dur": 2.5,
+   "cam": {
+    "at": "Pyotr.chest",
+    "rel": [
+     1.0,
+     0.15,
+     0.2
+    ],
+    "lens": 40
+   }
+  },
+  {
+   "id": "1.17",
+   "dur": 1.5,
+   "cam": {
+    "at": "Artyom.eyes",
+    "rel": [
+     0.2,
+     0.8,
+     0.0
+    ],
+    "lens": 70
+   }
+  },
+  {
+   "id": "1.18",
+   "dur": 3,
+   "cam": {
+    "at": "Pyotr.eyes",
+    "rel": [
+     1.0,
+     0.2,
+     0.1
+    ],
+    "lens": 50
+   }
+  },
+  {
+   "id": "1.19",
+   "dur": 2.5,
+   "cam": {
+    "at": "Artyom.eyes",
+    "rel": [
+     0.6,
+     0.6,
+     0.0
+    ],
+    "lens": 70
+   }
+  },
+  {
+   "id": "1.20",
+   "dur": 2,
+   "cam": {
+    "at": "Pyotr.eyes",
+    "rel": [
+     1.0,
+     0.1,
+     0.15
+    ],
+    "lens": 45,
+    "size": 0.9
+   }
+  },
+  {
+   "id": "1.21",
+   "dur": 3,
+   "cam": {
+    "at": "Pyotr.eyes",
+    "rel": [
+     1.0,
+     0.25,
+     0.05
+    ],
+    "lens": 70,
+    "push": 0.2
+   }
+  },
+  {
+   "id": "1.22",
+   "dur": 4,
+   "cam": {
+    "at": "Pyotr.eyes",
+    "rel": [
+     1.0,
+     0.3,
+     0.0
+    ],
+    "lens": 85
+   }
+  },
+  {
+   "id": "1.23",
+   "dur": 3,
+   "cam": {
+    "pos": [
+     -0.55,
+     -0.85,
+     0.75
+    ],
+    "at": [
+     -1.3,
+     0.0,
+     0.15
+    ],
+    "lens": 50
+   }
+  },
+  {
+   "id": "1.24",
+   "dur": 2,
+   "cam": {
+    "at": "Artyom.eyes",
+    "rel": [
+     0.15,
+     -1.0,
+     0.0
+    ],
+    "lens": 50
+   }
+  },
+  {
+   "id": "1.25",
+   "dur": 1.5,
+   "cam": {
+    "at": "Pyotr.eyes",
+    "rel": [
+     1.0,
+     0.3,
+     0.0
+    ],
+    "lens": 85
+   }
+  },
+  {
+   "id": "1.26",
+   "dur": 3,
+   "cam": {
+    "pos": [
+     0.6,
+     2.2,
+     1.5
+    ],
+    "at": [
+     -0.2,
+     -20,
+     1.0
+    ],
+    "lens": 28
+   }
+  },
+  {
+   "id": "1.27",
+   "dur": 2.5,
+   "cam": {
+    "at": "Pyotr.chest",
+    "rel": [
+     1.0,
+     0.1,
+     0.25
+    ],
+    "lens": 35
+   }
+  },
+  {
+   "id": "1.28",
+   "dur": 3,
+   "cam": {
+    "pos": [
+     -0.2,
+     3.2,
+     1.6
+    ],
+    "at": [
+     0,
+     -4,
+     1.0
+    ],
+    "lens": 24
+   }
+  },
+  {
+   "id": "1.29",
+   "dur": 2.5,
+   "cam": {
+    "at": "Andrei.eyes",
+    "rel": [
+     0.2,
+     1.8,
+     -0.1
+    ],
+    "lens": 40
+   }
+  },
+  {
+   "id": "1.30",
+   "dur": 2,
+   "cam": {
+    "at": "Kirill.chest",
+    "rel": [
+     0.6,
+     1.4,
+     0.3
+    ],
+    "lens": 40
+   }
+  },
+  {
+   "id": "1.31",
+   "dur": 3,
+   "cam": {
+    "at": "Hunter.chest",
+    "rel": [
+     -0.6,
+     1.5,
+     -0.7
+    ],
+    "lens": 28
+   }
+  },
+  {
+   "id": "1.32",
+   "dur": 2.5,
+   "cam": {
+    "at": "Hunter.eyes",
+    "rel": [
+     -0.8,
+     0.0,
+     0.0
+    ],
+    "lens": 70
+   }
+  },
+  {
+   "id": "1.33",
+   "dur": 3,
+   "cam": {
+    "pos": [
+     1.3,
+     -0.2,
+     1.3
+    ],
+    "at": [
+     -1.0,
+     -0.8,
+     0.7
+    ],
+    "lens": 28
+   }
+  },
+  {
+   "id": "1.34",
+   "dur": 1.5,
+   "cam": {
+    "at": "Pyotr.eyes",
+    "rel": [
+     1.0,
+     0.3,
+     0.0
+    ],
+    "lens": 85
+   }
+  },
+  {
+   "id": "1.35",
+   "dur": 3,
+   "cam": {
+    "at": "Andrei.eyes",
+    "rel": [
+     -0.9,
+     0.6,
+     0.05
+    ],
+    "lens": 45
+   }
+  },
+  {
+   "id": "1.36",
+   "dur": 1.5,
+   "cam": {
+    "at": "Kirill.eyes",
+    "rel": [
+     0.8,
+     0.6,
+     0.0
+    ],
+    "lens": 70
+   }
+  },
+  {
+   "id": "1.37",
+   "dur": 3,
+   "cam": {
+    "pos": [
+     -0.35,
+     -0.85,
+     0.55
+    ],
+    "at": [
+     -0.7,
+     -0.42,
+     0.2
+    ],
+    "lens": 50
+   }
+  },
+  {
+   "id": "1.38",
+   "dur": 3,
+   "cam": {
+    "pos": [
+     1.3,
+     -1.3,
+     1.45
+    ],
+    "at": [
+     0.0,
+     1.0,
+     1.0
+    ],
+    "lens": 24
+   }
+  },
+  {
+   "id": "1.39",
+   "dur": 3,
+   "cam": {
+    "at": "Andrei.eyes",
+    "rel": [
+     -0.9,
+     0.6,
+     0.05
+    ],
+    "lens": 45
+   }
+  },
+  {
+   "id": "1.40",
+   "dur": 3.5,
+   "cam": {
+    "at": "Artyom.eyes",
+    "rel": [
+     0.15,
+     -1.0,
+     0.0
+    ],
+    "lens": 50
+   }
+  },
+  {
+   "id": "1.41",
+   "dur": 2,
+   "cam": {
+    "at": "Andrei.eyes",
+    "rel": [
+     -0.6,
+     0.4,
+     0.0
+    ],
+    "lens": 70
+   }
+  },
+  {
+   "id": "1.42",
+   "dur": 2.5,
+   "cam": {
+    "at": "Pyotr.eyes",
+    "rel": [
+     1.0,
+     0.2,
+     0.15
+    ],
+    "lens": 45,
+    "size": 0.9
+   }
+  },
+  {
+   "id": "1.43",
+   "dur": 3,
+   "cam": {
+    "at": "Artyom.eyes",
+    "rel": [
+     0.15,
+     -1.0,
+     0.0
+    ],
+    "lens": 50,
+    "push": 0.3
+   }
+  }
+ ],
+ "events": [
+  {
+   "at": "1.01",
+   "actor": "Artyom",
+   "do": "place",
+   "pos": [
+    -0.35,
+    1.0
+   ],
+   "facing": 0,
+   "pose": "sit_rifle"
+  },
+  {
+   "at": "1.01",
+   "actor": "Pyotr",
+   "do": "place",
+   "pos": [
+    -1.85,
+    -0.75
+   ],
+   "facing": 36,
+   "pose": "sit"
+  },
+  {
+   "at": "1.01",
+   "actor": "Andrei",
+   "do": "place",
+   "pos": [
+    -0.2,
+    -9.0
+   ],
+   "facing": 0,
+   "pose": "flashlight"
+  },
+  {
+   "at": "1.01",
+   "actor": "Kirill",
+   "do": "place",
+   "pos": [
+    -0.8,
+    -9.8
+   ],
+   "facing": 0,
+   "pose": "stand"
+  },
+  {
+   "at": "1.01",
+   "actor": "Hunter",
+   "do": "place",
+   "pos": [
+    0.4,
+    -10.5
+   ],
+   "facing": 0,
+   "pose": "stand"
+  },
+  {
+   "at": "1.01",
+   "actor": "Hunter",
+   "do": "hide"
+  },
+  {
+   "at": "1.01",
+   "actor": "Kirill",
+   "do": "hide"
+  },
+  {
+   "at": "1.01",
+   "actor": "Andrei",
+   "do": "hide"
+  },
+  {
+   "at": "1.06",
+   "actor": "Pyotr",
+   "do": "pose",
+   "pose": "sit_feed",
+   "dur": 0.5
+  },
+  {
+   "at": "1.06",
+   "dt": 1.5,
+   "actor": "Pyotr",
+   "do": "pose",
+   "pose": "sit",
+   "dur": 0.5
+  },
+  {
+   "at": "1.09",
+   "actor": "Artyom",
+   "do": "pose",
+   "pose": "stand_rifle",
+   "dur": 1.0
+  },
+  {
+   "at": "1.11",
+   "actor": "Artyom",
+   "do": "walk",
+   "to": [
+    -0.3,
+    3.6
+   ],
+   "facing": 0,
+   "speed": 1.0,
+   "pose_after": "stand_rifle"
+  },
+  {
+   "at": "1.12",
+   "actor": "Artyom",
+   "do": "pose",
+   "pose": "aim",
+   "dur": 0.4
+  },
+  {
+   "at": "1.17",
+   "actor": "Artyom",
+   "do": "pose",
+   "pose": "stand_rifle",
+   "dur": 0.6
+  },
+  {
+   "at": "1.19",
+   "actor": "Artyom",
+   "do": "turn",
+   "facing": 200,
+   "dur": 0.8
+  },
+  {
+   "at": "1.21",
+   "actor": "Artyom",
+   "do": "walk",
+   "to": [
+    -0.55,
+    0.55
+   ],
+   "facing": 234,
+   "speed": 1.1,
+   "pose_after": "stand_rifle"
+  },
+  {
+   "at": "1.22",
+   "dt": 0.5,
+   "actor": "Artyom",
+   "do": "pose",
+   "pose": "sit_rifle",
+   "dur": 0.8
+  },
+  {
+   "at": "1.26",
+   "do": "light",
+   "light": "flashlight",
+   "energy": 1500
+  },
+  {
+   "at": "1.26",
+   "actor": "Andrei",
+   "do": "walk",
+   "to": [
+    0.2,
+    -0.85
+   ],
+   "facing": 303,
+   "speed": 1.3,
+   "pose_after": "flashlight"
+  },
+  {
+   "at": "1.26",
+   "dt": 0.3,
+   "actor": "Kirill",
+   "do": "walk",
+   "to": [
+    -0.95,
+    -1.45
+   ],
+   "facing": 348,
+   "speed": 1.3
+  },
+  {
+   "at": "1.26",
+   "dt": 0.6,
+   "actor": "Hunter",
+   "do": "walk",
+   "to": [
+    0.95,
+    1.6
+   ],
+   "facing": 0,
+   "speed": 1.4
+  },
+  {
+   "at": "1.30",
+   "actor": "Kirill",
+   "do": "pose",
+   "pose": "sit",
+   "dur": 0.8
+  },
+  {
+   "at": "1.31",
+   "do": "light",
+   "light": "flashlight",
+   "energy": 0
+  },
+  {
+   "at": "1.31",
+   "actor": "Andrei",
+   "do": "pose",
+   "pose": "sit",
+   "dur": 0.8
+  },
+  {
+   "at": "1.33",
+   "actor": "Artyom",
+   "do": "look",
+   "yaw": 60
+  },
+  {
+   "at": "1.35",
+   "actor": "Pyotr",
+   "do": "look",
+   "yaw": -30
+  },
+  {
+   "at": "1.37",
+   "actor": "Artyom",
+   "do": "look",
+   "yaw": 0
+  },
+  {
+   "at": "1.37",
+   "actor": "Artyom",
+   "do": "pose",
+   "pose": "sit_pour",
+   "dur": 0.5
+  },
+  {
+   "at": "1.38",
+   "do": "show",
+   "prop": "mug_artyom"
+  },
+  {
+   "at": "1.38",
+   "actor": "Artyom",
+   "do": "walk",
+   "to": [
+    0.4,
+    1.05
+   ],
+   "facing": 45,
+   "speed": 1.0,
+   "pose_after": "offer"
+  },
+  {
+   "at": "1.38",
+   "dt": 0.8,
+   "actor": "Hunter",
+   "do": "turn",
+   "facing": 255,
+   "dur": 0.3
+  },
+  {
+   "at": "1.38",
+   "dt": 0.8,
+   "actor": "Hunter",
+   "do": "look",
+   "yaw": 85,
+   "dur": 0.3
+  },
+  {
+   "at": "1.38",
+   "dt": 1.1,
+   "actor": "Hunter",
+   "do": "pose",
+   "pose": "offer",
+   "dur": 0.4
+  },
+  {
+   "at": "1.38",
+   "dt": 1.6,
+   "do": "hide",
+   "prop": "mug_artyom"
+  },
+  {
+   "at": "1.38",
+   "dt": 1.6,
+   "do": "show",
+   "prop": "mug_hunter"
+  },
+  {
+   "at": "1.38",
+   "dt": 1.7,
+   "actor": "Hunter",
+   "do": "pose",
+   "pose": "sit_mug",
+   "dur": 0.01
+  },
+  {
+   "at": "1.38",
+   "dt": 1.7,
+   "actor": "Hunter",
+   "do": "pose",
+   "pose": "stand",
+   "dur": 0.5
+  },
+  {
+   "at": "1.38",
+   "dt": 2.0,
+   "actor": "Hunter",
+   "do": "turn",
+   "facing": 0,
+   "dur": 0.4
+  },
+  {
+   "at": "1.39",
+   "actor": "Artyom",
+   "do": "walk",
+   "to": [
+    -0.55,
+    0.55
+   ],
+   "facing": 234,
+   "speed": 1.0,
+   "pose_after": "stand"
+  },
+  {
+   "at": "1.40",
+   "actor": "Artyom",
+   "do": "pose",
+   "pose": "sit",
+   "dur": 0.6
+  },
+  {
+   "at": "1.43",
+   "actor": "Artyom",
+   "do": "look",
+   "yaw": 0
+  },
+  {
+   "at": "1.26",
+   "actor": "Andrei",
+   "do": "show"
+  },
+  {
+   "at": "1.26",
+   "actor": "Kirill",
+   "do": "show"
+  },
+  {
+   "at": "1.26",
+   "actor": "Hunter",
+   "do": "show"
+  },
+  {
+   "at": "1.26",
+   "do": "hide",
+   "prop": "mug_hunter"
+  },
+  {
+   "at": "1.14",
+   "do": "show",
+   "prop": "critter"
+  },
+  {
+   "at": "1.14",
+   "do": "prop_move",
+   "prop": "critter",
+   "to": [
+    0.3,
+    16.0,
+    0.0
+   ],
+   "dur": 2.4
+  },
+  {
+   "at": "1.15",
+   "do": "hide",
+   "prop": "critter"
+  }
+ ]
+}

@@ -1,0 +1,140 @@
+{
+ "id": "s021",
+ "location": "white_room",
+ "note": "Vision. Hunter all in white (costume, no coat) in the middle of the room facing -Y, where Artyom/the camera is. Cameras 21.03-21.06 on his axis: head turned 35 deg past the camera until 21.05, then turns slowly to the lens. The emissive white room does not light actors in EEVEE: two white fill lights (parented to Hunter's root, so they follow nothing else) give the white costume its colour in the lit pass.",
+ "cast": {
+  "Hunter": {
+   "height": 1.95,
+   "coat": false,
+   "costume": [
+    0.85,
+    0.85,
+    0.83
+   ]
+  }
+ },
+ "names": {
+  "Hunter": "Hunter"
+ },
+ "events": [
+  {
+   "at": "21.01",
+   "do": "place",
+   "actor": "Hunter",
+   "pos": [
+    0,
+    0.5
+   ],
+   "facing": 180,
+   "pose": "stand"
+  },
+  {
+   "at": "21.01",
+   "do": "hide",
+   "actor": "Hunter"
+  },
+  {
+   "at": "21.02",
+   "do": "show",
+   "actor": "Hunter"
+  },
+  {
+   "at": "21.03",
+   "do": "look",
+   "actor": "Hunter",
+   "yaw": 35,
+   "dur": 0.1
+  },
+  {
+   "at": "21.05",
+   "dt": 0.2,
+   "do": "look",
+   "actor": "Hunter",
+   "yaw": 0,
+   "dur": 2.0
+  }
+ ],
+ "cams": {
+  "21.01": {
+   "pos": [
+    0,
+    -4.5,
+    1.6
+   ],
+   "at": [
+    0,
+    2,
+    1.4
+   ],
+   "lens": 24
+  },
+  "21.03": {
+   "pos": [
+    0,
+    -2.6,
+    1.6
+   ],
+   "at": "Hunter.torso",
+   "lens": 35
+  },
+  "21.04": {
+   "pos": [
+    0,
+    -1.3,
+    1.85
+   ],
+   "at": "Hunter.eyes",
+   "lens": 50
+  },
+  "21.05": {
+   "pos": [
+    0,
+    -1.3,
+    1.85
+   ],
+   "at": "Hunter.eyes",
+   "lens": 50
+  },
+  "21.06": {
+   "pos": [
+    0,
+    -0.75,
+    1.85
+   ],
+   "at": "Hunter.eyes",
+   "lens": 60
+  }
+ },
+ "lights": {
+  "fill_front": {
+   "type": "POINT",
+   "attach": "Hunter",
+   "loc": [
+    0,
+    3.0,
+    3.0
+   ],
+   "energy": 500,
+   "color": [
+    1,
+    1,
+    1
+   ]
+  },
+  "fill_back": {
+   "type": "POINT",
+   "attach": "Hunter",
+   "loc": [
+    2.0,
+    -2.0,
+    3.0
+   ],
+   "energy": 250,
+   "color": [
+    1,
+    1,
+    1
+   ]
+  }
+ }
+}
