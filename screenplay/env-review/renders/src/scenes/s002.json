@@ -627,6 +627,31 @@
    "at": "2.02",
    "do": "show",
    "prop": "rats_pour"
+  },
+  {
+   "at": "2.10",
+   "actor": "ArtyomChild",
+   "do": "look",
+   "yaw": -32,
+   "dur": 0.3,
+   "note": "looks back over the soldier's shoulder into the lens (camera 32 deg left of his facing +Y)"
+  },
+  {
+   "at": "2.11",
+   "actor": "ArtyomChild",
+   "do": "look",
+   "yaw": 0,
+   "dur": 0.4
+  },
+  {
+   "at": "2.10",
+   "do": "hide",
+   "prop": "flashlight_Extra7"
+  },
+  {
+   "at": "2.11",
+   "do": "show",
+   "prop": "flashlight_Extra7"
   }
  ],
  "shots": [
@@ -768,7 +793,7 @@
     "attach": "handcar",
     "loc": [
      -1.6,
-     -1.4,
+     1.4,
      2.5
     ],
     "at": "ArtyomChild.eyes",
