@@ -149,15 +149,15 @@ def campfire(at, energy=90):
     for a in (0, 60, 120):
         cyl(0.07, 0.8, (f.x, f.y, 0.07), char, rot=(math.pi / 2, 0, math.radians(a)), verts=10, name="fire_log")
     sphere(0.28, (f.x, f.y, 0.08), ember, name="embers", scale=(1, 1, 0.25)).visible_shadow = False
-    for dx, dy, h in ((0, 0, 0.7), (0.1, 0.05, 0.45), (-0.08, -0.06, 0.5)):
-        cone(0.14, 0, h, (f.x + dx, f.y + dy, 0.12 + h / 2), flame, name="flame").visible_shadow = False
-    bpy.ops.object.light_add(type="POINT", location=(f.x, f.y, 0.55))
+    for dx, dy, h in ((0, 0, 0.38), (0.1, 0.05, 0.28), (-0.08, -0.06, 0.3)):  # a small low fire (critic G3): Kling copies the height
+        cone(0.12, 0, h, (f.x + dx, f.y + dy, 0.12 + h / 2), flame, name="flame").visible_shadow = False
+    bpy.ops.object.light_add(type="POINT", location=(f.x, f.y, 0.4))
     li = bpy.context.object
     li.name = "fire_light"
     li.data.energy, li.data.color, li.data.shadow_soft_size = energy, (1.0, 0.52, 0.22), 0.25
     li.data.keyframe_insert("energy", frame=1)
     noise = li.data.animation_data.action.fcurves[0].modifiers.new("NOISE")
-    noise.scale, noise.strength = 3.0, energy * 0.35  # firelight flicker
+    noise.scale, noise.strength = 6.0, energy * 0.2  # slow soft flicker: at 24 fps a fast one strobes (critic)
     # firelight bounced off the tunnel rings ahead of the fire, ~8 % of it: faces turned away from the fire keep a
     # cheekbone and an eye (close-ups 1.07, 1.32) while the darkness stays dark
     bpy.ops.object.light_add(type="POINT", location=(f.x + 1.5, f.y + 2.6, 1.7))

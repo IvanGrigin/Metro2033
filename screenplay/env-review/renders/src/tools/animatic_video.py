@@ -16,6 +16,8 @@ def cues(text):
     out = []
     for block in text.strip().split("\n\n"):
         lines = block.splitlines()
+        if len(lines) < 2:  # a scene without dialogue: empty .srt
+            continue
         a, b = [sum(float(x) * m for x, m in zip(re.split("[:,]", t)[:3], (3600, 60, 1))) + int(t.split(",")[1]) / 1000
                 for t in lines[1].split(" --> ")]
         out.append((a, b, " ".join(lines[2:])))
@@ -73,9 +75,10 @@ def main(n, render_dir, out_mp4):
         t += s["dur"]
     srt_path = os.path.splitext(out_mp4)[0] + ".srt"
     open(srt_path, "w", encoding="utf-8").write(srt_text)
-    subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-framerate", str(FPS), "-i", os.path.join(tmp, "%05d.png"), "-i", srt_path,
-                    "-c:v", "libx264", "-pix_fmt", "yuv420p", "-crf", "20", "-c:s", "mov_text", "-metadata:s:s:0", "language=rus",
-                    out_mp4], check=True)
+    subs = ["-i", srt_path] if cs else []  # no dialogue in the scene: no subtitle track
+    subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-framerate", str(FPS), "-i", os.path.join(tmp, "%05d.png"), *subs,
+                    "-c:v", "libx264", "-pix_fmt", "yuv420p", "-crf", "20",
+                    *(["-c:s", "mov_text", "-metadata:s:s:0", "language=rus"] if cs else []), out_mp4], check=True)
     print(out_mp4, k, "frames", f"{k / FPS:.1f} s", len(cs), "subtitles")
 
 
