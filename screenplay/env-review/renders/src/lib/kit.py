@@ -549,6 +549,45 @@ def machine_gun(name):
     return root
 
 
+def lmg_stripped(name):
+    """Light machine gun (DP-type) field-stripped on a blanket, lying flat, parts apart along +Y:
+    stock, receiver, bolt carrier, barrel, folded bipod. Origin = blanket centre on the floor."""
+    root = empty(name)
+    g = mat("gunmetal", (0.03, 0.03, 0.03), flat=(0.05, 0.05, 0.05), rough=0.4, metal=0.7)
+    wood = mat("gun_wood", (0.18, 0.09, 0.04), flat=(0.45, 0.28, 0.15))
+    cloth = mat("blanket", (0.10, 0.09, 0.07), flat=(0.40, 0.36, 0.28))
+    attach(box((1.05, 1.40, 0.01), (0, 0, 0), cloth, name=f"{name}.blanket"), root, (0.12, 0, 0.005))
+    attach(box((0.07, 0.30, 0.10), (0, 0, 0), wood, name=f"{name}.stock"), root, (-0.24, -0.58, 0.06))
+    attach(box((0.07, 0.34, 0.08), (0, 0, 0), g, name=f"{name}.receiver"), root, (-0.15, -0.12, 0.05))
+    attach(box((0.035, 0.30, 0.035), (0, 0, 0), g, name=f"{name}.bolt"), root, (0.05, -0.15, 0.03))
+    attach(cyl(0.018, 0.62, (0, 0, 0), g, (math.pi / 2, 0, 0), 10, f"{name}.barrel"), root, (-0.15, 0.33, 0.03))
+    attach(cyl(0.03, 0.22, (0, 0, 0), g, (math.pi / 2, 0, 0), 10, f"{name}.shroud"), root, (-0.15, 0.12, 0.04))
+    for dx in (0.16, 0.20):  # bipod legs folded side by side
+        attach(cyl(0.008, 0.36, (0, 0, 0), g, (math.pi / 2, 0, 0), 6, f"{name}.bipod"), root, (dx, 0.30, 0.02))
+    return root
+
+
+def drum_mag(name):
+    """DP pan magazine lying flat: a black disc ~0.27 m across, 0.08 m thick, with a raised centre hub."""
+    root = empty(name)
+    g = mat("gunmetal", (0.03, 0.03, 0.03), flat=(0.05, 0.05, 0.05), rough=0.4, metal=0.7)
+    attach(cyl(0.135, 0.07, (0, 0, 0), g, verts=24, name=f"{name}.pan"), root, (0, 0, 0.035))
+    attach(cyl(0.035, 0.02, (0, 0, 0), g, verts=12, name=f"{name}.hub"), root, (0, 0, 0.08))
+    return root
+
+
+def grenades(name, n=3):
+    """F-1 grenades lying on their sides in a row along +X: olive egg bodies ~0.055 x 0.12 m with a grey fuse."""
+    root = empty(name)
+    olive = mat("grenade", (0.10, 0.13, 0.06), flat=(0.30, 0.38, 0.18), rough=0.6)
+    fuse = mat("fuse", (0.25, 0.25, 0.25), flat=(0.55, 0.55, 0.55), rough=0.4, metal=0.6)
+    for i in range(n):
+        x = (i - (n - 1) / 2) * 0.09
+        attach(sphere(0.03, (0, 0, 0), olive, f"{name}.body", scale=(1, 1.5, 1)), root, (x, 0, 0.03))
+        attach(cyl(0.008, 0.035, (0, 0, 0), fuse, (math.pi / 2, 0, 0), 8, f"{name}.fuse"), root, (x, 0.06, 0.03))
+    return root
+
+
 def searchlight(name, handheld=False):
     """Searchlight housing (cylinder with a glowing lens) facing +Y; pair it with a spot light in the spec."""
     root = empty(name)
