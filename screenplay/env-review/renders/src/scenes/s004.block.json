@@ -9,7 +9,7 @@
   },
   "Pyotr": {
    "height": 1.7,
-   "rifle": true
+   "rifle": false
   },
   "Andrei": {
    "height": 1.76,
@@ -95,6 +95,19 @@
     0,
     0.02,
     -0.1
+   ]
+  },
+  "pyotr_rifle_floor": {
+   "type": "rifle",
+   "loc": [
+    -1.4,
+    -0.89,
+    0.2
+   ],
+   "rot": [
+    0,
+    0,
+    -0.454
    ]
   }
  },
