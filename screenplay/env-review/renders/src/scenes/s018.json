@@ -266,6 +266,52 @@
    "hidden": true
   }
  },
+ "lights": {
+  "guest_lamp": {
+   "type": "POINT",
+   "attach": "guest_tent",
+   "loc": [
+    -0.9,
+    1.6,
+    1.7
+   ],
+   "energy": 30,
+   "color": [
+    1.0,
+    0.62,
+    0.32
+   ],
+   "note": "lamp on the guest tent pole: night, edge of the platform"
+  },
+  "hunter_torch": {
+   "type": "SPOT",
+   "attach": "Hunter.hand_R",
+   "loc": [
+    0,
+    0.05,
+    -0.05
+   ],
+   "energy": 0,
+   "angle": 35,
+   "note": "Hunter lights the inside of the guest tent (18.36 detail would be black otherwise)"
+  },
+  "tent_spill": {
+   "type": "POINT",
+   "attach": "guest_tent",
+   "loc": [
+    0,
+    1.0,
+    1.4
+   ],
+   "energy": 0,
+   "color": [
+    1.0,
+    0.9,
+    0.75
+   ],
+   "note": "spill of Hunter's flashlight inside the guest tent: the 18.36 floor detail"
+  }
+ },
  "events": [
   {
    "at": "18.01",
@@ -639,6 +685,30 @@
     38.25,
     1.1
    ]
+  },
+  {
+   "at": "18.36",
+   "do": "light",
+   "light": "hunter_torch",
+   "energy": 600
+  },
+  {
+   "at": "18.39",
+   "do": "light",
+   "light": "hunter_torch",
+   "energy": 0
+  },
+  {
+   "at": "18.36",
+   "do": "light",
+   "light": "tent_spill",
+   "energy": 25
+  },
+  {
+   "at": "18.37",
+   "do": "light",
+   "light": "tent_spill",
+   "energy": 0
   }
  ],
  "clock": "23:40",
@@ -1320,23 +1390,5 @@
     "lens": 24
    }
   }
- ],
- "lights": {
-  "guest_lamp": {
-   "type": "POINT",
-   "attach": "guest_tent",
-   "loc": [
-    -0.9,
-    1.6,
-    1.7
-   ],
-   "energy": 30,
-   "color": [
-    1.0,
-    0.62,
-    0.32
-   ],
-   "note": "lamp on the guest tent pole: night, edge of the platform"
-  }
- }
+ ]
 }

@@ -242,6 +242,7 @@ class Actor:
         self.name, self.J, self.k, self.rifle = name, J, J["k"], rifle_obj
         self.pos, self.facing, self.pose, self.head_yaw = Vector((0, 0, 0)), 0.0, "stand", 0.0
         self.placed = False  # a second place() keys the old state first, so the actor does not glide in between
+        self.busy = 0  # last frame of the current walk: a place() before it cuts the walk short (critic 1201, 1204)
         self.stood_at = None  # seat point after getting up: sitting down again near it steps back onto the seat
 
     def _apply(self, pose_name, frame, walk=None, rifle=None):
@@ -273,6 +274,8 @@ class Actor:
 
     def place(self, frame, pos, facing, pose):
         """pos = [x, y] or [x, y, z]; z is the floor the person stands on (1.1 on a station platform)."""
+        if frame < self.busy:
+            print(f"WALK OVERRUN {self.name} frame {frame}: place {self.busy - frame} frames before the walk ends", flush=True)
         if self.placed:  # hold the previous state up to the frame before: place is a cut, not a slide
             self._key_root(frame - 1)
             self._apply(self.pose, frame - 1)
@@ -348,6 +351,7 @@ class Actor:
             self._key_root(fi)
             self._apply(stride, fi, walk=gait, rifle=carry)
         end = f + int(steps * 0.5 * FPS)
+        self.busy = end + int(0.3 * FPS)
         self._apply(pose_after, end + int(0.3 * FPS))
         self.pose = pose_after
         if facing is not None:
@@ -359,6 +363,8 @@ class Actor:
         """Slide to `to` in `dur` seconds without stepping: riding a handcar, being carried, sliding a body.
         dur < one frame is a cut: the actor is simply somewhere else from `frame` on (no flight in between)."""
         cut = int(dur * FPS) < 1
+        if not cut and dur <= 0.15:  # too short to read as motion: a jump unless it sits on the cut (critic 1204)
+            print(f"MOVE JUMP {self.name} frame {frame}: {dur} s", flush=True)
         self._key_root(frame - 1 if cut else frame)
         if pose:
             self._apply(self.pose, frame)
