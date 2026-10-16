@@ -92,7 +92,8 @@
     2.0,
     0
    ],
-   "facing": 0
+   "facing": 0,
+   "pose": "look_up"
   },
   {
    "at": "10.01",

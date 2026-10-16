@@ -195,7 +195,7 @@
     1.1
    ],
    "facing": 270,
-   "pose": "sit_pour"
+   "pose": "sit_chop"
   },
   {
    "at": "19.01",
@@ -207,7 +207,7 @@
     1.1
    ],
    "facing": 270,
-   "pose": "sit_pour"
+   "pose": "sit_chop"
   },
   {
    "at": "19.01",
@@ -219,7 +219,7 @@
     1.1
    ],
    "facing": 90,
-   "pose": "sit_pour"
+   "pose": "sit_chop"
   },
   {
    "at": "19.01",
@@ -231,7 +231,7 @@
     1.1
    ],
    "facing": 90,
-   "pose": "sit_pour"
+   "pose": "sit_chop"
   },
   {
    "at": "19.01",
@@ -243,7 +243,7 @@
     1.1
    ],
    "facing": 270,
-   "pose": "sit_pour"
+   "pose": "sit_chop"
   },
   {
    "at": "19.01",
@@ -255,7 +255,7 @@
     1.1
    ],
    "facing": 90,
-   "pose": "sit_pour"
+   "pose": "sit_chop"
   },
   {
    "at": "19.03",
@@ -309,7 +309,7 @@
    "at": "19.15",
    "do": "pose",
    "actor": "Zhenya",
-   "pose": "sit_pour",
+   "pose": "sit_chop",
    "dur": 0.4
   },
   {
@@ -324,7 +324,7 @@
    "at": "19.17",
    "do": "pose",
    "actor": "Artyom",
-   "pose": "sit_pour",
+   "pose": "sit_chop",
    "dur": 0.5
   },
   {
@@ -352,7 +352,7 @@
    "at": "19.24",
    "do": "pose",
    "actor": "Zhenya",
-   "pose": "sit_pour",
+   "pose": "sit_chop",
    "dur": 0.4
   },
   {

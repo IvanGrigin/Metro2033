@@ -202,7 +202,7 @@
    "at": "6.04",
    "actor": "Hunter",
    "do": "pose",
-   "pose": "offer",
+   "pose": "offer_low",
    "dur": 0.6,
    "dt": 1.2
   },
