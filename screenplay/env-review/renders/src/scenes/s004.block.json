@@ -246,15 +246,16 @@
    "energy": 1800
   },
   {
-   "at": "4.10",
+   "at": "4.09",
    "actor": "Artyom",
    "do": "pose",
    "pose": "stand_rifle",
-   "dur": 0.5
+   "dur": 0.5,
+   "dt": 2.4
   },
   {
    "at": "4.10",
-   "dt": 0.5,
+   "dt": 0.0,
    "actor": "Artyom",
    "do": "pose",
    "pose": "aim",
@@ -405,14 +406,17 @@
   {
    "at": "4.30",
    "actor": "Artyom",
-   "do": "walk",
-   "to": [
-    -0.55,
-    0.55
-   ],
-   "facing": 0,
-   "speed": 1.0,
-   "pose_after": "sit_rifle"
+   "do": "turn",
+   "facing": 300,
+   "dur": 0.5
+  },
+  {
+   "at": "4.30",
+   "dt": 0.5,
+   "actor": "Artyom",
+   "do": "pose",
+   "pose": "sit_rifle",
+   "dur": 0.8
   },
   {
    "at": "4.33",

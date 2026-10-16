@@ -112,6 +112,21 @@
    "do": "light",
    "light": "tent_lamp",
    "energy": 8
+  },
+  {
+   "at": "12.01",
+   "dt": 1.9,
+   "actor": "Sukhoi",
+   "do": "pose",
+   "pose": "stand",
+   "dur": 0.5
+  },
+  {
+   "at": "12.05",
+   "actor": "Sukhoi",
+   "do": "pose",
+   "pose": "stand",
+   "dur": 0.4
   }
  ],
  "cams": {
