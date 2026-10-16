@@ -253,9 +253,12 @@
    "id": "14.03",
    "dur": 4.0,
    "cam": {
-    "auto": "cu",
-    "subject": "Hunter",
-    "side": -1,
+    "pos": [
+     1.25,
+     1.15,
+     1.35
+    ],
+    "at": "Hunter.eyes",
     "lens": 40
    }
   },

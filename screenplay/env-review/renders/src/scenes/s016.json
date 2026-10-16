@@ -298,10 +298,12 @@
    "id": "16.07",
    "dur": 2.0,
    "cam": {
-    "view": "wide",
-    "auto": "detail",
-    "subject": "Hunter",
-    "joint": "pelvis",
+    "pos": [
+     0.85,
+     -0.85,
+     1.1
+    ],
+    "at": "Hunter.pelvis",
     "lens": 35
    }
   },
@@ -346,9 +348,13 @@
    "id": "16.11",
    "dur": 2.5,
    "cam": {
-    "auto": "cu",
-    "subject": "Artyom",
-    "side": 1
+    "pos": [
+     0.3,
+     0.1,
+     1.35
+    ],
+    "at": "Artyom.eyes",
+    "lens": 35
    }
   }
  ]

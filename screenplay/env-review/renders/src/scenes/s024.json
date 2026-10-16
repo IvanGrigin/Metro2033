@@ -832,9 +832,13 @@
    "id": "24.09",
    "dur": 2.5,
    "cam": {
-    "auto": "med",
-    "subject": "Commander",
-    "side": 1
+    "pos": [
+     2.6,
+     -79.9,
+     2.1
+    ],
+    "at": "Commander.torso",
+    "lens": 30
    }
   },
   {

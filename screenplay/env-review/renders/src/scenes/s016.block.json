@@ -264,9 +264,12 @@
    "lens": 28
   },
   "16.07": {
-   "auto": "detail",
-   "subject": "Hunter",
-   "joint": "pelvis",
+   "pos": [
+    0.85,
+    -0.85,
+    1.1
+   ],
+   "at": "Hunter.pelvis",
    "lens": 35
   },
   "16.10": {
@@ -287,6 +290,15 @@
     1.1
    ],
    "lens": 22
+  },
+  "16.11": {
+   "pos": [
+    0.3,
+    0.1,
+    1.35
+   ],
+   "at": "Artyom.eyes",
+   "lens": 35
   }
  }
 }
