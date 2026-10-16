@@ -17,8 +17,8 @@ VIEWS = {  # (camera, target, lens) per location
 EXTRA = {  # more views of the same location: file name -> (location, camera, target, lens)
     "vdnkh-guest-tent": ("vdnkh", (7.6, 30.0, 2.9), (7.0, 40.0, 1.6), 24),  # east side nave, edge walkway, guest tent
     "vdnkh-laundry": ("vdnkh", (-1.5, -26.0, 2.8), (-4.5, -8.0, 2.6), 24),  # laundry along the west pylon faces
-    "vdnkh-north-clock": ("vdnkh", (8.6, 50.0, 2.6), (9.85, 80.6, 4.6), 30),  # tea factory, gate, clock over the east portal
-    "vdnkh-south-end": ("vdnkh", (2.5, -55.0, 3.0), (5.5, -80.0, 2.0), 22),  # south arches and portals (scene 24)
+    "vdnkh-north-clock": ("vdnkh", (8.45, 36.6, 2.75), (9.85, 81.0, 2.0), 35),  # tea factory, gate, clock over the east portal
+    "vdnkh-south-end": ("vdnkh", (7.7, -55.0, 3.0), (8.0, -80.0, 2.0), 22),  # south arches and portals (scene 24)
 }
 VIEWS["sukhoi_tent"] = ((-1.15, -1.85, 1.35), (0.5, 1.5, 0.8), 16)  # inside the tent, under the roof slope
 os.makedirs(out, exist_ok=True)

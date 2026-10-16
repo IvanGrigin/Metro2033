@@ -223,8 +223,10 @@ def army_tent(name, at, facing=0.0, size=(2.2, 2.8), h=1.9, rgb=(0.20, 0.22, 0.1
     _drop_faces(roof, (0, -1, 0))  # the prism's flat underside
     roof.scale = (1, 0.55, 1)
     attach(roof, root, (0, 0, h * 0.65 + w * 0.14), (math.pi / 2, 0, math.pi / 2 * 0))
-    if open_flap:
-        attach(box((w * 0.45, 0.02, h * 0.6), (0, 0, 0), mat("dark_inside", (0.01, 0.01, 0.01), flat=(0.1, 0.1, 0.1)), name=f"{name}.door"), root, (0, d / 2 + 0.01, h * 0.3))
+    if open_flap:  # a real opening in the front wall: two side panels, the middle 0.45 w open
+        _drop_faces(wall, (0, 1, 0))
+        for sx in (-1, 1):
+            attach(box((w * 0.275, 0.02, h * 0.65), (0, 0, 0), canvas, name=f"{name}.front"), root, (sx * w * 0.3625, d / 2, h * 0.325))
     root.location = (at[0], at[1], 0)
     root.rotation_euler = (0, 0, math.radians(-facing))
     return root
@@ -397,7 +399,24 @@ def station(kind="pylon", length=162.0, light=(1.0, 0.25, 0.15), energy=180, lam
             top = 4.3 + TRACK_Z  # tunnel crown (lowered with the track) + a little
             box((5.2, 0.4, low - top), (tx, wy, top + (low - top) / 2), marble, name="end_wall")  # over the tunnel
             _tunnel_stub(tx, ey + (15.2 if ey > 0 else -15.2))
+            _portal_ring(tx, wy - (0.21 if ey > 0 else -0.21), TRACK_Z + CZ, marble)  # closes the corners round the tube
     return {"length": length, "plat_z": PLAT_H, **K}
+
+
+def _portal_ring(x, y, zc, m, r_in=R + 0.15, r_out=3.8, n=48):
+    """Flat annulus facing the station: fills the corners between the round tunnel and the square wall opening."""
+    bm = bmesh.new()
+    inner = [bm.verts.new((x + r_in * math.cos(2 * math.pi * i / n), y, zc + r_in * math.sin(2 * math.pi * i / n))) for i in range(n)]
+    outer = [bm.verts.new((x + r_out * math.cos(2 * math.pi * i / n), y, zc + r_out * math.sin(2 * math.pi * i / n))) for i in range(n)]
+    for i in range(n):
+        j = (i + 1) % n
+        bm.faces.new((inner[i], inner[j], outer[j], outer[i]))
+    me = bpy.data.meshes.new("portal_ring")
+    bm.to_mesh(me)
+    bm.free()
+    o = bpy.data.objects.new("portal_ring", me)
+    bpy.context.scene.collection.objects.link(o)
+    return put(o, m)
 
 
 def _tunnel_stub(x, y, length=30.0):
@@ -466,7 +485,7 @@ def peregon_savelovskaya():
     from kit import sandbags
     running_tunnel(length=140, y=30)
     for x in (-1.75, 1.75):
-        s = sandbags(f"barricade_{x}", width=1.4, height=1.4)
+        s = sandbags(f"barricade_{x}", width=1.4, height=1.5)  # 7 rows, top 1.405: the flamethrower man stands on it (3.03)
         s.location = (x, 60, 0)
     bpy.ops.object.light_add(type="POINT", location=(0, 63, 2.0))
     li = bpy.context.object
@@ -533,7 +552,7 @@ def vdnkh():
     scatter_crates(rng, ((-3.5, 3.5), (-70, 55)), 18, z=PLAT_H)
     box((5.0, 0.5, 4.0), (0, 80.2, PLAT_H + 2.0), mat("blast_door", (0.12, 0.12, 0.11), flat=(0.40, 0.42, 0.40), rough=0.5, metal=0.7),
         name="escalator_gate")  # sealed passage to the north vestibule
-    wall_clock("--:--", (9.85, 80.6, 5.3))  # the time is set by every scene ("clock"); run_scene refuses a scene without it
+    wall_clock("--:--", (9.85, 80.925, 5.3))  # the time is set by every scene ("clock"); run_scene refuses a scene without it
     # tea factory in the dead end before the sealed gate: rows of wires with drying mushroom caps, small fires, door tables
     # tarp partition with a wide doorway: closes the factory off from Main Street so it reads as a dead end; 2.4 m high,
     # so the existing cameras above it (19.01, 7.13) still look in
@@ -601,6 +620,8 @@ def botanical():
         box((2.6, 0.12, 3.4), (x, 83.6, PLAT_H + 1.7), rust, name=f"sliding_door_{side}")
     box((5.5, 0.5, 4.3), (0, 85.6, PLAT_H + 6.6), mat("blast_door", (0.12, 0.12, 0.11), flat=(0.40, 0.42, 0.40), rough=0.5, metal=0.7), name="blast_door")  # raised: open
     box((0.08, 0.08, 0.9), (3.2, 83.4, PLAT_H + 0.9), rust, rot=(math.radians(25), 0, 0), name="lever")  # beside the doors, wrapped in wire
+    # T-handle at the top of the lever: wide enough for three children's hands side by side (scene 9, 9.17)
+    box((0.9, 0.06, 0.06), (3.2, 83.4 - 0.45 * math.sin(math.radians(25)), PLAT_H + 0.9 + 0.45 * math.cos(math.radians(25))), rust, name="lever_bar")
     box((5.6, 2.6, 0.3), (0, 85.9, PLAT_H - 0.15), mat("granite_floor", (0.20, 0.14, 0.12), flat=(0.55, 0.42, 0.38), rough=0.5),
         name="escalator_landing")  # floor from the doors to the first step (the shaft bottom lies below it)
     steps = mat("rotten_steps", (0.08, 0.06, 0.05), flat=(0.35, 0.28, 0.20))
@@ -616,6 +637,10 @@ def botanical():
     bpy.ops.mesh.primitive_cylinder_add(radius=2.2, depth=17, location=(0, 93.5, PLAT_H + 4.2), rotation=(math.radians(-60), 0, 0),
                                         vertices=32, end_fill_type="NOTHING")  # open tube along the 30-degree incline
     put(bpy.context.object, mat("concrete", (0.20, 0.18, 0.16), flat=(0.33, 0.32, 0.30)), "escalator_shaft")
+    axis = Vector((0, math.sin(math.radians(60)), math.cos(math.radians(60))))  # the tube's axis after the -60 degree tilt
+    top = Vector((0, 93.5, PLAT_H + 4.2)) + axis * 8.5
+    cyl(2.2, 0.05, top.to_tuple(), mat("dark_inside", (0.01, 0.01, 0.01), flat=(0.1, 0.1, 0.1)), rot=(math.radians(-60), 0, 0), verts=32,
+        name="escalator_top")  # the far end is dark (the vestibule above is not modelled here), not open background
 
 
 def botanical_vestibule():
@@ -629,9 +654,18 @@ def botanical_vestibule():
         if abs(math.degrees(a0) - 90) < 9:
             continue
         box((0.4, 1.7, 5.0), (9.0 * math.cos(a0), 9.0 * math.sin(a0), 2.5), conc, rot=(0, 0, a0), name="rotunda_wall")
-    dome = half_tube("dome_half", 9.0, 9.0, (0, 5.0), conc, a0=0, a1=180, segs=24)  # the surviving south half of the vault
-    dome.location.y = -4.5
-    dome.rotation_euler = (0, 0, 0)
+    # the surviving south half of the dome (a real dome, not a barrel vault): the sky shows only over the fallen north half
+    bm = bmesh.new()
+    bmesh.ops.create_uvsphere(bm, u_segments=48, v_segments=24, radius=9.2)
+    bmesh.ops.delete(bm, geom=[v for v in bm.verts if v.co.z < -0.01 or v.co.y > 0.5], context="VERTS")
+    me = bpy.data.meshes.new("dome_half")
+    bm.to_mesh(me)
+    bm.free()
+    dome = bpy.data.objects.new("dome_half", me)
+    bpy.context.scene.collection.objects.link(dome)
+    dome.location = (0, 0, 5.0)
+    dome.scale.z = 0.6
+    put(dome, conc)
     box((3.0, 6.0, 0.05), (0, -6.0, 0.01), mat("dark_inside", (0.01, 0.01, 0.01), flat=(0.1, 0.1, 0.1)), name="escalator_opening")
     rng = _rng(10)
     scatter_debris(rng, ((-7, 7), (-7, 7)), 150)
@@ -660,6 +694,7 @@ def sukhoi_tent():
     box((3.2, 0.04, 2.4), (0, 2.1, 1.2), canvas, name="tent_back")
     box((1.2, 0.04, 2.2), (-1.0, -2.1, 1.1), canvas, name="tent_front_L")
     box((1.2, 0.04, 2.2), (1.0, -2.1, 1.1), canvas, name="tent_front_R")
+    box((0.8, 0.04, 0.48), (0, -2.1, 2.16), canvas, name="tent_front_lintel")  # doorway 1.92 m: a tall man stoops
     cot = mat("cot", (0.20, 0.22, 0.15), flat=(0.45, 0.52, 0.35))
     for x in (-1.15, 1.15):
         box((0.7, 1.9, 0.08), (x, 0.3, 0.42), cot, name="cot")
@@ -669,12 +704,20 @@ def sukhoi_tent():
         for size, off in (((0.75, 0.03, 0.5), (0, 0.185, 0)), ((0.03, 0.4, 0.5), (-0.36, 0, 0)), ((0.03, 0.4, 0.5), (0.36, 0, 0)),
                           ((0.75, 0.4, 0.03), (0, 0, -0.235)), ((0.75, 0.4, 0.03), (0, 0, 0.235))):  # crate on its side, open to the tent
             box(size, (x + off[0], 1.85 + off[1], z + off[2]), wood, name="shelf_crate")
-        box((0.6, 0.25, 0.3), (x, 1.85, z + 0.05), books, name="books")
+        trng = _rng(30 + i)
+        bx = x - 0.33
+        while bx < x + 0.3:  # 8-10 tomes standing side by side, spines to the tent
+            tw, th = trng.uniform(0.05, 0.085), trng.uniform(0.2, 0.32)
+            box((tw, 0.24, th), (bx + tw / 2, 1.85, z - 0.22 + th / 2),
+                mat(f"book_{i}_{round(bx, 2)}", trng.choice(((0.35, 0.30, 0.15), (0.28, 0.12, 0.08), (0.18, 0.2, 0.12), (0.4, 0.36, 0.25))),
+                    flat=(0.85, 0.75, 0.40)), name="book")
+            bx += tw + 0.006
     crate("seat_crate", (0.0, -0.4), 0)
     box((0.8, 0.6, 0.05), (0.0, 0.6, 0.7), mat("door_table", (0.18, 0.15, 0.11), flat=(0.60, 0.52, 0.40)), name="table")
     bpy.ops.object.light_add(type="POINT", location=(0, 0.6, 1.6))
     li = bpy.context.object
     li.name, li.data.energy, li.data.color, li.data.shadow_soft_size = "tent_lamp", 120, (1.0, 0.75, 0.45), 0.1
+    box((0.01, 0.01, 0.55), (0, 0.6, 2.075), mat("cable", (0.03, 0.03, 0.03), flat=(0.12, 0.12, 0.12), rough=0.5), name="tent_lamp_cord")  # 714
     glow = mat("tent_lamp_glow", (1, 0.8, 0.5), flat=(1, 0.9, 0.6), emit=(1, 0.75, 0.45), strength=8)
     box((0.12, 0.12, 0.16), (0, 0.6, 1.72), glow, name="tent_lamp_bulb").visible_shadow = False  # the lamp itself, under the ridge
     bpy.context.scene.world.node_tree.nodes["Background"].inputs[0].default_value = (0.02, 0.008, 0.006, 1)  # red station glow through canvas
@@ -689,7 +732,7 @@ def vdnkh_office():
     box((4, 0.1, 3), (0, 2.5, 1.5), plaster, name="wall")
     box((1.5, 0.1, 3), (-1.25, -2.5, 1.5), plaster, name="wall")
     box((1.5, 0.1, 3), (1.25, -2.5, 1.5), plaster, name="wall")
-    box((1.6, 0.8, 0.05), (0, 1.3, 0.78), mat("door_table", (0.18, 0.15, 0.11), flat=(0.60, 0.52, 0.40)), name="desk")
+    box((1.6, 0.8, 0.05), (0, 1.3, 0.70), mat("door_table", (0.18, 0.15, 0.11), flat=(0.60, 0.52, 0.40)), name="desk")  # 708
     box((1.4, 0.02, 1.0), (0, 2.44, 1.7), mat("paper_map", (0.55, 0.50, 0.38), flat=(0.95, 0.90, 0.75)), name="wall_map")
     bpy.ops.object.light_add(type="POINT", location=(0.4, 1.3, 1.2))
     li = bpy.context.object

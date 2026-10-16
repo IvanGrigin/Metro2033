@@ -207,23 +207,29 @@ POSES = {
                    "chest": (-25, 0, 0), "shoulder_L": (150, 0, 40), "elbow_L": (130, 0, 0), "shoulder_R": (150, 0, -40), "elbow_R": (130, 0, 0)},
     "flame": {"shoulder_L": (75, 0, 15), "elbow_L": (10, 0, 0), "shoulder_R": (60, 0, -10), "elbow_R": (40, 0, 0)},
     "stoop": {"chest": (-35, 0, 0), "head": (15, 0, 0), "shoulder_L": (20, 0, 0), "shoulder_R": (20, 0, 0)},
-    "bend_over": {"chest": (-55, 0, 0), "head": (20, 0, 0), "shoulder_L": (60, 0, 10), "elbow_L": (10, 0, 0),
+    "bend_over": {"chest": (-45, 0, 0), "head": (20, 0, 0), "shoulder_L": (60, 0, 10), "elbow_L": (10, 0, 0),
                   "shoulder_R": (60, 0, -10), "elbow_R": (10, 0, 0)},
     "tap_temple": {"shoulder_R": (110, 0, -25), "elbow_R": (125, 0, 0), "shoulder_L": (5, 0, 0)},
     "sit_tap_temple": {**SIT, "shoulder_R": (110, 0, -25), "elbow_R": (125, 0, 0), "shoulder_L": (40, 0, 0), "elbow_L": (10, 0, 0)},
     "kneel_touch": {"pelvis_z": 0.55, "hip_L": (80, 0, 0), "knee_L": (-80, 0, 0), "hip_R": (10, 0, 0), "knee_R": (-100, 0, 0),
                     "chest": (-20, 0, 0), "shoulder_R": (75, 0, 0), "elbow_R": (15, 0, 0), "shoulder_L": (20, 0, 0)},
     "sit_rifle_beside": {**SIT, "shoulder_L": (40, 0, 0), "elbow_L": (10, 0, 0), "rifle": "beside_R"},
-    "sit_reach_rifle": {**SIT, "chest": (-15, 0, -10), "shoulder_R": (35, 0, -35), "elbow_R": (10, 0, 0), "rifle": "beside_R"},
+    "sit_reach_rifle": {**SIT, "chest": (0, 30, 0), "shoulder_R": (15, -30, 0), "elbow_R": (0, 0, 0), "shoulder_L": (40, 0, 0), "elbow_L": (10, 0, 0)},  # 4.04 (critic)
+    "sit_chop": {**SIT, "chest": (-15, 0, 0), "shoulder_R": (60, 0, 0), "elbow_R": (60, 0, 0), "shoulder_L": (60, 0, 0), "elbow_L": (60, 0, 0)},  # knives on the table (19)
+    "pump": {"chest": (-10, 0, 0), "shoulder_L": (35, 0, -25), "elbow_L": (0, 0, 0), "shoulder_R": (35, 0, 25), "elbow_R": (0, 0, 0)},  # handcar levers (24)
+    "look_up": {"head": (35, 0, 0), "shoulder_L": (5, 0, 0), "shoulder_R": (5, 0, 0)},  # head back to the sky (10.01)
+    "raise_belt": {"shoulder_R": (110, 0, 0), "shoulder_L": (5, 0, 0)},  # belt raised under the tent roof (12)
+    "offer_low": {"shoulder_R": (68, 0, 0), "elbow_R": (5, 0, 0), "shoulder_L": (5, 0, 0)},  # handshake height (6.04)
+    "strike": {"chest": (-10, 0, 0), "shoulder_R": (60, 0, 0), "elbow_R": (10, 0, 0), "shoulder_L": (5, 0, 0)},  # belt blow (12)
     "reach_up": {"shoulder_L": (155, 0, 10), "elbow_L": (15, 0, 0), "shoulder_R": (155, 0, -10), "elbow_R": (15, 0, 0)},  # hanging laundry
     "wave": {"shoulder_R": (150, 0, -20), "elbow_R": (30, 0, 0), "shoulder_L": (5, 0, 0)},
     "sit_wave": {**SIT, "shoulder_R": (120, 0, -20), "elbow_R": (30, 0, 0), "shoulder_L": (40, 0, 0), "elbow_L": (10, 0, 0)},
 }
 RIFLE_HOLD = {  # rifle transform in chest space for each way of holding it
-    "lap": ((0.0, 0.30, -0.42), (0, 0, math.radians(80))),
+    "lap": ((0.0, 0.40, 0.13), (0, 0, math.radians(80))),  # on the thighs, clear of the shins (critic, round 4)
     "hip": ((0.08, 0.30, 0.10), (math.radians(25), 0, math.radians(-10))),
     "shoulder": ((0.13, 0.20, 0.47), (0, 0, 0)),
-    "sling": ((0.05, -0.17, 0.0), (math.radians(70), math.radians(30), 0)),  # on the back, muzzle up over the left shoulder
+    "sling": ((0.05, -0.26, 0.40), (math.radians(90), math.radians(20), math.radians(180))),  # on the back, clear of the body in 11 poses (critic)
     "beside_R": ((0.45, 0.15, -0.27), (0, 0, math.radians(10))),  # seated: lying on the floor at the right hip
 }
 JOINT_NAMES = ["pelvis", "chest", "head", "shoulder_L", "elbow_L", "hip_L", "knee_L", "shoulder_R", "elbow_R", "hip_R", "knee_R"]
@@ -236,7 +242,7 @@ class Actor:
         self.name, self.J, self.k, self.rifle = name, J, J["k"], rifle_obj
         self.pos, self.facing, self.pose, self.head_yaw = Vector((0, 0, 0)), 0.0, "stand", 0.0
 
-    def _apply(self, pose_name, frame, walk=None):
+    def _apply(self, pose_name, frame, walk=None, rifle=None):
         p = POSES[pose_name]
         J, k = self.J, self.k
         J["pelvis"].location = (0, 0, p.get("pelvis_z", 0.95 * k))
@@ -249,8 +255,9 @@ class Actor:
                 rot = (rot[0], rot[1], rot[2] - self.head_yaw)
             J[j].rotation_euler = tuple(math.radians(a) for a in rot)
             J[j].keyframe_insert("rotation_euler", frame=frame)
-        if self.rifle:  # poses that do not use the rifle carry it slung on the back
-            loc, rot = RIFLE_HOLD[p.get("rifle", "sling")]
+        if self.rifle:  # a pose that does not use the rifle: seated -> it lies by the right hip, otherwise slung on the back
+            hold = rifle or p.get("rifle", "beside_R" if p.get("pelvis_z") == SIT["pelvis_z"] else "sling")
+            loc, rot = RIFLE_HOLD[hold]
             self.rifle.location, self.rifle.rotation_euler = loc, rot
             self.rifle.keyframe_insert("location", frame=frame)
             self.rifle.keyframe_insert("rotation_euler", frame=frame)
@@ -295,7 +302,9 @@ class Actor:
         f = frame + int(0.3 * FPS)
         self.facing = _near_angle(self.facing, heading)
         self.pose = "stand"
-        self._apply("stand", f)
+        held = POSES[pose_after].get("rifle")  # walking: carry the rifle the way the pose after the walk holds it
+        carry = held if held in ("hip", "shoulder") else "sling"
+        self._apply("stand", f, rifle=carry)
         self._key_root(f)
         steps = max(2, round(d.length / (speed * 0.5)))
         start = self.pos.copy()
@@ -309,7 +318,7 @@ class Actor:
                 gait.pop("shoulder_R")
             self.pos = start + d * (i / steps)
             self._key_root(fi)
-            self._apply("flashlight" if self.name == "Andrei" else "stand", fi, walk=gait)
+            self._apply("flashlight" if self.name == "Andrei" else "stand", fi, walk=gait, rifle=carry)
         end = f + int(steps * 0.5 * FPS)
         self._apply(pose_after, end + int(0.3 * FPS))
         self.pose = pose_after
@@ -387,7 +396,8 @@ def render_pass(kind, path):
     sh = sc.display.shading
     sc.view_settings.view_transform = "AgX" if kind == "lit" else "Standard"  # flat colours stay exact
     if kind == "lit":
-        sc.render.engine = "BLENDER_EEVEE_NEXT"
+        engines = {e.identifier for e in bpy.types.RenderSettings.bl_rna.properties["engine"].enum_items}
+        sc.render.engine = "BLENDER_EEVEE_NEXT" if "BLENDER_EEVEE_NEXT" in engines else "BLENDER_EEVEE"  # 4.2 / 5.x
         sc.use_nodes = True
         nt = sc.node_tree
         nt.nodes.clear()
@@ -456,7 +466,7 @@ def machine_gun(name):
     root = empty(name)
     g = mat("gunmetal", (0.03, 0.03, 0.03), flat=(0.05, 0.05, 0.05), rough=0.4, metal=0.7)
     for a in (0, 120, 240):
-        leg = cyl(0.02, 0.8, (0, 0, 0), g, (math.radians(30), 0, math.radians(a)), 6, f"{name}.leg")
+        leg = cyl(0.02, 0.8, (0, 0, 0), g, (math.radians(-30), 0, math.radians(a)), 6, f"{name}.leg")  # feet splayed outward
         attach(leg, root, (0.18 * math.sin(math.radians(a)), -0.18 * math.cos(math.radians(a)), 0.35))
     attach(box((0.14, 0.6, 0.16), (0, 0, 0), g, name=f"{name}.body"), root, (0, 0, 0.75))
     attach(cyl(0.025, 0.9, (0, 0, 0), g, (math.pi / 2, 0, 0), 10, f"{name}.barrel"), root, (0, 0.75, 0.77))

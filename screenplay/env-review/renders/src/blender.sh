@@ -6,4 +6,7 @@
 LOCK=/tmp/metro_blender.lock
 while ! mkdir "$LOCK" 2>/dev/null; do sleep 3; done
 trap 'rmdir "$LOCK"' EXIT INT TERM
-nice -n 10 taskpolicy -c utility /Applications/Blender.app/Contents/MacOS/Blender -t 4 "$@"
+# the pipeline is checked on Blender 4.2; /Applications/Blender.app is now 5.2 (the live window), 4.2 was kept aside
+BL="/Applications/Blender 4.2.1 old.app/Contents/MacOS/Blender"
+[ -x "$BL" ] || BL=/Applications/Blender.app/Contents/MacOS/Blender
+nice -n 10 taskpolicy -c utility "$BL" -t 4 "$@"

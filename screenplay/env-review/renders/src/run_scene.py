@@ -31,9 +31,17 @@ if "clock_digits" in bpy.data.objects:  # a station clock is in this location: t
     bpy.data.objects["clock_digits"].data.body = spec["clock"]
 for o in list(bpy.context.scene.objects):
     if o.type == "LIGHT":
+        o["base_energy"] = o.data.energy  # as built, before light_scale: lamp bodies dim relative to it
         o.data.energy *= spec.get("light_scale", 1.0)
         if "light_color" in spec and "fire" not in o.name:  # e.g. the "almost brown" VDNKh night instead of its red
             o.data.color = spec["light_color"]
+for m in bpy.data.materials:  # the visible lamp bodies follow their lights: dimmed by light_scale, tinted by light_color
+    if m.name in ("chandelier", "lamp_head", "tent_lamp_glow") or (m.name.endswith("_glow") and m.name != "lantern_glow"):
+        b = m.node_tree.nodes.get("Principled BSDF")
+        if b:
+            b.inputs["Emission Strength"].default_value *= spec.get("light_scale", 1.0)
+            if "light_color" in spec:
+                b.inputs["Emission Color"].default_value = (*spec["light_color"], 1)
 
 # timeline: shot starts from storyboard durations
 t, starts = 0.0, {}
@@ -59,8 +67,16 @@ for name, c in spec["cast"].items():
     actors[name] = kit.Actor(name, J, rifle)
     kit.key_visible(J["root"], 1, True)  # so a later 'hide' only hides from that moment on
 if spec["location"] == "vdnkh":  # ~200 people live here; at night most are inside their tents
-    busy = [tuple(e.get("pos") or e.get("to"))[:2] for e in spec["events"] if e["do"] in ("place", "walk")]
+    busy, at = [], {}  # every point the cast passes (each 0.5 m along every walk / move), crates, location crates
+    for e in sorted(spec["events"], key=lambda e: frame_of(e["at"], e.get("dt", 0))):
+        if e["do"] in ("place", "walk", "move") and "actor" in e:
+            p1 = Vector((e.get("pos") or e.get("to"))[:2])
+            p0 = at.get(e["actor"], p1)
+            k = max(1, int((p1 - p0).length / 0.5))
+            busy += [tuple(p0.lerp(p1, i / k)) for i in range(k + 1)]
+            at[e["actor"]] = p1
     busy += [tuple(c[:2]) for c in spec.get("crates", [])]
+    busy += [tuple(o.location[:2]) for o in bpy.context.scene.objects if o.name.startswith("crate")]
     for sh in spec["shots"]:  # keep the first 6 m in front of every hand-placed lens clear of extras
         c = sh.get("cam", {})
         if isinstance(c.get("pos"), list) and isinstance(c.get("at"), list):
@@ -135,9 +151,13 @@ for e in sorted(spec["events"], key=lambda e: frame_of(e["at"], e.get("dt", 0)))
         li.data.keyframe_insert("energy", frame=f - 1)
         li.data.energy = e["energy"]
         li.data.keyframe_insert("energy", frame=f)
-        bulb = bpy.data.objects.get(f'{e["light"]}_bulb')  # a visible lamp body goes dark with its light
+        bulb = bpy.data.objects.get(f'{e["light"]}_bulb')  # a visible lamp body dims and goes dark with its light
         if bulb:
             kit.key_visible(bulb, f, e["energy"] > 0)
+            glow = bulb.active_material.node_tree.nodes["Principled BSDF"].inputs["Emission Strength"]
+            glow.keyframe_insert("default_value", frame=f - 1)
+            glow.default_value = 8.0 * e["energy"] / li.get("base_energy", 120.0)
+            glow.keyframe_insert("default_value", frame=f)
 
 
 def point(ref, frame):
