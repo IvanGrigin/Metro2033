@@ -261,9 +261,13 @@
    "id": "16.04",
    "dur": 3.0,
    "cam": {
-    "auto": "med",
-    "subject": "Sukhoi",
-    "side": 1
+    "pos": [
+     0.35,
+     0.3,
+     1.35
+    ],
+    "at": "Sukhoi.eyes",
+    "lens": 35
    }
   },
   {
@@ -287,10 +291,12 @@
    "id": "16.06",
    "dur": 2.5,
    "cam": {
-    "auto": "med",
-    "subject": "Hunter",
-    "side": -1,
-    "angle": "low",
+    "pos": [
+     0.55,
+     0.15,
+     0.95
+    ],
+    "at": "Hunter.torso",
     "lens": 28
    }
   },
@@ -311,9 +317,13 @@
    "id": "16.08",
    "dur": 2.0,
    "cam": {
-    "auto": "cu",
-    "subject": "Artyom",
-    "side": 1
+    "pos": [
+     0.05,
+     0.2,
+     1.3
+    ],
+    "at": "Artyom.eyes",
+    "lens": 50
    }
   },
   {
@@ -351,10 +361,10 @@
     "pos": [
      0.3,
      0.1,
-     1.35
+     1.15
     ],
     "at": "Artyom.eyes",
-    "lens": 35
+    "lens": 28
    }
   }
  ]

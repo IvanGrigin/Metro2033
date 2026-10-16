@@ -581,10 +581,13 @@
    "id": "22.06",
    "dur": 3.5,
    "cam": {
-    "auto": "med",
-    "subject": "Sukhoi",
-    "side": 1,
-    "behind": true
+    "pos": [
+     0.35,
+     -0.45,
+     1.55
+    ],
+    "at": "Sukhoi.torso",
+    "lens": 28
    }
   },
   {
@@ -654,7 +657,7 @@
    "cam": {
     "auto": "cu",
     "subject": "Sukhoi",
-    "side": 1
+    "side": -1
    }
   },
   {
@@ -737,7 +740,7 @@
    "cam": {
     "auto": "med",
     "subject": "Artyom",
-    "side": -1
+    "side": 1
    }
   },
   {
