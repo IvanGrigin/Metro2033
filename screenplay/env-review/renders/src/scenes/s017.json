@@ -115,8 +115,8 @@
    "actor": "HunterCoat",
    "do": "place",
    "pos": [
-    0.75,
-    -0.85
+    0.45,
+    -0.55
    ],
    "facing": 310,
    "pose": "stand"
@@ -203,8 +203,8 @@
    "actor": "Hunter",
    "do": "walk",
    "to": [
-    0.75,
-    -0.85
+    0.45,
+    -0.55
    ],
    "facing": 310,
    "speed": 1.0

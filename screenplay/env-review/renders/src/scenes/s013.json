@@ -11,6 +11,12 @@
  "events": [
   {
    "at": "13.01",
+   "do": "light",
+   "light": "tent_lamp",
+   "energy": 12
+  },
+  {
+   "at": "13.01",
    "actor": "Artyom",
    "do": "place",
    "pos": [
@@ -57,5 +63,37 @@
     "lens": 28
    }
   }
- ]
+ ],
+ "lights": {
+  "station_red": {
+   "type": "POINT",
+   "attach": "tent_front_L",
+   "loc": [
+    0.833,
+    -20.0,
+    0.2
+   ],
+   "energy": 250,
+   "color": [
+    1.0,
+    0.18,
+    0.1
+   ]
+  }
+ },
+ "props": {
+  "artyom_rifle": {
+   "type": "rifle",
+   "loc": [
+    0.68,
+    0.35,
+    0.03
+   ],
+   "rot": [
+    0,
+    1.5708,
+    0
+   ]
+  }
+ }
 }

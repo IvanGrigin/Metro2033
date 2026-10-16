@@ -321,11 +321,33 @@
    "dur": 0.4
   },
   {
-   "at": "22.15",
+   "at": "22.14",
    "do": "walk",
    "actor": "Sukhoi",
    "to": [
-    -0.0,
+    -0.6,
+    1.15
+   ],
+   "speed": 1.0
+  },
+  {
+   "at": "22.14",
+   "dt": 1.3,
+   "do": "walk",
+   "actor": "Sukhoi",
+   "to": [
+    -0.6,
+    -0.05
+   ],
+   "speed": 1.0
+  },
+  {
+   "at": "22.14",
+   "dt": 2.6,
+   "do": "walk",
+   "actor": "Sukhoi",
+   "to": [
+    0.0,
     -0.4
    ],
    "facing": 60,
@@ -344,6 +366,28 @@
    "do": "walk",
    "actor": "Sukhoi",
    "to": [
+    -0.6,
+    -0.05
+   ],
+   "speed": 1.0
+  },
+  {
+   "at": "22.17",
+   "dt": 1.3,
+   "do": "walk",
+   "actor": "Sukhoi",
+   "to": [
+    -0.6,
+    1.15
+   ],
+   "speed": 1.0
+  },
+  {
+   "at": "22.17",
+   "dt": 2.6,
+   "do": "walk",
+   "actor": "Sukhoi",
+   "to": [
     0.55,
     0.95
    ],
@@ -355,7 +399,7 @@
    "at": "22.18",
    "do": "turn",
    "actor": "Artyom",
-   "facing": 0,
+   "facing": 250,
    "dur": 0.5
   },
   {
