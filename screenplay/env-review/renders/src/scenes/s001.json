@@ -899,7 +899,7 @@
    "actor": "Hunter",
    "do": "walk",
    "to": [
-    0.95,
+    1.05,
     1.6
    ],
    "facing": 0,
