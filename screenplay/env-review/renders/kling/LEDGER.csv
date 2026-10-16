@@ -1,0 +1,2 @@
+date,time,scene,shot,attempt,route,model,mode,seconds,credits_before,credits_after,credits_spent,gen_minutes,input,result_file,critic_verdict,note
+2026-10-16,20:40,1,seq01_1.02-1.07,1,cli omni_ref_video,kling-video-v4_0,720p audio off,14,3000,2849,151,2.4,seq01_1.02-1.07.mp4,kling/s001/gen/seq01_1.02-1.07_a1.mp4,,COMPLETED; creditsConsumed 151; id AaB8nMJ-HeUvCcNQfY9jOAGvrIQoVavMdwb7Na3fDmlHbxlaNkth1vFRPQ9cqU-nskVX2l0o; 
